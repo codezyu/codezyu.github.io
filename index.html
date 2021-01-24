@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/2101241730/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/python%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +181,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/24/2101241730/" class="post-title-link" itemprop="url">2101241730</a>
+            <a href="/2021/01/24/python%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">python序列类型</a>
         </h2>
 
         <div class="post-meta">
@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-01-24 17:31:07 / Modified: 17:32:09" itemprop="dateCreated datePublished" datetime="2021-01-24T17:31:07+08:00">2021-01-24</time>
+              <time title="Created: 2021-01-24 17:31:07 / Modified: 17:37:01" itemprop="dateCreated datePublished" datetime="2021-01-24T17:31:07+08:00">2021-01-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,7 +215,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="python序列类型"><a href="#python序列类型" class="headerlink" title="python序列类型"></a>python序列类型</h1><h2 id="1-列表"><a href="#1-列表" class="headerlink" title="1.列表"></a>1.列表</h2><p>创建:[]</p>
+<p>访问：正向，负向，从0开始</p>
+<p>​          切片访问：左边边界元素不访问</p>
+<p>删除:del</p>
+<p>​        pop(根据索引值删除)</p>
+<p>​        remove(根据元素值删除)</p>
+<p>​        clear(删除所有元素)</p>
+<p>添加元素:+,append(整体加入),extend(逐个加入)</p>
+<p>插入：insert(剩余元素后移)</p>
+<p>修改：直接赋值</p>
+<p>​            用[]对切片进行赋值(空切片相当于插入)</p>
+<p>查找：index查找元素的索引值</p>
+<p>​            count统计元素出现次数            </p>
+<p>函数：range(for value in range(begin,end):)不包括右边界</p>
+<h2 id="2-元组"><a href="#2-元组" class="headerlink" title="2.元组"></a>2.元组</h2><p>相比序列，元组可看作不可修改的序列（修改，插入，删除），但元组可以覆盖</p>
+<p>创建:()<br>访问:[i]</p>
+<p>删除：del</p>
+<h2 id="3-字典"><a href="#3-字典" class="headerlink" title="3.字典"></a>3.字典</h2><p>键值对，无序，可嵌套（类似广义表）,键值唯一（否则保留最近的键值对），键不可变（数字，字符串，元组）</p>
+<p>创建：{key：value}</p>
+<p>访问：[key]</p>
+<pre><code>       get(key)</code></pre>
+<p>删除：del</p>
+<p>添加：[new key]=new value</p>
+<p>修改：只能修改value，不能修改key</p>
+<p>​            a[key]=new value</p>
+<p>删除:del [key]</p>
+<p>查找：判断key是否存在   in/not in</p>
+<h2 id="4-序列"><a href="#4-序列" class="headerlink" title="4.序列"></a>4.序列</h2><p>集合，保存不重复元素(数学好像是允许集合重复的),存储的数据类型不可变，元素无序</p>
+<p>创建：{}</p>
+<p>访问：一般用循环读取想要元素</p>
+<p>删除：del</p>
+<p>​            remove(element)</p>
+<p>添加：add()</p>
+<p>运算:交集&amp; 并集| 差集- 对称差^</p>
+<p>清空：clear()</p>
+
       
     </div>
 
