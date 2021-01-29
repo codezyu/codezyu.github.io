@@ -24,13 +24,13 @@
 
   <meta name="description" content="hexo使用1.命令hexo clean 对当前网站内容进行清理 每次更新推文需要输入命令：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d hexo g 生成 hexo d  部署 上面两个可以合并为 hexo d -g hexo s本地预览 hexo n+”name”  生成为name的md文档，可以在这里直接写博客 2.页面设计目前没在我的考虑范围">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客书写">
+<meta property="og:title" content="宇称不得不守恒">
 <meta property="og:url" content="http://example.com/2021/01/25/%E5%8D%9A%E5%AE%A2%E4%B9%A6%E5%86%99%E6%89%80%E9%9C%80/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
 <meta property="og:description" content="hexo使用1.命令hexo clean 对当前网站内容进行清理 每次更新推文需要输入命令：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d hexo g 生成 hexo d  部署 上面两个可以合并为 hexo d -g hexo s本地预览 hexo n+”name”  生成为name的md文档，可以在这里直接写博客 2.页面设计目前没在我的考虑范围">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-25T03:12:01.000Z">
-<meta property="article:modified_time" content="2021-01-25T04:15:37.901Z">
+<meta property="article:modified_time" content="2021-01-29T05:27:54.138Z">
 <meta property="article:author" content="yuz">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="ready to renew">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>博客书写 | 宇称不得不守恒</title>
+  <title> | 宇称不得不守恒</title>
   
 
 
@@ -80,7 +80,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -187,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          博客书写
+          
         </h1>
 
         <div class="post-meta">
@@ -196,10 +200,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-01-25 11:12:01 / Modified: 12:15:37" itemprop="dateCreated datePublished" datetime="2021-01-25T11:12:01+08:00">2021-01-25</time>
+              <time title="Created: 2021-01-25 11:12:01" itemprop="dateCreated datePublished" datetime="2021-01-25T11:12:01+08:00">2021-01-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-01-29 13:27:54" itemprop="dateModified" datetime="2021-01-29T13:27:54+08:00">2021-01-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -239,7 +249,13 @@
 <p>也可以新建自己的模板，比如你命名模板为blog.md</p>
 <p>生成模板就可使用命令 <code>hexo new blog &quot;name&quot;</code></p>
 <p>后面加入自己的文章内容即可</p>
-<h3 id="2-写作工具"><a href="#2-写作工具" class="headerlink" title="2.写作工具"></a>2.写作工具</h3><p>typora</p>
+<h3 id="2-写作工具"><a href="#2-写作工具" class="headerlink" title="2.写作工具"></a>2.写作工具</h3><p><code>typora</code></p>
+<h3 id="3-显示公式"><a href="#3-显示公式" class="headerlink" title="3.显示公式"></a>3.显示公式</h3><p><code>git-bash</code>安装<code>hexo-math</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<p>在<code>config.yml</code>加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  engine: &#39;mathjax&#39; # or &#39;katex&#39;</span><br><span class="line">  mathjax:</span><br><span class="line">    src: custom_mathjax_source</span><br><span class="line">    config:</span><br><span class="line">      # MathJax config</span><br><span class="line">  katex:</span><br><span class="line">    css: custom_css_source</span><br><span class="line">    js: custom_js_source # not used</span><br><span class="line">    config:</span><br><span class="line">      # KaTeX config</span><br></pre></td></tr></table></figure>
+<p>再到主题theme的<code>_config.yml</code>将</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">	enable:true</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -324,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">hexo使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">1.命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2.页面设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B8%B8%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">3.常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%86%99%E6%96%87%E7%AB%A0"><span class="nav-number">1.4.</span> <span class="nav-text">3.写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.格式类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.写作工具</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">hexo使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">1.命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2.页面设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B8%B8%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">3.常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%86%99%E6%96%87%E7%AB%A0"><span class="nav-number">1.4.</span> <span class="nav-text">3.写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.格式类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.写作工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%98%BE%E7%A4%BA%E5%85%AC%E5%BC%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.显示公式</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -433,6 +449,8 @@
 
 
 
+
+  
 
   
 
