@@ -77,9 +77,7 @@
 </noscript>
 
 <!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<link rel="stylesheet" href="/custom_css_source.css">
 <!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -169,6 +167,202 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">计算机网络</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-30 18:06:08" itemprop="dateCreated datePublished" datetime="2021-01-30T18:06:08+08:00">2021-01-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-01-31 01:43:14" itemprop="dateModified" datetime="2021-01-31T01:43:14+08:00">2021-01-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0-计划"><a href="#0-计划" class="headerlink" title="0.计划"></a>0.计划</h1><p>大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的</p>
+<h1 id="1-计算机网络-整体体系按照《网络是如何连接的》"><a href="#1-计算机网络-整体体系按照《网络是如何连接的》" class="headerlink" title="1.计算机网络(整体体系按照《网络是如何连接的》)"></a>1.计算机网络(整体体系按照《网络是如何连接的》)</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B4%E4%BD%93%E5%9B%BE.png" alt="image-20210130182342441"></p>
+<p>计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息<strong>准确</strong>发送给通信对象</p>
+<p>现代互联网起源于美国的因特网</p>
+<p>网络是由<a href="%E8%BF%99%E6%98%AF%E5%87%86%E7%A1%AE%E8%AF%91%E5%90%8D%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84node%E8%AF%91%E4%B8%BA%E8%8A%82%E7%82%B9"><strong>结点</strong>(node)</a>和<strong>链路</strong>(link)组成</p>
+<p>互联网即是网络的网络<a href="%E7%BD%91%E7%BB%9C%E6%8A%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E8%80%8C%E5%9B%A0%E7%89%B9%E7%BD%91%E6%8A%8A%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5">(network of networks)</a></p>
+<p>连接在因特网的计算机称为<strong>主机</strong>(host)</p>
+<p><strong>协议</strong>：通信操作的规则称为协议</p>
+<h3 id="因特网的发展"><a href="#因特网的发展" class="headerlink" title="因特网的发展"></a>因特网的发展</h3><p>1.单个网络ARPANET向互联网发展</p>
+<p>TCP/IP协议称为ARPANET的标准协议</p>
+<p>2.建成了三级结构的因特网。<br> 主干网、 地区网和校园网（或企业网）</p>
+<p>3.逐渐形成了多层次 ISP (Internet Service Provider)结构的因特网  </p>
+<p>4.同时万维网 <a href="%E8%BF%99%E6%98%AFweb%E7%9A%84%E6%8F%90%E5%87%BA%E8%80%85%E6%9C%80%E6%97%A9%E5%BC%80%E5%8F%91%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BCHTML%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E5%90%8D%E5%AD%97">WWW(World Wide Web)</a>广泛使用在因特网上  </p>
+<p>而注意网址中的www只是<strong>web服务器</strong>的一种命名，并不是万维网</p>
+<p>注意中国<code>.com.cn</code>,<code>.net.cn</code>一般不开放给个人注册</p>
+<p>软件间的通信：</p>
+<p>1.应用程序委托操作系统控制网络，发送信息</p>
+<h2 id="2-计算机网络的构成"><a href="#2-计算机网络的构成" class="headerlink" title="2.计算机网络的构成"></a>2.计算机网络的构成</h2><p>信息传送机制+网络应用程序</p>
+<h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><p>网络应用程序（浏览器等）</p>
+<h3 id="1-浏览器根据输入的网址进行解析，生成请求消息"><a href="#1-浏览器根据输入的网址进行解析，生成请求消息" class="headerlink" title="1.浏览器根据输入的网址进行解析，生成请求消息"></a>1.浏览器根据输入的网址进行解析，生成请求消息</h3><p>网址：<code>URL(Uniform Resource Locator)</code>统一资源定位符</p>
+<p>解释：</p>
+<h4 id="根据访问目标"><a href="#根据访问目标" class="headerlink" title="根据访问目标"></a>根据访问目标</h4><h5 id="web"><a href="#web" class="headerlink" title="web"></a>web</h5><p>Web服务器：<code>http</code>，代表了不同的访问方式</p>
+<p><code>http</code>代表了http访问协议，超文本传送协议</p>
+<p><code>user</code>:用户名(可省略)</p>
+<p><code>password</code>:密码(可省略)</p>
+<p><code>www.codezyu.com</code>:域名</p>
+<p><code>80</code>：端口号(可省略)</p>
+<p><code>dir/file1.htm</code>：路径名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;user:password@www.codezyu.com:80&#x2F;dir&#x2F;file1.htm</span><br></pre></td></tr></table></figure>
+<h5 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h5><p>FTP服务器:<code>ftp</code> (file transfer protocol)文件传送协议，用于上传，下载文件时使用的协议，ftp也指使用ftp协议来传送文件的程序(一般文件管理器就可以，但是据c++助教老师说，文件可能有损坏，推荐了8uftp)</p>
+<p>结构和web差不多，只是有几个不太一样</p>
+<p><code>ftp.codezyu.com</code>:ftp服务器域名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp:&#x2F;&#x2F;user:password@ftp.codezyu.com:21&#x2F;dir&#x2F;file1.htm</span><br></pre></td></tr></table></figure>
+<h5 id="读取客户端本地文件"><a href="#读取客户端本地文件" class="headerlink" title="读取客户端本地文件"></a>读取客户端本地文件</h5><p><code>file</code>：代表访问方法</p>
+<p><code>localhost</code>:计算机名(可省略)</p>
+<p><code>c:/path/file1.zip</code>:路径名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:&#x2F;&#x2F;localhost&#x2F;c:&#x2F;path&#x2F;file1.zip</span><br></pre></td></tr></table></figure>
+<h5 id="mailto"><a href="#mailto" class="headerlink" title="mailto"></a>mailto</h5><p>电子邮件：<code>mailto</code>(需要有正确的电子邮件软件)</p>
+<p><code>tone@qq.com</code>:邮件地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mailto:tone@qq.com</span><br></pre></td></tr></table></figure>
+<h5 id="新闻组文章-不知含义"><a href="#新闻组文章-不知含义" class="headerlink" title="新闻组文章(不知含义)"></a>新闻组文章(不知含义)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">news:comp.protocols.tcp-ip</span><br></pre></td></tr></table></figure>
+<h4 id="URL解析"><a href="#URL解析" class="headerlink" title="URL解析"></a>URL解析</h4><h5 id="1-省略文件名"><a href="#1-省略文件名" class="headerlink" title="1.省略文件名"></a>1.省略文件名</h5><p>以<code>/</code>结尾表示文件名省略，一般会访问设置的默认文件名，多为index.html或者default.html</p>
+<p>注意根目录没有名字，一般直接用<code>/</code>来进行表示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.codezyu.com</span><br></pre></td></tr></table></figure>
+<p>由于结尾的<code>/</code>都省略了，一般代表访问根目录下的设置的默认文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.codezyu.com&#x2F;file</span><br></pre></td></tr></table></figure>
+<p>末尾没有<code>/</code>一般当作文件名处理，但是习惯上大家不会写</p>
+<p>所以，<a href="%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E4%B8%80%E8%88%AC%E4%B8%8D%E5%90%8C%E5%90%8D">file为目录名则解析为目录，否则解析为文件</a></p>
+<h3 id="2-浏览器根据域名向DNS服务器查询Web服务器IP地址"><a href="#2-浏览器根据域名向DNS服务器查询Web服务器IP地址" class="headerlink" title="2.浏览器根据域名向DNS服务器查询Web服务器IP地址"></a>2.浏览器根据域名向DNS服务器查询Web服务器IP地址</h3><h3 id="3-把消息委托给操作系统发送给Web服务器"><a href="#3-把消息委托给操作系统发送给Web服务器" class="headerlink" title="3.把消息委托给操作系统发送给Web服务器"></a>3.把消息委托给操作系统发送给Web服务器</h3><h1 id="N-参考书籍"><a href="#N-参考书籍" class="headerlink" title="N.参考书籍"></a>N.参考书籍</h1><p>《网络是如何连接的》</p>
+<p>老师课件</p>
+<p>《图解TCP/IP》</p>
+<p>《图解HTTP》</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-1-%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-1-%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB/" class="post-title-link" itemprop="url">编程实战(1)图片转字符画</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-30 14:57:32 / Modified: 15:12:43" itemprop="dateCreated datePublished" datetime="2021-01-30T14:57:32+08:00">2021-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-pillow库及其原理"><a href="#1-pillow库及其原理" class="headerlink" title="1.pillow库及其原理"></a>1.pillow库及其原理</h1><p>python图像处理库</p>
+<p>原理很简单：将RGB转换为灰度值（公式会复杂一点）</p>
+<p>$gray =0.2126<em>r+0.7152</em>g+0.0722*b$</p>
+<p>再将灰度值和字符联系起来即可</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -841,7 +1035,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-21 13:18:57" itemprop="dateModified" datetime="2021-01-21T13:18:57+08:00">2021-01-21</time>
+                <time title="Modified: 2021-01-30 13:55:22" itemprop="dateModified" datetime="2021-01-30T13:55:22+08:00">2021-01-30</time>
               </span>
 
           
@@ -856,6 +1050,15 @@
 
       
           <p>内容会逐步添加</p>
+<p>放假期间：</p>
+<p>目标：</p>
+<p>每周做一个项目实战</p>
+<p>算法篇更新5篇以上</p>
+<p>不定期更新我做的大创</p>
+<p>编程基础篇每周至少更新3篇</p>
+<p>在校时间：</p>
+<p>算法篇每周更新1篇以上</p>
+<p>编程基础随缘更新</p>
 
       
     </div>
@@ -937,20 +1140,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
