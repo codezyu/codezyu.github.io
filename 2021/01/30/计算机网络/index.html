@@ -22,16 +22,16 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="0.计划大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的 1.计算机网络(整体体系按照《网络是如何连接的》)1.基本概念  计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息准确发送给通信对象 现代互联网起源于美国的因特网 网络是由结点(node)和链路(link)组成 互联网即是网络的网络(network of networks) 连接在因特网的">
+  <meta name="description" content="0.计划大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的 1.计算机网络(整体体系按照《网络是如何连接的》)1.基本概念  计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息准确发送给通信对象 现代互联网起源于美国的因特网 网络是由结点(node)[这是准确译名，数据结构的node译为节点]和链路(link)组成 互联网即是网络的网络(networ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络">
 <meta property="og:url" content="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="0.计划大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的 1.计算机网络(整体体系按照《网络是如何连接的》)1.基本概念  计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息准确发送给通信对象 现代互联网起源于美国的因特网 网络是由结点(node)和链路(link)组成 互联网即是网络的网络(network of networks) 连接在因特网的">
+<meta property="og:description" content="0.计划大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的 1.计算机网络(整体体系按照《网络是如何连接的》)1.基本概念  计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息准确发送给通信对象 现代互联网起源于美国的因特网 网络是由结点(node)[这是准确译名，数据结构的node译为节点]和链路(link)组成 互联网即是网络的网络(networ">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B4%E4%BD%93%E5%9B%BE.png">
 <meta property="article:published_time" content="2021-01-30T10:06:08.000Z">
-<meta property="article:modified_time" content="2021-01-30T17:48:10.507Z">
+<meta property="article:modified_time" content="2021-01-30T17:54:23.251Z">
 <meta property="article:author" content="yuz">
 <meta property="article:tag" content="ready-to-renew">
 <meta property="article:tag" content="计算机网络">
@@ -83,7 +83,7 @@
 </noscript>
 
 <!-- hexo injector head_end start -->
-<link rel="stylesheet" href="/custom_css_source.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 <!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -208,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-31 01:48:10" itemprop="dateModified" datetime="2021-01-31T01:48:10+08:00">2021-01-31</time>
+                <time title="Modified: 2021-01-31 01:54:23" itemprop="dateModified" datetime="2021-01-31T01:54:23+08:00">2021-01-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
 
 <p>计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息<strong>准确</strong>发送给通信对象</p>
 <p>现代互联网起源于美国的因特网</p>
-<p>网络是由<a href="%E8%BF%99%E6%98%AF%E5%87%86%E7%A1%AE%E8%AF%91%E5%90%8D%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84node%E8%AF%91%E4%B8%BA%E8%8A%82%E7%82%B9"><strong>结点</strong>(node)</a>和<strong>链路</strong>(link)组成</p>
+<p>网络是由<strong>结点</strong>(node)[这是准确译名，数据结构的node译为节点]和<strong>链路</strong>(link)组成</p>
 <p>互联网即是网络的网络<a href="%E7%BD%91%E7%BB%9C%E6%8A%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E8%80%8C%E5%9B%A0%E7%89%B9%E7%BD%91%E6%8A%8A%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5">(network of networks)</a></p>
 <p>连接在因特网的计算机称为<strong>主机</strong>(host)</p>
 <p><strong>协议</strong>：通信操作的规则称为协议</p>
@@ -306,7 +306,10 @@
     <a href="/2021/01/30/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-1-%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB/" rel="prev" title="编程实战(1)图片转字符画">
       <i class="fa fa-chevron-left"></i> 编程实战(1)图片转字符画
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/31/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/" rel="next" title="模拟退火算法">
+      模拟退火算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -379,7 +382,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

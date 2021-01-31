@@ -77,7 +77,7 @@
 </noscript>
 
 <!-- hexo injector head_end start -->
-<link rel="stylesheet" href="/custom_css_source.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 <!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -171,6 +171,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/31/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">模拟退火算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-31 01:59:51 / Modified: 02:12:05" itemprop="dateCreated datePublished" datetime="2021-01-31T01:59:51+08:00">2021-01-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>本来不应该这么快就直接写这个，但是遇到了就直接出手了</p>
+<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h1><p>一种优化算法，模拟物理退火过程</p>
+<blockquote>
+<p>先在一个高温状态下，逐渐退火，在每个温度下慢慢冷却，最后到达物理基态（算法找到了最优解）</p>
+</blockquote>
+<p>例如贪心算法下的最优解时局部最优解，那么如何获得整体最优解咧？</p>
+<p>1.设定当前最优解</p>
+<p>即退火的初始温度，随机生成一个初始解</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -202,7 +277,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-31 01:48:10" itemprop="dateModified" datetime="2021-01-31T01:48:10+08:00">2021-01-31</time>
+                <time title="Modified: 2021-01-31 01:54:23" itemprop="dateModified" datetime="2021-01-31T01:54:23+08:00">2021-01-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +305,7 @@
 
 <p>计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息<strong>准确</strong>发送给通信对象</p>
 <p>现代互联网起源于美国的因特网</p>
-<p>网络是由<a href="%E8%BF%99%E6%98%AF%E5%87%86%E7%A1%AE%E8%AF%91%E5%90%8D%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84node%E8%AF%91%E4%B8%BA%E8%8A%82%E7%82%B9"><strong>结点</strong>(node)</a>和<strong>链路</strong>(link)组成</p>
+<p>网络是由<strong>结点</strong>(node)[这是准确译名，数据结构的node译为节点]和<strong>链路</strong>(link)组成</p>
 <p>互联网即是网络的网络<a href="%E7%BD%91%E7%BB%9C%E6%8A%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E8%80%8C%E5%9B%A0%E7%89%B9%E7%BD%91%E6%8A%8A%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5">(network of networks)</a></p>
 <p>连接在因特网的计算机称为<strong>主机</strong>(host)</p>
 <p><strong>协议</strong>：通信操作的规则称为协议</p>
@@ -813,7 +888,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/25/%E5%8D%9A%E5%AE%A2%E4%B9%A6%E5%86%99%E6%89%80%E9%9C%80/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2021/01/25/%E5%8D%9A%E5%AE%A2%E4%B9%A6%E5%86%99%E6%89%80%E9%9C%80/" class="post-title-link" itemprop="url">博客书写所需</a>
         </h2>
 
         <div class="post-meta">
@@ -830,7 +905,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 13:27:54" itemprop="dateModified" datetime="2021-01-29T13:27:54+08:00">2021-01-29</time>
+                <time title="Modified: 2021-01-31 02:07:43" itemprop="dateModified" datetime="2021-01-31T02:07:43+08:00">2021-01-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1141,7 +1216,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
