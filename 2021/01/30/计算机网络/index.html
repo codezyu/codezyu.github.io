@@ -30,8 +30,9 @@
 <meta property="og:description" content="0.计划大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的 1.计算机网络(整体体系按照《网络是如何连接的》)1.基本概念  计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息准确发送给通信对象 现代互联网起源于美国的因特网 网络是由结点(node)^0和链路(link)组成 互联网即是网络的网络(network of networks)^1网络把计">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B4%E4%BD%93%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP.png">
 <meta property="article:published_time" content="2021-01-30T10:06:08.000Z">
-<meta property="article:modified_time" content="2021-01-31T02:59:48.796Z">
+<meta property="article:modified_time" content="2021-01-31T04:57:02.536Z">
 <meta property="article:author" content="yuz">
 <meta property="article:tag" content="ready-to-renew">
 <meta property="article:tag" content="计算机网络">
@@ -208,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-31 10:59:48" itemprop="dateModified" datetime="2021-01-31T10:59:48+08:00">2021-01-31</time>
+                <time title="Modified: 2021-01-31 12:57:02" itemprop="dateModified" datetime="2021-01-31T12:57:02+08:00">2021-01-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,6 +241,7 @@
 <p>互联网即是网络的网络(network of networks)<a href="%E7%BD%91%E7%BB%9C%E6%8A%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E8%80%8C%E5%9B%A0%E7%89%B9%E7%BD%91%E6%8A%8A%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5">^1</a>网络把计算机连在一起，而因特网把网络连接起来)</p>
 <p>连接在因特网的计算机称为<strong>主机</strong>(host)</p>
 <p><strong>协议</strong>：通信操作的规则称为协议</p>
+<p>表单：网页中文本框，复选框等能够输入数据的部分</p>
 <h3 id="因特网的发展"><a href="#因特网的发展" class="headerlink" title="因特网的发展"></a>因特网的发展</h3><p>1.单个网络ARPANET向互联网发展</p>
 <p>TCP/IP协议称为ARPANET的标准协议</p>
 <p>2.建成了三级结构的因特网。<br> 主干网、 地区网和校园网（或企业网）</p>
@@ -252,6 +254,7 @@
 <h2 id="2-计算机网络的构成"><a href="#2-计算机网络的构成" class="headerlink" title="2.计算机网络的构成"></a>2.计算机网络的构成</h2><p>信息传送机制+网络应用程序</p>
 <h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><p>网络应用程序（浏览器等）</p>
 <h3 id="1-浏览器根据输入的网址进行解析，生成请求消息"><a href="#1-浏览器根据输入的网址进行解析，生成请求消息" class="headerlink" title="1.浏览器根据输入的网址进行解析，生成请求消息"></a>1.浏览器根据输入的网址进行解析，生成请求消息</h3><p>网址：<code>URL(Uniform Resource Locator)</code>统一资源定位符</p>
+<p>先对URL进行解析，然后根据HTTP协议访问Web服务器</p>
 <p>解释：</p>
 <h4 id="根据访问目标"><a href="#根据访问目标" class="headerlink" title="根据访问目标"></a>根据访问目标</h4><h5 id="web"><a href="#web" class="headerlink" title="web"></a>web</h5><p>Web服务器：<code>http</code>，代表了不同的访问方式</p>
 <p><code>http</code>代表了http访问协议，超文本传送协议</p>
@@ -280,10 +283,53 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.codezyu.com&#x2F;file</span><br></pre></td></tr></table></figure>
 <p>末尾没有<code>/</code>一般当作文件名处理，但是习惯上大家不会写</p>
 <p>所以，file为目录名则解析为目录，否则解析为文件<a href="%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E4%B8%80%E8%88%AC%E4%B8%8D%E5%90%8C%E5%90%8D">^3</a></p>
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>HyperText Transfer Protocol 超文本传输协议</p>
+<p>指双方间传输超文本数据的规范</p>
+<p>客户端向服务器发送请求消息（包括URI[^4]和方法[^5]，同时还包括附加信息的头字段，但是头字段可以省略）</p>
+<p>服务器收到请求消息会进行解析，并且把结果放在响应消息中，响应消息的开头会有状态码，状态码含义如下</p>
+<h5 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h5><p>1.超文本：文字，图片，视频，超链接（能够从一个超文本跳转到另一个超文本）的混合体</p>
+<p>2.传输：HTTP为双向协议，数据可以相互传输</p>
+<p>3.协议：计算机之间交流的规范，以及相关控制和错误处理方式</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP.png" alt="image-20210131114157104"></p>
+<h5 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h5><table>
+<thead>
+<tr>
+<th></th>
+<th>含义</th>
+<th>状态码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1xx</td>
+<td>提示信息，当前为协议处理的中间状态</td>
+<td></td>
+</tr>
+<tr>
+<td>2xx</td>
+<td>成功，报文被收到并且被正确处理</td>
+<td>200(非head请求，返回的响应头部有body数据)，204（响应头没有body数据），206（用于分块，或者端点续传，返回的body数据只是其中的一部分）</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>重定向，资源位置发生变动，需要客户端重新发送请求</td>
+<td>301（永久重定向，请求的资源已经不在了），302（临时重定向，请求的资源还在），304</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>客户端错误，请求报文有误，服务器无法处理</td>
+<td>400，403，404</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>服务器错误，服务器在请求时内部发生了错误</td>
+<td>500,501,502,503</td>
+</tr>
+</tbody></table>
 <h3 id="2-浏览器根据域名向DNS服务器查询Web服务器IP地址"><a href="#2-浏览器根据域名向DNS服务器查询Web服务器IP地址" class="headerlink" title="2.浏览器根据域名向DNS服务器查询Web服务器IP地址"></a>2.浏览器根据域名向DNS服务器查询Web服务器IP地址</h3><h3 id="3-把消息委托给操作系统发送给Web服务器"><a href="#3-把消息委托给操作系统发送给Web服务器" class="headerlink" title="3.把消息委托给操作系统发送给Web服务器"></a>3.把消息委托给操作系统发送给Web服务器</h3><h1 id="N-参考书籍"><a href="#N-参考书籍" class="headerlink" title="N.参考书籍"></a>N.参考书籍</h1><p>《网络是如何连接的》</p>
 <p>老师课件</p>
 <p>《图解TCP/IP》</p>
 <p>《图解HTTP》</p>
+<p>[^4]:存放网页数据的文件名(eg:  file.html)和CGI（对Web服务器程序调用其它程序的规则）程序(program1,cgi)的文件名<br>[^5]:需要Web服务器进行的操作<br>[^6]:<br>[^7]:</p>
 
     </div>
 
@@ -368,7 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E8%AE%A1%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">0.计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B4%E4%BD%93%E4%BD%93%E7%B3%BB%E6%8C%89%E7%85%A7%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B"><span class="nav-number">2.</span> <span class="nav-text">1.计算机网络(整体体系按照《网络是如何连接的》)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">1.基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E5%8F%91%E5%B1%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">因特网的发展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">2.2.</span> <span class="nav-text">2.计算机网络的构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1"><span class="nav-number">2.3.</span> <span class="nav-text">通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B9%E6%8D%AE%E8%BE%93%E5%85%A5%E7%9A%84%E7%BD%91%E5%9D%80%E8%BF%9B%E8%A1%8C%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%94%9F%E6%88%90%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.浏览器根据输入的网址进行解析，生成请求消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E8%AE%BF%E9%97%AE%E7%9B%AE%E6%A0%87"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">根据访问目标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#web"><span class="nav-number">2.3.1.1.1.</span> <span class="nav-text">web</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ftp"><span class="nav-number">2.3.1.1.2.</span> <span class="nav-text">ftp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.1.1.3.</span> <span class="nav-text">读取客户端本地文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mailto"><span class="nav-number">2.3.1.1.4.</span> <span class="nav-text">mailto</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E9%97%BB%E7%BB%84%E6%96%87%E7%AB%A0-%E4%B8%8D%E7%9F%A5%E5%90%AB%E4%B9%89"><span class="nav-number">2.3.1.1.5.</span> <span class="nav-text">新闻组文章(不知含义)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL%E8%A7%A3%E6%9E%90"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">URL解析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E7%9C%81%E7%95%A5%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">2.3.1.2.1.</span> <span class="nav-text">1.省略文件名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B9%E6%8D%AE%E5%9F%9F%E5%90%8D%E5%90%91DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9F%A5%E8%AF%A2Web%E6%9C%8D%E5%8A%A1%E5%99%A8IP%E5%9C%B0%E5%9D%80"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.浏览器根据域名向DNS服务器查询Web服务器IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8A%8A%E6%B6%88%E6%81%AF%E5%A7%94%E6%89%98%E7%BB%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%91%E9%80%81%E7%BB%99Web%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.把消息委托给操作系统发送给Web服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#N-%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D"><span class="nav-number">3.</span> <span class="nav-text">N.参考书籍</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E8%AE%A1%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">0.计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B4%E4%BD%93%E4%BD%93%E7%B3%BB%E6%8C%89%E7%85%A7%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B"><span class="nav-number">2.</span> <span class="nav-text">1.计算机网络(整体体系按照《网络是如何连接的》)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">1.基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E5%8F%91%E5%B1%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">因特网的发展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">2.2.</span> <span class="nav-text">2.计算机网络的构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1"><span class="nav-number">2.3.</span> <span class="nav-text">通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B9%E6%8D%AE%E8%BE%93%E5%85%A5%E7%9A%84%E7%BD%91%E5%9D%80%E8%BF%9B%E8%A1%8C%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%94%9F%E6%88%90%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.浏览器根据输入的网址进行解析，生成请求消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E8%AE%BF%E9%97%AE%E7%9B%AE%E6%A0%87"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">根据访问目标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#web"><span class="nav-number">2.3.1.1.1.</span> <span class="nav-text">web</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ftp"><span class="nav-number">2.3.1.1.2.</span> <span class="nav-text">ftp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.1.1.3.</span> <span class="nav-text">读取客户端本地文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mailto"><span class="nav-number">2.3.1.1.4.</span> <span class="nav-text">mailto</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E9%97%BB%E7%BB%84%E6%96%87%E7%AB%A0-%E4%B8%8D%E7%9F%A5%E5%90%AB%E4%B9%89"><span class="nav-number">2.3.1.1.5.</span> <span class="nav-text">新闻组文章(不知含义)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL%E8%A7%A3%E6%9E%90"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">URL解析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E7%9C%81%E7%95%A5%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">2.3.1.2.1.</span> <span class="nav-text">1.省略文件名</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-number">2.3.1.3.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.3.1.3.2.</span> <span class="nav-text">状态码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B9%E6%8D%AE%E5%9F%9F%E5%90%8D%E5%90%91DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9F%A5%E8%AF%A2Web%E6%9C%8D%E5%8A%A1%E5%99%A8IP%E5%9C%B0%E5%9D%80"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.浏览器根据域名向DNS服务器查询Web服务器IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8A%8A%E6%B6%88%E6%81%AF%E5%A7%94%E6%89%98%E7%BB%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%91%E9%80%81%E7%BB%99Web%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.把消息委托给操作系统发送给Web服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#N-%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D"><span class="nav-number">3.</span> <span class="nav-text">N.参考书籍</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -382,7 +428,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
