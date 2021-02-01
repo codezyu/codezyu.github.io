@@ -22,21 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="hexo使用1.命令hexo clean 对当前网站内容进行清理 每次更新推文需要输入命令：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d hexo g 生成 hexo d  部署 上面两个可以合并为 hexo d -g hexo s本地预览 hexo n+”name”  生成为name的md文档，可以在这里直接写博客 2.页面设计目前没在我的考虑范围">
+  <meta name="description" content="1.CPU工作方式提取，解码，执行 CPU从RAM提取指令，然后解码该指令内容，最后执行。 RAM:主存，随机存取存储器，为临时数据存储介质 构成控制单元：从内存提取指令并解码运算 算数逻辑单元(ALU):处理算数和逻辑运算 从功能来看，可分为由电信号联通的四部分  内存–&gt;寄存器  寄存器：暂存指令，数据，地址 控制器：将内存中指令，数据读入寄存器，并根据指令控制计算机 运算器：运算从内存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客书写所需">
-<meta property="og:url" content="http://example.com/2021/01/25/%E5%8D%9A%E5%AE%A2%E4%B9%A6%E5%86%99%E6%89%80%E9%9C%80/index.html">
+<meta property="og:title" content="计算机组成原理1 CPU">
+<meta property="og:url" content="http://example.com/2021/01/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="hexo使用1.命令hexo clean 对当前网站内容进行清理 每次更新推文需要输入命令：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d hexo g 生成 hexo d  部署 上面两个可以合并为 hexo d -g hexo s本地预览 hexo n+”name”  生成为name的md文档，可以在这里直接写博客 2.页面设计目前没在我的考虑范围">
+<meta property="og:description" content="1.CPU工作方式提取，解码，执行 CPU从RAM提取指令，然后解码该指令内容，最后执行。 RAM:主存，随机存取存储器，为临时数据存储介质 构成控制单元：从内存提取指令并解码运算 算数逻辑单元(ALU):处理算数和逻辑运算 从功能来看，可分为由电信号联通的四部分  内存–&gt;寄存器  寄存器：暂存指令，数据，地址 控制器：将内存中指令，数据读入寄存器，并根据指令控制计算机 运算器：运算从内存">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-01-25T03:12:01.000Z">
-<meta property="article:modified_time" content="2021-01-30T18:07:43.554Z">
+<meta property="article:published_time" content="2021-01-31T15:46:18.000Z">
+<meta property="article:modified_time" content="2021-01-31T16:35:46.078Z">
 <meta property="article:author" content="yuz">
-<meta property="article:tag" content="ready to renew">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="计算机组成原理">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/01/25/%E5%8D%9A%E5%AE%A2%E4%B9%A6%E5%86%99%E6%89%80%E9%9C%80/">
+<link rel="canonical" href="http://example.com/2021/01/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/">
 
 
 <script id="page-configurations">
@@ -49,7 +48,7 @@
   };
 </script>
 
-  <title>博客书写所需 | 宇称不得不守恒</title>
+  <title>计算机组成原理1 CPU | 宇称不得不守恒</title>
   
 
 
@@ -176,7 +175,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/25/%E5%8D%9A%E5%AE%A2%E4%B9%A6%E5%86%99%E6%89%80%E9%9C%80/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          博客书写所需
+          计算机组成原理1 CPU
         </h1>
 
         <div class="post-meta">
@@ -199,14 +198,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-01-25 11:12:01" itemprop="dateCreated datePublished" datetime="2021-01-25T11:12:01+08:00">2021-01-25</time>
+              <time title="Created: 2021-01-31 23:46:18" itemprop="dateCreated datePublished" datetime="2021-01-31T23:46:18+08:00">2021-01-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-31 02:07:43" itemprop="dateModified" datetime="2021-01-31T02:07:43+08:00">2021-01-31</time>
+                <time title="Modified: 2021-02-01 00:35:46" itemprop="dateModified" datetime="2021-02-01T00:35:46+08:00">2021-02-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,31 +228,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h1><h2 id="1-命令"><a href="#1-命令" class="headerlink" title="1.命令"></a>1.命令</h2><p><code>hexo clean</code> 对当前网站内容进行清理</p>
-<p>每次更新推文需要输入命令：<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
-<p><code>hexo g</code> 生成</p>
-<p><code>hexo d</code>  部署</p>
-<p>上面两个可以合并为 <code>hexo d -g</code></p>
-<p><code>hexo s</code>本地预览</p>
-<p><code>hexo n</code>+”name”  生成为name的md文档，可以在这里直接写博客</p>
-<h2 id="2-页面设计"><a href="#2-页面设计" class="headerlink" title="2.页面设计"></a>2.页面设计</h2><p>目前没在我的考虑范围</p>
-<h2 id="3-常用"><a href="#3-常用" class="headerlink" title="3.常用"></a>3.常用</h2><p>markdown html文件一般解析到public文件夹，静态页面(hexo g 产生)放到public文件夹</p>
-<p>theme一般用来设置主题</p>
-<p>同时搭建博客所需的ssh一般在<code>C:/Users/你的用户名/.ssh</code><br>每次提交博客如何免密输入：将认证方式改为 SSH，在_config.yml下改为<br><code>repo: git@github.com:username/username.github.io</code></p>
-<h2 id="3-写文章"><a href="#3-写文章" class="headerlink" title="3.写文章"></a>3.写文章</h2><h3 id="1-格式类型："><a href="#1-格式类型：" class="headerlink" title="1.格式类型："></a>1.格式类型：</h3><p>例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: python序列类型</span><br><span class="line">date: 2021-01-24 17:31:07</span><br><span class="line">tags:</span><br><span class="line">- python           </span><br><span class="line">categories: 编程基础</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>如果想把这个作为模板</p>
-<p>可以在<code>scafflod/post.md</code>添加即可</p>
-<p>也可以新建自己的模板，比如你命名模板为blog.md</p>
-<p>生成模板就可使用命令 <code>hexo new blog &quot;name&quot;</code></p>
-<p>后面加入自己的文章内容即可</p>
-<h3 id="2-写作工具"><a href="#2-写作工具" class="headerlink" title="2.写作工具"></a>2.写作工具</h3><p><code>typora</code></p>
-<h3 id="3-显示公式"><a href="#3-显示公式" class="headerlink" title="3.显示公式"></a>3.显示公式</h3><p><code>git-bash</code>安装<code>hexo-math</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
-<p>在<code>config.yml</code>加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  engine: &#39;mathjax&#39; # or &#39;katex&#39;</span><br><span class="line">  mathjax:</span><br><span class="line">    src: custom_mathjax_source</span><br><span class="line">    config:</span><br><span class="line">      # MathJax config</span><br><span class="line">  katex:</span><br><span class="line">    css: custom_css_source</span><br><span class="line">    js: custom_js_source # not used</span><br><span class="line">    config:</span><br><span class="line">      # KaTeX config</span><br></pre></td></tr></table></figure>
-<p>再到主题theme的<code>_config.yml</code>将</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">	enable:true</span><br></pre></td></tr></table></figure>
+        <h1 id="1-CPU工作方式"><a href="#1-CPU工作方式" class="headerlink" title="1.CPU工作方式"></a>1.CPU工作方式</h1><p>提取，解码，执行</p>
+<p>CPU从RAM提取指令，然后解码该指令内容，最后执行。</p>
+<p>RAM:主存，随机存取存储器，为临时数据存储介质</p>
+<h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><p>控制单元：从内存提取指令并解码运算</p>
+<p>算数逻辑单元(ALU):处理算数和逻辑运算</p>
+<p>从功能来看，可分为由电信号联通的四部分</p>
+<blockquote>
+<p>内存–&gt;寄存器</p>
+</blockquote>
+<p>寄存器：暂存指令，数据，地址</p>
+<p>控制器：将内存中指令，数据读入寄存器，并根据指令控制计算机</p>
+<p>运算器：运算从内存读入寄存器的数据</p>
+<p>时钟：发出CPU开始计时的时钟信号</p>
+<p>反汇编：机器语言转化为汇编语言（为什么是汇编语言呢？因为机器语言的指令和汇编语言的指令是一一对应的）</p>
 
     </div>
 
@@ -263,8 +251,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/ready-to-renew/" rel="tag"># ready to renew</a>
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
           </div>
 
         
@@ -273,12 +260,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/01/24/python%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/" rel="prev" title="python序列类型">
-      <i class="fa fa-chevron-left"></i> python序列类型
+    <a href="/2021/01/31/%E4%BA%A4%E9%80%9A%E5%8F%8B%E5%A5%BD%E5%BA%A6%E8%AF%84%E4%BC%B0/" rel="prev" title="交通友好度评估">
+      <i class="fa fa-chevron-left"></i> 交通友好度评估
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/01/25/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/" rel="next" title="裴蜀定理">
-      裴蜀定理 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/01/31/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="next" title="数据库系统">
+      数据库系统 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -338,7 +325,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">hexo使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">1.命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2.页面设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B8%B8%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">3.常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%86%99%E6%96%87%E7%AB%A0"><span class="nav-number">1.4.</span> <span class="nav-text">3.写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.格式类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.写作工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%98%BE%E7%A4%BA%E5%85%AC%E5%BC%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.显示公式</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-CPU%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">1.CPU工作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E6%88%90"><span class="nav-number">1.1.</span> <span class="nav-text">构成</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
