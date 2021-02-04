@@ -219,22 +219,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>在知乎看到的一个有趣的问题</p>
+          <h1>1.问题</h1>
+<p>在知乎看到的一个有趣的问题</p>
 <blockquote>
 <p>若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少</p>
 </blockquote>
 <p>关于这个问题，由许多很好的方法</p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
+<h2 id="解法一"><a class="header-anchor" href="#解法一">¶</a>解法一</h2>
+<p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
 <p>考虑a变成b所需步骤</p>
 <p>我们不妨从最后一步开始入手</p>
 <p>对于目标b</p>
 <p>1.如果b是奇数，那么最后一步必然是+1操作</p>
 <p>2.如果b是偶数，要实现最少的步数，我们要尽量选择x2操作，但如果$b/2&lt;a$,那a只能经过+1操作变成b,那么最小步数就是b-a</p>
-<p>​    如果$b/2&gt;=a$</p>
-<p>​    $(a+x)<em>2$和$（a</em>2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
-<p>​    因此我们将$b/2$,再进入递归判断</p>
+<p>​	如果$b/2&gt;=a$</p>
+<p>​	$(a+x)<em>2$和$（a</em>2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
+<p>​	因此我们将$b/2$,再进入递归判断</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> fun(a,b<span class="number">-1</span>)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(b/<span class="number">2</span>&lt;a)</span><br><span class="line">        <span class="keyword">return</span> b-a;</span><br><span class="line">     <span class="keyword">return</span> fun(a,b/<span class="number">2</span>)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
+<h2 id="解法二"><a class="header-anchor" href="#解法二">¶</a>解法二</h2>
+<p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
 <blockquote>
 <p>x2相当于在二进制后加0</p>
 <p>+1相当于末尾加1</p>
@@ -327,9 +330,10 @@
           <p>一个晚上，我熟悉地打开了网站</p>
 <p>发现居然响应时间过长，所以记录这第一次深夜修BUG的过程</p>
 <p>1.确定是不是真的挂了</p>
-<p>先ping一下，发现无法访问github.io</p>
+<p>先ping一下，<a target="_blank" rel="noopener" href="http://xn--github-245j660j8cnnfq0n6d3sza.io">发现无法访问github.io</a></p>
 <p>2.本地部署一下，修改端口后仍然发现访问被拒，应该是文件配置出了问题</p>
-<p>都说是IIS服务器问题 。需要在控制面板中打开 ，<br> 具体流程是 （以下是win10的）：打开控制面板 —— 程序和功能 —— 左侧栏的“启用或关闭Windows功能”，把“Internet Information Services”点上。</p>
+<p>都说是IIS服务器问题 。需要在控制面板中打开 ，<br>
+具体流程是 （以下是win10的）：打开控制面板 —— 程序和功能 —— 左侧栏的“启用或关闭Windows功能”，把“Internet Information Services”点上。</p>
 <p>这样处理后本地的确可以部署，但是仍然无法访问网址，github上也有显示提交文件</p>
 <p>目前初步判断为</p>
 <p>github page本身服务器访问有问题</p>
@@ -406,10 +410,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-CPU工作方式"><a href="#1-CPU工作方式" class="headerlink" title="1.CPU工作方式"></a>1.CPU工作方式</h1><p>提取，解码，执行</p>
+          <h1>1.CPU工作方式</h1>
+<p>提取，解码，执行</p>
 <p>CPU从RAM提取指令，然后解码该指令内容，最后执行。</p>
 <p>RAM:主存，随机存取存储器，为临时数据存储介质</p>
-<h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><p>控制单元：从内存提取指令并解码运算</p>
+<h2 id="构成"><a class="header-anchor" href="#构成">¶</a>构成</h2>
+<p>控制单元：从内存提取指令并解码运算</p>
 <p>算数逻辑单元(ALU):处理算数和逻辑运算</p>
 <p>从功能来看，可分为由电信号联通的四部分</p>
 <blockquote>
@@ -487,7 +493,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-赛题分析"><a href="#1-赛题分析" class="headerlink" title="1.赛题分析"></a>1.赛题分析</h1><p><a target="_blank" rel="noopener" href="https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2">https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2</a></p>
+          <h1>1.赛题分析</h1>
+<p><a target="_blank" rel="noopener" href="https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2">https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2</a></p>
 <p>数据层面：城市路网，共享单车，路段的道路使用情况</p>
 <p>数据集：</p>
 <p>1.共享单车轨迹数据（2020.12.21-2020.12.25）</p>
@@ -500,7 +507,8 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>BICYCLE_ID</td>
 <td>车辆编码</td>
 <td>bd10a51275705899a7bd03d7bc99807</td>
@@ -524,7 +532,8 @@
 <td>118.124379562</td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>自开始使用，每15S进行一次定位，然后根据定位判断单车的行进速度</p>
 
       
@@ -593,14 +602,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-简介–最短路问题"><a href="#0-简介–最短路问题" class="headerlink" title="0.简介–最短路问题"></a>0.简介–最短路问题</h1><p>BF（bellman-Ford ）算法：适合有向图,不是字符串的暴力匹配算法。</p>
+          <h1>0.简介–最短路问题</h1>
+<p>BF（bellman-Ford ）算法：适合有向图,不是字符串的暴力匹配算法。</p>
 <blockquote>
 <p>负权边：权重为负数的边</p>
 <p>负权环：权重和为负数的环</p>
 </blockquote>
 <p>用于计算起点到各个节点的最短距离，相比Dijkstra,允许有负权边（Dijkstra算法不允许负权边的出现）。但是复杂度为O(VE)</p>
 <p>同时也可以检测负权环</p>
-<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>对于不存在<strong>负权环</strong>的图，求解最短路径：</p>
+<h2 id="步骤："><a class="header-anchor" href="#步骤：">¶</a>步骤：</h2>
+<p>对于不存在<strong>负权环</strong>的图，求解最短路径：</p>
 <p>利用已经找到的最短路径更新其它点的<code>dist[]</code></p>
 <p>顶点数：<code>n</code></p>
 <p>边数：<code>m</code></p>
@@ -609,24 +620,26 @@
 <p><code>dist[s]</code>初始化为<code>0</code>,其余初始化为<code>MAX</code></p>
 <p>循环该操作<code>n-1</code>次:</p>
 <blockquote>
-<p>对于边(u,v),权值为w(u,,v)</p>
+<p>对于边(u,v),权值为w(u,v)</p>
 <p>如果dist[u]+w(u,v)&lt;dist[v]</p>
 <p>则让dist[v]=dist[u]+w(u,v)</p>
 </blockquote>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>我们先来看看Dijsktra算法</p>
+<h2 id="对比"><a class="header-anchor" href="#对比">¶</a>对比</h2>
+<p>我们先来看看Dijsktra算法</p>
 <p>同样初始化</p>
 <blockquote>
 <p>选取距离最近的点作为起始点即u</p>
 </blockquote>
 <p>循环该操作n-1次</p>
 <blockquote>
-<p>对于边(u,v),权值为w(u,,v)</p>
+<p>对于边(u,v),权值为w(u,v)</p>
 <p>如果dist[u]+w(u,v)&lt;dist[v]</p>
 <p>则让dist[v]=dist[u]+w(u,v)</p>
 </blockquote>
 <p>Dijsktra算法本质是局部贪心</p>
 <p>其实和BF算法看起来区别不大</p>
-<h2 id="检测负权环"><a href="#检测负权环" class="headerlink" title="检测负权环"></a>检测负权环</h2><p>在求解最短路径的n-1次循环基础上，再进行第n次循环</p>
+<h2 id="检测负权环"><a class="header-anchor" href="#检测负权环">¶</a>检测负权环</h2>
+<p>在求解最短路径的n-1次循环基础上，再进行第n次循环</p>
 <p>若存在</p>
 <blockquote>
 <p>dist[u]+w(u,v)&lt;dist[v]</p>
@@ -702,8 +715,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>本来不应该这么快就直接写这个，但是遇到了就直接出手了</p>
-<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h1><p>一种优化算法，模拟物理退火过程</p>
+          <h1>0.前言</h1>
+<p>本来不应该这么快就直接写这个，但是遇到了就直接出手了</p>
+<h1>1.概念</h1>
+<p>一种优化算法，模拟物理退火过程</p>
 <blockquote>
 <p>先在一个高温状态下，逐渐退火，在每个温度下慢慢冷却，最后到达物理基态（算法找到了最优解）</p>
 </blockquote>
@@ -1032,7 +1047,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-pillow库及其原理"><a href="#1-pillow库及其原理" class="headerlink" title="1.pillow库及其原理"></a>1.pillow库及其原理</h1><p>python图像处理库</p>
+          <h1>1.pillow库及其原理</h1>
+<p>python图像处理库</p>
 <p>原理很简单：将RGB转换为灰度值（公式会复杂一点）</p>
 <p>$gray =0.2126<em>r+0.7152</em>g+0.0722*b$</p>
 <p>再将灰度值和字符联系起来即可</p>
@@ -1103,106 +1119,112 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><p>正则表达式(regular expression)</p>
+          <h1>1.介绍</h1>
+<p>正则表达式(regular expression)</p>
 <p>意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。</p>
 <p>例如我们常常用它来进行查找文字内容</p>
 <p>支持的语言：java ,c#(当前较为重要的语言)</p>
-<h1 id="2-学习"><a href="#2-学习" class="headerlink" title="2.学习"></a>2.学习</h1><p>结合例子学习会好很多</p>
+<h1>2.学习</h1>
+<p>结合例子学习会好很多</p>
 <p>例1：windows下使用<code>*.txt</code>能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符</p>
 <p><code>*.txt</code>意为任意文本开头，.txt结尾的所有文件</p>
 <p>正则表达式也能提供这样的描述能力</p>
-<h3 id="正则表达式构成"><a href="#正则表达式构成" class="headerlink" title="正则表达式构成"></a>正则表达式构成</h3><p>1.特殊字符，称为元字符例如文件名中的*</p>
+<h3 id="正则表达式构成"><a class="header-anchor" href="#正则表达式构成">¶</a>正则表达式构成</h3>
+<p>1.特殊字符，称为元字符例如文件名中的*</p>
 <p>2.其它字符，称为文字，或是普通文本字符</p>
 <p>正则表达式和文件名模式不同在于，正则拥有更多的元字符</p>
 <p>例2：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(From|Subject):</span><br></pre></td></tr></table></figure>
-<p>在e-mail中上面语句用来寻找：”From:”和”Subject:”开头的行</p>
+<p>在e-mail中上面语句用来寻找：&quot;From:&quot;和&quot;Subject:&quot;开头的行</p>
 <p>而^,(),|都是特殊字符，</p>
 <p>下面介绍的都是元字符</p>
-<h4 id="一些元字符"><a href="#一些元字符" class="headerlink" title="一些元字符"></a>一些元字符</h4><table>
+<h4 id="一些元字符"><a class="header-anchor" href="#一些元字符">¶</a>一些元字符</h4>
+<table>
 <thead>
 <tr>
 <th>元字符</th>
-<th align="center">作用</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>.</td>
-<td align="center">匹配除换行符以外的任意字符，在字符组外才是元字符</td>
+<td style="text-align:center">匹配除换行符以外的任意字符，在字符组外才是元字符</td>
 </tr>
 <tr>
 <td>\w</td>
-<td align="center">匹配字母，数字，下划线，汉字</td>
+<td style="text-align:center">匹配字母，数字，下划线，汉字</td>
 </tr>
 <tr>
 <td>\s</td>
-<td align="center">匹配空白符</td>
+<td style="text-align:center">匹配空白符</td>
 </tr>
 <tr>
 <td>\d</td>
-<td align="center">匹配数字</td>
+<td style="text-align:center">匹配数字</td>
 </tr>
 <tr>
 <td>\b</td>
-<td align="center">匹配单词的开始或者结束</td>
+<td style="text-align:center">匹配单词的开始或者结束</td>
 </tr>
 <tr>
 <td>^</td>
-<td align="center">匹配字符串的开始</td>
+<td style="text-align:center">匹配字符串的开始</td>
 </tr>
 <tr>
 <td>$</td>
-<td align="center">匹配字符串的结束</td>
+<td style="text-align:center">匹配字符串的结束</td>
 </tr>
 <tr>
 <td>\&lt;</td>
-<td align="center">单词的起始位置</td>
+<td style="text-align:center">单词的起始位置</td>
 </tr>
 <tr>
 <td>\&gt;</td>
-<td align="center">单词的结束位置</td>
+<td style="text-align:center">单词的结束位置</td>
 </tr>
 <tr>
 <td>[]</td>
-<td align="center">区间，字符组，表示列出的任意字符</td>
+<td style="text-align:center">区间，字符组，表示列出的任意字符</td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例3：</p>
 <p>就表示以From开头的字符串</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^From</span><br></pre></td></tr></table></figure>
@@ -1210,39 +1232,42 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d\d\d$</span><br></pre></td></tr></table></figure>
 <p>匹配1开头的三位数字</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^1\d\d$</span><br></pre></td></tr></table></figure>
-<h4 id="重复限定符"><a href="#重复限定符" class="headerlink" title="重复限定符"></a>重复限定符</h4><p>重复的元字符不太方便，可以把重复部分用限定符代替即可</p>
+<h4 id="重复限定符"><a class="header-anchor" href="#重复限定符">¶</a>重复限定符</h4>
+<p>重复的元字符不太方便，可以把重复部分用限定符代替即可</p>
 <table>
 <thead>
 <tr>
-<th align="center">限定符</th>
-<th align="center">作用</th>
+<th style="text-align:center">限定符</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">*</td>
-<td align="center">重复&gt;=0次</td>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">重复&gt;=0次</td>
 </tr>
 <tr>
-<td align="center">+</td>
-<td align="center">重复&gt;=1次</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">重复&gt;=1次</td>
 </tr>
 <tr>
-<td align="center">?</td>
-<td align="center">重复0或1次，一般表示允许出现这个字符</td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">重复0或1次，一般表示允许出现这个字符</td>
 </tr>
 <tr>
-<td align="center">{n}</td>
-<td align="center">重复n次</td>
+<td style="text-align:center">{n}</td>
+<td style="text-align:center">重复n次</td>
 </tr>
 <tr>
-<td align="center">{n,}</td>
-<td align="center">重复n次或者更多次</td>
+<td style="text-align:center">{n,}</td>
+<td style="text-align:center">重复n次或者更多次</td>
 </tr>
 <tr>
-<td align="center">{n,m}</td>
-<td align="center">重复n到m次</td>
+<td style="text-align:center">{n,m}</td>
+<td style="text-align:center">重复n到m次</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例4：</p>
 <p>匹配10位数字</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10&#125;$</span><br></pre></td></tr></table></figure>
@@ -1252,68 +1277,81 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10,11&#125;$</span><br></pre></td></tr></table></figure>
 <p>匹配以1开头，&gt;=0个2结尾的字符串</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^12*$</span><br></pre></td></tr></table></figure>
-<h4 id="分组符"><a href="#分组符" class="headerlink" title="分组符"></a>分组符</h4><table>
+<h4 id="分组符"><a class="header-anchor" href="#分组符">¶</a>分组符</h4>
+<table>
 <thead>
 <tr>
 <th>分组符</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>()</td>
 <td>括号内作为一个整体</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例5：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ab)*</span><br></pre></td></tr></table></figure>
 <p>大于等于0个以ab开头的字符串</p>
-<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><table>
+<h4 id="转义字符"><a class="header-anchor" href="#转义字符">¶</a>转义字符</h4>
+<table>
 <thead>
 <tr>
 <th>转义字符</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>\</td>
 <td>文本中普通字符为特殊字符格式时使用</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(\(ab\))*</span><br></pre></td></tr></table></figure>
 <p>(ab)开头的字符串</p>
-<h4 id="条件或"><a href="#条件或" class="headerlink" title="条件或"></a>条件或</h4><table>
+<h4 id="条件或"><a class="header-anchor" href="#条件或">¶</a>条件或</h4>
+<table>
 <thead>
 <tr>
 <th>条件或</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>|</td>
 <td>满足任意一个条件</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例5：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(130|131|132|155|156|185|186|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
 <p>匹配以各号段开头的号码</p>
-<h4 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h4><table>
+<h4 id="区间"><a class="header-anchor" href="#区间">¶</a>区间</h4>
+<table>
 <thead>
 <tr>
 <th>区间</th>
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>[]</td>
 <td>限定条件</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[0-9]限定0到9</span><br><span class="line">[A-Z]限定A-Z</span><br><span class="line">[165]限定数字为1，6，5</span><br><span class="line">[^...]排除的字符，指其中未列出的任意字符</span><br></pre></td></tr></table></figure>
 <p>例6：</p>
 <p>同例5</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^((13[0-2])|(15[56])|(18[5-6])|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
-<p>​         </p>
-<h1 id="n-参考书籍"><a href="#n-参考书籍" class="headerlink" title="n.参考书籍"></a>n.参考书籍</h1><p><a target="_blank" rel="noopener" href="http://cdn.lxqnsys.com/%E7%B2%BE%E9%80%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.pdf">《精通正则表达式》</a></p>
+<p>​</p>
+<h1>n.参考书籍</h1>
+<p><a target="_blank" rel="noopener" href="http://cdn.lxqnsys.com/%E7%B2%BE%E9%80%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.pdf">《精通正则表达式》</a></p>
 
       
     </div>
@@ -1381,14 +1419,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>（1.30）这可能是我做过最有用但是又最困难的项目吧</p>
-<h1 id="1-目标"><a href="#1-目标" class="headerlink" title="1.目标"></a>1.目标</h1><p>根据关键字爬取全网最低价的商品，并且给出来源和链接</p>
-<h4 id="爬取链接："><a href="#爬取链接：" class="headerlink" title="爬取链接："></a>爬取链接：</h4><p>淘宝，拼多多，京东</p>
-<h4 id="呈现方式："><a href="#呈现方式：" class="headerlink" title="呈现方式："></a>呈现方式：</h4><p>目标是表格</p>
-<h2 id="2-具体实现（慢慢学习）"><a href="#2-具体实现（慢慢学习）" class="headerlink" title="2.具体实现（慢慢学习）"></a>2.具体实现（慢慢学习）</h2><h3 id="1-不同平台爬取"><a href="#1-不同平台爬取" class="headerlink" title="1.不同平台爬取"></a>1.不同平台爬取</h3><p>据说不同平台有不同爬取方式，先一个个试一下</p>
+          <h1>0.前言</h1>
+<p>（1.30）这可能是我做过最有用但是又最困难的项目吧</p>
+<h1>1.目标</h1>
+<p>根据关键字爬取全网最低价的商品，并且给出来源和链接</p>
+<h4 id="爬取链接："><a class="header-anchor" href="#爬取链接：">¶</a>爬取链接：</h4>
+<p>淘宝，拼多多，京东</p>
+<h4 id="呈现方式："><a class="header-anchor" href="#呈现方式：">¶</a>呈现方式：</h4>
+<p>目标是表格</p>
+<h2 id="2-具体实现（慢慢学习）"><a class="header-anchor" href="#2-具体实现（慢慢学习）">¶</a>2.具体实现（慢慢学习）</h2>
+<h3 id="1-不同平台爬取"><a class="header-anchor" href="#1-不同平台爬取">¶</a>1.不同平台爬取</h3>
+<p>据说不同平台有不同爬取方式，先一个个试一下</p>
 <p>先从最简单的京东入手（资料较多）</p>
 <p>而淘宝按关键字查询需要登录，稍微困难一点</p>
-<h4 id="1-京东"><a href="#1-京东" class="headerlink" title="1.京东"></a>1.京东</h4><p>前置条件：正则表达式</p>
+<h4 id="1-京东"><a class="header-anchor" href="#1-京东">¶</a>1.京东</h4>
+<p>前置条件：正则表达式</p>
 
       
     </div>

@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.介绍正则表达式(regular expression) 意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。 例如我们常常用它来进行查找文字内容 支持的语言：java ,c#(当前较为重要的语言) 2.学习结合例子学习会好很多 例1：windows下使用*.txt能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符 *.txt意为任意文本开头，.txt结尾的所">
+  <meta name="description" content="1.介绍 正则表达式(regular expression) 意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。 例如我们常常用它来进行查找文字内容 支持的语言：java ,c#(当前较为重要的语言) 2.学习 结合例子学习会好很多 例1：windows下使用*.txt能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符 *.txt意为任意文本开头，.txt结尾">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
 <meta property="og:url" content="http://example.com/2021/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="1.介绍正则表达式(regular expression) 意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。 例如我们常常用它来进行查找文字内容 支持的语言：java ,c#(当前较为重要的语言) 2.学习结合例子学习会好很多 例1：windows下使用*.txt能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符 *.txt意为任意文本开头，.txt结尾的所">
+<meta property="og:description" content="1.介绍 正则表达式(regular expression) 意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。 例如我们常常用它来进行查找文字内容 支持的语言：java ,c#(当前较为重要的语言) 2.学习 结合例子学习会好很多 例1：windows下使用*.txt能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符 *.txt意为任意文本开头，.txt结尾">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-30T04:27:30.000Z">
 <meta property="article:modified_time" content="2021-01-30T05:42:37.637Z">
@@ -224,106 +224,112 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><p>正则表达式(regular expression)</p>
+        <h1>1.介绍</h1>
+<p>正则表达式(regular expression)</p>
 <p>意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。</p>
 <p>例如我们常常用它来进行查找文字内容</p>
 <p>支持的语言：java ,c#(当前较为重要的语言)</p>
-<h1 id="2-学习"><a href="#2-学习" class="headerlink" title="2.学习"></a>2.学习</h1><p>结合例子学习会好很多</p>
+<h1>2.学习</h1>
+<p>结合例子学习会好很多</p>
 <p>例1：windows下使用<code>*.txt</code>能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符</p>
 <p><code>*.txt</code>意为任意文本开头，.txt结尾的所有文件</p>
 <p>正则表达式也能提供这样的描述能力</p>
-<h3 id="正则表达式构成"><a href="#正则表达式构成" class="headerlink" title="正则表达式构成"></a>正则表达式构成</h3><p>1.特殊字符，称为元字符例如文件名中的*</p>
+<h3 id="正则表达式构成"><a class="header-anchor" href="#正则表达式构成">¶</a>正则表达式构成</h3>
+<p>1.特殊字符，称为元字符例如文件名中的*</p>
 <p>2.其它字符，称为文字，或是普通文本字符</p>
 <p>正则表达式和文件名模式不同在于，正则拥有更多的元字符</p>
 <p>例2：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(From|Subject):</span><br></pre></td></tr></table></figure>
-<p>在e-mail中上面语句用来寻找：”From:”和”Subject:”开头的行</p>
+<p>在e-mail中上面语句用来寻找：&quot;From:&quot;和&quot;Subject:&quot;开头的行</p>
 <p>而^,(),|都是特殊字符，</p>
 <p>下面介绍的都是元字符</p>
-<h4 id="一些元字符"><a href="#一些元字符" class="headerlink" title="一些元字符"></a>一些元字符</h4><table>
+<h4 id="一些元字符"><a class="header-anchor" href="#一些元字符">¶</a>一些元字符</h4>
+<table>
 <thead>
 <tr>
 <th>元字符</th>
-<th align="center">作用</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>.</td>
-<td align="center">匹配除换行符以外的任意字符，在字符组外才是元字符</td>
+<td style="text-align:center">匹配除换行符以外的任意字符，在字符组外才是元字符</td>
 </tr>
 <tr>
 <td>\w</td>
-<td align="center">匹配字母，数字，下划线，汉字</td>
+<td style="text-align:center">匹配字母，数字，下划线，汉字</td>
 </tr>
 <tr>
 <td>\s</td>
-<td align="center">匹配空白符</td>
+<td style="text-align:center">匹配空白符</td>
 </tr>
 <tr>
 <td>\d</td>
-<td align="center">匹配数字</td>
+<td style="text-align:center">匹配数字</td>
 </tr>
 <tr>
 <td>\b</td>
-<td align="center">匹配单词的开始或者结束</td>
+<td style="text-align:center">匹配单词的开始或者结束</td>
 </tr>
 <tr>
 <td>^</td>
-<td align="center">匹配字符串的开始</td>
+<td style="text-align:center">匹配字符串的开始</td>
 </tr>
 <tr>
 <td>$</td>
-<td align="center">匹配字符串的结束</td>
+<td style="text-align:center">匹配字符串的结束</td>
 </tr>
 <tr>
 <td>\&lt;</td>
-<td align="center">单词的起始位置</td>
+<td style="text-align:center">单词的起始位置</td>
 </tr>
 <tr>
 <td>\&gt;</td>
-<td align="center">单词的结束位置</td>
+<td style="text-align:center">单词的结束位置</td>
 </tr>
 <tr>
 <td>[]</td>
-<td align="center">区间，字符组，表示列出的任意字符</td>
+<td style="text-align:center">区间，字符组，表示列出的任意字符</td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td></td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例3：</p>
 <p>就表示以From开头的字符串</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^From</span><br></pre></td></tr></table></figure>
@@ -331,39 +337,42 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d\d\d$</span><br></pre></td></tr></table></figure>
 <p>匹配1开头的三位数字</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^1\d\d$</span><br></pre></td></tr></table></figure>
-<h4 id="重复限定符"><a href="#重复限定符" class="headerlink" title="重复限定符"></a>重复限定符</h4><p>重复的元字符不太方便，可以把重复部分用限定符代替即可</p>
+<h4 id="重复限定符"><a class="header-anchor" href="#重复限定符">¶</a>重复限定符</h4>
+<p>重复的元字符不太方便，可以把重复部分用限定符代替即可</p>
 <table>
 <thead>
 <tr>
-<th align="center">限定符</th>
-<th align="center">作用</th>
+<th style="text-align:center">限定符</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">*</td>
-<td align="center">重复&gt;=0次</td>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">重复&gt;=0次</td>
 </tr>
 <tr>
-<td align="center">+</td>
-<td align="center">重复&gt;=1次</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">重复&gt;=1次</td>
 </tr>
 <tr>
-<td align="center">?</td>
-<td align="center">重复0或1次，一般表示允许出现这个字符</td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">重复0或1次，一般表示允许出现这个字符</td>
 </tr>
 <tr>
-<td align="center">{n}</td>
-<td align="center">重复n次</td>
+<td style="text-align:center">{n}</td>
+<td style="text-align:center">重复n次</td>
 </tr>
 <tr>
-<td align="center">{n,}</td>
-<td align="center">重复n次或者更多次</td>
+<td style="text-align:center">{n,}</td>
+<td style="text-align:center">重复n次或者更多次</td>
 </tr>
 <tr>
-<td align="center">{n,m}</td>
-<td align="center">重复n到m次</td>
+<td style="text-align:center">{n,m}</td>
+<td style="text-align:center">重复n到m次</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例4：</p>
 <p>匹配10位数字</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10&#125;$</span><br></pre></td></tr></table></figure>
@@ -373,68 +382,81 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10,11&#125;$</span><br></pre></td></tr></table></figure>
 <p>匹配以1开头，&gt;=0个2结尾的字符串</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^12*$</span><br></pre></td></tr></table></figure>
-<h4 id="分组符"><a href="#分组符" class="headerlink" title="分组符"></a>分组符</h4><table>
+<h4 id="分组符"><a class="header-anchor" href="#分组符">¶</a>分组符</h4>
+<table>
 <thead>
 <tr>
 <th>分组符</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>()</td>
 <td>括号内作为一个整体</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例5：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ab)*</span><br></pre></td></tr></table></figure>
 <p>大于等于0个以ab开头的字符串</p>
-<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><table>
+<h4 id="转义字符"><a class="header-anchor" href="#转义字符">¶</a>转义字符</h4>
+<table>
 <thead>
 <tr>
 <th>转义字符</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>\</td>
 <td>文本中普通字符为特殊字符格式时使用</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(\(ab\))*</span><br></pre></td></tr></table></figure>
 <p>(ab)开头的字符串</p>
-<h4 id="条件或"><a href="#条件或" class="headerlink" title="条件或"></a>条件或</h4><table>
+<h4 id="条件或"><a class="header-anchor" href="#条件或">¶</a>条件或</h4>
+<table>
 <thead>
 <tr>
 <th>条件或</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>|</td>
 <td>满足任意一个条件</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>例5：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(130|131|132|155|156|185|186|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
 <p>匹配以各号段开头的号码</p>
-<h4 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h4><table>
+<h4 id="区间"><a class="header-anchor" href="#区间">¶</a>区间</h4>
+<table>
 <thead>
 <tr>
 <th>区间</th>
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>[]</td>
 <td>限定条件</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[0-9]限定0到9</span><br><span class="line">[A-Z]限定A-Z</span><br><span class="line">[165]限定数字为1，6，5</span><br><span class="line">[^...]排除的字符，指其中未列出的任意字符</span><br></pre></td></tr></table></figure>
 <p>例6：</p>
 <p>同例5</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^((13[0-2])|(15[56])|(18[5-6])|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
-<p>​         </p>
-<h1 id="n-参考书籍"><a href="#n-参考书籍" class="headerlink" title="n.参考书籍"></a>n.参考书籍</h1><p><a target="_blank" rel="noopener" href="http://cdn.lxqnsys.com/%E7%B2%BE%E9%80%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.pdf">《精通正则表达式》</a></p>
+<p>​</p>
+<h1>n.参考书籍</h1>
+<p><a target="_blank" rel="noopener" href="http://cdn.lxqnsys.com/%E7%B2%BE%E9%80%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.pdf">《精通正则表达式》</a></p>
 
     </div>
 
@@ -520,7 +542,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">2.学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9E%84%E6%88%90"><span class="nav-number">2.0.1.</span> <span class="nav-text">正则表达式构成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%83%E5%AD%97%E7%AC%A6"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">一些元字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">重复限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E7%AC%A6"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">分组符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-number">2.0.1.4.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%88%96"><span class="nav-number">2.0.1.5.</span> <span class="nav-text">条件或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4"><span class="nav-number">2.0.1.6.</span> <span class="nav-text">区间</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#n-%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D"><span class="nav-number">3.</span> <span class="nav-text">n.参考书籍</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9E%84%E6%88%90"><span class="nav-number">2.0.1.</span> <span class="nav-text">正则表达式构成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%83%E5%AD%97%E7%AC%A6"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">一些元字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">重复限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E7%AC%A6"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">分组符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-number">2.0.1.4.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%88%96"><span class="nav-number">2.0.1.5.</span> <span class="nav-text">条件或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4"><span class="nav-number">2.0.1.6.</span> <span class="nav-text">区间</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">n.参考书籍</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
