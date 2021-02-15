@@ -171,6 +171,422 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/10/%E6%89%8B%E6%9C%BA%E9%9F%B3%E4%B9%90%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/10/%E6%89%8B%E6%9C%BA%E9%9F%B3%E4%B9%90%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">手机音乐共享方案</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-10 11:02:23 / Modified: 11:03:20" itemprop="dateCreated datePublished" datetime="2021-02-10T11:02:23+08:00">2021-02-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/scikit-learn2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/08/scikit-learn2/" class="post-title-link" itemprop="url">scikit-learn2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-08 20:34:41" itemprop="dateCreated datePublished" datetime="2021-02-08T20:34:41+08:00">2021-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-12 17:58:29" itemprop="dateModified" datetime="2021-02-12T17:58:29+08:00">2021-02-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>0.数学基础</h1>
+<h3 id="1-奇异值分解-SVD-singular-value-decomposition"><a class="header-anchor" href="#1-奇异值分解-SVD-singular-value-decomposition">¶</a>1.奇异值分解(SVD: singular value decomposition)</h3>
+<p>机器学习中广泛应用的算法</p>
+<p>1.特征值和特征向量</p>
+<p>$$Ax=\lambda x$$</p>
+<p>A是一个$n*n$的实对称矩阵，</p>
+<p>$x$是一个$n$维向量，</p>
+<p>则</p>
+<blockquote>
+<p>$\lambda$是矩阵A的特征值</p>
+<p>而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。</p>
+</blockquote>
+<p>特征值和特征向量的作用</p>
+<p>若$A$的所有特征值对应的n个特征向量线性无关，那么</p>
+<p>$A$=$W$$\Sigma$$W^{-1}$</p>
+<p>$W$是这些特征向量所张成的矩阵$n \times n$ 维矩阵，而$\Sigma$为这n个特征值为主对角线的$n \times n$维矩阵</p>
+<p>这样$A$的进行幂运算会有很大好处，当然也会有标准化。这里暂时不谈</p>
+<p>但问题是这个矩阵A必须为方阵</p>
+<h4 id="SVD"><a class="header-anchor" href="#SVD">¶</a>SVD</h4>
+<p>当$A$不是方阵时，我们定义$A$的SVD为</p>
+<blockquote>
+<p>$A$=$U$$\Sigma$$V^{T}$</p>
+</blockquote>
+<p>A为$ m \times n$的矩阵</p>
+<p>U为$ m \times m$的矩阵</p>
+<p>$\Sigma$为$ m \times n$的矩阵</p>
+<p>$V$为$n \times n$的矩阵</p>
+<p>为了得到这三个矩阵</p>
+<p>我们首先得到$A^{T}$$A$而这是一个n阶方阵</p>
+<p>对于n阶方阵，我们可以进行特征分解得到特征值和特征向量</p>
+<blockquote>
+<p>$(A^{T}A)$$v_{i}$=$\lambda_{i} v_{i}$</p>
+</blockquote>
+<h1>1.监督学习</h1>
+<p>1.回归问题下，根据完整数据推测一个结果。</p>
+<p>每个数据都有正确的结果进行验证</p>
+<p>或者分类问题下，预测离散的输出值。</p>
+<h1>2.无监督学习</h1>
+<p>无监督学习的数据标签没有或者都相同</p>
+<p>聚类算法：将这些数据分成不同簇</p>
+<p>例如Google的新闻主题识别</p>
+<h1>3.算法</h1>
+<h2 id="1-线性回归算法"><a class="header-anchor" href="#1-线性回归算法">¶</a>1.线性回归算法</h2>
+<blockquote>
+<p>training set + algorithm—&gt;hypothesis  本人仍然将其理解为模型</p>
+<p>test set - hypothesis —&gt;estimated result</p>
+</blockquote>
+<h3 id="代价函数"><a class="header-anchor" href="#代价函数">¶</a>代价函数</h3>
+<p>为模型选择合适的参数</p>
+<p>建模误差：预测值和实际值的差距</p>
+<p>线性回归中一般为平方误差函数</p>
+<p>通过梯度下降求出代价函数最小值</p>
+<p><img src="pic1" alt="preview"></p>
+<blockquote>
+<p>损失函数，代价函数(loss function)</p>
+<p>用于度量拟合程度，损失函数越小，模型拟合得越好</p>
+<p>风险函数(risk function)</p>
+<p>是损失函数的期望，由于输入的(X,Y)遵循联合分布，但是联合分布未知，无法计算，我们的历史数据训练集$f(X)$关于训练集的平均损失成为经验风险(empirical risk),即$\frac{1}{N}\sum_{i=1}^{N}L(y_{i},f(x_{i}))$,我们的目标是最小化经验风险，称为经验风险最小化</p>
+<p>但是，如果模型拟合得过好，反而会过度学习历史数据，真正预测的效果往往不好，这种情况就是过拟合</p>
+<p>一般来说，造成这样是因为其函数过于复杂，拟合因此很精准。</p>
+</blockquote>
+<h3 id="多变量线性回归"><a class="header-anchor" href="#多变量线性回归">¶</a>多变量线性回归</h3>
+<p>$h_{\theta}=\theta_{0}x_{0}+\theta_{1}x_{1}+\cdots+\theta_{n}x_{n}$</p>
+<p>参数为$n+1$维的向量，因此训练实例也为$n+1$维的向量，特征方程的维度为$m*(n+1$)维。</p>
+<p>一个训练实例的特征:{${x_{0},x_{1},\cdots,x_{n}}$}<br>
+$$<br>
+\left{<br>
+\begin{matrix}<br>
+x_{0}\<br>
+x_{1}\<br>
+\cdots\<br>
+x_{n}<br>
+\end{matrix}<br>
+\right}<br>
+$$</p>
+<p>特征方程：m个特征向量($n+1$)，所以为$m*(n+1)$维度</p>
+<p>所以可以简化为：</p>
+<p>$h_{\theta}(x)=\theta^{T}X$</p>
+<p>这样便获得参数矩阵</p>
+<h3 id="多变量线性回归的代价函数"><a class="header-anchor" href="#多变量线性回归的代价函数">¶</a>多变量线性回归的代价函数</h3>
+<p>$$J(\theta_{0},\theta_{1},\cdots,\theta_{n})=\frac{1}{2m}\sum_{i=1}<sup>{m}(h_{\theta}(x</sup>{i}-y<sup>{i})</sup>{2})$$</p>
+<p>代价函数为所有建模误差的平方和</p>
+<p>随机选择一系列的参数值，计算所有的预测结果后，在给所有的参数一个新的值，如此循环知道收敛</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computecost</span>(<span class="params">X,y,theta</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#power函数用于求数组的n次方，power(x1,x2);x2既可以是数字也可以是数组，但是x1,x2的列数要相同</span></span><br><span class="line">    innner=np.power(((X*theta.T)-y),<span class="number">2</span>)</span><br><span class="line">    <span class="comment">#数组中给定轴上的元素总和</span></span><br><span class="line">    <span class="keyword">return</span> np.<span class="built_in">sum</span>(inner)/(<span class="number">2</span>*<span class="built_in">len</span>(X))</span><br></pre></td></tr></table></figure>
+<h3 id="梯度下降"><a class="header-anchor" href="#梯度下降">¶</a>梯度下降</h3>
+<h4 id="特征缩放—标准化"><a class="header-anchor" href="#特征缩放—标准化">¶</a>特征缩放—标准化</h4>
+<p>面对多维特征问题时，我们要保证特征具有相近的尺度，梯度下降能够更快收敛。</p>
+<p>对于不同特征的尺度，如果不一致，会导致在一个维度上变化的幅度不能很大。</p>
+<p>因此我们要尝试把所有尺度缩放到-1和1之间</p>
+<p>$x_{n}=\frac{x_{n}-u_{n}}{s_{n}}$</p>
+<p>$u_{n}$是数据的平均值，$s_{n}$是标准差</p>
+<h4 id="学习率"><a class="header-anchor" href="#学习率">¶</a>学习率</h4>
+<p>是监督学习和深度学习的重要参数，影响目标函数能否收敛到局部最小值和何时收敛到最小值</p>
+<p>一般的学习率</p>
+<blockquote>
+<p>0.01</p>
+<p>0.03</p>
+<p>0.1</p>
+<p>0.3</p>
+<p>1</p>
+<p>3</p>
+<p>10</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/07/scikit-learn1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/07/scikit-learn1/" class="post-title-link" itemprop="url">scikit-learn1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-07 11:16:48 / Modified: 20:49:18" itemprop="dateCreated datePublished" datetime="2021-02-07T11:16:48+08:00">2021-02-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>0.前言</h1>
+<h2 id="关于模型和算法"><a class="header-anchor" href="#关于模型和算法">¶</a>关于模型和算法</h2>
+<p>个人理解：算法是对机器学习中数据的处理，模型是算法和数据共同生成的处理程序</p>
+<p>scikit learm并不是模型库，而是算法库，了解算法对模型的理解或许会有极大的提升。</p>
+<p>机器学习四个元素：</p>
+<p>1.数据</p>
+<p>2.任务</p>
+<p>3.性能度量</p>
+<p>4.模型</p>
+<h2 id="数据"><a class="header-anchor" href="#数据">¶</a>数据</h2>
+<h3 id="1-结构化数据和非结构化数据"><a class="header-anchor" href="#1-结构化数据和非结构化数据">¶</a>1.结构化数据和非结构化数据</h3>
+<p>数据具体类型</p>
+<p>结构数据：二维表结构进行逻辑表达和实现</p>
+<p>非结构化：图片，文字，声音，视频</p>
+<p>CNN可对图像数据做人脸识别和物体分类</p>
+<p>RNN可对语音数据做语音识别和机器对话，文字数据做阅读理解</p>
+<p>增强学习Akphago</p>
+<h3 id="2-原始数据和加工数据"><a class="header-anchor" href="#2-原始数据和加工数据">¶</a>2.原始数据和加工数据</h3>
+<p>数据表达形式</p>
+<h3 id="3-样本内数据和样本外数据"><a class="header-anchor" href="#3-样本内数据和样本外数据">¶</a>3.样本内数据和样本外数据</h3>
+<p>数据统计性质</p>
+<p>比如我们在大数据竞赛中的线下评分（样本内数据）</p>
+<p>线上评分(样本外数据)</p>
+<h1>1.分类器(classifier)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble import</span><br></pre></td></tr></table></figure>
+<h1>2.回归器(regressor)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble</span><br></pre></td></tr></table></figure>
+<h1>3.聚类(cluster)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.cluster import</span><br></pre></td></tr></table></figure>
+<h1>4.降维(decomposition)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/05/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">遇到的一些算法(1)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-05 21:34:01 / Modified: 21:50:05" itemprop="dateCreated datePublished" datetime="2021-02-05T21:34:01+08:00">2021-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-除法实现"><a class="header-anchor" href="#1-除法实现">¶</a>1.除法实现</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static constexpr unsigned width(unit64-t n,unit64_t d&#x3D;10,unsigned w&#x3D;0)</span><br><span class="line">&#123;</span><br><span class="line">	if(n&gt;&#x3D;2&amp;&amp;d!&#x3D;0&amp;&amp;w&lt;19)</span><br><span class="line">	&#123;</span><br><span class="line">		return 1+width(n,d%n*10,w+1);</span><br><span class="line">	&#125;</span><br><span class="line">	reutrn 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的含义是输出d除以n的结果，w为位数</p>
+<p>w限制结果小于19，width是<code>std:chrono::hh_mm_ss</code>的成员,这个类模板会将用分数表示的duration转换为$1/10<sup>w$的倍数，用于输出，因此w需要小于19以避免$10</sup>w$溢出</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/04/%E6%9C%89%E8%B6%A3%E7%9A%84%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -740,715 +1156,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-30 18:06:08" itemprop="dateCreated datePublished" datetime="2021-01-30T18:06:08+08:00">2021-01-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-04 19:18:06" itemprop="dateModified" datetime="2021-02-04T19:18:06+08:00">2021-02-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>0.计划</h1>
-<p>大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的</p>
-<h1>1.计算机网络(整体体系按照《网络是如何连接的》)</h1>
-<h2 id="1-基本概念"><a class="header-anchor" href="#1-基本概念">¶</a>1.基本概念</h2>
-<img src="/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B4%E4%BD%93%E5%9B%BE.png" class="" title="this is an image">
-<p>计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息<strong>准确</strong>发送给通信对象</p>
-<p>现代互联网起源于美国的因特网</p>
-<p>网络是由<strong>结点</strong>(node)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>和<strong>链路</strong>(link)组成</p>
-<p>互联网即是网络的网络(network of networks)<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>网络把计算机连在一起，而因特网把网络连接起来)</p>
-<p>连接在因特网的计算机称为<strong>主机</strong>(host)</p>
-<p><strong>协议</strong>：通信操作的规则称为协议</p>
-<p>表单：网页中文本框，复选框等能够输入数据的部分</p>
-<h3 id="因特网的发展"><a class="header-anchor" href="#因特网的发展">¶</a>因特网的发展</h3>
-<p>1.单个网络ARPANET向互联网发展</p>
-<p>TCP/IP协议称为ARPANET的标准协议</p>
-<p>2.建成了三级结构的因特网。<br>
-主干网、 地区网和校园网（或企业网）</p>
-<p>3.逐渐形成了多层次 ISP (Internet Service Provider)结构的因特网</p>
-<p>4.同时万维网 WWW(World Wide Web)<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>广泛使用在因特网上</p>
-<p>而注意网址中的www只是<strong>web服务器</strong>的一种命名，并不是万维网</p>
-<p>注意中国<code>.com.cn</code>,<code>.net.cn</code>一般不开放给个人注册</p>
-<p>软件间的通信：</p>
-<p>1.应用程序委托操作系统控制网络，发送信息</p>
-<h2 id="2-计算机网络的构成"><a class="header-anchor" href="#2-计算机网络的构成">¶</a>2.计算机网络的构成</h2>
-<p>信息传送机制+网络应用程序</p>
-<h2 id="硬件"><a class="header-anchor" href="#硬件">¶</a>硬件</h2>
-<p>路由器：对包进行转发的设备</p>
-<p>集线器：对包进行转发的设备，分为中继式，交换式</p>
-<h2 id="通信"><a class="header-anchor" href="#通信">¶</a>通信</h2>
-<p>网络应用程序（浏览器等）</p>
-<h3 id="1-浏览器根据输入的网址进行解析，生成请求消息"><a class="header-anchor" href="#1-浏览器根据输入的网址进行解析，生成请求消息">¶</a>1.浏览器根据输入的网址进行解析，生成请求消息</h3>
-<p>网址：<code>URL(Uniform Resource Locator)</code>统一资源定位符</p>
-<p>先对URL进行解析，然后根据HTTP协议访问Web服务器</p>
-<p>解释：</p>
-<h4 id="根据访问目标"><a class="header-anchor" href="#根据访问目标">¶</a>根据访问目标</h4>
-<h5 id="web"><a class="header-anchor" href="#web">¶</a>web</h5>
-<p>Web服务器：<code>http</code>，代表了不同的访问方式</p>
-<p><code>http</code>代表了http访问协议，超文本传送协议</p>
-<p><code>user</code>:用户名(可省略)</p>
-<p><code>password</code>:密码(可省略)</p>
-<p><code>www.codezyu.com</code>:域名</p>
-<p><code>80</code>：端口号(可省略)</p>
-<p><code>dir/file1.htm</code>：路径名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;user:password@www.codezyu.com:80&#x2F;dir&#x2F;file1.htm</span><br></pre></td></tr></table></figure>
-<h5 id="ftp"><a class="header-anchor" href="#ftp">¶</a>ftp</h5>
-<p>FTP服务器:<code>ftp</code> (file transfer protocol)文件传送协议，用于上传，下载文件时使用的协议，ftp也指使用ftp协议来传送文件的程序(一般文件管理器就可以，但是据c++助教老师说，文件可能有损坏，推荐了8uftp)</p>
-<p>结构和web差不多，只是有几个不太一样</p>
-<p><code>ftp.codezyu.com</code>:ftp服务器域名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp:&#x2F;&#x2F;user:password@ftp.codezyu.com:21&#x2F;dir&#x2F;file1.htm</span><br></pre></td></tr></table></figure>
-<h5 id="读取客户端本地文件"><a class="header-anchor" href="#读取客户端本地文件">¶</a>读取客户端本地文件</h5>
-<p><code>file</code>：代表访问方法</p>
-<p><code>localhost</code>:计算机名(可省略)</p>
-<p><code>c:/path/file1.zip</code>:路径名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:&#x2F;&#x2F;localhost&#x2F;c:&#x2F;path&#x2F;file1.zip</span><br></pre></td></tr></table></figure>
-<h5 id="mailto"><a class="header-anchor" href="#mailto">¶</a>mailto</h5>
-<p>电子邮件：<code>mailto</code>(需要有正确的电子邮件软件)</p>
-<p><code>tone@qq.com</code>:邮件地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mailto:tone@qq.com</span><br></pre></td></tr></table></figure>
-<h5 id="新闻组文章-不知含义"><a class="header-anchor" href="#新闻组文章-不知含义">¶</a>新闻组文章(不知含义)</h5>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">news:comp.protocols.tcp-ip</span><br></pre></td></tr></table></figure>
-<h4 id="URL解析"><a class="header-anchor" href="#URL解析">¶</a>URL解析</h4>
-<h5 id="1-省略文件名"><a class="header-anchor" href="#1-省略文件名">¶</a>1.省略文件名</h5>
-<p>以<code>/</code>结尾表示文件名省略，一般会访问设置的默认文件名，多为index.html或者default.html</p>
-<p>注意根目录没有名字，一般直接用<code>/</code>来进行表示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.codezyu.com</span><br></pre></td></tr></table></figure>
-<p>由于结尾的<code>/</code>都省略了，一般代表访问根目录下的设置的默认文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.codezyu.com&#x2F;file</span><br></pre></td></tr></table></figure>
-<p>末尾没有<code>/</code>一般当作文件名处理，但是习惯上大家不会写</p>
-<p>所以，file为目录名则解析为目录，否则解析为文件<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></p>
-<h4 id="HTTP协议"><a class="header-anchor" href="#HTTP协议">¶</a>HTTP协议</h4>
-<p>HyperText Transfer Protocol 超文本传输协议</p>
-<p>指双方间传输超文本数据的规范</p>
-<p>客户端向服务器发送请求消息（包括URI<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>和方法<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>，同时还包括附加信息的头字段，但是头字段可以省略）</p>
-<p>服务器收到请求消息会进行解析，并且把结果放在响应消息中，响应消息的开头会有状态码，状态码含义如下</p>
-<h5 id="组成"><a class="header-anchor" href="#组成">¶</a>组成</h5>
-<p>1.超文本：文字，图片，视频，超链接（能够从一个超文本跳转到另一个超文本）的混合体</p>
-<p>2.传输：HTTP为双向协议，数据可以相互传输</p>
-<p>3.协议：计算机之间交流的规范，以及相关控制和错误处理方式</p>
-<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP.png" alt="image-20210131114157104"></p>
-<h5 id="状态码"><a class="header-anchor" href="#状态码">¶</a>状态码</h5>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>含义</th>
-<th>状态码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1xx</td>
-<td>提示信息，当前为协议处理的中间状态</td>
-<td></td>
-</tr>
-<tr>
-<td>2xx</td>
-<td>成功，报文被收到并且被正确处理</td>
-<td>200(非head请求，返回的响应头部有body数据)，204（响应头没有body数据），206（用于分块，或者端点续传，返回的body数据只是其中的一部分）</td>
-</tr>
-<tr>
-<td>3xx</td>
-<td>重定向，资源位置发生变动，需要客户端重新发送请求</td>
-<td>301（永久重定向，请求的资源已经不在了），302（临时重定向，请求的资源还在），304</td>
-</tr>
-<tr>
-<td>4xx</td>
-<td>客户端错误，请求报文有误，服务器无法处理</td>
-<td>400，403，404</td>
-</tr>
-<tr>
-<td>5xx</td>
-<td>服务器错误，服务器在请求时内部发生了错误</td>
-<td>500,501,502,503</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-浏览器根据域名向DNS服务器查询Web服务器IP地址"><a class="header-anchor" href="#2-浏览器根据域名向DNS服务器查询Web服务器IP地址">¶</a>2.浏览器根据域名向DNS服务器查询Web服务器IP地址</h3>
-<p>浏览器不能将消息发到网络，需要操作系统，操作系统发送消息需要IP地址<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup></p>
-<p>我们需要根据域名查询IP地址</p>
-<h4 id="IP地址（逻辑地址）"><a class="header-anchor" href="#IP地址（逻辑地址）">¶</a>IP地址（逻辑地址）</h4>
-<p>局域网基于TCP/IP设计</p>
-<p>为互联网网络和主机分配一个逻辑地址，来屏蔽物理地址</p>
-<p>物理地址（链路地址，MAC地址,LAN地址）：节点的本地地址</p>
-<p>端口地址：赋予进程的标识符为端口地址</p>
-<h5 id="IP地址解释："><a class="header-anchor" href="#IP地址解释：">¶</a>IP地址解释：</h5>
-<p>32bit,4组，十进制，网络号+主机号</p>
-<blockquote>
-<p>10.11.12.13</p>
-</blockquote>
-<h5 id="子网掩码："><a class="header-anchor" href="#子网掩码：">¶</a>子网掩码：</h5>
-<p>子网掩码(网络掩码，地址掩码，子网络遮罩)：划分IP地址为网络地址和主机地址，并说明该IP地址在局域网<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>还是远程网<sup class="footnote-ref"><a href="#fn7" id="fnref7:1">[7:1]</a></sup></p>
-<h6 id="1-与IP地址相同格式"><a class="header-anchor" href="#1-与IP地址相同格式">¶</a>1.与IP地址相同格式</h6>
-<blockquote>
-<p>左边为网络位，用1表示</p>
-<p>右边为主机位，用0表示</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.1&#x2F;255.255.255.0</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<p>前面为IP地址主体，右边为子网掩码</p>
-<p>255(10)为11111111(2),有8个1，这样对应的IP地址左边$8*3=24$位为号</p>
-<p>而0代表8位为0，右边8位为主机号</p>
-<p>子网掩码不是随便的，一般有限制，才百来种</p>
-<p>对于</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">255.255.255.0</span><br></pre></td></tr></table></figure>
-<p>最后可以在0-255变化，因此可以提供254个IP地址（主机号不能全为0<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>和1<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>）</p>
-<h6 id="2-网络号比特号"><a class="header-anchor" href="#2-网络号比特号">¶</a>2.网络号比特号</h6>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.11.12.13&#x2F;24</span><br></pre></td></tr></table></figure>
-<p>24表示IP地址24位为网络号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.11.12.0&#x2F;24</span><br></pre></td></tr></table></figure>
-<p>主机号部分全为0<sup class="footnote-ref"><a href="#fn9" id="fnref9:1">[9:1]</a></sup>,此时代表整个子网，而不是一台计算机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.11.12.255&#x2F;24</span><br></pre></td></tr></table></figure>
-<p>主机号部分全为1<sup class="footnote-ref"><a href="#fn10" id="fnref10:1">[10:1]</a></sup>，代表对整个子网进行广播</p>
-<h3 id="把消息委托给操作系统发送给Web服务器-N-参考书籍"><a class="header-anchor" href="#把消息委托给操作系统发送给Web服务器-N-参考书籍">¶</a>把消息委托给操作系统发送给Web服务器,N.参考书籍</h3>
-<p>《网络是如何连接的》</p>
-<p>老师课件</p>
-<p>《图解TCP/IP》</p>
-<p>《图解HTTP》</p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>这是准确译名，数据结构的node译为节点] <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>网络把计算机连在一起，而因特网把网络连接起来 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p>这是web的提出者最早开发的浏览器兼HTML编辑器的名字 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn4" class="footnote-item"><p>文件和目录一般不同名 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn5" class="footnote-item"><p>存放网页数据的文件名(eg:  file.html)和CGI（对Web服务器程序调用其它程序的规则）程序(program1,cgi)的文件名 <a href="#fnref5" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn6" class="footnote-item"><p>需要Web服务器进行的操作 <a href="#fnref6" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn7" class="footnote-item"><p>internet protocol 即IP,表示因特网协议 <a href="#fnref7" class="footnote-backref">↩︎</a> <a href="#fnref7:1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn8" class="footnote-item"><p>local area network 简称LAN,（想想物理地址别名）又称内网，覆盖局部区域的网络 <a href="#fnref8" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn9" class="footnote-item"><p>主机号全为0代表整个子网 <a href="#fnref9" class="footnote-backref">↩︎</a> <a href="#fnref9:1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn10" class="footnote-item"><p>主机号全为1代表向子网所有设备发送包,即广播 <a href="#fnref10" class="footnote-backref">↩︎</a> <a href="#fnref10:1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-1-%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-1-%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB/" class="post-title-link" itemprop="url">编程实战(1)图片转字符画</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-30 14:57:32 / Modified: 15:12:43" itemprop="dateCreated datePublished" datetime="2021-01-30T14:57:32+08:00">2021-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>1.pillow库及其原理</h1>
-<p>python图像处理库</p>
-<p>原理很简单：将RGB转换为灰度值（公式会复杂一点）</p>
-<p>$gray =0.2126<em>r+0.7152</em>g+0.0722*b$</p>
-<p>再将灰度值和字符联系起来即可</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-30 12:27:30 / Modified: 13:42:37" itemprop="dateCreated datePublished" datetime="2021-01-30T12:27:30+08:00">2021-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>1.介绍</h1>
-<p>正则表达式(regular expression)</p>
-<p>意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。</p>
-<p>例如我们常常用它来进行查找文字内容</p>
-<p>支持的语言：java ,c#(当前较为重要的语言)</p>
-<h1>2.学习</h1>
-<p>结合例子学习会好很多</p>
-<p>例1：windows下使用<code>*.txt</code>能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符</p>
-<p><code>*.txt</code>意为任意文本开头，.txt结尾的所有文件</p>
-<p>正则表达式也能提供这样的描述能力</p>
-<h3 id="正则表达式构成"><a class="header-anchor" href="#正则表达式构成">¶</a>正则表达式构成</h3>
-<p>1.特殊字符，称为元字符例如文件名中的*</p>
-<p>2.其它字符，称为文字，或是普通文本字符</p>
-<p>正则表达式和文件名模式不同在于，正则拥有更多的元字符</p>
-<p>例2：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(From|Subject):</span><br></pre></td></tr></table></figure>
-<p>在e-mail中上面语句用来寻找：&quot;From:&quot;和&quot;Subject:&quot;开头的行</p>
-<p>而^,(),|都是特殊字符，</p>
-<p>下面介绍的都是元字符</p>
-<h4 id="一些元字符"><a class="header-anchor" href="#一些元字符">¶</a>一些元字符</h4>
-<table>
-<thead>
-<tr>
-<th>元字符</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td style="text-align:center">匹配除换行符以外的任意字符，在字符组外才是元字符</td>
-</tr>
-<tr>
-<td>\w</td>
-<td style="text-align:center">匹配字母，数字，下划线，汉字</td>
-</tr>
-<tr>
-<td>\s</td>
-<td style="text-align:center">匹配空白符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td style="text-align:center">匹配数字</td>
-</tr>
-<tr>
-<td>\b</td>
-<td style="text-align:center">匹配单词的开始或者结束</td>
-</tr>
-<tr>
-<td>^</td>
-<td style="text-align:center">匹配字符串的开始</td>
-</tr>
-<tr>
-<td>$</td>
-<td style="text-align:center">匹配字符串的结束</td>
-</tr>
-<tr>
-<td>\&lt;</td>
-<td style="text-align:center">单词的起始位置</td>
-</tr>
-<tr>
-<td>\&gt;</td>
-<td style="text-align:center">单词的结束位置</td>
-</tr>
-<tr>
-<td>[]</td>
-<td style="text-align:center">区间，字符组，表示列出的任意字符</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<p>例3：</p>
-<p>就表示以From开头的字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^From</span><br></pre></td></tr></table></figure>
-<p>匹配三位数的数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d\d\d$</span><br></pre></td></tr></table></figure>
-<p>匹配1开头的三位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^1\d\d$</span><br></pre></td></tr></table></figure>
-<h4 id="重复限定符"><a class="header-anchor" href="#重复限定符">¶</a>重复限定符</h4>
-<p>重复的元字符不太方便，可以把重复部分用限定符代替即可</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">限定符</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:center">重复&gt;=0次</td>
-</tr>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:center">重复&gt;=1次</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:center">重复0或1次，一般表示允许出现这个字符</td>
-</tr>
-<tr>
-<td style="text-align:center">{n}</td>
-<td style="text-align:center">重复n次</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,}</td>
-<td style="text-align:center">重复n次或者更多次</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,m}</td>
-<td style="text-align:center">重复n到m次</td>
-</tr>
-</tbody>
-</table>
-<p>例4：</p>
-<p>匹配10位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配1开头的10位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^1\d&#123;9&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配10-11位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10,11&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配以1开头，&gt;=0个2结尾的字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^12*$</span><br></pre></td></tr></table></figure>
-<h4 id="分组符"><a class="header-anchor" href="#分组符">¶</a>分组符</h4>
-<table>
-<thead>
-<tr>
-<th>分组符</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>()</td>
-<td>括号内作为一个整体</td>
-</tr>
-</tbody>
-</table>
-<p>例5：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ab)*</span><br></pre></td></tr></table></figure>
-<p>大于等于0个以ab开头的字符串</p>
-<h4 id="转义字符"><a class="header-anchor" href="#转义字符">¶</a>转义字符</h4>
-<table>
-<thead>
-<tr>
-<th>转义字符</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\</td>
-<td>文本中普通字符为特殊字符格式时使用</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(\(ab\))*</span><br></pre></td></tr></table></figure>
-<p>(ab)开头的字符串</p>
-<h4 id="条件或"><a class="header-anchor" href="#条件或">¶</a>条件或</h4>
-<table>
-<thead>
-<tr>
-<th>条件或</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>|</td>
-<td>满足任意一个条件</td>
-</tr>
-</tbody>
-</table>
-<p>例5：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(130|131|132|155|156|185|186|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配以各号段开头的号码</p>
-<h4 id="区间"><a class="header-anchor" href="#区间">¶</a>区间</h4>
-<table>
-<thead>
-<tr>
-<th>区间</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[]</td>
-<td>限定条件</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[0-9]限定0到9</span><br><span class="line">[A-Z]限定A-Z</span><br><span class="line">[165]限定数字为1，6，5</span><br><span class="line">[^...]排除的字符，指其中未列出的任意字符</span><br></pre></td></tr></table></figure>
-<p>例6：</p>
-<p>同例5</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^((13[0-2])|(15[56])|(18[5-6])|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
-<p>​</p>
-<h1>n.参考书籍</h1>
-<p><a target="_blank" rel="noopener" href="http://cdn.lxqnsys.com/%E7%B2%BE%E9%80%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.pdf">《精通正则表达式》</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/python%E7%88%AC%E8%99%AB%E4%BB%B7%E6%A0%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/python%E7%88%AC%E8%99%AB%E4%BB%B7%E6%A0%BC/" class="post-title-link" itemprop="url">python爬虫价格</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-30 12:05:47 / Modified: 12:24:11" itemprop="dateCreated datePublished" datetime="2021-01-30T12:05:47+08:00">2021-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>0.前言</h1>
-<p>（1.30）这可能是我做过最有用但是又最困难的项目吧</p>
-<h1>1.目标</h1>
-<p>根据关键字爬取全网最低价的商品，并且给出来源和链接</p>
-<h4 id="爬取链接："><a class="header-anchor" href="#爬取链接：">¶</a>爬取链接：</h4>
-<p>淘宝，拼多多，京东</p>
-<h4 id="呈现方式："><a class="header-anchor" href="#呈现方式：">¶</a>呈现方式：</h4>
-<p>目标是表格</p>
-<h2 id="2-具体实现（慢慢学习）"><a class="header-anchor" href="#2-具体实现（慢慢学习）">¶</a>2.具体实现（慢慢学习）</h2>
-<h3 id="1-不同平台爬取"><a class="header-anchor" href="#1-不同平台爬取">¶</a>1.不同平台爬取</h3>
-<p>据说不同平台有不同爬取方式，先一个个试一下</p>
-<p>先从最简单的京东入手（资料较多）</p>
-<p>而淘宝按关键字查询需要登录，稍微困难一点</p>
-<h4 id="1-京东"><a class="header-anchor" href="#1-京东">¶</a>1.京东</h4>
-<p>前置条件：正则表达式</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1518,20 +1225,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

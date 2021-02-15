@@ -30,7 +30,7 @@
 <meta property="og:description" content="hexo使用 ¶1.命令 hexo clean 对当前网站内容进行清理 每次更新推文需要输入命令：hexo clean &amp;&amp; hexo g &amp;&amp; hexo d hexo g 生成 hexo d  部署 上面两个可以合并为 hexo d -g hexo s本地预览 hexo n+“name”  生成为name的md文档，可以在这里直接写博客 ¶2.页面设计 目前没在我">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-25T03:12:01.000Z">
-<meta property="article:modified_time" content="2021-02-02T09:31:45.053Z">
+<meta property="article:modified_time" content="2021-02-12T10:01:20.903Z">
 <meta property="article:author" content="yuz">
 <meta property="article:tag" content="ready to renew">
 <meta property="article:tag" content="hexo">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-02 17:31:45" itemprop="dateModified" datetime="2021-02-02T17:31:45+08:00">2021-02-02</time>
+                <time title="Modified: 2021-02-12 18:01:20" itemprop="dateModified" datetime="2021-02-12T18:01:20+08:00">2021-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,6 +264,270 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  engine: &#39;mathjax&#39; # or &#39;katex&#39;</span><br><span class="line">  mathjax:</span><br><span class="line">    src: custom_mathjax_source</span><br><span class="line">    config:</span><br><span class="line">      # MathJax config</span><br><span class="line">  katex:</span><br><span class="line">    css: custom_css_source</span><br><span class="line">    js: custom_js_source # not used</span><br><span class="line">    config:</span><br><span class="line">      # KaTeX config</span><br></pre></td></tr></table></figure>
 <p>再到主题theme的<code>_config.yml</code>将</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">	enable:true</span><br></pre></td></tr></table></figure>
+<h3 id="4-常见问题"><a class="header-anchor" href="#4-常见问题">¶</a>4.常见问题</h3>
+<h4 id="1-ctrl-shift-k并没有跳出代码块"><a class="header-anchor" href="#1-ctrl-shift-k并没有跳出代码块">¶</a>1.ctrl+shift+k并没有跳出代码块</h4>
+<p>主要是非微软输入法会跳出虚拟键盘</p>
+<p>更改这个输入选项或者选用微软输入法</p>
+<h3 id="5-latex公式使用"><a class="header-anchor" href="#5-latex公式使用">¶</a>5.latex公式使用</h3>
+<table>
+<thead>
+<tr>
+<th>$A$    $\alpha$</th>
+<th>A  \alpha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$B$   $\beta$</td>
+<td>B  \beta</td>
+</tr>
+<tr>
+<td>$\gamma$   $\Gamma$</td>
+<td>\gamma  \Gamma</td>
+</tr>
+<tr>
+<td>$\delta$   $\Delta$</td>
+<td>\delta  \Delta</td>
+</tr>
+<tr>
+<td>$\epsilon$  $\varepsilon$  $E$</td>
+<td>\epsilon   \varepsilon  E</td>
+</tr>
+<tr>
+<td>$\zeta$   $\Z$</td>
+<td>\zeta    Z</td>
+</tr>
+<tr>
+<td>$\eta$   $H$</td>
+<td>\eta H</td>
+</tr>
+<tr>
+<td>$\theta$    $\vartheta$   $\Theta$</td>
+<td>\theta   \vartheta   \Theta</td>
+</tr>
+<tr>
+<td>$\iota$  $I$</td>
+<td>\iota  I</td>
+</tr>
+<tr>
+<td>$\kappa$  $K$</td>
+<td>\kappa  K</td>
+</tr>
+<tr>
+<td>$\lambda$   $\Lambda$</td>
+<td>\lambda   \Lambda</td>
+</tr>
+<tr>
+<td>$\mu$  $M$  $N$</td>
+<td>\mu   M   N</td>
+</tr>
+<tr>
+<td>$\xi$   $\Xi$</td>
+<td>\xi   \Xi</td>
+</tr>
+<tr>
+<td>$o$   $O$</td>
+<td>o   O</td>
+</tr>
+<tr>
+<td>$\pi$    $\Pi$</td>
+<td>\pi   \Pi</td>
+</tr>
+<tr>
+<td>$\rho$   $\varrho$  $P$</td>
+<td>\rho   \varrho  P</td>
+</tr>
+<tr>
+<td>$\sigma$   $\Sigma$</td>
+<td>\sigma   \Sigma</td>
+</tr>
+<tr>
+<td>$\tau$  $T$</td>
+<td>\tau    T</td>
+</tr>
+<tr>
+<td>$\upsilon$   $\Upsilon$</td>
+<td>\upsilon  \Upsilon</td>
+</tr>
+<tr>
+<td>$\phi$  $\varphi$  $\Phi$</td>
+<td>\phi  \varphi   \Phi</td>
+</tr>
+<tr>
+<td>$\chi$  $X$</td>
+<td>\chi  X</td>
+</tr>
+<tr>
+<td>$\psi$   $\Psi$</td>
+<td>\psi  \Psi</td>
+</tr>
+<tr>
+<td>$\omega$  $\Omega$</td>
+<td>\omega   \Omega</td>
+</tr>
+</tbody>
+</table>
+<h4 id="数学符号"><a class="header-anchor" href="#数学符号">¶</a>数学符号</h4>
+<p>符号内需要用<code>&#123;&#125;</code>括起来，表示一个整体</p>
+<p>一般用<code>^</code>来表示上标</p>
+<p>用<code>_</code>来表示下标</p>
+<p>两者之间应该是没有优先级顺序的</p>
+<table>
+<thead>
+<tr>
+<th>$a_{1}$</th>
+<th>a_{1}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$x^{2}$</td>
+<td>x^{2}</td>
+</tr>
+<tr>
+<td>$e<sup>{x</sup>2}$   ${e<sup>x}</sup>2$</td>
+<td>e<sup>{x</sup>2}   {e<sup>x}</sup>2</td>
+</tr>
+<tr>
+<td>$\sqrt{x}$</td>
+<td>\sqrt{x}</td>
+</tr>
+<tr>
+<td>$\sqrt[3]{2}$</td>
+<td>\sqrt[3]{2}</td>
+</tr>
+<tr>
+<td>$\surd[x]$</td>
+<td>\surd[x]</td>
+</tr>
+<tr>
+<td>$\overline{x}$</td>
+<td>\overline{x}</td>
+</tr>
+<tr>
+<td>$\underline{x}$</td>
+<td>\underline{x}</td>
+</tr>
+<tr>
+<td>$\cdots$</td>
+<td>\cdots</td>
+</tr>
+<tr>
+<td>$\underbrace{a+\cdots+b}_{20}$</td>
+<td>\underbrace{a+\cdots+b}_{20}</td>
+</tr>
+<tr>
+<td>$\overbrace{a+\cdots+b}^{20}$</td>
+<td>\overbrace{a+\cdots+b}^{20}</td>
+</tr>
+<tr>
+<td>$\vec a$</td>
+<td>\vec a</td>
+</tr>
+<tr>
+<td>$\overrightarrow{AB}$</td>
+<td>\overrightarrow{AB}</td>
+</tr>
+<tr>
+<td>$\overleftarrow{AB}$</td>
+<td>\overleftarrow{AB}</td>
+</tr>
+<tr>
+<td>$\frac{1}{2}$</td>
+<td>\frac{1}{2}</td>
+</tr>
+<tr>
+<td>$1\frac{1}{2}$</td>
+<td>1\frac{1}{2}</td>
+</tr>
+<tr>
+<td>$\sum_{i=1}^{n}$</td>
+<td>\sum_{i=1}^{n}</td>
+</tr>
+<tr>
+<td>$\int^{\frac{\pi}{2}}_{0}$</td>
+<td>\int^{\frac{\pi}{2}}_{0}</td>
+</tr>
+<tr>
+<td>$\prod_\epsilon$</td>
+<td>\prod_\epsilon</td>
+</tr>
+<tr>
+<td>$a\times b$</td>
+<td>a \times b</td>
+</tr>
+<tr>
+<td>$ x\div y$</td>
+<td>x \div y</td>
+</tr>
+<tr>
+<td>$x \leq y$</td>
+<td>x \leq y</td>
+</tr>
+<tr>
+<td>$x \geq y$</td>
+<td>x \geq y</td>
+</tr>
+<tr>
+<td>$x \neq y$</td>
+<td>x \neq y</td>
+</tr>
+<tr>
+<td>$\lfloor x$</td>
+<td>\rfloor x</td>
+</tr>
+<tr>
+<td>$\lfloor x \rfloor $</td>
+<td>\lfloor x \rfloor</td>
+</tr>
+<tr>
+<td>$\lceil x \rceil$</td>
+<td>\lceil x \rceil</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>$$<br>
+\begin{matrix}<br>
+1&amp;2&amp;3\<br>
+4&amp;5&amp;6<br>
+\end{matrix}<br>
+$$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line">1&amp;2&amp;3\\</span><br><span class="line">4&amp;5&amp;6</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>$$<br>
+\left{<br>
+\begin{matrix}<br>
+1&amp;2&amp;3\<br>
+4&amp;5&amp;6<br>
+\end{matrix}<br>
+\right}\tag{2}<br>
+$$<br>
+1.{2}主要通过tag实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\tag&#123;2&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li></li>
+</ol>
+<p>(1)左右括号显示</p>
+<p>$\left{\right}$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\left\&#123;</span><br><span class="line">\right\&#125;</span><br></pre></td></tr></table></figure>
+<p>(2)矩阵显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;matrix&#125;</span><br><span class="line">\end&#123;matrix&#125;</span><br></pre></td></tr></table></figure>
+<p>(3)元素显示</p>
+<p>&amp;表示元素间隔</p>
+<p><code>\\</code>表示分行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1&amp;2&amp;3\\</span><br><span class="line">4&amp;5&amp;6</span><br></pre></td></tr></table></figure>
+<h3 id="5-插入图片"><a class="header-anchor" href="#5-插入图片">¶</a>5.插入图片</h3>
 
     </div>
 
@@ -348,7 +612,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">hexo使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">1.命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2.页面设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B8%B8%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">3.常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%86%99%E6%96%87%E7%AB%A0"><span class="nav-number">1.4.</span> <span class="nav-text">3.写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.格式类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.写作工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%98%BE%E7%A4%BA%E5%85%AC%E5%BC%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.显示公式</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">hexo使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">1.命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2.页面设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B8%B8%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">3.常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%86%99%E6%96%87%E7%AB%A0"><span class="nav-number">1.4.</span> <span class="nav-text">3.写文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.格式类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%99%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.写作工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%98%BE%E7%A4%BA%E5%85%AC%E5%BC%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.显示公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ctrl-shift-k%E5%B9%B6%E6%B2%A1%E6%9C%89%E8%B7%B3%E5%87%BA%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">1.ctrl+shift+k并没有跳出代码块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-latex%E5%85%AC%E5%BC%8F%E4%BD%BF%E7%94%A8"><span class="nav-number">1.4.5.</span> <span class="nav-text">5.latex公式使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">数学符号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-number">1.4.6.</span> <span class="nav-text">5.插入图片</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -362,20 +626,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
