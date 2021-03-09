@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +183,419 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90/" class="post-title-link" itemprop="url">计算机的基本组成</a>
+            <a href="/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">局域异步通信</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-05 08:43:28" itemprop="dateCreated datePublished" datetime="2021-03-05T08:43:28+08:00">2021-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-07 17:11:04" itemprop="dateModified" datetime="2021-03-07T17:11:04+08:00">2021-03-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.传输模式</h1>
+<p>传输模式分为</p>
+<p>并行传输：同时发送多个码位</p>
+<p>串行传输：一次发送一个码位，分为，异步，同步，等时</p>
+<h2 id="异步通信"><a class="header-anchor" href="#异步通信">¶</a>异步通信</h2>
+<p>位是数据通信的基本数据单元</p>
+<p>位的取值范围{0,1}</p>
+<p>位串：由多个0或1组成的位</p>
+<p>发送方和接收方发送数据前无需协调（同步），则为异步通信</p>
+<p>发送的电信号中不包含接收方用来确定位串何时开始和结束的信息，则该通信硬件为异步。</p>
+<p>异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信<br>
+号的能力。</p>
+<p>数据接收方对接收的信息能够<strong>直接提取</strong>有效数据</p>
+<h2 id="同步通信"><a class="header-anchor" href="#同步通信">¶</a>同步通信</h2>
+<p>数据发送方生成的数据中包含了<strong>有效数据的位置信息</strong></p>
+<p>数据接收方根据有效数据的位置信息提取相应的有效数据</p>
+<p>通信的双方在开始通信之前必须完成协调工作，即必须进行同步处理</p>
+<p><strong>数据基本单元保持顺序传输，对空数据必需填充对应的空单元</strong></p>
+<h1>传输顺序</h1>
+<p>先传输高位（MSB,对应正序传输），还是低位（LSB,对应逆序传输）</p>
+<h1>2.异步通信机制</h1>
+<h2 id="1-电流发送位串"><a class="header-anchor" href="#1-电流发送位串">¶</a>1.电流发送位串</h2>
+<p>不同电压表示不同位值</p>
+<p>负电压用来表示1，正电压用来表示0</p>
+<blockquote>
+<p>放置一个正电压并保持一小段时间，然后返回零伏</p>
+<p>此时为送一位0</p>
+<p>例如</p>
+<p>0:[3v,15v]</p>
+<p>1:[-15v,-3v]</p>
+</blockquote>
+<h2 id="2-通信标准"><a class="header-anchor" href="#2-通信标准">¶</a>2.通信标准</h2>
+<p>两个供应商遵守同一标准，则他们的设备就能协调工作</p>
+<p>EIA(电子工业协会)标准<code>RS-232-C</code>，常简称为<code>RS-232</code>（尽管后来的R -422标准在功能上更好一些，但各种设备仍流行使用RS-232，所以专业上仍使用老标准的名字）</p>
+<h3 id="RS-232"><a class="header-anchor" href="#RS-232">¶</a>RS-232</h3>
+<p><img src="%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png" alt="image-20210305091817997"></p>
+<p>RS-2 2是在计算机与调制解调器或ASCII终端之间实现短距离异步串行通信的一个流行标准</p>
+<p>串行的异步通信(串行:数据的各位在导线上逐位传输)</p>
+<p>并行:使用多根导线，并允许同时在每一根导线上传输一位</p>
+<blockquote>
+<p>计算机都有串行和并行输入输出端口</p>
+</blockquote>
+<p>对数据按照<strong>位</strong>进行序列化发送和接收</p>
+<p>数据值仅有0和1两种形式，不出现“空”状态</p>
+<p>即负电压为1,MARK状态</p>
+<p>正电压为0 SPACE状态</p>
+<p>通常每个字符由<strong>7</strong>个数据位组成，但它也能用于传输8位的字符</p>
+<p>当发送方不再发送时，它使导线处于一个负电压状态，而这代表位值为1。</p>
+<p>对应每个数据单元，</p>
+<p>增加一个“0”作为开始位</p>
+<blockquote>
+<p>传输字符各位前先额外传输一位额外的0</p>
+</blockquote>
+<p>“1”作为结束位</p>
+<blockquote>
+<p>RS -232要求发送方必须使线路保持空闲状态至少达到某一最小时间，通常所选定的最小时间就是传输一位所需的时间。这样，人们可以认为在每个字符后面总是跟有一位1(导线空闲时处于负电压状态)</p>
+</blockquote>
+<p>因此实际上传输了<strong>9</strong>位</p>
+<p>接收方接收到有效数据开始位后，严格按照时间片顺序完成数据接收，直到接收完结束位为止</p>
+<p>允许发送方在任何时刻发送一个字符，并可在发送另一个字符前延迟任意长的时间</p>
+<p>一旦开始传输一个字符，发送硬件一次将所有的位逐个地全部送出，在位与位之间没有延迟。</p>
+<h2 id="3-波特率"><a class="header-anchor" href="#3-波特率">¶</a>3.波特率</h2>
+<p>发送与接收硬件必须在每一位电压持续的时间长度上保持一致</p>
+<p>使用1秒中所能传输的位的数目来表示传输速率</p>
+<p>RS-232现在每秒19 200位和每秒33 600位的速率更为常见</p>
+<p>波特率（baud rate）表示传输硬件的工作速率，也就是每秒中硬件产生的电信号变化的次数.简单的RS -232模式来说，波特率就等于每秒中传输的位数</p>
+<p><strong>Baud</strong>是波特，是码元传输速率的单位，1波特为每秒传送1个码元</p>
+<p>接口传输（发送/接收）位的速率，码元传输速率也称为调制速率，波形速率或符号速率。单位：bps(bits per second)</p>
+<p>波特与比特是两个不同的概念，比特是信息量的单位。</p>
+<p>若1个码元只携带1bit的信息量，则“比特/秒”和“波特”在数量上是相等的</p>
+<p>如果发送和接收器未能设置成使用同样的波特率，接收器中的计时器就不会对每一位等待正确的时间长度，将会导致错误的发生.</p>
+<p><strong>错位检测</strong></p>
+<p>为检测错误，接收器多次测量同一位的电压，并比较测量结果。若电压彼此不一致，或停止位并不在期待的时刻出现，接收器将报告出错，这类错误称为帧对齐差错（framing error）</p>
+<p><strong>传输中断的实现</strong></p>
+<p>发送方在发送完有效数据<strong>开始位</strong>后，发送“0”信息，<strong>超过有效数据结束位</strong></p>
+<p>接收方接收到有效数据开始位后，<strong>严格按照时间接收数据</strong>，当有效数据结束位时间片到，仍然是“0”，接收方认为数据错误，产生中断信号</p>
+<h2 id="全双工异步通信"><a class="header-anchor" href="#全双工异步通信">¶</a>全双工异步通信</h2>
+<p>所有的电路都要求两根导线—电流从一根导线上流出，在另一根导线上返回。第二根导线通常称为接地线（ground)。这样，当RS-232使用双绞线连接时，一根导线用于传输信号，另一根作为接地线提供返回路径。相似地，当信号在同轴电缆上传输时，从中心导线流出，而屏蔽层提供了返回路径。</p>
+<p>在许多RS-232应用中，数据必须同时双向流动</p>
+<p><img src="%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305095519275.png" alt="image-20210305095519275"></p>
+<p>有一根导线用于一个方向上的数据传输，另一根导线用于在相反方向上传输数据。而一根接地线用于在两个方向上提供回路。（两台设备的接地线对接，目的在于使两设备的接地电势相等，确保每位数据的判读。)</p>
+<h3 id="双向同时通信-全双工通信"><a class="header-anchor" href="#双向同时通信-全双工通信">¶</a>双向同时通信/全双工通信</h3>
+<p>在两个方向上的同时传输就是我们所说的全双工传输（full duplex transmission）</p>
+<h3 id="单工通信"><a class="header-anchor" href="#单工通信">¶</a>单工通信</h3>
+<p>只有一个方向的通信而没有反方向的交互</p>
+<p>比如无线电广播,有线电广播,电视广播</p>
+<h3 id="双向交替通信-半双工通信"><a class="header-anchor" href="#双向交替通信-半双工通信">¶</a>双向交替通信/半双工通信</h3>
+<p>通信双方都可以发送,但不能同时发送和接受消息,需要两个信道</p>
+<p>一方发送另一方接受,过一段时间再反过来</p>
+<h3 id="DCE与DTE"><a class="header-anchor" href="#DCE与DTE">¶</a>DCE与DTE</h3>
+<p>DCE:数据通信设备,DTE:数据终端设备</p>
+<p>只有在同步通信方式的线路上才会有时钟速率，同步通信时需要线路两端进行信号发送频率的同步，也就是同步的时钟，在实际工程中由协议转换器，modem等线路控制设备来提供</p>
+<p>只有标明DCE一端的才需要设置clock rate</p>
+<p>同步时钟的频率和带宽没有直接的联系，64000指的是以64000比特率时间间隔添加发送同步位</p>
+<p>可以设置其他数值，只要是两端都能达到那个标准即可，对通信没有影响</p>
+<h4 id="区别"><a class="header-anchor" href="#区别">¶</a>区别</h4>
+<p>DTE和DCE的区分实事上只是针对串行端口的，路由器通常通过串行端口连接广域网络。</p>
+<p>串行V.24端口（25针）通常规定DTE由第2根针脚作为TXD(发送数据线)，第3根针脚为RXD(接收数据线)，（其余针脚为：7是信号地线，4是DTS，5是RTS，6是DTR，8是DCD，以及包括发送时钟、接收时钟等等，都有规定具体的针脚），串行V.35（34针）是路由器通常采用的通信接口标准，但是V.35是采用差分信号进行传输的，发送和接受分别由2根信号线承担。而DCE设备通常是与路由器对接，因此针脚的分配相反，也就是2是接收（但也被称为TXD），3是发送。因此路由器通常是DTE设备，modem、GV转换器等等传输设备通常被规定为DCE。其实对于标准的串行端口，通常从外观就能判断是DTE还是DCE，DTE是针头（俗称公头），DCE是孔头（俗称母头），这样两种接口才能接在一起。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/04/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">汇编语言</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-04 08:26:05" itemprop="dateCreated datePublished" datetime="2021-03-04T08:26:05+08:00">2021-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-09 15:56:05" itemprop="dateModified" datetime="2021-03-09T15:56:05+08:00">2021-03-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.补码</h1>
+<p>二进制加法的逆元，因此无需设计两套运算器用于加法和减法</p>
+<p>一个数与其加法逆元相加，结果为0</p>
+<hr>
+<p>紧急事件,来不及铺垫基础了</p>
+<p>必须直接开始语言的学习了</p>
+<h1>汇编语言如何进行工作的</h1>
+<p>需要输入驱动微处理器进行工作的电平信息（机器码）</p>
+<p>eg:</p>
+<blockquote>
+<p>10100001 00000011 00000000</p>
+<p>从三号单元读取数据送入寄存器</p>
+<p>MOV AX,[3]</p>
+</blockquote>
+<h1>16位汇编语言程序</h1>
+<h2 id="书写过程"><a class="header-anchor" href="#书写过程">¶</a>书写过程</h2>
+<p>1.先定义一个段</p>
+<p>2.段内写入汇编指令</p>
+<p>3.指出程序何处结束</p>
+<p>4.<strong>程序返回</strong></p>
+<p>指CPU控制权交还给调用它的程序,即在程序末尾添加返回的程序段(这是汇编指令)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ax,4c00H</span><br><span class="line">int 21H</span><br></pre></td></tr></table></figure>
+<p>程序末尾使用这两条指令即可返回</p>
+<h2 id="生成过程"><a class="header-anchor" href="#生成过程">¶</a>生成过程</h2>
+<p>编译,连接—&gt;机器码,存储在可执行文件中</p>
+<h2 id="汇编指令"><a class="header-anchor" href="#汇编指令">¶</a>汇编指令</h2>
+<p>有对应机器码的指令,可以编译为机器指令</p>
+<h2 id="伪指令"><a class="header-anchor" href="#伪指令">¶</a>伪指令</h2>
+<p>由编译器执行的指令,编译器根据此进行编译工作</p>
+<h3 id="1-segment-ends"><a class="header-anchor" href="#1-segment-ends">¶</a>(1)segment ends</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">段名 segment</span><br><span class="line">	:</span><br><span class="line">	:</span><br><span class="line">	:</span><br><span class="line">段名 ends</span><br></pre></td></tr></table></figure>
+<p>segment ＆ends是成对的伪指令</p>
+<p>必须要用到的伪指令</p>
+<p>segment说明段开始</p>
+<p>ends说明段结束(end segment)</p>
+<p>类似c语言的<code>&#123;&#125;</code></p>
+<h3 id="2-end"><a class="header-anchor" href="#2-end">¶</a>(2)end</h3>
+<p>汇编程序的结束标志</p>
+<h3 id="3-assume"><a class="header-anchor" href="#3-assume">¶</a>(3)assume</h3>
+<p>当段被作为代码段(函数)使用时,可以使用它进行联系</p>
+<h1>汇编指令</h1>
+<p>汇编语言</p>
+<p>解释</p>
+<p>高级语言</p>
+<h2 id="通用寄存器"><a class="header-anchor" href="#通用寄存器">¶</a>通用寄存器</h2>
+<h3 id="数据寄存器"><a class="header-anchor" href="#数据寄存器">¶</a>数据寄存器</h3>
+<p>数据寄存器用来存放计算的结果和操作数，也可以存放地址</p>
+<blockquote>
+<p>AX BX CX DX</p>
+</blockquote>
+<p>•每个寄存器又有它们各自的专用目的</p>
+<p>•AX－－累加器，使用频度最高，用于算术、逻辑运算以及与外设传送信息等；</p>
+<p>•BX－－基址寄存器，常用做存放存储器地址；</p>
+<p>•CX－－计数器，作为循环和串操作等指令中的隐含计数器；</p>
+<p>•DX－－数据寄存器，常用来存放双字长数据的高16位，或存放外设端口地址。</p>
+<p>16位,存放两个字节</p>
+<p>这四个寄存器可分为两个独立使用的8位寄存器来用(H:high,高八位,L:low 低八位)</p>
+<p>对其中某8位的操作，并不影响另外对应8位的数据</p>
+<table>
+<thead>
+<tr>
+<th>AX</th>
+<th>AH</th>
+<th>AL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BX</td>
+<td>BH</td>
+<td>BL</td>
+</tr>
+<tr>
+<td>CX</td>
+<td>CH</td>
+<td>CL</td>
+</tr>
+<tr>
+<td>DX</td>
+<td>DH</td>
+<td>DL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="变址寄存器"><a class="header-anchor" href="#变址寄存器">¶</a>变址寄存器</h3>
+<p>•变址寄存器常用于存储器寻址时提供地址</p>
+<blockquote>
+<p>si 源地址寄存器</p>
+<p>di 目的地址寄存器</p>
+</blockquote>
+<p>•SI和DI在串操作指令有特殊用法</p>
+<h3 id="指针寄存器"><a class="header-anchor" href="#指针寄存器">¶</a>指针寄存器</h3>
+<p>•指针寄存器用于寻址内存堆栈内的数据</p>
+<blockquote>
+<p>bp 基址指针</p>
+<p>sp 对战指针</p>
+</blockquote>
+<p>•SP为堆栈指针寄存器，指示栈顶的偏移地址，不能再用于其他目的，具有专用目的</p>
+<p>•BP为基址指针寄存器，表示数据在堆栈段中的基地址</p>
+<p>•SP和BP寄存器与SS段寄存器联合使用确定堆栈段中的存储单元地址</p>
+<h2 id="标志寄存器"><a class="header-anchor" href="#标志寄存器">¶</a>标志寄存器</h2>
+<p>•标志（Flag）用于反映指令执行结果或控制指令执行形式，形成16位标志寄存器FLAGS（程序状态字PSW寄存器）</p>
+<p>•状态标志－－用来记录程序运行结果的状态信息，许多指令的执行都将相应地设置它</p>
+<p>CF ZF SF PF OF AF</p>
+<p>•控制标志－－可由程序根据需要用指令设置，用于控制处理器执行指令的方式</p>
+<p>DF  IF  TF</p>
+<p><img src="%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80.assets/image-20210307022626966.png" alt="image-20210307022626966"></p>
+<h2 id="指令指针"><a class="header-anchor" href="#指令指针">¶</a>指令指针</h2>
+<p>•指令指针寄存器IP，指示代码段中指令的偏移地址</p>
+<p>•它与代码段寄存器CS联用，确定下一条指令的物理地址</p>
+<p>•计算机通过CS : IP寄存器来控制指令序列的执行流程</p>
+<p>•IP寄存器是一个专用寄存器</p>
+<h2 id="段寄存器"><a class="header-anchor" href="#段寄存器">¶</a>段寄存器</h2>
+<blockquote>
+<p>cs 代码段寄存器</p>
+<p>ss 堆栈段寄存器</p>
+<p>ds 数据段寄存器</p>
+<p>es 附加段寄存器</p>
+</blockquote>
+<p>•8086有4个16位段寄存器，每个段寄存器确定一个逻辑段的起始地址，每种逻辑段均有各自的用途</p>
+<p>•CS（Code Segment）</p>
+<p>•指明代码段的起始地址</p>
+<p>•SS（Stack Segment）</p>
+<p>•指明堆栈段的起始地址</p>
+<p>•DS（Data Segment）</p>
+<p>•指明数据段的起始地址</p>
+<p>•ES（Extra Segment）</p>
+<p>•指明附加段的起始地址</p>
+<p>举例</p>
+<h2 id="1"><a class="header-anchor" href="#1">¶</a>1.</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,18</span><br></pre></td></tr></table></figure>
+<p>将18送入寄存器AX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;18</span><br></pre></td></tr></table></figure>
+<h2 id="2"><a class="header-anchor" href="#2">¶</a>2.</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add ax,8</span><br></pre></td></tr></table></figure>
+<p>寄存器AX的数值加上8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;AX+8</span><br></pre></td></tr></table></figure>
+<h2 id="3"><a class="header-anchor" href="#3">¶</a>3.</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,bx</span><br></pre></td></tr></table></figure>
+<p>寄存器BX的数值送入AX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;BX</span><br></pre></td></tr></table></figure>
+<h2 id="4"><a class="header-anchor" href="#4">¶</a>4.</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add ax,bx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;AX+BX</span><br></pre></td></tr></table></figure>
+<h2 id="mov指令"><a class="header-anchor" href="#mov指令">¶</a>mov指令</h2>
+<blockquote>
+<p>数据—&gt;寄存器</p>
+<p>寄存器,内存单元,段寄存器,三者可互相传输</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mov [0x0699], ax</span><br><span class="line">mov [0x0998], bx</span><br><span class="line">mov [0x1299], cx</span><br><span class="line">mov [0x1499], dx</span><br><span class="line">mov [0x1999], si</span><br></pre></td></tr></table></figure>
+<h2 id="add指令"><a class="header-anchor" href="#add指令">¶</a>add指令</h2>
+<p>加法所用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADD 寄存器，数值</span><br><span class="line">ADD 寄存器，寄存器</span><br></pre></td></tr></table></figure>
+<h2 id="sub指令"><a class="header-anchor" href="#sub指令">¶</a>sub指令</h2>
+<p>减法指令</p>
+<h2 id="inc"><a class="header-anchor" href="#inc">¶</a>inc</h2>
+<p>寄存器值加一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INC 寄存器</span><br></pre></td></tr></table></figure>
+<h1>dec</h1>
+<p>寄存器值减一</p>
+<h2 id="ret指令"><a class="header-anchor" href="#ret指令">¶</a>ret指令</h2>
+<p>函数调用后返回</p>
+<h2 id="call"><a class="header-anchor" href="#call">¶</a>call</h2>
+<p>调用子程序</p>
+<h2 id="pop"><a class="header-anchor" href="#pop">¶</a>pop</h2>
+<p>出栈</p>
+<h2 id="push"><a class="header-anchor" href="#push">¶</a>push</h2>
+<p>压栈</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="post-title-link" itemprop="url">计算机图形学</a>
         </h2>
 
         <div class="post-meta">
@@ -194,7 +606,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-02-25 11:59:51 / Modified: 13:46:37" itemprop="dateCreated datePublished" datetime="2021-02-25T11:59:51+08:00">2021-02-25</time>
+              <time title="Created: 2021-03-03 16:38:01 / Modified: 17:53:42" itemprop="dateCreated datePublished" datetime="2021-03-03T16:38:01+08:00">2021-03-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -217,12 +629,703 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-冯·诺依曼计算机"><a href="#1-冯·诺依曼计算机" class="headerlink" title="1.冯·诺依曼计算机"></a>1.冯·诺依曼计算机</h1><p>1.输入设备</p>
-<p>2.运算器：算术运算</p>
-<p>3.存储器：存放数据和程序</p>
-<p>4.控制器：指挥程序运行</p>
-<p>5.输出设备</p>
-<h1 id="2-现代计算机硬件"><a href="#2-现代计算机硬件" class="headerlink" title="2.现代计算机硬件"></a>2.现代计算机硬件</h1>
+          <h1>0.先修条件</h1>
+<p>c或c++语言</p>
+<p>线性代数</p>
+<p><code>opencv</code></p>
+<h1>1.介绍</h1>
+<p>利用计算机生成图像</p>
+<p>主要研究内容：</p>
+<p>1.建模</p>
+<p>3Dmax Maya</p>
+<p>建筑模型造型 Google Sketchup</p>
+<p>CAD的 AutoCAD</p>
+<p>机械设计 SolidWorks</p>
+<p>造船 Rhino</p>
+<p>2.绘制，渲染(rendering)</p>
+<p>真实感</p>
+<p>3.动画(animation)</p>
+<p>连续播放静止画面</p>
+<p>CRT显示器</p>
+<p>光栅式图片：由像素组成的图片</p>
+<p>矢量图：存储函数</p>
+<h1>2.图像</h1>
+<h3 id="1-生成"><a class="header-anchor" href="#1-生成">¶</a>1.生成</h3>
+<p>图像的生成类似照相机和人类视觉物理成像系统</p>
+<h4 id="成像四要素"><a class="header-anchor" href="#成像四要素">¶</a>成像四要素</h4>
+<h5 id="对象（objects）"><a class="header-anchor" href="#对象（objects）">¶</a>对象（objects）</h5>
+<p>通过点，线，多边形等几何图元来构造</p>
+<h5 id="观察者（viewer）"><a class="header-anchor" href="#观察者（viewer）">¶</a>观察者（viewer）</h5>
+<p>不同观察者</p>
+<p>不同视角</p>
+<h5 id="光源-light-source"><a class="header-anchor" href="#光源-light-source">¶</a>光源(light source)</h5>
+<p>可见光</p>
+<h5 id="材质-material"><a class="header-anchor" href="#材质-material">¶</a>材质(material)</h5>
+<p>反射光的属性</p>
+<p>漫反射</p>
+<p>镜面反射</p>
+<p>折射</p>
+<h4 id="成像模型"><a class="header-anchor" href="#成像模型">¶</a>成像模型</h4>
+<h5 id="1-ray-tracing-跟踪光线"><a class="header-anchor" href="#1-ray-tracing-跟踪光线">¶</a>1.ray tracing 跟踪光线</h5>
+<p>从点光源出发，这些光线彼此不知道对方，却知道整个场景的信息。每条光线会和场景并行地求交，根据交点位置获取表面地材质，纹理等信息。并结合光源信息计算光照。跟踪所有光线</p>
+<h6 id="光线的作用"><a class="header-anchor" href="#光线的作用">¶</a>光线的作用</h6>
+<p>1.反射(reflection)：镜面</p>
+<p>2.散射（scattering）</p>
+<p>3.折射(refraction)：透明物体</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/03/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">日常问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-03 08:53:39 / Modified: 08:55:30" itemprop="dateCreated datePublished" datetime="2021-03-03T08:53:39+08:00">2021-03-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.常常连接超时</h1>
+<p>很可能是因为没有关闭代理</p>
+<p>蓝灯会修改配置为手动连接</p>
+<p>运行inetcpl.cpl</p>
+<p>点击连接</p>
+<p>点击局域网</p>
+<p>改为自动配置即可</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/" class="post-title-link" itemprop="url">计算机网络1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-03 08:14:39 / Modified: 09:01:24" itemprop="dateCreated datePublished" datetime="2021-03-03T08:14:39+08:00">2021-03-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.传输介质</h1>
+<p>主机要通信，需要先建立通信的通道（传输介质）</p>
+<p>编码：把信息转换为某种形式的能量（光，电，无线电）</p>
+<p>能量再通过传输介质传输出去</p>
+<p>最底层是能量的流动</p>
+<p>物理层（最底层）需要解决协议</p>
+<h4 id="铜缆（copper-："><a class="header-anchor" href="#铜缆（copper-：">¶</a>铜缆（copper)：</h4>
+<p>1.便宜易安装</p>
+<p>2.低电阻</p>
+<p>为了减少干扰：</p>
+<p>1.两条交叉线：平行线会产生磁场，垂直会相互抵消</p>
+<p>即双绞线</p>
+<p>双绞线既能传输模拟信号又能传输数字信号</p>
+<p>（数字信号是离散的，模拟信号是连续的）</p>
+<p>通信距离为几十公里，过远信号衰减，需要中继器</p>
+<p>双绞线：</p>
+<p>1.屏蔽：绝缘层外有层金属网，可以抵抗外界磁场的干扰</p>
+<p>2.非屏蔽：UTP</p>
+<p>​</p>
+<p>2.同轴电缆：电视信号线会有，现在基本被淘汰了</p>
+<h4 id="玻璃纤维-glass-fibers-："><a class="header-anchor" href="#玻璃纤维-glass-fibers-：">¶</a>玻璃纤维(glass fibers)：</h4>
+<p>光纤</p>
+<p>首先把电转换为光：发光二极管(light emitting diode)或者激光器(laser)把电转换为光</p>
+<p>传输完毕后：光敏晶体管(light sensitive transistor)把光变成电</p>
+<p>光线在纤芯中不断全反射传播</p>
+<p>光纤：</p>
+<p>1.多模：光线比较散（发光二极管），会便宜一些</p>
+<p>2.单模：集中（激光源）</p>
+<p>特点：</p>
+<p>1.损耗小，传输距离长，抗腐蚀，因此海底多用光纤</p>
+<p>2.抗干扰</p>
+<p>3.不易窃听</p>
+<p>4.易损坏，损坏而且不易定位</p>
+<p>5.单向传输（双绞线可双向）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/01/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/01/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">python基础知识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-01 15:47:12" itemprop="dateCreated datePublished" datetime="2021-03-01T15:47:12+08:00">2021-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-08 11:46:34" itemprop="dateModified" datetime="2021-03-08T11:46:34+08:00">2021-03-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.模块化编程</h1>
+<p>类似头文件，但是python一个文件便可作为模块</p>
+<blockquote>
+<p>模块名.函数名</p>
+</blockquote>
+<p>导入模块可用 as用作别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ss as s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from 模块 import 成员</span><br></pre></td></tr></table></figure>
+<p>每个模块可有自己的测试代码(模块自身也可运行)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_name_</span><br><span class="line">python的内置变量</span><br><span class="line">为_main_时，直接运行一个模块</span><br><span class="line">导入模块时，值为模块名</span><br><span class="line">if _name_&#x3D;&quot;_main_&quot; :</span><br><span class="line">  执行测试</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h2 id="2-类"><a class="header-anchor" href="#2-类">¶</a>2.类</h2>
+<p>python的类类似c#</p>
+<p>主要关注</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_init_</span><br></pre></td></tr></table></figure>
+<h3 id="3-pycharm"><a class="header-anchor" href="#3-pycharm">¶</a>3.pycharm</h3>
+<p>安装包时常常有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Non-zero exit code</span><br></pre></td></tr></table></figure>
+<p>这个时候一般需要升级pip</p>
+<p>在命令行输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+<p>一般有代理的时候</p>
+<p>需要手动关闭</p>
+<p>特别是qq有时无法打开文件列表，需要在internet设置中更改局域网，关闭手动代理</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/01/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/01/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">多媒体技术基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-01 15:08:05" itemprop="dateCreated datePublished" datetime="2021-03-01T15:08:05+08:00">2021-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-08 19:45:14" itemprop="dateModified" datetime="2021-03-08T19:45:14+08:00">2021-03-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.前言</h1>
+<p>早在大一已经学过数媒导论，对于多媒体有所了解，自然需要难度提升</p>
+<h1>2.媒体</h1>
+<p>信息的载体</p>
+<p>而要将计算机变成多媒体计算机，需要</p>
+<p>1,视频音频信号获取</p>
+<p>2.多媒体数据压缩编码和解码</p>
+<p>3.视频音频数据实时处理和特技</p>
+<p>4.视频音频数据的输出技术</p>
+<h2 id="文本"><a class="header-anchor" href="#文本">¶</a>文本</h2>
+<p>英文文本：一个字节</p>
+<p>中文文本：双字节（GBK)（UTF-8下为3个字节）</p>
+<p>.wps,.doc,.txt</p>
+<h2 id="图像"><a class="header-anchor" href="#图像">¶</a>图像</h2>
+<p>二维函数f(x,y)</p>
+<p>f(x,y)为强度，(x,y)为坐标</p>
+<p>像素，构成数字图像的基本元素</p>
+<p>图像是栅格结构的画面形式，基本元素是像素，逼<br>
+真，数据量大</p>
+<h2 id="图形"><a class="header-anchor" href="#图形">¶</a>图形</h2>
+<p>图形一般是指计算机绘制的画面，如直线、圆、圆弧、矩<br>
+形、任意曲线和图表等</p>
+<p>不直接描述数据的每一点，而是描述产生这些点的过程和<br>
+方法。图形的格式是一组描述点、线、面等几何图形的大<br>
+小、形状、位置的指令，如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">line (x1, y1, x2, y2, color)</span><br><span class="line">circle (x, y, r, color)  </span><br></pre></td></tr></table></figure>
+<p>图形是矢量结构的画面存储形式，抽象，数据量小，<br>
+但显示成本高 ，图形是更加抽象化的图像</p>
+<p>图形放大后不会失真</p>
+<p>常用图形处理</p>
+<blockquote>
+<p>OpenGL</p>
+</blockquote>
+<blockquote>
+<p>DirectX</p>
+</blockquote>
+<h3 id="相关领域"><a class="header-anchor" href="#相关领域">¶</a>相关领域</h3>
+<p><img src="%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%92%8C%E8%A7%86%E8%A7%89" alt="image-20210308143937789"></p>
+<h2 id="视频和动画"><a class="header-anchor" href="#视频和动画">¶</a>视频和动画</h2>
+<p>即每秒连续播放20-30帧(frame)，产<br>
+生运动画面的效果</p>
+<p>视频：单帧是采集的真实图像<br>
+动画：单帧是由计算机产生或人工画出的图像或<br>
+图形，动画包括：二维动画、三维动画、真实感<br>
+三维动画等</p>
+<p>视频处理</p>
+<blockquote>
+<p>Premiere</p>
+<p>After Effect</p>
+</blockquote>
+<p>动画处理</p>
+<blockquote>
+<p>Magic Morph</p>
+<p>MAYA</p>
+<p>Unity 3D</p>
+</blockquote>
+<p>网页动画</p>
+<blockquote>
+<p>GIF Animotor</p>
+<p>flash</p>
+</blockquote>
+<h2 id="听觉类媒体"><a class="header-anchor" href="#听觉类媒体">¶</a>听觉类媒体</h2>
+<h2 id="模拟音频"><a class="header-anchor" href="#模拟音频">¶</a>模拟音频</h2>
+<p>直接记录外部信号</p>
+<p>由于离散采样</p>
+<h3 id="A-D模数转换器"><a class="header-anchor" href="#A-D模数转换器">¶</a>A/D模数转换器</h3>
+<p>模拟声音–&gt;二进制数据(数字声音)</p>
+<p>每次采样获得<strong>样本</strong></p>
+<p>时间上的离散为采样</p>
+<p>幅度上的离散为量化</p>
+<h4 id="采样频率，采率-Hz"><a class="header-anchor" href="#采样频率，采率-Hz">¶</a>采样频率，采率(Hz)</h4>
+<p>每秒采样数目，反映声波频率</p>
+<h4 id="采样精度，采样分辨率"><a class="header-anchor" href="#采样精度，采样分辨率">¶</a>采样精度，采样分辨率</h4>
+<p>表达声波的振幅状态 为一定的bit位</p>
+<p>用模拟电压表示声音强弱，而量化过程为离散</p>
+<h3 id="D-A数模（数字-模拟）转换器"><a class="header-anchor" href="#D-A数模（数字-模拟）转换器">¶</a>D/A数模（数字-模拟）转换器</h3>
+<p>恢复成模拟声音</p>
+<h3 id="波形声音（Wave）"><a class="header-anchor" href="#波形声音（Wave）">¶</a>波形声音（Wave）</h3>
+<p>20~20kHz，波形声音是对自然界声音进行采样和量化的结<br>
+果，是自然界所有声音的拷贝</p>
+<h3 id="语音（Speech）"><a class="header-anchor" href="#语音（Speech）">¶</a>语音（Speech）</h3>
+<p>300~3.4kHz，语音（或称话音）是指人的说话声，它除了<br>
+是声音的载体外，还包含语意和情感等信息，语音信号处<br>
+理可能涉及语言学、社会学、声学等</p>
+<h3 id="音乐（Music）"><a class="header-anchor" href="#音乐（Music）">¶</a>音乐（Music）</h3>
+<p>符号化了的声音，多媒体中专指 MIDI 音乐</p>
+<h4 id="音频处理"><a class="header-anchor" href="#音频处理">¶</a>音频处理</h4>
+<blockquote>
+<p>GoldWave/ Cool Edit Pro/Audition</p>
+</blockquote>
+<h2 id=""><a class="header-anchor" href="#">¶</a></h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">数据库系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-25 14:42:50" itemprop="dateCreated datePublished" datetime="2021-02-25T14:42:50+08:00">2021-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-05 11:38:11" itemprop="dateModified" datetime="2021-03-05T11:38:11+08:00">2021-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>0.</h1>
+<h2 id="数据"><a class="header-anchor" href="#数据">¶</a>数据</h2>
+<p>存储的基本对象，描述事物的符号记录</p>
+<p>特点：</p>
+<p>需要对其进行解释</p>
+<p>大数据特点：</p>
+<p>1.数据量大</p>
+<p>2.种类丰富</p>
+<p>3.产生速度快</p>
+<p>4.数据准确率不高</p>
+<h2 id="数据的语义"><a class="header-anchor" href="#数据的语义">¶</a>数据的语义</h2>
+<p>对数据的解释</p>
+<h2 id="记录"><a class="header-anchor" href="#记录">¶</a>记录</h2>
+<p>结构化的数据表示和存储表示</p>
+<p>文本，图形，图像，音频，视频都是非结构化的</p>
+<p>结构化数据：记录文件以固定格式存在</p>
+<h2 id="数据库"><a class="header-anchor" href="#数据库">¶</a>数据库</h2>
+<p>长期存储在计算机内，有组织的，可共享的大量数据的集合</p>
+<h4 id="特征："><a class="header-anchor" href="#特征：">¶</a>特征：</h4>
+<p>基于一定数据模型</p>
+<p>冗余度小</p>
+<p>数据独立性高</p>
+<p>易扩展</p>
+<h2 id="数据库管理系统-DBMS"><a class="header-anchor" href="#数据库管理系统-DBMS">¶</a>数据库管理系统(DBMS)</h2>
+<p>系统软件</p>
+<p>位于用户和操作系统之间的一层数据管理软件</p>
+<p>功能：</p>
+<p>1.定义数据</p>
+<p>2.数据组织，存储，管理</p>
+<p>3.数据操纵</p>
+<p>查询，插入，删除，修改</p>
+<h2 id="数据库系统"><a class="header-anchor" href="#数据库系统">¶</a>数据库系统</h2>
+<p>数据库，数据库管理系统，应用系统，数据库管理员，存储，管理，处理，维护数据的系统</p>
+<h2 id="数据管理"><a class="header-anchor" href="#数据管理">¶</a>数据管理</h2>
+<p>数据分类，组织，编码，存储，检索，维护</p>
+<h2 id="数据模型"><a class="header-anchor" href="#数据模型">¶</a>数据模型</h2>
+<p>描述，组织，操作现实世界的数据</p>
+<h3 id="分类："><a class="header-anchor" href="#分类：">¶</a>分类：</h3>
+<h4 id="1-概念模型"><a class="header-anchor" href="#1-概念模型">¶</a>1.概念模型</h4>
+<p>用户观点对数据建模</p>
+<h5 id="实体"><a class="header-anchor" href="#实体">¶</a>实体</h5>
+<p>客观存在并且互相可区分的事物</p>
+<p>人事物，概念</p>
+<h5 id="属性"><a class="header-anchor" href="#属性">¶</a>属性</h5>
+<p>实体所具有的某一特性</p>
+<h5 id="码"><a class="header-anchor" href="#码">¶</a>码</h5>
+<p>唯一标识实体的属性集称为码</p>
+<h6 id="实体型"><a class="header-anchor" href="#实体型">¶</a>实体型</h6>
+<p>实体名和属性名集合</p>
+<p>学生(学号，姓名，性别，生日，专业)</p>
+<h6 id="实体集"><a class="header-anchor" href="#实体集">¶</a>实体集</h6>
+<p>同一类型实体的集合</p>
+<h6 id="联系"><a class="header-anchor" href="#联系">¶</a>联系</h6>
+<p>实体内部的联系：实体各属性的联系  事物内部的联系</p>
+<p>实体之间的联系：实体集的联系，同一实体集不同实体的联系    事物之间的联系</p>
+<p>联系也可有属性</p>
+<h5 id="表示"><a class="header-anchor" href="#表示">¶</a>表示</h5>
+<p>实体-联系模型</p>
+<h6 id="E-R图"><a class="header-anchor" href="#E-R图">¶</a>E-R图</h6>
+<p><strong>矩形</strong>表示实体型</p>
+<p><strong>椭圆形</strong>表示属性</p>
+<p><strong>无向边</strong>连接实体与属性,联系</p>
+<p>为码的属性要加<strong>下划线</strong></p>
+<p><strong>菱形</strong>表示联系,无向边需要注明联系类型,联系的属性也通过无向边与之相连</p>
+<p><strong>联系类型</strong></p>
+<p><code>1:1</code></p>
+<p>一对一联系,例如:一个班级只有一个班长</p>
+<p><code>1:n</code></p>
+<p>一对多联系,例如:一个班级有多个学生</p>
+<p><code>m:n</code></p>
+<p>多对多联系,例如:一门课有多个学生,多门课由一个学生选修</p>
+<h4 id="2-逻辑模型和物理模型"><a class="header-anchor" href="#2-逻辑模型和物理模型">¶</a>2.逻辑模型和物理模型</h4>
+<h5 id="逻辑模型"><a class="header-anchor" href="#逻辑模型">¶</a>逻辑模型</h5>
+<p>网状模型，层次模型，<strong>关系模型</strong>，面向对象模型</p>
+<p>从计算机系统观点出发</p>
+<h5 id="物理模型"><a class="header-anchor" href="#物理模型">¶</a>物理模型</h5>
+<p>数据在系统内部的表示和存取</p>
+<h3 id="组成要素"><a class="header-anchor" href="#组成要素">¶</a>组成要素</h3>
+<h4 id="数据结构"><a class="header-anchor" href="#数据结构">¶</a>数据结构</h4>
+<p>描述组成对象和对象之间的关系</p>
+<h5 id="描述内容"><a class="header-anchor" href="#描述内容">¶</a>描述内容</h5>
+<p>对象的类型，内容，性质</p>
+<p>数据对象联系有关的对象</p>
+<h4 id="数据操作"><a class="header-anchor" href="#数据操作">¶</a>数据操作</h4>
+<p>1.查询,更新(插入,删除,修改)</p>
+<p>2.优先级</p>
+<h4 id="完整性约束条件"><a class="header-anchor" href="#完整性约束条件">¶</a>完整性约束条件</h4>
+<h6 id="实体完整性"><a class="header-anchor" href="#实体完整性">¶</a>实体完整性</h6>
+<p>每个数据表必须有主键，作为主键的所有字段必须唯一且非空</p>
+<h6 id="参照完整性"><a class="header-anchor" href="#参照完整性">¶</a>参照完整性</h6>
+<p>是数据的属性,不允许关系中有不存在的实体引用</p>
+<p>数据库的参照完整性是指表与表之间的一种对应关系，通常情况下可以通过设置两表之间的主键、外键关系，或者编写两表的触发器来实现。</p>
+<p>理解为一个表变化,另一个表也随之变化</p>
+<h6 id="用户定义的完整性"><a class="header-anchor" href="#用户定义的完整性">¶</a>用户定义的完整性</h6>
+<p>数据必须满足语义要求</p>
+<h3 id="常用数据模型"><a class="header-anchor" href="#常用数据模型">¶</a>常用数据模型</h3>
+<h4 id="非关系模型"><a class="header-anchor" href="#非关系模型">¶</a>非关系模型</h4>
+<h5 id="层次模型"><a class="header-anchor" href="#层次模型">¶</a>层次模型</h5>
+<h5 id="网状模型"><a class="header-anchor" href="#网状模型">¶</a>网状模型</h5>
+<h4 id="关系模型"><a class="header-anchor" href="#关系模型">¶</a>关系模型</h4>
+<p>关系模型作为关系数据库的数据]组织方式</p>
+<h4 id="面向对象模型"><a class="header-anchor" href="#面向对象模型">¶</a>面向对象模型</h4>
+<h4 id="对象关系模型"><a class="header-anchor" href="#对象关系模型">¶</a>对象关系模型</h4>
+<h1>1.数据库系统</h1>
+<p>用计算机存储记录的系统</p>
+<h2 id="特点："><a class="header-anchor" href="#特点：">¶</a>特点：</h2>
+<h3 id="数据结构化"><a class="header-anchor" href="#数据结构化">¶</a>数据结构化</h3>
+<p>整体结构化，数据之间具有联系，不同于文件系统</p>
+<h3 id="共享性高，冗余度低，易扩充"><a class="header-anchor" href="#共享性高，冗余度低，易扩充">¶</a>共享性高，冗余度低，易扩充</h3>
+<p>面向整个系统。可以被多个用户，应用共享使用</p>
+<h3 id="数据共享的好处"><a class="header-anchor" href="#数据共享的好处">¶</a>数据共享的好处</h3>
+<p>1.减少数据冗余</p>
+<p>2.避免数据的不相容性（数据的不同语义有冲突）与不一致性（数据不同副本的值不一样）</p>
+<p>3.系统易于扩充</p>
+<h3 id="数据独立性高"><a class="header-anchor" href="#数据独立性高">¶</a>数据独立性高</h3>
+<h6 id="1-物理独立性"><a class="header-anchor" href="#1-物理独立性">¶</a>1.物理独立性</h6>
+<p>应用程序和数据库数据物理存储独立</p>
+<h6 id="2-逻辑独立性"><a class="header-anchor" href="#2-逻辑独立性">¶</a>2.逻辑独立性</h6>
+<p>数据库的逻辑结构和应用程序独立</p>
+<h6 id="3-数据独立性"><a class="header-anchor" href="#3-数据独立性">¶</a>3.数据独立性</h6>
+<p>DBMS的二级映像功能</p>
+<h3 id="数据由DBMS统一管理和控制"><a class="header-anchor" href="#数据由DBMS统一管理和控制">¶</a>数据由DBMS统一管理和控制</h3>
+<h6 id="1-安全性保护"><a class="header-anchor" href="#1-安全性保护">¶</a>1.安全性保护</h6>
+<h6 id="2-完整性保护"><a class="header-anchor" href="#2-完整性保护">¶</a>2.完整性保护</h6>
+<p>正确性，有效性，相容性</p>
+<h6 id="3-并发控制"><a class="header-anchor" href="#3-并发控制">¶</a>3.并发控制</h6>
+<p>多用户的并发操作</p>
+<h6 id="4-数据库恢复"><a class="header-anchor" href="#4-数据库恢复">¶</a>4.数据库恢复</h6>
+<p>恢复错误状态</p>
+<h2 id="操作"><a class="header-anchor" href="#操作">¶</a>操作</h2>
+<p>增加文件</p>
+<p>向文件插入数据</p>
+<p>在文件中检索内容</p>
+<p>修改文件内容</p>
+<p>更改文件内容</p>
+<p>删除文件</p>
+<h2 id="SQL语言"><a class="header-anchor" href="#SQL语言">¶</a>SQL语言</h2>
+<p>最初来自IBM，成为关系数据库的标准交互语言</p>
+<h2 id="组成"><a class="header-anchor" href="#组成">¶</a>组成</h2>
+<p>数据，硬件，软件，用户</p>
+<h3 id="数据-v2"><a class="header-anchor" href="#数据-v2">¶</a>数据</h3>
+<p>数据库的数据既是集成，又是共享的</p>
+<p>集成：数据库可以当作不同文件的合并，进而消除冗余</p>
+<p>共享：每项数据可以被不同用户(不同的目的，不同的查询方式)共享</p>
+<h3 id="硬件"><a class="header-anchor" href="#硬件">¶</a>硬件</h3>
+<p>二级存储设备(多为磁盘，用来存放数据)，I/O设备(磁盘驱动器)，设备控制器，I/O通道</p>
+<p>硬件处理器和主存，用于支持数据库系统软件的运行</p>
+<h3 id="软件"><a class="header-anchor" href="#软件">¶</a>软件</h3>
+<p>称作数据库服务器/管理器</p>
+<p>也叫数据库管理系统(DBMS,database manage system)</p>
+<h3 id="用户"><a class="header-anchor" href="#用户">¶</a>用户</h3>
+<p>应用程序员：编写数据库应用程序</p>
+<p>最终用户：通过应用访问数据库</p>
+<p>数据库管理员</p>
+
       
     </div>
 
@@ -264,10 +1367,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-02-25 11:17:53 / Modified: 11:58:49" itemprop="dateCreated datePublished" datetime="2021-02-25T11:17:53+08:00">2021-02-25</time>
+              <time title="Created: 2021-02-25 11:17:53" itemprop="dateCreated datePublished" datetime="2021-02-25T11:17:53+08:00">2021-02-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-08 15:30:28" itemprop="dateModified" datetime="2021-03-08T15:30:28+08:00">2021-03-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -289,12 +1398,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-计算机体系结构和计算机组成"><a href="#0-计算机体系结构和计算机组成" class="headerlink" title="0.计算机体系结构和计算机组成"></a>0.计算机体系结构和计算机组成</h1><h2 id="1-计算机体系结构"><a href="#1-计算机体系结构" class="headerlink" title="1.计算机体系结构"></a>1.计算机体系结构</h2><p>程序员见到的计算机系统的属性</p>
+          <h1>0.计算机体系结构和计算机组成</h1>
+<h2 id="1-计算机体系结构"><a class="header-anchor" href="#1-计算机体系结构">¶</a>1.计算机体系结构</h2>
+<p>程序员见到的计算机系统的属性</p>
 <p>概念性的结构与功能特性</p>
 <blockquote>
 <p>指令系统，数据结构，寻址技术，I/O机理</p>
 </blockquote>
-<h2 id="2-计算机组成"><a href="#2-计算机组成" class="headerlink" title="2.计算机组成"></a>2.计算机组成</h2><p>实现计算机体系结构所体现的属性</p>
+<h2 id="2-计算机组成"><a class="header-anchor" href="#2-计算机组成">¶</a>2.计算机组成</h2>
+<p>实现计算机体系结构所体现的属性</p>
 <p>计算机是否具有乘法指令功能，是结构问题</p>
 <p>什么方式实现乘法，是组成问题</p>
 <blockquote>
@@ -302,23 +1414,47 @@
 <p>1.专门的乘法电路</p>
 <p>2.连续相加的加法电路</p>
 </blockquote>
-<h1 id="1-计算机系统"><a href="#1-计算机系统" class="headerlink" title="1.计算机系统"></a>1.计算机系统</h1><h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><p>主机，外设等</p>
-<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><p>程序</p>
-<h3 id="系统软件"><a href="#系统软件" class="headerlink" title="系统软件"></a>系统软件</h3><p>调度系统资源</p>
+<h1>1.计算机系统</h1>
+<h2 id="硬件"><a class="header-anchor" href="#硬件">¶</a>硬件</h2>
+<p>主机，外设等</p>
+<p>一般由大量的IC(integrated Circuit)集成电路组成</p>
+<p>每块IC有许多引脚，引脚的用于输入，有的用于输出，内部进行运算。</p>
+<blockquote>
+<p>IC的引脚编号<br>
+先把表示正方向的标志， 比如半圆形的缺口， 朝向左侧。 逆时针进行计数</p>
+</blockquote>
+<p>CPU,内存,I/O</p>
+<p>数字ic电压一般为5v或0v进而实现电信号收发</p>
+<h3 id="引脚"><a class="header-anchor" href="#引脚">¶</a>引脚</h3>
+<p>Vcc,GND</p>
+<p>用于供电(电压恒定，其余一般在5v,0v间变化)</p>
+<p>OE(output enable)</p>
+<p>输出使能</p>
+<p>RD(read)</p>
+<p>读取</p>
+<h2 id="软件"><a class="header-anchor" href="#软件">¶</a>软件</h2>
+<p>程序（指令和数据的集合）</p>
+<h3 id="系统软件"><a class="header-anchor" href="#系统软件">¶</a>系统软件</h3>
+<p>调度系统资源</p>
 <p>语言处理程序</p>
 <p>操作系统</p>
 <p>服务性程序</p>
 <p>数据库管理系统</p>
 <p>网络软件</p>
-<h3 id="应用软件"><a href="#应用软件" class="headerlink" title="应用软件"></a>应用软件</h3><p>根据任务需要编写</p>
-<h3 id="软件运行"><a href="#软件运行" class="headerlink" title="软件运行"></a>软件运行</h3><p>1.高级语言编写的程序(源程序)+数据</p>
+<h3 id="应用软件"><a class="header-anchor" href="#应用软件">¶</a>应用软件</h3>
+<p>根据任务需要编写</p>
+<h3 id="软件运行"><a class="header-anchor" href="#软件运行">¶</a>软件运行</h3>
+<p>1.高级语言编写的程序(源程序)+数据</p>
 <p>2.计算机将其翻译成机器语言程序(目标程序)</p>
 <p>3.计算机运行该程序</p>
-<h2 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h2><blockquote>
+<h2 id="层次结构"><a class="header-anchor" href="#层次结构">¶</a>层次结构</h2>
+<blockquote>
 <p>软件层次</p>
 <p>1.高级语言(虚拟机器 $M_3$)</p>
 <p>2.汇编语言(虚拟机器 $M_2$)</p>
 <p>3.操作系统(虚拟机器)</p>
+</blockquote>
+<blockquote>
 <p>硬件层次</p>
 <p>4.机器语言(实际机器$M_1$)</p>
 <p>5.微指令系统(微程序机器$M_0$)</p>
@@ -390,661 +1526,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-复制模型"><a href="#1-复制模型" class="headerlink" title="1.复制模型"></a>1.复制模型</h1><p>选中模型，按住shift,鼠标拖动模型</p>
+          <h1>1.复制模型</h1>
+<p>选中模型，按住shift,鼠标拖动模型</p>
 <p>需要点选选择并移动后才能进行上述操作</p>
 <p>同时在进行这些操作不要先选择点，否则就是对点进行移动</p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/18/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B8%85%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/18/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B8%85%E7%90%86/" class="post-title-link" itemprop="url">注册表清理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-18 14:54:21 / Modified: 15:00:45" itemprop="dateCreated datePublished" datetime="2021-02-18T14:54:21+08:00">2021-02-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-注册表"><a href="#1-注册表" class="headerlink" title="1.注册表"></a>1.注册表</h1><p>win系统下的数据库，负责win的启动，硬件驱动的装载，win应用程序的运行。</p>
-<h2 id="打开方法"><a href="#打开方法" class="headerlink" title="打开方法"></a>打开方法</h2><p>WINDOWS/regedit</p>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/15/%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/15/%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C/" class="post-title-link" itemprop="url">以管理员身份运行</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-15 11:01:03 / Modified: 11:19:22" itemprop="dateCreated datePublished" datetime="2021-02-15T11:01:03+08:00">2021-02-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-来源知乎"><a href="#0-来源知乎" class="headerlink" title="0.来源知乎"></a>0.来源知乎</h1><h1 id="1-用户账户控制-UAC-策略"><a href="#1-用户账户控制-UAC-策略" class="headerlink" title="1.用户账户控制(UAC)策略"></a>1.用户账户控制(UAC)策略</h1><p>现代操作系统为了数据安全性设计的，即非root用户不能使用系统文件等等</p>
-<p>一般说来C上的软件需要管理员权限</p>
-<p>在<code>appdata</code>下，这是用户可使用的文件夹，可以无需管理员权限</p>
-<p>管理员权限在win下拥有最高的权限</p>
-<p><code>UAC</code>下，管理员用户直接双击软件，则软件获得的权限为降权处理。</p>
-<p>而有的软件标记为<strong>提权</strong>才能运行，所以这个时候就会跳出用户账户控制这个询问窗口了，一般来说安装软件等等都会跳出这个。</p>
-<p>当然软件可以主动申请<strong>提权</strong>,但是需要重新申请进程</p>
-<p>从目的上看，在一些恶意程序上没有实现保护的作用。</p>
-<p>1.读写文件，截屏，连接网络，模拟鼠标键盘不需要管理员权限</p>
-<p>系统仅仅保证两个账户资源尽量不共通</p>
-<p>某些勒索病毒会调用<code>vssadmin</code>来删除win的备份，此时UAC具有部分作用</p>
-<p>但是<code>WannaCry</code>勒索病毒在内核中，自带最高权限</p>
-<p>软件安装后门，或者木马，UAC并不会干涉</p>
-<p> 2.不能制止弹窗，自启，垃圾文件制造等流氓行为</p>
-<p>系统对于每个用户提供了独立的配置，包括自启，管理员权限下，可以更改全局设置，影响所有用户。</p>
-<p>3.恶意软件拿到管理员权限会静默拿到管理员权限</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/10/%E6%89%8B%E6%9C%BA%E9%9F%B3%E4%B9%90%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/10/%E6%89%8B%E6%9C%BA%E9%9F%B3%E4%B9%90%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">手机音乐共享方案</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-10 11:02:23 / Modified: 11:03:20" itemprop="dateCreated datePublished" datetime="2021-02-10T11:02:23+08:00">2021-02-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/scikit-learn2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/08/scikit-learn2/" class="post-title-link" itemprop="url">scikit-learn2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-02-08 20:34:41" itemprop="dateCreated datePublished" datetime="2021-02-08T20:34:41+08:00">2021-02-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-15 10:41:40" itemprop="dateModified" datetime="2021-02-15T10:41:40+08:00">2021-02-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-数学基础"><a href="#0-数学基础" class="headerlink" title="0.数学基础"></a>0.数学基础</h1><h3 id="1-奇异值分解-SVD-singular-value-decomposition"><a href="#1-奇异值分解-SVD-singular-value-decomposition" class="headerlink" title="1.奇异值分解(SVD: singular value decomposition)"></a>1.奇异值分解(SVD: singular value decomposition)</h3><p>机器学习中广泛应用的算法</p>
-<p>1.特征值和特征向量</p>
-<script type="math/tex; mode=display">Ax=\lambda x</script><p>A是一个$n*n$的实对称矩阵，</p>
-<p>$x$是一个$n$维向量，</p>
-<p>则</p>
-<blockquote>
-<p> $\lambda$是矩阵A的特征值</p>
-<p>而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。</p>
-</blockquote>
-<p>特征值和特征向量的作用</p>
-<p>若$A$的所有特征值对应的n个特征向量线性无关，那么</p>
-<p>$A$=$W\Sigma W^{-1}$</p>
-<p>$W$是这些特征向量所张成的矩阵$n \times n$ 维矩阵，而$\Sigma$为这n个特征值为主对角线的$n \times n$维矩阵</p>
-<p>这样$A$的进行幂运算会有很大好处，当然也会有标准化。这里暂时不谈</p>
-<p>但问题是这个矩阵A必须为方阵</p>
-<h4 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h4><p>当$A$不是方阵时，我们定义$A$的SVD为</p>
-<blockquote>
-<p> $A$=$U\Sigma V^{T}$</p>
-</blockquote>
-<p>A为$ m \times n$的矩阵</p>
-<p>U为$ m \times m$的矩阵</p>
-<p>$\Sigma$为$ m \times n$的矩阵</p>
-<p>$V$为$n \times n$的矩阵</p>
-<p>为了得到这三个矩阵</p>
-<p>我们首先得到$A^{T}$$A$而这是一个n阶方阵</p>
-<p>对于n阶方阵，我们可以进行特征分解得到特征值和特征向量</p>
-<blockquote>
-<p>$(A^{T}A)$$v_{i}$=$\lambda_{i} v_{i}$</p>
-</blockquote>
-<h1 id="1-监督学习"><a href="#1-监督学习" class="headerlink" title="1.监督学习"></a>1.监督学习</h1><p>1.回归问题下，根据完整数据推测一个结果。</p>
-<p>每个数据都有正确的结果进行验证</p>
-<p>或者分类问题下，预测离散的输出值。</p>
-<h1 id="2-无监督学习"><a href="#2-无监督学习" class="headerlink" title="2.无监督学习"></a>2.无监督学习</h1><p>无监督学习的数据标签没有或者都相同</p>
-<p>聚类算法：将这些数据分成不同簇</p>
-<p>例如Google的新闻主题识别</p>
-<h1 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h1><h2 id="1-线性回归算法"><a href="#1-线性回归算法" class="headerlink" title="1.线性回归算法"></a>1.线性回归算法</h2><blockquote>
-<p>training set + algorithm—-&gt;hypothesis  本人仍然将其理解为模型</p>
-<p>test set - hypothesis —-&gt;estimated result</p>
-</blockquote>
-<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>为模型选择合适的参数</p>
-<p>建模误差：预测值和实际值的差距</p>
-<p>线性回归中一般为平方误差函数</p>
-<p>通过梯度下降求出代价函数最小值</p>
-<p><img src="pic1" alt="preview"></p>
-<blockquote>
-<p>损失函数，代价函数(loss function)</p>
-<p>用于度量拟合程度，损失函数越小，模型拟合得越好</p>
-<p>风险函数(risk function)</p>
-<p>是损失函数的期望，由于输入的(X,Y)遵循联合分布，但是联合分布未知，无法计算，我们的历史数据训练集$f(X)$关于训练集的平均损失成为经验风险(empirical risk),即$\frac{1}{N}\sum_{i=1}^{N}L(y_{i},f(x_{i}))$,我们的目标是最小化经验风险，称为经验风险最小化</p>
-<p>但是，如果模型拟合得过好，反而会过度学习历史数据，真正预测的效果往往不好，这种情况就是过拟合</p>
-<p>一般来说，造成这样是因为其函数过于复杂，拟合因此很精准。</p>
-</blockquote>
-<h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><p>$h_{\theta}=\theta_{0}x_{0}+\theta_{1}x_{1}+\cdots+\theta_{n}x_{n}$</p>
-<p>参数为$n+1$维的向量，因此训练实例也为$n+1$维的向量，特征方程的维度为$m*(n+1$)维。</p>
-<p>一个训练实例的特征:{${x_{0},x_{1},\cdots,x_{n}}$}</p>
-<script type="math/tex; mode=display">
-\left\{
-\begin{matrix}
-x_{0}\\
-x_{1}\\
-\cdots\\
-x_{n}
-\end{matrix}
-\right\}</script><p>特征方程：m个特征向量($n+1$)，所以为$m*(n+1)$维度</p>
-<p>所以可以简化为：</p>
-<p>$h_{\theta}(x)=\theta^{T}X$</p>
-<p>这样便获得参数矩阵</p>
-<h3 id="多变量线性回归的代价函数"><a href="#多变量线性回归的代价函数" class="headerlink" title="多变量线性回归的代价函数"></a>多变量线性回归的代价函数</h3><script type="math/tex; mode=display">J(\theta_{0},\theta_{1},\cdots,\theta_{n})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{i}-y^{i})^{2})</script><p>代价函数为所有建模误差的平方和</p>
-<p>随机选择一系列的参数值，计算所有的预测结果后，在给所有的参数一个新的值，如此循环知道收敛</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computecost</span>(<span class="params">X,y,theta</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#power函数用于求数组的n次方，power(x1,x2);x2既可以是数字也可以是数组，但是x1,x2的列数要相同</span></span><br><span class="line">    innner=np.power(((X*theta.T)-y),<span class="number">2</span>)</span><br><span class="line">    <span class="comment">#数组中给定轴上的元素总和</span></span><br><span class="line">    <span class="keyword">return</span> np.<span class="built_in">sum</span>(inner)/(<span class="number">2</span>*<span class="built_in">len</span>(X))</span><br></pre></td></tr></table></figure>
-<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><h4 id="特征缩放—-标准化"><a href="#特征缩放—-标准化" class="headerlink" title="特征缩放—-标准化"></a>特征缩放—-标准化</h4><p>面对多维特征问题时，我们要保证特征具有相近的尺度，梯度下降能够更快收敛。</p>
-<p>对于不同特征的尺度，如果不一致，会导致在一个维度上变化的幅度不能很大。</p>
-<p>因此我们要尝试把所有尺度缩放到-1和1之间</p>
-<p>$x_{n}=\frac{x_{n}-u_{n}}{s_{n}}$</p>
-<p>$u_{n}$是数据的平均值，$s_{n}$是标准差</p>
-<h4 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h4><p>是监督学习和深度学习的重要参数，影响目标函数能否收敛到局部最小值和何时收敛到最小值</p>
-<p>一般的学习率</p>
-<blockquote>
-<p>0.01 </p>
-<p>0.03</p>
-<p>0.1</p>
-<p>0.3</p>
-<p>1</p>
-<p>3</p>
-<p>10</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/07/scikit-learn1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/07/scikit-learn1/" class="post-title-link" itemprop="url">scikit-learn1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-07 11:16:48 / Modified: 20:49:18" itemprop="dateCreated datePublished" datetime="2021-02-07T11:16:48+08:00">2021-02-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><h2 id="关于模型和算法"><a href="#关于模型和算法" class="headerlink" title="关于模型和算法"></a>关于模型和算法</h2><p>个人理解：算法是对机器学习中数据的处理，模型是算法和数据共同生成的处理程序</p>
-<p>scikit learm并不是模型库，而是算法库，了解算法对模型的理解或许会有极大的提升。</p>
-<p>机器学习四个元素：</p>
-<p>1.数据</p>
-<p>2.任务</p>
-<p>3.性能度量</p>
-<p>4.模型</p>
-<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><h3 id="1-结构化数据和非结构化数据"><a href="#1-结构化数据和非结构化数据" class="headerlink" title="1.结构化数据和非结构化数据"></a>1.结构化数据和非结构化数据</h3><p>数据具体类型</p>
-<p>结构数据：二维表结构进行逻辑表达和实现</p>
-<p>非结构化：图片，文字，声音，视频</p>
-<p>CNN可对图像数据做人脸识别和物体分类</p>
-<p>RNN可对语音数据做语音识别和机器对话，文字数据做阅读理解</p>
-<p>增强学习Akphago</p>
-<h3 id="2-原始数据和加工数据"><a href="#2-原始数据和加工数据" class="headerlink" title="2.原始数据和加工数据"></a>2.原始数据和加工数据</h3><p>数据表达形式</p>
-<h3 id="3-样本内数据和样本外数据"><a href="#3-样本内数据和样本外数据" class="headerlink" title="3.样本内数据和样本外数据"></a>3.样本内数据和样本外数据</h3><p>数据统计性质</p>
-<p>比如我们在大数据竞赛中的线下评分（样本内数据）</p>
-<p>线上评分(样本外数据)</p>
-<h1 id="1-分类器-classifier"><a href="#1-分类器-classifier" class="headerlink" title="1.分类器(classifier)"></a>1.分类器(classifier)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import </span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble import</span><br></pre></td></tr></table></figure>
-<h1 id="2-回归器-regressor"><a href="#2-回归器-regressor" class="headerlink" title="2.回归器(regressor)"></a>2.回归器(regressor)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble</span><br></pre></td></tr></table></figure>
-<h1 id="3-聚类-cluster"><a href="#3-聚类-cluster" class="headerlink" title="3.聚类(cluster)"></a>3.聚类(cluster)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.cluster import</span><br></pre></td></tr></table></figure>
-<h1 id="4-降维-decomposition"><a href="#4-降维-decomposition" class="headerlink" title="4.降维(decomposition)"></a>4.降维(decomposition)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/05/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">遇到的一些算法(1)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-05 21:34:01 / Modified: 21:50:05" itemprop="dateCreated datePublished" datetime="2021-02-05T21:34:01+08:00">2021-02-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-除法实现"><a href="#1-除法实现" class="headerlink" title="1.除法实现"></a>1.除法实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static constexpr unsigned width(unit64-t n,unit64_t d&#x3D;10,unsigned w&#x3D;0)</span><br><span class="line">&#123;</span><br><span class="line">	if(n&gt;&#x3D;2&amp;&amp;d!&#x3D;0&amp;&amp;w&lt;19)</span><br><span class="line">	&#123;</span><br><span class="line">		return 1+width(n,d%n*10,w+1);</span><br><span class="line">	&#125;</span><br><span class="line">	reutrn 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码的含义是输出d除以n的结果，w为位数</p>
-<p>w限制结果小于19，width是<code>std:chrono::hh_mm_ss</code>的成员,这个类模板会将用分数表示的duration转换为$1/10^w$的倍数，用于输出，因此w需要小于19以避免$10^w$溢出</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/04/%E6%9C%89%E8%B6%A3%E7%9A%84%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/04/%E6%9C%89%E8%B6%A3%E7%9A%84%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">有趣的算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-02-04 05:09:52" itemprop="dateCreated datePublished" datetime="2021-02-04T05:09:52+08:00">2021-02-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-15 10:42:47" itemprop="dateModified" datetime="2021-02-15T10:42:47+08:00">2021-02-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>在知乎看到的一个有趣的问题</p>
-<blockquote>
-<p>若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少</p>
-</blockquote>
-<p>关于这个问题，由许多很好的方法</p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
-<p>考虑a变成b所需步骤</p>
-<p>我们不妨从最后一步开始入手</p>
-<p>对于目标b</p>
-<p>1.如果b是奇数，那么最后一步必然是+1操作</p>
-<p>2.如果b是偶数，要实现最少的步数，我们要尽量选择x2操作，但如果$b/2&lt;a$,那a只能经过+1操作变成b,那么最小步数就是b-a</p>
-<p>​    如果$b/2&gt;=a$</p>
-<p>​    $(a+x)\times 2$和$（a\times 2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
-<p>​    因此我们将$b/2$,再进入递归判断</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> fun(a,b<span class="number">-1</span>)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(b/<span class="number">2</span>&lt;a)</span><br><span class="line">        <span class="keyword">return</span> b-a;</span><br><span class="line">     <span class="keyword">return</span> fun(a,b/<span class="number">2</span>)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
-<blockquote>
-<p>x2相当于在二进制后加0</p>
-<p>+1相当于末尾加1</p>
-</blockquote>
-<p>为了最少的步骤，先将a进行+1操作将a变成b的前缀</p>
-<p>对于b剩下的每一位，为0则x2,为1则x2再加1(可把1看成0+1，为0表示一位，需要x2进位，+1需要该位变为1)</p>
-<blockquote>
-<p>a:1(2)    b:101(2)</p>
-<p>所以a的步骤为x2,x2+1</p>
-</blockquote>
-<p>那么如何将a变成b的前缀呢</p>
-<p>很简单，将a不断+1变成前缀即可（x2会加长a的二进制长度）</p>
-<p>要求：b的前缀一定要大于等于a</p>
-<blockquote>
-<p>a:1(2)  b:101(2)</p>
-<p>二进制a长度为1，对应b的前缀为1，刚好匹配</p>
-<p>a:11(2)  b:1001(2)</p>
-<p>二进制a的长度为2，对应b的前缀为10，小于a,所以对a,b进行处理使得前缀相等</p>
-<p>首先b的前缀为100，肯定大于11，那么a只需进行+1（进行x2操作一定会继续大于目前b的前缀，因为b前缀的前缀10小于11）</p>
-<p>所以11+1=100</p>
-</blockquote>
-<p>算法实现(c++)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有点难写，打靶</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1128,7 +1614,7 @@ x_{n}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1141,7 +1627,7 @@ x_{n}
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1227,59 +1713,6 @@ x_{n}
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

@@ -169,6 +169,693 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/18/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B8%85%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/18/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B8%85%E7%90%86/" class="post-title-link" itemprop="url">注册表清理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-18 14:54:21 / Modified: 15:00:45" itemprop="dateCreated datePublished" datetime="2021-02-18T14:54:21+08:00">2021-02-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.注册表</h1>
+<p>win系统下的数据库，负责win的启动，硬件驱动的装载，win应用程序的运行。</p>
+<h2 id="打开方法"><a class="header-anchor" href="#打开方法">¶</a>打开方法</h2>
+<p>WINDOWS/regedit</p>
+<h2 id="知识点"><a class="header-anchor" href="#知识点">¶</a>知识点</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/15/%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/15/%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C/" class="post-title-link" itemprop="url">以管理员身份运行</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-15 11:01:03 / Modified: 11:19:22" itemprop="dateCreated datePublished" datetime="2021-02-15T11:01:03+08:00">2021-02-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>0.来源知乎</h1>
+<h1>1.用户账户控制(UAC)策略</h1>
+<p>现代操作系统为了数据安全性设计的，即非root用户不能使用系统文件等等</p>
+<p>一般说来C上的软件需要管理员权限</p>
+<p>在<code>appdata</code>下，这是用户可使用的文件夹，可以无需管理员权限</p>
+<p>管理员权限在win下拥有最高的权限</p>
+<p><code>UAC</code>下，管理员用户直接双击软件，则软件获得的权限为降权处理。</p>
+<p>而有的软件标记为<strong>提权</strong>才能运行，所以这个时候就会跳出用户账户控制这个询问窗口了，一般来说安装软件等等都会跳出这个。</p>
+<p>当然软件可以主动申请<strong>提权</strong>,但是需要重新申请进程</p>
+<p>从目的上看，在一些恶意程序上没有实现保护的作用。</p>
+<p>1.读写文件，截屏，连接网络，模拟鼠标键盘不需要管理员权限</p>
+<p>系统仅仅保证两个账户资源尽量不共通</p>
+<p>某些勒索病毒会调用<code>vssadmin</code>来删除win的备份，此时UAC具有部分作用</p>
+<p>但是<code>WannaCry</code>勒索病毒在内核中，自带最高权限</p>
+<p>软件安装后门，或者木马，UAC并不会干涉</p>
+<p>2.不能制止弹窗，自启，垃圾文件制造等流氓行为</p>
+<p>系统对于每个用户提供了独立的配置，包括自启，管理员权限下，可以更改全局设置，影响所有用户。</p>
+<p>3.恶意软件拿到管理员权限会静默拿到管理员权限</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/10/%E6%89%8B%E6%9C%BA%E9%9F%B3%E4%B9%90%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/10/%E6%89%8B%E6%9C%BA%E9%9F%B3%E4%B9%90%E5%85%B1%E4%BA%AB%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">手机音乐共享方案</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-10 11:02:23 / Modified: 11:03:20" itemprop="dateCreated datePublished" datetime="2021-02-10T11:02:23+08:00">2021-02-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/scikit-learn2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/08/scikit-learn2/" class="post-title-link" itemprop="url">scikit-learn2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-08 20:34:41" itemprop="dateCreated datePublished" datetime="2021-02-08T20:34:41+08:00">2021-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-15 10:41:40" itemprop="dateModified" datetime="2021-02-15T10:41:40+08:00">2021-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>0.数学基础</h1>
+<h3 id="1-奇异值分解-SVD-singular-value-decomposition"><a class="header-anchor" href="#1-奇异值分解-SVD-singular-value-decomposition">¶</a>1.奇异值分解(SVD: singular value decomposition)</h3>
+<p>机器学习中广泛应用的算法</p>
+<p>1.特征值和特征向量</p>
+<p>$$Ax=\lambda x$$</p>
+<p>A是一个$n*n$的实对称矩阵，</p>
+<p>$x$是一个$n$维向量，</p>
+<p>则</p>
+<blockquote>
+<p>$\lambda$是矩阵A的特征值</p>
+<p>而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。</p>
+</blockquote>
+<p>特征值和特征向量的作用</p>
+<p>若$A$的所有特征值对应的n个特征向量线性无关，那么</p>
+<p>$A$=$W\Sigma W^{-1}$</p>
+<p>$W$是这些特征向量所张成的矩阵$n \times n$ 维矩阵，而$\Sigma$为这n个特征值为主对角线的$n \times n$维矩阵</p>
+<p>这样$A$的进行幂运算会有很大好处，当然也会有标准化。这里暂时不谈</p>
+<p>但问题是这个矩阵A必须为方阵</p>
+<h4 id="SVD"><a class="header-anchor" href="#SVD">¶</a>SVD</h4>
+<p>当$A$不是方阵时，我们定义$A$的SVD为</p>
+<blockquote>
+<p>$A$=$U\Sigma V^{T}$</p>
+</blockquote>
+<p>A为$ m \times n$的矩阵</p>
+<p>U为$ m \times m$的矩阵</p>
+<p>$\Sigma$为$ m \times n$的矩阵</p>
+<p>$V$为$n \times n$的矩阵</p>
+<p>为了得到这三个矩阵</p>
+<p>我们首先得到$A^{T}$$A$而这是一个n阶方阵</p>
+<p>对于n阶方阵，我们可以进行特征分解得到特征值和特征向量</p>
+<blockquote>
+<p>$(A^{T}A)$$v_{i}$=$\lambda_{i} v_{i}$</p>
+</blockquote>
+<h1>1.监督学习</h1>
+<p>1.回归问题下，根据完整数据推测一个结果。</p>
+<p>每个数据都有正确的结果进行验证</p>
+<p>或者分类问题下，预测离散的输出值。</p>
+<h1>2.无监督学习</h1>
+<p>无监督学习的数据标签没有或者都相同</p>
+<p>聚类算法：将这些数据分成不同簇</p>
+<p>例如Google的新闻主题识别</p>
+<h1>3.算法</h1>
+<h2 id="1-线性回归算法"><a class="header-anchor" href="#1-线性回归算法">¶</a>1.线性回归算法</h2>
+<blockquote>
+<p>training set + algorithm—&gt;hypothesis  本人仍然将其理解为模型</p>
+<p>test set - hypothesis —&gt;estimated result</p>
+</blockquote>
+<h3 id="代价函数"><a class="header-anchor" href="#代价函数">¶</a>代价函数</h3>
+<p>为模型选择合适的参数</p>
+<p>建模误差：预测值和实际值的差距</p>
+<p>线性回归中一般为平方误差函数</p>
+<p>通过梯度下降求出代价函数最小值</p>
+<p><img src="pic1" alt="preview"></p>
+<blockquote>
+<p>损失函数，代价函数(loss function)</p>
+<p>用于度量拟合程度，损失函数越小，模型拟合得越好</p>
+<p>风险函数(risk function)</p>
+<p>是损失函数的期望，由于输入的(X,Y)遵循联合分布，但是联合分布未知，无法计算，我们的历史数据训练集$f(X)$关于训练集的平均损失成为经验风险(empirical risk),即$\frac{1}{N}\sum_{i=1}^{N}L(y_{i},f(x_{i}))$,我们的目标是最小化经验风险，称为经验风险最小化</p>
+<p>但是，如果模型拟合得过好，反而会过度学习历史数据，真正预测的效果往往不好，这种情况就是过拟合</p>
+<p>一般来说，造成这样是因为其函数过于复杂，拟合因此很精准。</p>
+</blockquote>
+<h3 id="多变量线性回归"><a class="header-anchor" href="#多变量线性回归">¶</a>多变量线性回归</h3>
+<p>$h_{\theta}=\theta_{0}x_{0}+\theta_{1}x_{1}+\cdots+\theta_{n}x_{n}$</p>
+<p>参数为$n+1$维的向量，因此训练实例也为$n+1$维的向量，特征方程的维度为$m*(n+1$)维。</p>
+<p>一个训练实例的特征:{${x_{0},x_{1},\cdots,x_{n}}$}<br>
+$$<br>
+\left{<br>
+\begin{matrix}<br>
+x_{0}\<br>
+x_{1}\<br>
+\cdots\<br>
+x_{n}<br>
+\end{matrix}<br>
+\right}<br>
+$$</p>
+<p>特征方程：m个特征向量($n+1$)，所以为$m*(n+1)$维度</p>
+<p>所以可以简化为：</p>
+<p>$h_{\theta}(x)=\theta^{T}X$</p>
+<p>这样便获得参数矩阵</p>
+<h3 id="多变量线性回归的代价函数"><a class="header-anchor" href="#多变量线性回归的代价函数">¶</a>多变量线性回归的代价函数</h3>
+<p>$$J(\theta_{0},\theta_{1},\cdots,\theta_{n})=\frac{1}{2m}\sum_{i=1}<sup>{m}(h_{\theta}(x</sup>{i}-y<sup>{i})</sup>{2})$$</p>
+<p>代价函数为所有建模误差的平方和</p>
+<p>随机选择一系列的参数值，计算所有的预测结果后，在给所有的参数一个新的值，如此循环知道收敛</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computecost</span>(<span class="params">X,y,theta</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#power函数用于求数组的n次方，power(x1,x2);x2既可以是数字也可以是数组，但是x1,x2的列数要相同</span></span><br><span class="line">    innner=np.power(((X*theta.T)-y),<span class="number">2</span>)</span><br><span class="line">    <span class="comment">#数组中给定轴上的元素总和</span></span><br><span class="line">    <span class="keyword">return</span> np.<span class="built_in">sum</span>(inner)/(<span class="number">2</span>*<span class="built_in">len</span>(X))</span><br></pre></td></tr></table></figure>
+<h3 id="梯度下降"><a class="header-anchor" href="#梯度下降">¶</a>梯度下降</h3>
+<h4 id="特征缩放—标准化"><a class="header-anchor" href="#特征缩放—标准化">¶</a>特征缩放—标准化</h4>
+<p>面对多维特征问题时，我们要保证特征具有相近的尺度，梯度下降能够更快收敛。</p>
+<p>对于不同特征的尺度，如果不一致，会导致在一个维度上变化的幅度不能很大。</p>
+<p>因此我们要尝试把所有尺度缩放到-1和1之间</p>
+<p>$x_{n}=\frac{x_{n}-u_{n}}{s_{n}}$</p>
+<p>$u_{n}$是数据的平均值，$s_{n}$是标准差</p>
+<h4 id="学习率"><a class="header-anchor" href="#学习率">¶</a>学习率</h4>
+<p>是监督学习和深度学习的重要参数，影响目标函数能否收敛到局部最小值和何时收敛到最小值</p>
+<p>一般的学习率</p>
+<blockquote>
+<p>0.01</p>
+<p>0.03</p>
+<p>0.1</p>
+<p>0.3</p>
+<p>1</p>
+<p>3</p>
+<p>10</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/07/scikit-learn1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/07/scikit-learn1/" class="post-title-link" itemprop="url">scikit-learn1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-07 11:16:48 / Modified: 20:49:18" itemprop="dateCreated datePublished" datetime="2021-02-07T11:16:48+08:00">2021-02-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>0.前言</h1>
+<h2 id="关于模型和算法"><a class="header-anchor" href="#关于模型和算法">¶</a>关于模型和算法</h2>
+<p>个人理解：算法是对机器学习中数据的处理，模型是算法和数据共同生成的处理程序</p>
+<p>scikit learm并不是模型库，而是算法库，了解算法对模型的理解或许会有极大的提升。</p>
+<p>机器学习四个元素：</p>
+<p>1.数据</p>
+<p>2.任务</p>
+<p>3.性能度量</p>
+<p>4.模型</p>
+<h2 id="数据"><a class="header-anchor" href="#数据">¶</a>数据</h2>
+<h3 id="1-结构化数据和非结构化数据"><a class="header-anchor" href="#1-结构化数据和非结构化数据">¶</a>1.结构化数据和非结构化数据</h3>
+<p>数据具体类型</p>
+<p>结构数据：二维表结构进行逻辑表达和实现</p>
+<p>非结构化：图片，文字，声音，视频</p>
+<p>CNN可对图像数据做人脸识别和物体分类</p>
+<p>RNN可对语音数据做语音识别和机器对话，文字数据做阅读理解</p>
+<p>增强学习Akphago</p>
+<h3 id="2-原始数据和加工数据"><a class="header-anchor" href="#2-原始数据和加工数据">¶</a>2.原始数据和加工数据</h3>
+<p>数据表达形式</p>
+<h3 id="3-样本内数据和样本外数据"><a class="header-anchor" href="#3-样本内数据和样本外数据">¶</a>3.样本内数据和样本外数据</h3>
+<p>数据统计性质</p>
+<p>比如我们在大数据竞赛中的线下评分（样本内数据）</p>
+<p>线上评分(样本外数据)</p>
+<h1>1.分类器(classifier)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble import</span><br></pre></td></tr></table></figure>
+<h1>2.回归器(regressor)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble</span><br></pre></td></tr></table></figure>
+<h1>3.聚类(cluster)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.cluster import</span><br></pre></td></tr></table></figure>
+<h1>4.降维(decomposition)</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/05/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">遇到的一些算法(1)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-05 21:34:01 / Modified: 21:50:05" itemprop="dateCreated datePublished" datetime="2021-02-05T21:34:01+08:00">2021-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-除法实现"><a class="header-anchor" href="#1-除法实现">¶</a>1.除法实现</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static constexpr unsigned width(unit64-t n,unit64_t d&#x3D;10,unsigned w&#x3D;0)</span><br><span class="line">&#123;</span><br><span class="line">	if(n&gt;&#x3D;2&amp;&amp;d!&#x3D;0&amp;&amp;w&lt;19)</span><br><span class="line">	&#123;</span><br><span class="line">		return 1+width(n,d%n*10,w+1);</span><br><span class="line">	&#125;</span><br><span class="line">	reutrn 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的含义是输出d除以n的结果，w为位数</p>
+<p>w限制结果小于19，width是<code>std:chrono::hh_mm_ss</code>的成员,这个类模板会将用分数表示的duration转换为$1/10<sup>w$的倍数，用于输出，因此w需要小于19以避免$10</sup>w$溢出</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/04/%E6%9C%89%E8%B6%A3%E7%9A%84%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/04/%E6%9C%89%E8%B6%A3%E7%9A%84%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">有趣的算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-04 05:09:52" itemprop="dateCreated datePublished" datetime="2021-02-04T05:09:52+08:00">2021-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-15 10:42:47" itemprop="dateModified" datetime="2021-02-15T10:42:47+08:00">2021-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>1.问题</h1>
+<p>在知乎看到的一个有趣的问题</p>
+<blockquote>
+<p>若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少</p>
+</blockquote>
+<p>关于这个问题，由许多很好的方法</p>
+<h2 id="解法一"><a class="header-anchor" href="#解法一">¶</a>解法一</h2>
+<p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
+<p>考虑a变成b所需步骤</p>
+<p>我们不妨从最后一步开始入手</p>
+<p>对于目标b</p>
+<p>1.如果b是奇数，那么最后一步必然是+1操作</p>
+<p>2.如果b是偶数，要实现最少的步数，我们要尽量选择x2操作，但如果$b/2&lt;a$,那a只能经过+1操作变成b,那么最小步数就是b-a</p>
+<p>​	如果$b/2&gt;=a$</p>
+<p>​	$(a+x)\times 2$和$（a\times 2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
+<p>​	因此我们将$b/2$,再进入递归判断</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> fun(a,b<span class="number">-1</span>)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(b/<span class="number">2</span>&lt;a)</span><br><span class="line">        <span class="keyword">return</span> b-a;</span><br><span class="line">     <span class="keyword">return</span> fun(a,b/<span class="number">2</span>)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解法二"><a class="header-anchor" href="#解法二">¶</a>解法二</h2>
+<p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
+<blockquote>
+<p>x2相当于在二进制后加0</p>
+<p>+1相当于末尾加1</p>
+</blockquote>
+<p>为了最少的步骤，先将a进行+1操作将a变成b的前缀</p>
+<p>对于b剩下的每一位，为0则x2,为1则x2再加1(可把1看成0+1，为0表示一位，需要x2进位，+1需要该位变为1)</p>
+<blockquote>
+<p>a:1(2)    b:101(2)</p>
+<p>所以a的步骤为x2,x2+1</p>
+</blockquote>
+<p>那么如何将a变成b的前缀呢</p>
+<p>很简单，将a不断+1变成前缀即可（x2会加长a的二进制长度）</p>
+<p>要求：b的前缀一定要大于等于a</p>
+<blockquote>
+<p>a:1(2)  b:101(2)</p>
+<p>二进制a长度为1，对应b的前缀为1，刚好匹配</p>
+<p>a:11(2)  b:1001(2)</p>
+<p>二进制a的长度为2，对应b的前缀为10，小于a,所以对a,b进行处理使得前缀相等</p>
+<p>首先b的前缀为100，肯定大于11，那么a只需进行+1（进行x2操作一定会继续大于目前b的前缀，因为b前缀的前缀10小于11）</p>
+<p>所以11+1=100</p>
+</blockquote>
+<p>算法实现(c++)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有点难写，打靶</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/02/%E6%B7%B1%E5%A4%9C%E4%BF%AEBUG-%E7%BD%91%E7%AB%99%E6%8C%82%E6%8E%89%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,9 +907,10 @@
           <p>一个晚上，我熟悉地打开了网站</p>
 <p>发现居然响应时间过长，所以记录这第一次深夜修BUG的过程</p>
 <p>1.确定是不是真的挂了</p>
-<p>先ping一下，发现无法访问github.io</p>
+<p>先ping一下，<a target="_blank" rel="noopener" href="http://xn--github-245j660j8cnnfq0n6d3sza.io">发现无法访问github.io</a></p>
 <p>2.本地部署一下，修改端口后仍然发现访问被拒，应该是文件配置出了问题</p>
-<p>都说是IIS服务器问题 。需要在控制面板中打开 ，<br> 具体流程是 （以下是win10的）：打开控制面板 —— 程序和功能 —— 左侧栏的“启用或关闭Windows功能”，把“Internet Information Services”点上。</p>
+<p>都说是IIS服务器问题 。需要在控制面板中打开 ，<br>
+具体流程是 （以下是win10的）：打开控制面板 —— 程序和功能 —— 左侧栏的“启用或关闭Windows功能”，把“Internet Information Services”点上。</p>
 <p>这样处理后本地的确可以部署，但是仍然无法访问网址，github上也有显示提交文件</p>
 <p>目前初步判断为</p>
 <p>github page本身服务器访问有问题</p>
@@ -259,7 +947,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/" class="post-title-link" itemprop="url">计算机组成原理1 CPU</a>
+            <a href="/2021/01/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/" class="post-title-link" itemprop="url">计算机组成原理--硬件</a>
         </h2>
 
         <div class="post-meta">
@@ -276,7 +964,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-01 00:35:46" itemprop="dateModified" datetime="2021-02-01T00:35:46+08:00">2021-02-01</time>
+                <time title="Modified: 2021-03-09 16:41:01" itemprop="dateModified" datetime="2021-03-09T16:41:01+08:00">2021-03-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -299,20 +987,234 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-CPU工作方式"><a href="#1-CPU工作方式" class="headerlink" title="1.CPU工作方式"></a>1.CPU工作方式</h1><p>提取，解码，执行</p>
+          <h1>0.微型计算机</h1>
+<p>Micro Computer</p>
+<p>IC 元件外露的、用于控制的计算机</p>
+<h1>1.CPU</h1>
+<p>central processing unit</p>
+<p>提取，解码，执行</p>
 <p>CPU从RAM提取指令，然后解码该指令内容，最后执行。</p>
-<p>RAM:主存，随机存取存储器，为临时数据存储介质</p>
-<h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><p>控制单元：从内存提取指令并解码运算</p>
-<p>算数逻辑单元(ALU):处理算数和逻辑运算</p>
+<p>所有的数据处理都在CPU中</p>
+<p>(RAM:主存，随机存取存储器，为临时数据存储介质)</p>
+<p>CPU与其它部件的运行需要时钟信号</p>
+<blockquote>
+<p>就是由内含晶振的、 被称作时钟发生器的元件发出的电信号。</p>
+<p>晶振：一种利用石英晶体（ 又称水晶） 的压电效应产生高精度振荡频率的电子元件</p>
+</blockquote>
+<h5 id="Z80-CPU"><a class="header-anchor" href="#Z80-CPU">¶</a>Z80 CPU</h5>
+<p>一种8比特的CPU,CPU 上数据总线的条数， 或者 CPU 内部参与运算的寄存器的容量， 都可以作为衡量 CPU 性能的比特数。 在Z80 CPU 中， 无论是数据总线的条数还是寄存器的容量都是 8 比特。</p>
+<h2 id="构成"><a class="header-anchor" href="#构成">¶</a>构成</h2>
+<h3 id="控制单元-CU-control-unit-："><a class="header-anchor" href="#控制单元-CU-control-unit-：">¶</a>控制单元(CU,control unit)：</h3>
+<p>从内存提取指令并解码运算，协调参与机器指令执行的步骤序列</p>
+<h4 id="寄存器"><a class="header-anchor" href="#寄存器">¶</a>寄存器</h4>
+<p>暂存指令，数据，地址</p>
+<p>位于 CPU 和 I/O 中的数据存储器</p>
+<h5 id="标志寄存器"><a class="header-anchor" href="#标志寄存器">¶</a>标志寄存器</h5>
+<p>Flags Register</p>
+<p>用于在运算指令执行后，存储运算结果的某些状态</p>
+<p>一旦执行了算术运算、 逻辑运算、 比较运算等指令后， 标志寄存器并不会存放运算结果的值， 而是会把运算后的某些状态存储起来，例如运算结果是否为 0、 是否产生了负数、 是否有溢出（Overflow） ，发生了进位，数字大小的比较等。</p>
+<h5 id="累加器"><a class="header-anchor" href="#累加器">¶</a>累加器</h5>
+<p>累加器一般是运算的核心，连接的导线更多</p>
+<h5 id="PC（-Program-Counter，-程序计数器-）-程序指针"><a class="header-anchor" href="#PC（-Program-Counter，-程序计数器-）-程序指针">¶</a>PC（ Program Counter， 程序计数器 ） 程序指针</h5>
+<p>存储着指向 CPU 接下来要执行的指令的地址  (指令存储都在内存中)</p>
+<p>例如执行完10号地址开始的三字节指令后</p>
+<p>PC寄存器的值就会变成10+3=13（顺序执行）</p>
+<p>会随着时钟信号自动更新，每解释执行完一条指令， PC 寄存器的<br>
+值就会自动被更新为下一条指令的地址</p>
+<p>可以说程序就是依靠不断变化的 PC 寄存器的值运行起来的</p>
+<h6 id="程序的流程"><a class="header-anchor" href="#程序的流程">¶</a>程序的流程</h6>
+<p><strong>顺序执行</strong></p>
+<p>按照指令记录在内存中的先后顺序依次执行的一种流程。</p>
+<p><strong>条件分支</strong></p>
+<p>根据若干个条件的成立与否， 在程序的流程中产生若干个分支的一种流程</p>
+<p><strong>循环</strong></p>
+<p>在程序的特定范围内反复执行若干次的一种流程。</p>
+<p>使用了机器语言或汇编语言所提供的<strong>跳转指令</strong>， 就可以将<strong>PC 寄存器</strong>的值设置为任意的内存地址。 如果将它的值设为之前执行过的步骤所对应的内存地址， 那么就构成了循环  .通过条件分支返回到之前处理过的指令来实现循环的, 跳转到之后尚未处理的步骤就是条件分支</p>
+<p><strong>中断处理</strong></p>
+<p>程序的流程突然跳转到程序中的特定地方，这 样 的 地 方 被 称 为 中 断 处 理 例 程（ Routine） 或 是 中 断 处 理 程 序（ Handler），</p>
+<p>使正常的流程中断， 中断后再返回到之前流程的过程就是中断处理流程</p>
+<p>中断请求信号一般由I/O模块</p>
+<h5 id="SP寄存器"><a class="header-anchor" href="#SP寄存器">¶</a>SP寄存器</h5>
+<p>也叫作“栈顶指针”</p>
+<p>用于在内存中创建出一块称为“栈” 的临时数据存储区域</p>
+<h4 id="控制器"><a class="header-anchor" href="#控制器">¶</a>控制器</h4>
+<p>将内存中指令，数据读入寄存器，并根据指令控制计算机</p>
+<h3 id="算数逻辑单元-ALU-arithmetic-logic-unit"><a class="header-anchor" href="#算数逻辑单元-ALU-arithmetic-logic-unit">¶</a>算数逻辑单元(ALU,arithmetic logic unit)</h3>
+<p>处理算数和逻辑运算(AND OR NOT)</p>
+<h4 id="运算器"><a class="header-anchor" href="#运算器">¶</a>运算器</h4>
+<p>运算从内存读入寄存器的数据</p>
+<h3 id="时钟-clock"><a class="header-anchor" href="#时钟-clock">¶</a>时钟(clock)</h3>
+<p>对CPU内部操作与系统其它组件进行同步</p>
+<p>每隔一定时间就变换一次电压的高低</p>
+<p>输出时钟信号的元件叫作“时钟发生器”</p>
+<p>时钟信号的频率可以衡量 CPU 的运转速度</p>
 <p>从功能来看，可分为由电信号联通的四部分</p>
 <blockquote>
-<p>内存—&gt;寄存器</p>
+<p>内存–&gt;寄存器</p>
 </blockquote>
-<p>寄存器：暂存指令，数据，地址</p>
-<p>控制器：将内存中指令，数据读入寄存器，并根据指令控制计算机</p>
-<p>运算器：运算从内存读入寄存器的数据</p>
-<p>时钟：发出CPU开始计时的时钟信号</p>
+<h3 id="引脚"><a class="header-anchor" href="#引脚">¶</a>引脚</h3>
+<h4 id="地址总线引脚"><a class="header-anchor" href="#地址总线引脚">¶</a>地址总线引脚</h4>
+<p>引脚位置表示二进制数字中的位置，进而有$2^{n}$个，每个引脚连接一个数据存取单元(内存存储单元或I/O单元)</p>
+<h4 id="数据总线引脚"><a class="header-anchor" href="#数据总线引脚">¶</a>数据总线引脚</h4>
+<p>仍然表示二进制各个数字的位置，每个引脚代表一个bit的数据</p>
+<p>数据总线引脚数表示一次性处理的数据大小(bit)</p>
+<p>如大于这个，需要进行切分(如8位)</p>
+<p>在确定存取数据地址后</p>
+<h4 id="控制引脚"><a class="header-anchor" href="#控制引脚">¶</a>控制引脚</h4>
+<p>这些引脚上输入输出的电信号具有控制 IC 的功能</p>
+<h1>总线</h1>
+<p>传输数据，总线是连接到 CPU 中数据引脚、 地址引脚、 控制引脚上的电路的统称</p>
+<p>计算机部件之间也可以分散连接</p>
+<p>信息传送分类</p>
+<p>并行</p>
+<p>串行</p>
+<h2 id="片内总线"><a class="header-anchor" href="#片内总线">¶</a>片内总线</h2>
+<p>芯片内部的总线</p>
+<p>所以对寄存器的运算速度很快</p>
+<h2 id="系统总线"><a class="header-anchor" href="#系统总线">¶</a>系统总线</h2>
+<p>计算机各部件之间的信息传输线</p>
+<h3 id="地址总线"><a class="header-anchor" href="#地址总线">¶</a>地址总线</h3>
+<p>保存指令和数据的地址</p>
+<p>单向 与存储地址、 I/O地址有关</p>
+<p>由CPU输出数据地址</p>
+<p>取数据时，CPU将数据所在的存储位置送到地址线上</p>
+<p>地址线的位数和存储单元个数有关</p>
+<p>地址线为20根，则存储单元数为$2^{20}$(每个引脚表示一bit)</p>
+<h3 id="控制总线"><a class="header-anchor" href="#控制总线">¶</a>控制总线</h3>
+<p>数据，地址总线为各部件共享，控制总线确定哪一个获得使用权</p>
+<p>控制总线是个总称，有多少根，代表CPU对外部器件由多少种控制</p>
+<p>控制总线的宽度代表CPU对外部器件的控制能力</p>
+<p>二进制信号对所有连接在系统总线的设备行为进行同步</p>
+<p>时钟与 CPU 和系统总线相关的每一个操作都是由一个恒定速率的内部时钟脉冲来进行同步。机器指令的基本时间单位是机器周期 (machine cycle) 或时钟周期 (clock cycle)。</p>
+<p>一个时钟周期的时长是一个完整时钟脉冲所需要的时间</p>
+<p>执行一条机器指令最少需要 1 个时钟周期</p>
+<h4 id="控制信号"><a class="header-anchor" href="#控制信号">¶</a>控制信号</h4>
+<p>中断请求、总线请求</p>
+<p>存储器读、存储器写</p>
+<p>总线允许、中断确认</p>
+<h3 id="数据总线"><a class="header-anchor" href="#数据总线">¶</a>数据总线</h3>
+<p>各功能部件之间的数据信息</p>
+<p>CPU一次取得的大小和数据总线宽度（有多少根）有关</p>
+<p>双向 与机器字长、存储字长有关</p>
+<h3 id="I-O总线"><a class="header-anchor" href="#I-O总线">¶</a>I/O总线</h3>
+<p>CPU和IO设备中传输数据</p>
+<p>以CPU为主时的总线</p>
+<h2 id="通信总线"><a class="header-anchor" href="#通信总线">¶</a>通信总线</h2>
+<p>用于 计算机系统之间 或 计算机系统与其他系统（如控制仪表、移动通信等）之间的通信</p>
+<p><strong>并行通信总线</strong></p>
+<p><strong>串行通信总线</strong></p>
+<h2 id="指标"><a class="header-anchor" href="#指标">¶</a>指标</h2>
+<p><strong>总线宽度</strong></p>
+<p>数据总线 的根数</p>
+<p><strong>标准传输率</strong></p>
+<p>每秒传输的最大字节数（MBps）</p>
+<p><strong>时钟同步/异步</strong></p>
+<p>异步会慢一点，异步：与时钟不同步工作</p>
+<p><strong>总线复用</strong></p>
+<p>8086（数据线：16，地址线：20）后广泛使用，地址线 与 数据线 复用（一物多用，一个管脚既可以表示地址信号也可以表示数据信号，数据和地址信号因为不会同时出现，一般地址信号在前，数据信号在后（按址访问））</p>
+<p><strong>信号线数</strong></p>
+<p>地址线、数据线和控制线的 总和</p>
+<p><strong>总线控制方式</strong></p>
+<p>并发、自动、仲裁、逻辑、计数</p>
+<p><strong>负载能力</strong></p>
+<h2 id="总线标准"><a class="header-anchor" href="#总线标准">¶</a>总线标准</h2>
+<p>有许多</p>
+<p>RS-232</p>
+<p>USB(扩展能力很强)</p>
+<h2 id="总线结构"><a class="header-anchor" href="#总线结构">¶</a>总线结构</h2>
+<h3 id="单总线结构"><a class="header-anchor" href="#单总线结构">¶</a>单总线结构</h3>
+<p>总线被各个部件都使用</p>
+<h3 id="多总线结构"><a class="header-anchor" href="#多总线结构">¶</a>多总线结构</h3>
+<p>I/O设备速度较慢，因此从总线分离出来</p>
+<h4 id="双总线结构"><a class="header-anchor" href="#双总线结构">¶</a>双总线结构</h4>
+<p>I/O通过通道（特殊处理器，由CPU进行控制）连接总线</p>
+<h4 id="三总线结构"><a class="header-anchor" href="#三总线结构">¶</a>三总线结构</h4>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E4%B8%89%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84" alt="image-20210309153440710"></p>
+<p>Cache出现后加装局部总线<img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E4%B8%89%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%841" alt="image-20210309153541312"></p>
+<h4 id="四总线结构"><a class="header-anchor" href="#四总线结构">¶</a>四总线结构</h4>
+<p>增加了高速总线，用于外设</p>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E5%9B%9B%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84" alt="image-20210309153748553"></p>
+<h2 id="总线控制（重点）"><a class="header-anchor" href="#总线控制（重点）">¶</a>总线控制（重点）</h2>
+<p>总线来连接多个部件，需要确定发送信息</p>
+<h3 id="总线判优控制"><a class="header-anchor" href="#总线判优控制">¶</a>总线判优控制</h3>
+<p>主设备：对总线有控制权，总线信息传送由主设备启动</p>
+<p>从设备：响应主设备发来的总线命令</p>
+<p>主设备同时要使用总线，由总线控制器进行判断谁获取总线控制权</p>
+<h4 id="集中式"><a class="header-anchor" href="#集中式">¶</a>集中式</h4>
+<p>控制逻辑集中在一处(如CPU)</p>
+<h5 id="优先权仲裁方式"><a class="header-anchor" href="#优先权仲裁方式">¶</a>优先权仲裁方式</h5>
+<p>BS:总线忙</p>
+<p>BR:总线请求</p>
+<p>BG:总线同意</p>
+<h6 id="链式查询"><a class="header-anchor" href="#链式查询">¶</a>链式查询</h6>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861.assets/%E9%93%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F" alt="image-20210309160623001"></p>
+<p>BG串行经过接口，BG到达的接口若有总线请求，BG信号不再下传</p>
+<p>建立BS信号（占用了总线）</p>
+<p>链式查询中，总线控制部件最近优先级最高</p>
+<p>优点：简易，容易扩充设备，</p>
+<p>缺点</p>
+<p>总线控制部件不能直接确定是哪一台外设发出的请求信号，需要一个个去询问</p>
+<p>电路故障影响大，优先级低的设备很难获得请求</p>
+<p>不是按照事情轻重缓急进行处理</p>
+<h6 id="计数器定时查询"><a class="header-anchor" href="#计数器定时查询">¶</a>计数器定时查询</h6>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E8%AE%A1%E6%97%B6%E5%99%A8%E5%AE%9A%E6%97%B6%E6%9F%A5%E8%AF%A2" alt="image-20210309161227480"></p>
+<p>多了设备地址线，少了BG，多了计数器（总线控制部件中）</p>
+<p>I/O接口从0（设备地址号）开始增加编号</p>
+<p>1.BR线传来总线请求信号</p>
+<p>判断条件：总线未被使用(BS=0)</p>
+<p>2.计数器开始计数，通过设备地址线发出一组地址信号</p>
+<p>3.请求占用总线的设备地址和计数值一致，获得总线使用权</p>
+<p>4.终止计数查询</p>
+<p><strong>特点</strong></p>
+<p>计数从0开始：</p>
+<p>优先级按照0~n降序排列</p>
+<p>计数器可以按照上次计数终止点开始，循环计数：</p>
+<p>优先级相等</p>
+<p>初始值由程序设定：</p>
+<p>优先级可以改变</p>
+<p>设备地址线：$log_{2}(n)$(n为设备数，二进制表示n,每一条代表一位)</p>
+<h6 id="独立请求方式"><a class="header-anchor" href="#独立请求方式">¶</a>独立请求方式</h6>
+<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E7%8B%AC%E7%AB%8B%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F" alt="image-20210309162355814">每台设备都有总线请求BR和总线同意BG</p>
+<p>总线控制部件有排队电路，通过优先次序确定响应哪台设备</p>
+<p>特点：</p>
+<p>响应速度快，可通过程序控制优先级</p>
+<p>但控制线比较多，总线控制更为复杂</p>
+<h4 id="分布式"><a class="header-anchor" href="#分布式">¶</a>分布式</h4>
+<p>逻辑控制分散在与总线连接的各个部件或设备</p>
+<h1>内存存储单元</h1>
+<p>计算机所处理的数据都存储在了被称为内存的 IC（ Integrated<br>
+Circuit， 集成电路） 中。 在一般的个人计算机中， 内存内部被分割成了若干个数据存储单元， <strong>每个单元可以存储 8 比特的数据（ 8 比特 = 1 字节）</strong>。</p>
+<p><strong>每个存储单元从0开始顺序编号</strong></p>
+<p>指令和数据没有区别</p>
+<p>高级语言的变量即是把一块内存空间进行命名</p>
+<p>在程序运行时保存指令与数据</p>
+<p>接受来自CPU的数据请求，将数据从RAM传输到CPU,并从CPU传输到内存</p>
 <p>反汇编：机器语言转化为汇编语言（为什么是汇编语言呢？因为机器语言的指令和汇编语言的指令是一一对应的）</p>
+<p>标识内存或I/O存储单元的数字称作地址</p>
+<h3 id="随机存储器-RAM"><a class="header-anchor" href="#随机存储器-RAM">¶</a>随机存储器(RAM)</h3>
+<p>可读可写，必须带电存储</p>
+<h3 id="只读存储器-ROM"><a class="header-anchor" href="#只读存储器-ROM">¶</a>只读存储器(ROM)</h3>
+<p>只读</p>
+<p>关机内容不丢失</p>
+<h2 id="CPU对存储器的读写"><a class="header-anchor" href="#CPU对存储器的读写">¶</a>CPU对存储器的读写</h2>
+<p>CPU读写需要和外部器件进行交互</p>
+<p>1.存储单元的地址（地址线）</p>
+<p>2.对什么器件进行操作（读还是写）（控制线）</p>
+<p>3.数据信息（数据线）</p>
+<p>eg:</p>
+<blockquote>
+<p>CPU通过地址线将地址信息发出</p>
+<p>CPU通过控制线对内存发出读命令，选中存储器芯片，通知它</p>
+<p>存储器将对应地址的数据通过数据线送到CPU</p>
+</blockquote>
+<h2 id="存储顺序"><a class="header-anchor" href="#存储顺序">¶</a>存储顺序</h2>
+<p>在将一个 2 字节的数据存储到内存时<br>
+存储顺序是低 8 位在前、 高 8 位在后（ 也就是逆序存储）。 这样的存储顺序叫作“小端序”（ Little Endian）， 与此相反， 将数据由高位到低位<br>
+顺序地存储到内存的存储顺序则叫作“大端序”（ Big Endian）。 根据<br>
+CPU 种类的不同， 有的 CPU 使用大端序， 有的 CPU 使用小端序</p>
+<h2 id="引脚-v2"><a class="header-anchor" href="#引脚-v2">¶</a>引脚</h2>
+<p>和CPU一样</p>
+<p>需要和CPU对应的引脚相连</p>
 
       
     </div>
@@ -380,11 +1282,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-赛题分析"><a href="#1-赛题分析" class="headerlink" title="1.赛题分析"></a>1.赛题分析</h1><p><a target="_blank" rel="noopener" href="https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2">https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2</a></p>
+          <h1>1.赛题分析</h1>
+<p><a target="_blank" rel="noopener" href="https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2">https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2</a></p>
 <p>数据层面：城市路网，共享单车，路段的道路使用情况</p>
 <p>数据集：</p>
 <p>1.共享单车轨迹数据（2020.12.21-2020.12.25）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -417,963 +1319,11 @@
 <td>LONGITUDE</td>
 <td>经度</td>
 <td>118.124379562</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>自开始使用，每15S进行一次定位，然后根据定位判断单车的行进速度</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/SPFA%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/SPFA%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">SPFA算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-31 13:04:14 / Modified: 15:27:52" itemprop="dateCreated datePublished" datetime="2021-01-31T13:04:14+08:00">2021-01-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-简介—最短路问题"><a href="#0-简介—最短路问题" class="headerlink" title="0.简介—最短路问题"></a>0.简介—最短路问题</h1><p>BF（bellman-Ford ）算法：适合有向图,不是字符串的暴力匹配算法。</p>
-<blockquote>
-<p>负权边：权重为负数的边</p>
-<p>负权环：权重和为负数的环</p>
-</blockquote>
-<p>用于计算起点到各个节点的最短距离，相比Dijkstra,允许有负权边（Dijkstra算法不允许负权边的出现）。但是复杂度为O(VE)</p>
-<p>同时也可以检测负权环</p>
-<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>对于不存在<strong>负权环</strong>的图，求解最短路径：</p>
-<p>利用已经找到的最短路径更新其它点的<code>dist[]</code></p>
-<p>顶点数：<code>n</code></p>
-<p>边数：<code>m</code></p>
-<p>源点：<code>s</code></p>
-<p>数组<code>dist[i]</code>记录从源点到顶点i的最短路径</p>
-<p><code>dist[s]</code>初始化为<code>0</code>,其余初始化为<code>MAX</code></p>
-<p>循环该操作<code>n-1</code>次:</p>
-<blockquote>
-<p>对于边(u,v),权值为w(u,,v)</p>
-<p>如果dist[u]+w(u,v)&lt;dist[v]</p>
-<p>则让dist[v]=dist[u]+w(u,v)</p>
-</blockquote>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>我们先来看看Dijsktra算法</p>
-<p>同样初始化</p>
-<blockquote>
-<p>选取距离最近的点作为起始点即u</p>
-</blockquote>
-<p>循环该操作n-1次</p>
-<blockquote>
-<p>对于边(u,v),权值为w(u,,v)</p>
-<p>如果dist[u]+w(u,v)&lt;dist[v]</p>
-<p>则让dist[v]=dist[u]+w(u,v)</p>
-</blockquote>
-<p>Dijsktra算法本质是局部贪心</p>
-<p>其实和BF算法看起来区别不大</p>
-<h2 id="检测负权环"><a href="#检测负权环" class="headerlink" title="检测负权环"></a>检测负权环</h2><p>在求解最短路径的n-1次循环基础上，再进行第n次循环</p>
-<p>若存在</p>
-<blockquote>
-<p>dist[u]+w(u,v)&lt;dist[v]</p>
-</blockquote>
-<p>则该图存在负权回路</p>
-<p>而SPFA在此基础上进行了简单的优化</p>
-<p>平均复杂度为O(KM)</p>
-<p>SPFA可以求最短路，还可求负权边，负环，判环问题</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">模拟退火算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-31 01:59:51 / Modified: 02:12:05" itemprop="dateCreated datePublished" datetime="2021-01-31T01:59:51+08:00">2021-01-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>本来不应该这么快就直接写这个，但是遇到了就直接出手了</p>
-<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h1><p>一种优化算法，模拟物理退火过程</p>
-<blockquote>
-<p>先在一个高温状态下，逐渐退火，在每个温度下慢慢冷却，最后到达物理基态（算法找到了最优解）</p>
-</blockquote>
-<p>例如贪心算法下的最优解时局部最优解，那么如何获得整体最优解咧？</p>
-<p>1.设定当前最优解</p>
-<p>即退火的初始温度，随机生成一个初始解</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-30 18:06:08" itemprop="dateCreated datePublished" datetime="2021-01-30T18:06:08+08:00">2021-01-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-25 10:59:28" itemprop="dateModified" datetime="2021-02-25T10:59:28+08:00">2021-02-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-计划"><a href="#0-计划" class="headerlink" title="0.计划"></a>0.计划</h1><p>大概需要3-4天更新完成，由于第一次接触，需要查阅大量书籍，所以进度慢也是可以理解的</p>
-<h1 id="1-计算机网络-整体体系按照《网络是如何连接的》"><a href="#1-计算机网络-整体体系按照《网络是如何连接的》" class="headerlink" title="1.计算机网络(整体体系按照《网络是如何连接的》)"></a>1.计算机网络(整体体系按照《网络是如何连接的》)</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><img src="/2021/01/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B4%E4%BD%93%E5%9B%BE.png" class="" title="this is an image">
-<p>计算机网络是有大量设备（软件和硬件）相互连接组成，因此需要将信息<strong>准确</strong>发送给通信对象</p>
-<p>现代互联网起源于美国的因特网</p>
-<p>网络是由<strong>结点</strong>(node)<sup><a href="#fn_0" id="reffn_0">0</a></sup>和<strong>链路</strong>(link)组成</p>
-<p>互联网即是网络的网络(network of networks)<sup><a href="#fn_1" id="reffn_1">1</a></sup><strong>网络把计算机连在一起，而因特网把网络连接起来</strong></p>
-<p>连接在因特网的计算机称为<strong>主机</strong>(host)</p>
-<p>ISP(internet service provider):互联网服务提供商(中国移动，电信等等)</p>
-<p>ISP从互联网管理机构申请到IP地址，拥有自造的通信线路(小型ISP向大型ISP租借)，以及路由器</p>
-<p>网费指向ISP付钱租借IP,并且通过他们进入互联网</p>
-<p>ISP有三层结构(主干，地区，本地)</p>
-<p>IXP(Internet eXchange Point)互联网交换点：允许两个网络直接相连并且交换分组，不需要通过第三个网络来转发分组</p>
-<p><strong>协议</strong>：通信操作的规则称为协议</p>
-<p>表单：网页中文本框，复选框等能够输入数据的部分</p>
-<h3 id="因特网的发展"><a href="#因特网的发展" class="headerlink" title="因特网的发展"></a>因特网的发展</h3><p>1.单个网络ARPANET向互联网发展</p>
-<p>TCP/IP协议称为ARPANET的标准协议</p>
-<p>2.建成了三级结构的因特网。<br> 主干网、 地区网和校园网（或企业网）</p>
-<p>3.逐渐形成了多层次 ISP (Internet Service Provider)结构的因特网  </p>
-<p>4.同时万维网 WWW(World Wide Web)<sup><a href="#fn_2" id="reffn_2">2</a></sup>广泛使用在因特网上  </p>
-<p>而注意网址中的www只是<strong>web服务器</strong>的一种命名，并不是万维网</p>
-<p>注意中国<code>.com.cn</code>,<code>.net.cn</code>一般不开放给个人注册</p>
-<p>软件间的通信：</p>
-<p>1.应用程序委托操作系统控制网络，发送信息</p>
-<h2 id="2-计算机网络的构成"><a href="#2-计算机网络的构成" class="headerlink" title="2.计算机网络的构成"></a>2.计算机网络的构成</h2><p>信息传送机制+网络应用程序</p>
-<p>边缘部分：主机组成(用户直接使用)</p>
-<p>核心部分：网络和路由器(提供交换)</p>
-<h3 id="边缘部分"><a href="#边缘部分" class="headerlink" title="边缘部分"></a>边缘部分</h3><h4 id="主机通信"><a href="#主机通信" class="headerlink" title="主机通信"></a>主机通信</h4><p>主机的进程(应用程序)进行通信</p>
-<h5 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h5><p>C/S(client/server)</p>
-<p>客户：服务请求方，需要知晓服务器地址</p>
-<p>服务器：服务提供方，时刻运行，被动接收指令</p>
-<p>P2P(peer to peer)</p>
-<p>对等用户：既是客户也是服务器</p>
-<h3 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h3><h5 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h5><p>建立连接-通话-释放连接</p>
-<p>通话的时间内，始终占用端到端的通信资源</p>
-<h5 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h5><p><strong>报文</strong>(message)：发送的整块数据</p>
-<p><strong>包</strong>(package):首部(控制信息)+数据段</p>
-<p>传输时断断续续占用通信，而且占用的是两个结点之间，不是端对端，而且不用专门建立和释放连接，传输效率更高</p>
-<h3 id="类别："><a href="#类别：" class="headerlink" title="类别："></a>类别：</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>WAN(wide area network)</p>
-<p>广域网 如其名</p>
-<p>MAN(metropolitan area network)</p>
-<p>城域网   (以太网是一种技术，城域网常用)</p>
-<p>LAN(local area network)</p>
-<p>局域网</p>
-<p>PAN(Personal area network)</p>
-<p>个人网，通过无线技术连接</p>
-<h4 id="使用者"><a href="#使用者" class="headerlink" title="使用者"></a>使用者</h4><p>公用网</p>
-<p>专用网</p>
-<h3 id="网络体系结构"><a href="#网络体系结构" class="headerlink" title="网络体系结构"></a>网络体系结构</h3><p>应用层：</p>
-<p>应用进程间的交互</p>
-<p>域名系统DNS</p>
-<p>万维网体现的HTTPS</p>
-<p>电子邮件SMTP</p>
-<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><p>路由器：对包进行转发的设备，即进行分组交换</p>
-<p>集线器：对包进行转发的设备，分为中继式，交换式</p>
-<h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><p>网络应用程序（浏览器等）</p>
-<h3 id="1-浏览器根据输入的网址进行解析，生成请求消息"><a href="#1-浏览器根据输入的网址进行解析，生成请求消息" class="headerlink" title="1.浏览器根据输入的网址进行解析，生成请求消息"></a>1.浏览器根据输入的网址进行解析，生成请求消息</h3><p>网址：<code>URL(Uniform Resource Locator)</code>统一资源定位符</p>
-<p>先对URL进行解析，然后根据HTTP协议访问Web服务器</p>
-<p>解释：</p>
-<h4 id="根据访问目标"><a href="#根据访问目标" class="headerlink" title="根据访问目标"></a>根据访问目标</h4><h5 id="web"><a href="#web" class="headerlink" title="web"></a>web</h5><p>Web服务器：<code>http</code>，代表了不同的访问方式</p>
-<p><code>http</code>代表了http访问协议，超文本传送协议</p>
-<p><code>user</code>:用户名(可省略)</p>
-<p><code>password</code>:密码(可省略)</p>
-<p><code>www.codezyu.com</code>:域名</p>
-<p><code>80</code>：端口号(可省略)</p>
-<p><code>dir/file1.htm</code>：路径名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;user:password@www.codezyu.com:80&#x2F;dir&#x2F;file1.htm</span><br></pre></td></tr></table></figure>
-<h5 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h5><p>FTP服务器:<code>ftp</code> (file transfer protocol)文件传送协议，用于上传，下载文件时使用的协议，ftp也指使用ftp协议来传送文件的程序(一般文件管理器就可以，但是据c++助教老师说，文件可能有损坏，推荐了8uftp)</p>
-<p>结构和web差不多，只是有几个不太一样</p>
-<p><code>ftp.codezyu.com</code>:ftp服务器域名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp:&#x2F;&#x2F;user:password@ftp.codezyu.com:21&#x2F;dir&#x2F;file1.htm</span><br></pre></td></tr></table></figure>
-<h5 id="读取客户端本地文件"><a href="#读取客户端本地文件" class="headerlink" title="读取客户端本地文件"></a>读取客户端本地文件</h5><p><code>file</code>：代表访问方法</p>
-<p><code>localhost</code>:计算机名(可省略)</p>
-<p><code>c:/path/file1.zip</code>:路径名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:&#x2F;&#x2F;localhost&#x2F;c:&#x2F;path&#x2F;file1.zip</span><br></pre></td></tr></table></figure>
-<h5 id="mailto"><a href="#mailto" class="headerlink" title="mailto"></a>mailto</h5><p>电子邮件：<code>mailto</code>(需要有正确的电子邮件软件)</p>
-<p><code>tone@qq.com</code>:邮件地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mailto:tone@qq.com</span><br></pre></td></tr></table></figure>
-<h5 id="新闻组文章-不知含义"><a href="#新闻组文章-不知含义" class="headerlink" title="新闻组文章(不知含义)"></a>新闻组文章(不知含义)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">news:comp.protocols.tcp-ip</span><br></pre></td></tr></table></figure>
-<h4 id="URL解析"><a href="#URL解析" class="headerlink" title="URL解析"></a>URL解析</h4><h5 id="1-省略文件名"><a href="#1-省略文件名" class="headerlink" title="1.省略文件名"></a>1.省略文件名</h5><p>以<code>/</code>结尾表示文件名省略，一般会访问设置的默认文件名，多为index.html或者default.html</p>
-<p>注意根目录没有名字，一般直接用<code>/</code>来进行表示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.codezyu.com</span><br></pre></td></tr></table></figure>
-<p>由于结尾的<code>/</code>都省略了，一般代表访问根目录下的设置的默认文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.codezyu.com&#x2F;file</span><br></pre></td></tr></table></figure>
-<p>末尾没有<code>/</code>一般当作文件名处理，但是习惯上大家不会写</p>
-<p>所以，file为目录名则解析为目录，否则解析为文件<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
-<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>HyperText Transfer Protocol 超文本传输协议</p>
-<p>指双方间传输超文本数据的规范</p>
-<p>客户端向服务器发送请求消息（包括URI<sup><a href="#fn_4" id="reffn_4">4</a></sup>和方法<sup><a href="#fn_5" id="reffn_5">5</a></sup>，同时还包括附加信息的头字段，但是头字段可以省略）</p>
-<p>服务器收到请求消息会进行解析，并且把结果放在响应消息中，响应消息的开头会有状态码，状态码含义如下</p>
-<h5 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h5><p>1.超文本：文字，图片，视频，超链接（能够从一个超文本跳转到另一个超文本）的混合体</p>
-<p>2.传输：HTTP为双向协议，数据可以相互传输</p>
-<p>3.协议：计算机之间交流的规范，以及相关控制和错误处理方式</p>
-<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP.png" alt="image-20210131114157104"></p>
-<h5 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h5><div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th>含义</th>
-<th>状态码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1xx</td>
-<td>提示信息，当前为协议处理的中间状态</td>
-<td></td>
-</tr>
-<tr>
-<td>2xx</td>
-<td>成功，报文被收到并且被正确处理</td>
-<td>200(非head请求，返回的响应头部有body数据)，204（响应头没有body数据），206（用于分块，或者端点续传，返回的body数据只是其中的一部分）</td>
-</tr>
-<tr>
-<td>3xx</td>
-<td>重定向，资源位置发生变动，需要客户端重新发送请求</td>
-<td>301（永久重定向，请求的资源已经不在了），302（临时重定向，请求的资源还在），304</td>
-</tr>
-<tr>
-<td>4xx</td>
-<td>客户端错误，请求报文有误，服务器无法处理</td>
-<td>400，403，404</td>
-</tr>
-<tr>
-<td>5xx</td>
-<td>服务器错误，服务器在请求时内部发生了错误</td>
-<td>500,501,502,503</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="2-浏览器根据域名向DNS服务器查询Web服务器IP地址"><a href="#2-浏览器根据域名向DNS服务器查询Web服务器IP地址" class="headerlink" title="2.浏览器根据域名向DNS服务器查询Web服务器IP地址"></a>2.浏览器根据域名向DNS服务器查询Web服务器IP地址</h3><p>浏览器不能将消息发到网络，需要操作系统，操作系统发送消息需要IP地址<sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
-<p>我们需要根据域名查询IP地址</p>
-<h4 id="IP地址（逻辑地址）"><a href="#IP地址（逻辑地址）" class="headerlink" title="IP地址（逻辑地址）"></a>IP地址（逻辑地址）</h4><p>局域网基于TCP/IP设计</p>
-<p>为互联网网络和主机分配一个逻辑地址，来屏蔽物理地址</p>
-<p>物理地址（链路地址，MAC地址,LAN地址）：节点的本地地址</p>
-<p>端口地址：赋予进程的标识符为端口地址</p>
-<h5 id="IP地址解释："><a href="#IP地址解释：" class="headerlink" title="IP地址解释："></a>IP地址解释：</h5><p>32bit,4组，十进制，网络号+主机号</p>
-<blockquote>
-<p>10.11.12.13</p>
-</blockquote>
-<h5 id="子网掩码："><a href="#子网掩码：" class="headerlink" title="子网掩码："></a>子网掩码：</h5><p>子网掩码(网络掩码，地址掩码，子网络遮罩)：划分IP地址为网络地址和主机地址，并说明该IP地址在局域网<sup><a href="#fn_6" id="reffn_6">6</a></sup>还是远程网<sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
-<h6 id="1-与IP地址相同格式"><a href="#1-与IP地址相同格式" class="headerlink" title="1.与IP地址相同格式"></a>1.与IP地址相同格式</h6><blockquote>
-<p>左边为网络位，用1表示</p>
-<p>右边为主机位，用0表示</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.1&#x2F;255.255.255.0</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<p>前面为IP地址主体，右边为子网掩码</p>
-<p>255(10)为11111111(2),有8个1，这样对应的IP地址左边$8*3=24$位为号</p>
-<p>而0代表8位为0，右边8位为主机号</p>
-<p>子网掩码不是随便的，一般有限制，才百来种</p>
-<p>对于</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">255.255.255.0</span><br></pre></td></tr></table></figure>
-<p>最后可以在0-255变化，因此可以提供254个IP地址（主机号不能全为0<sup><a href="#fn_8" id="reffn_8">8</a></sup>和1<sup><a href="#fn_9" id="reffn_9">9</a></sup>）</p>
-<h6 id="2-网络号比特号"><a href="#2-网络号比特号" class="headerlink" title="2.网络号比特号"></a>2.网络号比特号</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.11.12.13&#x2F;24</span><br></pre></td></tr></table></figure>
-<p>24表示IP地址24位为网络号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.11.12.0&#x2F;24</span><br></pre></td></tr></table></figure>
-<p>主机号部分全为0<sup><a href="#fn_8" id="reffn_8">8</a></sup>,此时代表整个子网，而不是一台计算机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.11.12.255&#x2F;24</span><br></pre></td></tr></table></figure>
-<p>主机号部分全为1<sup><a href="#fn_9" id="reffn_9">9</a></sup>，代表对整个子网进行广播</p>
-<h3 id="把消息委托给操作系统发送给Web服务器-N-参考书籍"><a href="#把消息委托给操作系统发送给Web服务器-N-参考书籍" class="headerlink" title="把消息委托给操作系统发送给Web服务器,N.参考书籍"></a>把消息委托给操作系统发送给Web服务器,N.参考书籍</h3><p>《网络是如何连接的》</p>
-<p>老师课件</p>
-<p>《图解TCP/IP》</p>
-<p>《图解HTTP》</p>
-<p><sup><a href="#fn_4" id="reffn_4">4</a></sup>:存放网页数据的文件名(eg:  file.html)和CGI（对Web服务器程序调用其它程序的规则）程序(program1,cgi)的文件名</p>
-<p><sup><a href="#fn_6" id="reffn_6">6</a></sup>:local area network 简称LAN,（想想物理地址别名）又称内网，覆盖局部区域的网络<br><sup><a href="#fn_7" id="reffn_7">7</a></sup>:internet protocol 即IP,表示因特网协议</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-1-%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-1-%E5%9B%BE%E7%89%87%E8%BD%AC%E5%AD%97%E7%AC%A6%E7%94%BB/" class="post-title-link" itemprop="url">编程实战(1)图片转字符画</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-30 14:57:32 / Modified: 15:12:43" itemprop="dateCreated datePublished" datetime="2021-01-30T14:57:32+08:00">2021-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-pillow库及其原理"><a href="#1-pillow库及其原理" class="headerlink" title="1.pillow库及其原理"></a>1.pillow库及其原理</h1><p>python图像处理库</p>
-<p>原理很简单：将RGB转换为灰度值（公式会复杂一点）</p>
-<p>$gray =0.2126<em>r+0.7152</em>g+0.0722*b$</p>
-<p>再将灰度值和字符联系起来即可</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-30 12:27:30 / Modified: 13:42:37" itemprop="dateCreated datePublished" datetime="2021-01-30T12:27:30+08:00">2021-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><p>正则表达式(regular expression)</p>
-<p>意为约定的匹配规则,一种文本处理工具，我们能够通过它分析和描述文本。</p>
-<p>例如我们常常用它来进行查找文字内容</p>
-<p>支持的语言：java ,c#(当前较为重要的语言)</p>
-<h1 id="2-学习"><a href="#2-学习" class="headerlink" title="2.学习"></a>2.学习</h1><p>结合例子学习会好很多</p>
-<p>例1：windows下使用<code>*.txt</code>能够选择多个文件，这个通配符中，星号表示任意文本，问号表示任意单个字符</p>
-<p><code>*.txt</code>意为任意文本开头，.txt结尾的所有文件</p>
-<p>正则表达式也能提供这样的描述能力</p>
-<h3 id="正则表达式构成"><a href="#正则表达式构成" class="headerlink" title="正则表达式构成"></a>正则表达式构成</h3><p>1.特殊字符，称为元字符例如文件名中的*</p>
-<p>2.其它字符，称为文字，或是普通文本字符</p>
-<p>正则表达式和文件名模式不同在于，正则拥有更多的元字符</p>
-<p>例2：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(From|Subject):</span><br></pre></td></tr></table></figure>
-<p>在e-mail中上面语句用来寻找：”From:”和”Subject:”开头的行</p>
-<p>而^,(),|都是特殊字符，</p>
-<p>下面介绍的都是元字符</p>
-<h4 id="一些元字符"><a href="#一些元字符" class="headerlink" title="一些元字符"></a>一些元字符</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>元字符</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td style="text-align:center">匹配除换行符以外的任意字符，在字符组外才是元字符</td>
-</tr>
-<tr>
-<td>\w</td>
-<td style="text-align:center">匹配字母，数字，下划线，汉字</td>
-</tr>
-<tr>
-<td>\s</td>
-<td style="text-align:center">匹配空白符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td style="text-align:center">匹配数字</td>
-</tr>
-<tr>
-<td>\b</td>
-<td style="text-align:center">匹配单词的开始或者结束</td>
-</tr>
-<tr>
-<td>^</td>
-<td style="text-align:center">匹配字符串的开始</td>
-</tr>
-<tr>
-<td>$</td>
-<td style="text-align:center">匹配字符串的结束</td>
-</tr>
-<tr>
-<td>\\&lt;</td>
-<td style="text-align:center">单词的起始位置</td>
-</tr>
-<tr>
-<td>\></td>
-<td style="text-align:center">单词的结束位置</td>
-</tr>
-<tr>
-<td>[]</td>
-<td style="text-align:center">区间，字符组，表示列出的任意字符</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>例3：</p>
-<p>就表示以From开头的字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^From</span><br></pre></td></tr></table></figure>
-<p>匹配三位数的数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d\d\d$</span><br></pre></td></tr></table></figure>
-<p>匹配1开头的三位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^1\d\d$</span><br></pre></td></tr></table></figure>
-<h4 id="重复限定符"><a href="#重复限定符" class="headerlink" title="重复限定符"></a>重复限定符</h4><p>重复的元字符不太方便，可以把重复部分用限定符代替即可</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">限定符</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:center">重复&gt;=0次</td>
-</tr>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:center">重复&gt;=1次</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:center">重复0或1次，一般表示允许出现这个字符</td>
-</tr>
-<tr>
-<td style="text-align:center">{n}</td>
-<td style="text-align:center">重复n次</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,}</td>
-<td style="text-align:center">重复n次或者更多次</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,m}</td>
-<td style="text-align:center">重复n到m次</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>例4：</p>
-<p>匹配10位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配1开头的10位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^1\d&#123;9&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配10-11位数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;10,11&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配以1开头，&gt;=0个2结尾的字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^12*$</span><br></pre></td></tr></table></figure>
-<h4 id="分组符"><a href="#分组符" class="headerlink" title="分组符"></a>分组符</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>分组符</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>()</td>
-<td>括号内作为一个整体</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>例5：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ab)*</span><br></pre></td></tr></table></figure>
-<p>大于等于0个以ab开头的字符串</p>
-<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>转义字符</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\</td>
-<td>文本中普通字符为特殊字符格式时使用</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(\(ab\))*</span><br></pre></td></tr></table></figure>
-<p>(ab)开头的字符串</p>
-<h4 id="条件或"><a href="#条件或" class="headerlink" title="条件或"></a>条件或</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>条件或</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\</td>
-<td></td>
-<td>满足任意一个条件</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>例5：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(130|131|132|155|156|185|186|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
-<p>匹配以各号段开头的号码</p>
-<h4 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>区间</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[]</td>
-<td>限定条件</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[0-9]限定0到9</span><br><span class="line">[A-Z]限定A-Z</span><br><span class="line">[165]限定数字为1，6，5</span><br><span class="line">[^...]排除的字符，指其中未列出的任意字符</span><br></pre></td></tr></table></figure>
-<p>例6：</p>
-<p>同例5</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^((13[0-2])|(15[56])|(18[5-6])|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
-<p>​         </p>
-<h1 id="n-参考书籍"><a href="#n-参考书籍" class="headerlink" title="n.参考书籍"></a>n.参考书籍</h1><p><a target="_blank" rel="noopener" href="http://cdn.lxqnsys.com/%E7%B2%BE%E9%80%9A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.pdf">《精通正则表达式》</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/python%E7%88%AC%E8%99%AB%E4%BB%B7%E6%A0%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/python%E7%88%AC%E8%99%AB%E4%BB%B7%E6%A0%BC/" class="post-title-link" itemprop="url">python爬虫价格</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-30 12:05:47 / Modified: 12:24:11" itemprop="dateCreated datePublished" datetime="2021-01-30T12:05:47+08:00">2021-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">编程实战</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>（1.30）这可能是我做过最有用但是又最困难的项目吧</p>
-<h1 id="1-目标"><a href="#1-目标" class="headerlink" title="1.目标"></a>1.目标</h1><p>根据关键字爬取全网最低价的商品，并且给出来源和链接</p>
-<h4 id="爬取链接："><a href="#爬取链接：" class="headerlink" title="爬取链接："></a>爬取链接：</h4><p>淘宝，拼多多，京东</p>
-<h4 id="呈现方式："><a href="#呈现方式：" class="headerlink" title="呈现方式："></a>呈现方式：</h4><p>目标是表格</p>
-<h2 id="2-具体实现（慢慢学习）"><a href="#2-具体实现（慢慢学习）" class="headerlink" title="2.具体实现（慢慢学习）"></a>2.具体实现（慢慢学习）</h2><h3 id="1-不同平台爬取"><a href="#1-不同平台爬取" class="headerlink" title="1.不同平台爬取"></a>1.不同平台爬取</h3><p>据说不同平台有不同爬取方式，先一个个试一下</p>
-<p>先从最简单的京东入手（资料较多）</p>
-<p>而淘宝按关键字查询需要登录，稍微困难一点</p>
-<h4 id="1-京东"><a href="#1-京东" class="headerlink" title="1.京东"></a>1.京东</h4><p>前置条件：正则表达式</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/25/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/25/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/" class="post-title-link" itemprop="url">裴蜀定理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-25 13:54:01 / Modified: 14:03:36" itemprop="dateCreated datePublished" datetime="2021-01-25T13:54:01+08:00">2021-01-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="裴蜀定理"><a href="#裴蜀定理" class="headerlink" title="裴蜀定理"></a>裴蜀定理</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>关于整数a, b和最大公约数d的定理</p>
-<script type="math/tex; mode=display">
-有gcd(a,b)=d,
-则对任意整数x,y ax+by都是d的倍数,
-且一定存在整数x,y，是的ax+by=d成立</script><p>注意x,y没有限制正负</p>
-<p>此外还有一个推论</p>
-<p>a,b互质的充要条件为：</p>
-<script type="math/tex; mode=display">存在整数x,y使得 ax+by=1</script><h2 id="2-具体应用"><a href="#2-具体应用" class="headerlink" title="2.具体应用"></a>2.具体应用</h2><img src="/2021/01/25/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86.png" class="" title="this is an image">
-<p>如果要把z装满</p>
-<p> 也就相当于ax+by=z</p>
-<p>z有解当且仅当为<code>gcd(x,y)</code>的倍数</p>
-<p>因此可解</p>
-<p>同时要注意到，由于只有两个水壶，所以z不能大于x+y,如果大于x+y,两个水壶都满了则无法找出新的空间。</p>
 
       
     </div>
@@ -1458,7 +1408,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1471,7 +1421,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1557,6 +1507,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

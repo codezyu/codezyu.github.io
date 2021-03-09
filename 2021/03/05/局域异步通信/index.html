@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.传输模式 传输模式分为 并行传输：同时发送多个码位 串行传输：一次发送一个码位，分为，异步，同步，等时 ¶异步通信 位是数据通信的基本数据单元 位的取值范围{0,1} 位串：由多个0或1组成的位 发送方和接收方发送数据前无需协调（同步），则为异步通信 发送的电信号中不包含接收方用来确定位串何时开始和结束的信息，则该通信硬件为异步。 异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信 号的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="局域异步通信">
+<meta property="og:url" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/index.html">
+<meta property="og:site_name" content="宇称不得不守恒">
+<meta property="og:description" content="1.传输模式 传输模式分为 并行传输：同时发送多个码位 串行传输：一次发送一个码位，分为，异步，同步，等时 ¶异步通信 位是数据通信的基本数据单元 位的取值范围{0,1} 位串：由多个0或1组成的位 发送方和接收方发送数据前无需协调（同步），则为异步通信 发送的电信号中不包含接收方用来确定位串何时开始和结束的信息，则该通信硬件为异步。 异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信 号的">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png">
+<meta property="og:image" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305095519275.png">
+<meta property="article:published_time" content="2021-03-05T00:43:28.000Z">
+<meta property="article:modified_time" content="2021-03-07T09:11:04.654Z">
+<meta property="article:author" content="yuz">
+<meta property="article:tag" content="计算机网路">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png">
+
+<link rel="canonical" href="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>局域异步通信 | 宇称不得不守恒</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">宇称不得不守恒</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>resources</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          局域异步通信
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-05 08:43:28" itemprop="dateCreated datePublished" datetime="2021-03-05T08:43:28+08:00">2021-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-07 17:11:04" itemprop="dateModified" datetime="2021-03-07T17:11:04+08:00">2021-03-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>1.传输模式</h1>
+<p>传输模式分为</p>
+<p>并行传输：同时发送多个码位</p>
+<p>串行传输：一次发送一个码位，分为，异步，同步，等时</p>
+<h2 id="异步通信"><a class="header-anchor" href="#异步通信">¶</a>异步通信</h2>
+<p>位是数据通信的基本数据单元</p>
+<p>位的取值范围{0,1}</p>
+<p>位串：由多个0或1组成的位</p>
+<p>发送方和接收方发送数据前无需协调（同步），则为异步通信</p>
+<p>发送的电信号中不包含接收方用来确定位串何时开始和结束的信息，则该通信硬件为异步。</p>
+<p>异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信<br>
+号的能力。</p>
+<p>数据接收方对接收的信息能够<strong>直接提取</strong>有效数据</p>
+<h2 id="同步通信"><a class="header-anchor" href="#同步通信">¶</a>同步通信</h2>
+<p>数据发送方生成的数据中包含了<strong>有效数据的位置信息</strong></p>
+<p>数据接收方根据有效数据的位置信息提取相应的有效数据</p>
+<p>通信的双方在开始通信之前必须完成协调工作，即必须进行同步处理</p>
+<p><strong>数据基本单元保持顺序传输，对空数据必需填充对应的空单元</strong></p>
+<h1>传输顺序</h1>
+<p>先传输高位（MSB,对应正序传输），还是低位（LSB,对应逆序传输）</p>
+<h1>2.异步通信机制</h1>
+<h2 id="1-电流发送位串"><a class="header-anchor" href="#1-电流发送位串">¶</a>1.电流发送位串</h2>
+<p>不同电压表示不同位值</p>
+<p>负电压用来表示1，正电压用来表示0</p>
+<blockquote>
+<p>放置一个正电压并保持一小段时间，然后返回零伏</p>
+<p>此时为送一位0</p>
+<p>例如</p>
+<p>0:[3v,15v]</p>
+<p>1:[-15v,-3v]</p>
+</blockquote>
+<h2 id="2-通信标准"><a class="header-anchor" href="#2-通信标准">¶</a>2.通信标准</h2>
+<p>两个供应商遵守同一标准，则他们的设备就能协调工作</p>
+<p>EIA(电子工业协会)标准<code>RS-232-C</code>，常简称为<code>RS-232</code>（尽管后来的R -422标准在功能上更好一些，但各种设备仍流行使用RS-232，所以专业上仍使用老标准的名字）</p>
+<h3 id="RS-232"><a class="header-anchor" href="#RS-232">¶</a>RS-232</h3>
+<p><img src="%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png" alt="image-20210305091817997"></p>
+<p>RS-2 2是在计算机与调制解调器或ASCII终端之间实现短距离异步串行通信的一个流行标准</p>
+<p>串行的异步通信(串行:数据的各位在导线上逐位传输)</p>
+<p>并行:使用多根导线，并允许同时在每一根导线上传输一位</p>
+<blockquote>
+<p>计算机都有串行和并行输入输出端口</p>
+</blockquote>
+<p>对数据按照<strong>位</strong>进行序列化发送和接收</p>
+<p>数据值仅有0和1两种形式，不出现“空”状态</p>
+<p>即负电压为1,MARK状态</p>
+<p>正电压为0 SPACE状态</p>
+<p>通常每个字符由<strong>7</strong>个数据位组成，但它也能用于传输8位的字符</p>
+<p>当发送方不再发送时，它使导线处于一个负电压状态，而这代表位值为1。</p>
+<p>对应每个数据单元，</p>
+<p>增加一个“0”作为开始位</p>
+<blockquote>
+<p>传输字符各位前先额外传输一位额外的0</p>
+</blockquote>
+<p>“1”作为结束位</p>
+<blockquote>
+<p>RS -232要求发送方必须使线路保持空闲状态至少达到某一最小时间，通常所选定的最小时间就是传输一位所需的时间。这样，人们可以认为在每个字符后面总是跟有一位1(导线空闲时处于负电压状态)</p>
+</blockquote>
+<p>因此实际上传输了<strong>9</strong>位</p>
+<p>接收方接收到有效数据开始位后，严格按照时间片顺序完成数据接收，直到接收完结束位为止</p>
+<p>允许发送方在任何时刻发送一个字符，并可在发送另一个字符前延迟任意长的时间</p>
+<p>一旦开始传输一个字符，发送硬件一次将所有的位逐个地全部送出，在位与位之间没有延迟。</p>
+<h2 id="3-波特率"><a class="header-anchor" href="#3-波特率">¶</a>3.波特率</h2>
+<p>发送与接收硬件必须在每一位电压持续的时间长度上保持一致</p>
+<p>使用1秒中所能传输的位的数目来表示传输速率</p>
+<p>RS-232现在每秒19 200位和每秒33 600位的速率更为常见</p>
+<p>波特率（baud rate）表示传输硬件的工作速率，也就是每秒中硬件产生的电信号变化的次数.简单的RS -232模式来说，波特率就等于每秒中传输的位数</p>
+<p><strong>Baud</strong>是波特，是码元传输速率的单位，1波特为每秒传送1个码元</p>
+<p>接口传输（发送/接收）位的速率，码元传输速率也称为调制速率，波形速率或符号速率。单位：bps(bits per second)</p>
+<p>波特与比特是两个不同的概念，比特是信息量的单位。</p>
+<p>若1个码元只携带1bit的信息量，则“比特/秒”和“波特”在数量上是相等的</p>
+<p>如果发送和接收器未能设置成使用同样的波特率，接收器中的计时器就不会对每一位等待正确的时间长度，将会导致错误的发生.</p>
+<p><strong>错位检测</strong></p>
+<p>为检测错误，接收器多次测量同一位的电压，并比较测量结果。若电压彼此不一致，或停止位并不在期待的时刻出现，接收器将报告出错，这类错误称为帧对齐差错（framing error）</p>
+<p><strong>传输中断的实现</strong></p>
+<p>发送方在发送完有效数据<strong>开始位</strong>后，发送“0”信息，<strong>超过有效数据结束位</strong></p>
+<p>接收方接收到有效数据开始位后，<strong>严格按照时间接收数据</strong>，当有效数据结束位时间片到，仍然是“0”，接收方认为数据错误，产生中断信号</p>
+<h2 id="全双工异步通信"><a class="header-anchor" href="#全双工异步通信">¶</a>全双工异步通信</h2>
+<p>所有的电路都要求两根导线—电流从一根导线上流出，在另一根导线上返回。第二根导线通常称为接地线（ground)。这样，当RS-232使用双绞线连接时，一根导线用于传输信号，另一根作为接地线提供返回路径。相似地，当信号在同轴电缆上传输时，从中心导线流出，而屏蔽层提供了返回路径。</p>
+<p>在许多RS-232应用中，数据必须同时双向流动</p>
+<p><img src="%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305095519275.png" alt="image-20210305095519275"></p>
+<p>有一根导线用于一个方向上的数据传输，另一根导线用于在相反方向上传输数据。而一根接地线用于在两个方向上提供回路。（两台设备的接地线对接，目的在于使两设备的接地电势相等，确保每位数据的判读。)</p>
+<h3 id="双向同时通信-全双工通信"><a class="header-anchor" href="#双向同时通信-全双工通信">¶</a>双向同时通信/全双工通信</h3>
+<p>在两个方向上的同时传输就是我们所说的全双工传输（full duplex transmission）</p>
+<h3 id="单工通信"><a class="header-anchor" href="#单工通信">¶</a>单工通信</h3>
+<p>只有一个方向的通信而没有反方向的交互</p>
+<p>比如无线电广播,有线电广播,电视广播</p>
+<h3 id="双向交替通信-半双工通信"><a class="header-anchor" href="#双向交替通信-半双工通信">¶</a>双向交替通信/半双工通信</h3>
+<p>通信双方都可以发送,但不能同时发送和接受消息,需要两个信道</p>
+<p>一方发送另一方接受,过一段时间再反过来</p>
+<h3 id="DCE与DTE"><a class="header-anchor" href="#DCE与DTE">¶</a>DCE与DTE</h3>
+<p>DCE:数据通信设备,DTE:数据终端设备</p>
+<p>只有在同步通信方式的线路上才会有时钟速率，同步通信时需要线路两端进行信号发送频率的同步，也就是同步的时钟，在实际工程中由协议转换器，modem等线路控制设备来提供</p>
+<p>只有标明DCE一端的才需要设置clock rate</p>
+<p>同步时钟的频率和带宽没有直接的联系，64000指的是以64000比特率时间间隔添加发送同步位</p>
+<p>可以设置其他数值，只要是两端都能达到那个标准即可，对通信没有影响</p>
+<h4 id="区别"><a class="header-anchor" href="#区别">¶</a>区别</h4>
+<p>DTE和DCE的区分实事上只是针对串行端口的，路由器通常通过串行端口连接广域网络。</p>
+<p>串行V.24端口（25针）通常规定DTE由第2根针脚作为TXD(发送数据线)，第3根针脚为RXD(接收数据线)，（其余针脚为：7是信号地线，4是DTS，5是RTS，6是DTR，8是DCD，以及包括发送时钟、接收时钟等等，都有规定具体的针脚），串行V.35（34针）是路由器通常采用的通信接口标准，但是V.35是采用差分信号进行传输的，发送和接受分别由2根信号线承担。而DCE设备通常是与路由器对接，因此针脚的分配相反，也就是2是接收（但也被称为TXD），3是发送。因此路由器通常是DTE设备，modem、GV转换器等等传输设备通常被规定为DCE。其实对于标准的串行端口，通常从外观就能判断是DTE还是DCE，DTE是针头（俗称公头），DCE是孔头（俗称母头），这样两种接口才能接在一起。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E8%B7%AF/" rel="tag"># 计算机网路</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/04/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="prev" title="汇编语言">
+      <i class="fa fa-chevron-left"></i> 汇编语言
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.传输模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">1.1.</span> <span class="nav-text">异步通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">1.2.</span> <span class="nav-text">同步通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">传输顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">2.异步通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%94%B5%E6%B5%81%E5%8F%91%E9%80%81%E4%BD%8D%E4%B8%B2"><span class="nav-number">3.1.</span> <span class="nav-text">1.电流发送位串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%80%9A%E4%BF%A1%E6%A0%87%E5%87%86"><span class="nav-number">3.2.</span> <span class="nav-text">2.通信标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RS-232"><span class="nav-number">3.2.1.</span> <span class="nav-text">RS-232</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B3%A2%E7%89%B9%E7%8E%87"><span class="nav-number">3.3.</span> <span class="nav-text">3.波特率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%8F%8C%E5%B7%A5%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.</span> <span class="nav-text">全双工异步通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E5%90%8C%E6%97%B6%E9%80%9A%E4%BF%A1-%E5%85%A8%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.1.</span> <span class="nav-text">双向同时通信&#x2F;全双工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.2.</span> <span class="nav-text">单工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E4%BA%A4%E6%9B%BF%E9%80%9A%E4%BF%A1-%E5%8D%8A%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.3.</span> <span class="nav-text">双向交替通信&#x2F;半双工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DCE%E4%B8%8EDTE"><span class="nav-number">3.4.4.</span> <span class="nav-text">DCE与DTE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">区别</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yuz</p>
+  <div class="site-description" itemprop="description">code for fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

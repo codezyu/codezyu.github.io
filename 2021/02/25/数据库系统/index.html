@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="0. ¶数据 存储的基本对象，描述事物的符号记录 特点： 需要对其进行解释 大数据特点： 1.数据量大 2.种类丰富 3.产生速度快 4.数据准确率不高 ¶数据的语义 对数据的解释 ¶记录 结构化的数据表示和存储表示 文本，图形，图像，音频，视频都是非结构化的 结构化数据：记录文件以固定格式存在 ¶数据库 长期存储在计算机内，有组织的，可共享的大量数据的集合 ¶特征： 基于一定数据模型 冗余度小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库系统">
+<meta property="og:url" content="http://example.com/2021/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="宇称不得不守恒">
+<meta property="og:description" content="0. ¶数据 存储的基本对象，描述事物的符号记录 特点： 需要对其进行解释 大数据特点： 1.数据量大 2.种类丰富 3.产生速度快 4.数据准确率不高 ¶数据的语义 对数据的解释 ¶记录 结构化的数据表示和存储表示 文本，图形，图像，音频，视频都是非结构化的 结构化数据：记录文件以固定格式存在 ¶数据库 长期存储在计算机内，有组织的，可共享的大量数据的集合 ¶特征： 基于一定数据模型 冗余度小">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-02-25T06:42:50.000Z">
+<meta property="article:modified_time" content="2021-03-05T03:38:11.068Z">
+<meta property="article:author" content="yuz">
+<meta property="article:tag" content="数据库系统">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>数据库系统 | 宇称不得不守恒</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">宇称不得不守恒</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>resources</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-25 14:42:50" itemprop="dateCreated datePublished" datetime="2021-02-25T14:42:50+08:00">2021-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-05 11:38:11" itemprop="dateModified" datetime="2021-03-05T11:38:11+08:00">2021-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>0.</h1>
+<h2 id="数据"><a class="header-anchor" href="#数据">¶</a>数据</h2>
+<p>存储的基本对象，描述事物的符号记录</p>
+<p>特点：</p>
+<p>需要对其进行解释</p>
+<p>大数据特点：</p>
+<p>1.数据量大</p>
+<p>2.种类丰富</p>
+<p>3.产生速度快</p>
+<p>4.数据准确率不高</p>
+<h2 id="数据的语义"><a class="header-anchor" href="#数据的语义">¶</a>数据的语义</h2>
+<p>对数据的解释</p>
+<h2 id="记录"><a class="header-anchor" href="#记录">¶</a>记录</h2>
+<p>结构化的数据表示和存储表示</p>
+<p>文本，图形，图像，音频，视频都是非结构化的</p>
+<p>结构化数据：记录文件以固定格式存在</p>
+<h2 id="数据库"><a class="header-anchor" href="#数据库">¶</a>数据库</h2>
+<p>长期存储在计算机内，有组织的，可共享的大量数据的集合</p>
+<h4 id="特征："><a class="header-anchor" href="#特征：">¶</a>特征：</h4>
+<p>基于一定数据模型</p>
+<p>冗余度小</p>
+<p>数据独立性高</p>
+<p>易扩展</p>
+<h2 id="数据库管理系统-DBMS"><a class="header-anchor" href="#数据库管理系统-DBMS">¶</a>数据库管理系统(DBMS)</h2>
+<p>系统软件</p>
+<p>位于用户和操作系统之间的一层数据管理软件</p>
+<p>功能：</p>
+<p>1.定义数据</p>
+<p>2.数据组织，存储，管理</p>
+<p>3.数据操纵</p>
+<p>查询，插入，删除，修改</p>
+<h2 id="数据库系统"><a class="header-anchor" href="#数据库系统">¶</a>数据库系统</h2>
+<p>数据库，数据库管理系统，应用系统，数据库管理员，存储，管理，处理，维护数据的系统</p>
+<h2 id="数据管理"><a class="header-anchor" href="#数据管理">¶</a>数据管理</h2>
+<p>数据分类，组织，编码，存储，检索，维护</p>
+<h2 id="数据模型"><a class="header-anchor" href="#数据模型">¶</a>数据模型</h2>
+<p>描述，组织，操作现实世界的数据</p>
+<h3 id="分类："><a class="header-anchor" href="#分类：">¶</a>分类：</h3>
+<h4 id="1-概念模型"><a class="header-anchor" href="#1-概念模型">¶</a>1.概念模型</h4>
+<p>用户观点对数据建模</p>
+<h5 id="实体"><a class="header-anchor" href="#实体">¶</a>实体</h5>
+<p>客观存在并且互相可区分的事物</p>
+<p>人事物，概念</p>
+<h5 id="属性"><a class="header-anchor" href="#属性">¶</a>属性</h5>
+<p>实体所具有的某一特性</p>
+<h5 id="码"><a class="header-anchor" href="#码">¶</a>码</h5>
+<p>唯一标识实体的属性集称为码</p>
+<h6 id="实体型"><a class="header-anchor" href="#实体型">¶</a>实体型</h6>
+<p>实体名和属性名集合</p>
+<p>学生(学号，姓名，性别，生日，专业)</p>
+<h6 id="实体集"><a class="header-anchor" href="#实体集">¶</a>实体集</h6>
+<p>同一类型实体的集合</p>
+<h6 id="联系"><a class="header-anchor" href="#联系">¶</a>联系</h6>
+<p>实体内部的联系：实体各属性的联系  事物内部的联系</p>
+<p>实体之间的联系：实体集的联系，同一实体集不同实体的联系    事物之间的联系</p>
+<p>联系也可有属性</p>
+<h5 id="表示"><a class="header-anchor" href="#表示">¶</a>表示</h5>
+<p>实体-联系模型</p>
+<h6 id="E-R图"><a class="header-anchor" href="#E-R图">¶</a>E-R图</h6>
+<p><strong>矩形</strong>表示实体型</p>
+<p><strong>椭圆形</strong>表示属性</p>
+<p><strong>无向边</strong>连接实体与属性,联系</p>
+<p>为码的属性要加<strong>下划线</strong></p>
+<p><strong>菱形</strong>表示联系,无向边需要注明联系类型,联系的属性也通过无向边与之相连</p>
+<p><strong>联系类型</strong></p>
+<p><code>1:1</code></p>
+<p>一对一联系,例如:一个班级只有一个班长</p>
+<p><code>1:n</code></p>
+<p>一对多联系,例如:一个班级有多个学生</p>
+<p><code>m:n</code></p>
+<p>多对多联系,例如:一门课有多个学生,多门课由一个学生选修</p>
+<h4 id="2-逻辑模型和物理模型"><a class="header-anchor" href="#2-逻辑模型和物理模型">¶</a>2.逻辑模型和物理模型</h4>
+<h5 id="逻辑模型"><a class="header-anchor" href="#逻辑模型">¶</a>逻辑模型</h5>
+<p>网状模型，层次模型，<strong>关系模型</strong>，面向对象模型</p>
+<p>从计算机系统观点出发</p>
+<h5 id="物理模型"><a class="header-anchor" href="#物理模型">¶</a>物理模型</h5>
+<p>数据在系统内部的表示和存取</p>
+<h3 id="组成要素"><a class="header-anchor" href="#组成要素">¶</a>组成要素</h3>
+<h4 id="数据结构"><a class="header-anchor" href="#数据结构">¶</a>数据结构</h4>
+<p>描述组成对象和对象之间的关系</p>
+<h5 id="描述内容"><a class="header-anchor" href="#描述内容">¶</a>描述内容</h5>
+<p>对象的类型，内容，性质</p>
+<p>数据对象联系有关的对象</p>
+<h4 id="数据操作"><a class="header-anchor" href="#数据操作">¶</a>数据操作</h4>
+<p>1.查询,更新(插入,删除,修改)</p>
+<p>2.优先级</p>
+<h4 id="完整性约束条件"><a class="header-anchor" href="#完整性约束条件">¶</a>完整性约束条件</h4>
+<h6 id="实体完整性"><a class="header-anchor" href="#实体完整性">¶</a>实体完整性</h6>
+<p>每个数据表必须有主键，作为主键的所有字段必须唯一且非空</p>
+<h6 id="参照完整性"><a class="header-anchor" href="#参照完整性">¶</a>参照完整性</h6>
+<p>是数据的属性,不允许关系中有不存在的实体引用</p>
+<p>数据库的参照完整性是指表与表之间的一种对应关系，通常情况下可以通过设置两表之间的主键、外键关系，或者编写两表的触发器来实现。</p>
+<p>理解为一个表变化,另一个表也随之变化</p>
+<h6 id="用户定义的完整性"><a class="header-anchor" href="#用户定义的完整性">¶</a>用户定义的完整性</h6>
+<p>数据必须满足语义要求</p>
+<h3 id="常用数据模型"><a class="header-anchor" href="#常用数据模型">¶</a>常用数据模型</h3>
+<h4 id="非关系模型"><a class="header-anchor" href="#非关系模型">¶</a>非关系模型</h4>
+<h5 id="层次模型"><a class="header-anchor" href="#层次模型">¶</a>层次模型</h5>
+<h5 id="网状模型"><a class="header-anchor" href="#网状模型">¶</a>网状模型</h5>
+<h4 id="关系模型"><a class="header-anchor" href="#关系模型">¶</a>关系模型</h4>
+<p>关系模型作为关系数据库的数据]组织方式</p>
+<h4 id="面向对象模型"><a class="header-anchor" href="#面向对象模型">¶</a>面向对象模型</h4>
+<h4 id="对象关系模型"><a class="header-anchor" href="#对象关系模型">¶</a>对象关系模型</h4>
+<h1>1.数据库系统</h1>
+<p>用计算机存储记录的系统</p>
+<h2 id="特点："><a class="header-anchor" href="#特点：">¶</a>特点：</h2>
+<h3 id="数据结构化"><a class="header-anchor" href="#数据结构化">¶</a>数据结构化</h3>
+<p>整体结构化，数据之间具有联系，不同于文件系统</p>
+<h3 id="共享性高，冗余度低，易扩充"><a class="header-anchor" href="#共享性高，冗余度低，易扩充">¶</a>共享性高，冗余度低，易扩充</h3>
+<p>面向整个系统。可以被多个用户，应用共享使用</p>
+<h3 id="数据共享的好处"><a class="header-anchor" href="#数据共享的好处">¶</a>数据共享的好处</h3>
+<p>1.减少数据冗余</p>
+<p>2.避免数据的不相容性（数据的不同语义有冲突）与不一致性（数据不同副本的值不一样）</p>
+<p>3.系统易于扩充</p>
+<h3 id="数据独立性高"><a class="header-anchor" href="#数据独立性高">¶</a>数据独立性高</h3>
+<h6 id="1-物理独立性"><a class="header-anchor" href="#1-物理独立性">¶</a>1.物理独立性</h6>
+<p>应用程序和数据库数据物理存储独立</p>
+<h6 id="2-逻辑独立性"><a class="header-anchor" href="#2-逻辑独立性">¶</a>2.逻辑独立性</h6>
+<p>数据库的逻辑结构和应用程序独立</p>
+<h6 id="3-数据独立性"><a class="header-anchor" href="#3-数据独立性">¶</a>3.数据独立性</h6>
+<p>DBMS的二级映像功能</p>
+<h3 id="数据由DBMS统一管理和控制"><a class="header-anchor" href="#数据由DBMS统一管理和控制">¶</a>数据由DBMS统一管理和控制</h3>
+<h6 id="1-安全性保护"><a class="header-anchor" href="#1-安全性保护">¶</a>1.安全性保护</h6>
+<h6 id="2-完整性保护"><a class="header-anchor" href="#2-完整性保护">¶</a>2.完整性保护</h6>
+<p>正确性，有效性，相容性</p>
+<h6 id="3-并发控制"><a class="header-anchor" href="#3-并发控制">¶</a>3.并发控制</h6>
+<p>多用户的并发操作</p>
+<h6 id="4-数据库恢复"><a class="header-anchor" href="#4-数据库恢复">¶</a>4.数据库恢复</h6>
+<p>恢复错误状态</p>
+<h2 id="操作"><a class="header-anchor" href="#操作">¶</a>操作</h2>
+<p>增加文件</p>
+<p>向文件插入数据</p>
+<p>在文件中检索内容</p>
+<p>修改文件内容</p>
+<p>更改文件内容</p>
+<p>删除文件</p>
+<h2 id="SQL语言"><a class="header-anchor" href="#SQL语言">¶</a>SQL语言</h2>
+<p>最初来自IBM，成为关系数据库的标准交互语言</p>
+<h2 id="组成"><a class="header-anchor" href="#组成">¶</a>组成</h2>
+<p>数据，硬件，软件，用户</p>
+<h3 id="数据-v2"><a class="header-anchor" href="#数据-v2">¶</a>数据</h3>
+<p>数据库的数据既是集成，又是共享的</p>
+<p>集成：数据库可以当作不同文件的合并，进而消除冗余</p>
+<p>共享：每项数据可以被不同用户(不同的目的，不同的查询方式)共享</p>
+<h3 id="硬件"><a class="header-anchor" href="#硬件">¶</a>硬件</h3>
+<p>二级存储设备(多为磁盘，用来存放数据)，I/O设备(磁盘驱动器)，设备控制器，I/O通道</p>
+<p>硬件处理器和主存，用于支持数据库系统软件的运行</p>
+<h3 id="软件"><a class="header-anchor" href="#软件">¶</a>软件</h3>
+<p>称作数据库服务器/管理器</p>
+<p>也叫数据库管理系统(DBMS,database manage system)</p>
+<h3 id="用户"><a class="header-anchor" href="#用户">¶</a>用户</h3>
+<p>应用程序员：编写数据库应用程序</p>
+<p>最终用户：通过应用访问数据库</p>
+<p>数据库管理员</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="tag"># 数据库系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%901/" rel="prev" title="计算机组成1">
+      <i class="fa fa-chevron-left"></i> 计算机组成1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/01/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="next" title="多媒体技术基础">
+      多媒体技术基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%AD%E4%B9%89"><span class="nav-number">1.2.</span> <span class="nav-text">数据的语义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95"><span class="nav-number">1.3.</span> <span class="nav-text">记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%EF%BC%9A"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">特征：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-DBMS"><span class="nav-number">1.5.</span> <span class="nav-text">数据库管理系统(DBMS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.6.</span> <span class="nav-text">数据库系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">数据管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="nav-number">1.8.1.</span> <span class="nav-text">分类：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.1.1.</span> <span class="nav-text">1.概念模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93"><span class="nav-number">1.8.1.1.1.</span> <span class="nav-text">实体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">1.8.1.1.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A0%81"><span class="nav-number">1.8.1.1.3.</span> <span class="nav-text">码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%9E%8B"><span class="nav-number">1.8.1.1.3.1.</span> <span class="nav-text">实体型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E9%9B%86"><span class="nav-number">1.8.1.1.3.2.</span> <span class="nav-text">实体集</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%81%94%E7%B3%BB"><span class="nav-number">1.8.1.1.3.3.</span> <span class="nav-text">联系</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.8.1.1.4.</span> <span class="nav-text">表示</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#E-R%E5%9B%BE"><span class="nav-number">1.8.1.1.4.1.</span> <span class="nav-text">E-R图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%BB%E8%BE%91%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.1.2.</span> <span class="nav-text">2.逻辑模型和物理模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.1.2.1.</span> <span class="nav-text">逻辑模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.1.2.2.</span> <span class="nav-text">物理模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="nav-number">1.8.2.</span> <span class="nav-text">组成要素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E5%86%85%E5%AE%B9"><span class="nav-number">1.8.2.1.1.</span> <span class="nav-text">描述内容</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">1.8.2.2.</span> <span class="nav-text">数据操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.8.2.3.</span> <span class="nav-text">完整性约束条件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">1.8.2.3.0.1.</span> <span class="nav-text">实体完整性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">1.8.2.3.0.2.</span> <span class="nav-text">参照完整性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">1.8.2.3.0.3.</span> <span class="nav-text">用户定义的完整性</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.</span> <span class="nav-text">常用数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.1.</span> <span class="nav-text">非关系模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.1.1.</span> <span class="nav-text">层次模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.1.2.</span> <span class="nav-text">网状模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.2.</span> <span class="nav-text">关系模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.3.</span> <span class="nav-text">面向对象模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.4.</span> <span class="nav-text">对象关系模型</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">1.数据库系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">特点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8C%96"><span class="nav-number">2.1.1.</span> <span class="nav-text">数据结构化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E6%80%A7%E9%AB%98%EF%BC%8C%E5%86%97%E4%BD%99%E5%BA%A6%E4%BD%8E%EF%BC%8C%E6%98%93%E6%89%A9%E5%85%85"><span class="nav-number">2.1.2.</span> <span class="nav-text">共享性高，冗余度低，易扩充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">2.1.3.</span> <span class="nav-text">数据共享的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7%E9%AB%98"><span class="nav-number">2.1.4.</span> <span class="nav-text">数据独立性高</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E7%89%A9%E7%90%86%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">2.1.4.0.0.1.</span> <span class="nav-text">1.物理独立性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E9%80%BB%E8%BE%91%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">2.1.4.0.0.2.</span> <span class="nav-text">2.逻辑独立性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">2.1.4.0.0.3.</span> <span class="nav-text">3.数据独立性</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%94%B1DBMS%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86%E5%92%8C%E6%8E%A7%E5%88%B6"><span class="nav-number">2.1.5.</span> <span class="nav-text">数据由DBMS统一管理和控制</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E5%AE%89%E5%85%A8%E6%80%A7%E4%BF%9D%E6%8A%A4"><span class="nav-number">2.1.5.0.0.1.</span> <span class="nav-text">1.安全性保护</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%AE%8C%E6%95%B4%E6%80%A7%E4%BF%9D%E6%8A%A4"><span class="nav-number">2.1.5.0.0.2.</span> <span class="nav-text">2.完整性保护</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="nav-number">2.1.5.0.0.3.</span> <span class="nav-text">3.并发控制</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D"><span class="nav-number">2.1.5.0.0.4.</span> <span class="nav-text">4.数据库恢复</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E8%AF%AD%E8%A8%80"><span class="nav-number">2.3.</span> <span class="nav-text">SQL语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-number">2.4.</span> <span class="nav-text">组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE-v2"><span class="nav-number">2.4.1.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6"><span class="nav-number">2.4.2.</span> <span class="nav-text">硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.4.3.</span> <span class="nav-text">软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7"><span class="nav-number">2.4.4.</span> <span class="nav-text">用户</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yuz</p>
+  <div class="site-description" itemprop="description">code for fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

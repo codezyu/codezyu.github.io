@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="0.著作权 曾鹏飞 ，pic2pdf 结构  -pic2pdf_gui –pic2pdf_merge —pic2pdf_one  ¶pic2pdf_one 用于将图片合成pdf 使用两个库os(读取图片文件)和img2pdf（图片转pdf） ¶获取全部图片文件名称 1get_name() 获取路径上所有文件名 1os.listdir(path) 拼接路径和文件名 1os.path.join(pat">
+<meta property="og:type" content="website">
+<meta property="og:title" content="python转pdf">
+<meta property="og:url" content="http://example.com/draft/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">
+<meta property="og:site_name" content="宇称不得不守恒">
+<meta property="og:description" content="0.著作权 曾鹏飞 ，pic2pdf 结构  -pic2pdf_gui –pic2pdf_merge —pic2pdf_one  ¶pic2pdf_one 用于将图片合成pdf 使用两个库os(读取图片文件)和img2pdf（图片转pdf） ¶获取全部图片文件名称 1get_name() 获取路径上所有文件名 1os.listdir(path) 拼接路径和文件名 1os.path.join(pat">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-03-01T07:47:12.000Z">
+<meta property="article:modified_time" content="2021-03-08T03:31:26.782Z">
+<meta property="article:author" content="yuz">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/draft/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>python转pdf | 宇称不得不守恒
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">宇称不得不守恒</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>resources</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-Hans">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">python转pdf
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h1>0.著作权</h1>
+<p>曾鹏飞 ，pic2pdf</p>
+<h1>结构</h1>
+<blockquote>
+<p>-pic2pdf_gui<br>
+–pic2pdf_merge<br>
+—pic2pdf_one</p>
+</blockquote>
+<h2 id="pic2pdf-one"><a class="header-anchor" href="#pic2pdf-one">¶</a>pic2pdf_one</h2>
+<p>用于将图片合成pdf<br>
+使用两个库os(读取图片文件)和img2pdf（图片转pdf）</p>
+<h3 id="获取全部图片文件名称"><a class="header-anchor" href="#获取全部图片文件名称">¶</a>获取全部图片文件名称</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get_name()</span><br></pre></td></tr></table></figure>
+<p>获取路径上所有文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.listdir(path)</span><br></pre></td></tr></table></figure>
+<p>拼接路径和文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.join(path, name)</span><br></pre></td></tr></table></figure>
+<p>判断是否在其内</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.isdir</span><br></pre></td></tr></table></figure>
+<p>然后加入在文件名列表中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names.append(name)</span><br></pre></td></tr></table></figure>
+<h3 id="获取图片绝对路径"><a class="header-anchor" href="#获取图片绝对路径">¶</a>获取图片绝对路径</h3>
+<p>连接文件名和路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.join(path, name)</span><br></pre></td></tr></table></figure>
+<p>判断是否为图片文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(file_name.endswith(&quot;.jpg&quot;) or file_name.endswith(&quot;.png&quot;) or file_name.endswith(&quot;.bmp&quot;))</span><br></pre></td></tr></table></figure>
+<p>加入路径列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pictures.append(os.path.join(new_path, file_name))</span><br></pre></td></tr></table></figure>
+<h3 id="图片转pdf"><a class="header-anchor" href="#图片转pdf">¶</a>图片转pdf</h3>
+<p>判断路径是否存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if not os.path.exists(out_path):</span><br></pre></td></tr></table></figure>
+<p>输出到one_pdf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(os.path.join(out_path, name + &quot;.pdf&quot;), &quot;wb&quot;) as one_pdf:</span><br><span class="line">       one_pdf.write(img2pdf.convert(pictures))</span><br></pre></td></tr></table></figure>
+<h2 id="pic2pdf-merge"><a class="header-anchor" href="#pic2pdf-merge">¶</a>pic2pdf_merge</h2>
+<p>对pdf进行操作</p>
+<p>使用os,PyPDF2(关键库)sys pic2pdf_one</p>
+<h3 id="将pdf加入列表"><a class="header-anchor" href="#将pdf加入列表">¶</a>将pdf加入列表</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">handle_pdf</span><br></pre></td></tr></table></figure>
+<h3 id="合并pdf"><a class="header-anchor" href="#合并pdf">¶</a>合并pdf</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">merge_pdfs</span><br></pre></td></tr></table></figure>
+<p>首先创建一个PdfFileWriter对象：pdf_writer 用于处理pdf</p>
+<p>读取pdf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdf_reader &#x3D; PyPDF2.PdfFileReader(os.path.join(in_path, pdf_comic))</span><br></pre></td></tr></table></figure>
+<p>获取页码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdf_writer.getNumPages()获取一共的页码</span><br></pre></td></tr></table></figure>
+<p>加入到pdf_writer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for page in range(pdf_reader.getNumPages()):</span><br><span class="line">            # 把每张PDF页面加入到这个可读取对象中</span><br><span class="line">            pdf_writer.addPage(pdf_reader.getPage(page, ))</span><br></pre></td></tr></table></figure>
+<p>添加书签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdf_writer.addBookmark(pdf_comic, bookmark_page)</span><br></pre></td></tr></table></figure>
+<h3 id="输出pdf"><a class="header-anchor" href="#输出pdf">¶</a>输出pdf</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdf_writer.addBookmark(pdf_comic, bookmark_page)</span><br></pre></td></tr></table></figure>
+<h2 id="pic2pdf-gui"><a class="header-anchor" href="#pic2pdf-gui">¶</a>pic2pdf_gui</h2>
+<p>tkinter简单的ui界面</p>
+<p>os<br>
+tkinter</p>
+<p>tkinter.messagebox<br>
+tkinter.filedialog<br>
+tkinter.ttk<br>
+pic2pdf_one<br>
+pic2pdf_merge</p>
+<h3 id="窗口创建"><a class="header-anchor" href="#窗口创建">¶</a>窗口创建</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pic2pdf_TK_gui &#x3D; tkinter.Tk()</span><br><span class="line">pic2pdf_TK_gui.title(&quot;pic2pdf&quot;)</span><br><span class="line">pic2pdf_TK_gui.geometry(&quot;480x640&quot;)</span><br></pre></td></tr></table></figure>
+<h1>global</h1>
+<p>一般用在函数内，声明后面变量的作用域为全局作用域</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0.著作权</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pic2pdf-one"><span class="nav-number">2.1.</span> <span class="nav-text">pic2pdf_one</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%A8%E9%83%A8%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">获取全部图片文件名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">获取图片绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E8%BD%ACpdf"><span class="nav-number">2.1.3.</span> <span class="nav-text">图片转pdf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pic2pdf-merge"><span class="nav-number">2.2.</span> <span class="nav-text">pic2pdf_merge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86pdf%E5%8A%A0%E5%85%A5%E5%88%97%E8%A1%A8"><span class="nav-number">2.2.1.</span> <span class="nav-text">将pdf加入列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E5%B9%B6pdf"><span class="nav-number">2.2.2.</span> <span class="nav-text">合并pdf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BApdf"><span class="nav-number">2.2.3.</span> <span class="nav-text">输出pdf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pic2pdf-gui"><span class="nav-number">2.3.</span> <span class="nav-text">pic2pdf_gui</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%88%9B%E5%BB%BA"><span class="nav-number">2.3.1.</span> <span class="nav-text">窗口创建</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">global</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yuz</p>
+  <div class="site-description" itemprop="description">code for fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
