@@ -169,6 +169,417 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">数据库系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-25 14:42:50" itemprop="dateCreated datePublished" datetime="2021-02-25T14:42:50+08:00">2021-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-13 19:34:46" itemprop="dateModified" datetime="2021-03-13T19:34:46+08:00">2021-03-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0"><a href="#0" class="headerlink" title="0."></a>0.</h1><h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>存储的基本对象，描述事物的符号记录</p>
+<p>特点：</p>
+<p>需要对其进行解释</p>
+<p>大数据特点：</p>
+<p>1.数据量大</p>
+<p>2.种类丰富</p>
+<p>3.产生速度快</p>
+<p>4.数据准确率不高</p>
+<h2 id="数据的语义"><a href="#数据的语义" class="headerlink" title="数据的语义"></a>数据的语义</h2><p>对数据的解释</p>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p>结构化的数据表示和存储表示</p>
+<p>文本，图形，图像，音频，视频都是非结构化的</p>
+<p>结构化数据：记录文件以固定格式存在</p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>长期存储在计算机内，有组织的，可共享的大量数据的集合</p>
+<h4 id="特征："><a href="#特征：" class="headerlink" title="特征："></a>特征：</h4><p>基于一定数据模型</p>
+<p>冗余度小</p>
+<p>数据独立性高</p>
+<p>易扩展</p>
+<h2 id="数据库管理系统-DBMS"><a href="#数据库管理系统-DBMS" class="headerlink" title="数据库管理系统(DBMS)"></a>数据库管理系统(DBMS)</h2><p>系统软件</p>
+<p>位于用户和操作系统之间的一层数据管理软件</p>
+<p>功能：</p>
+<p>1.定义数据</p>
+<p>2.数据组织，存储，管理</p>
+<p>3.数据操纵</p>
+<p>查询，插入，删除，修改</p>
+<h2 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h2><p>数据库，数据库管理系统，应用系统，数据库管理员，存储，管理，处理，维护数据的系统</p>
+<h2 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h2><p>数据分类，组织，编码，存储，检索，维护 </p>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>描述，组织，操作现实世界的数据</p>
+<h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><h4 id="1-概念模型"><a href="#1-概念模型" class="headerlink" title="1.概念模型"></a>1.概念模型</h4><p>用户观点对数据建模</p>
+<h5 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h5><p>客观存在并且互相可区分的事物</p>
+<p>人事物，概念</p>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>实体所具有的某一特性</p>
+<h5 id="码"><a href="#码" class="headerlink" title="码"></a>码</h5><p>唯一标识实体的属性集称为码</p>
+<h6 id="实体型"><a href="#实体型" class="headerlink" title="实体型"></a>实体型</h6><p>实体名和属性名集合</p>
+<p>学生(学号，姓名，性别，生日，专业)</p>
+<h6 id="实体集"><a href="#实体集" class="headerlink" title="实体集"></a>实体集</h6><p>同一类型实体的集合</p>
+<h6 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h6><p>实体内部的联系：实体各属性的联系  事物内部的联系</p>
+<p>实体之间的联系：实体集的联系，同一实体集不同实体的联系    事物之间的联系</p>
+<p>联系也可有属性</p>
+<h5 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h5><p>实体-联系模型</p>
+<h6 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h6><p><strong>矩形</strong>表示实体型</p>
+<p><strong>椭圆形</strong>表示属性</p>
+<p><strong>无向边</strong>连接实体与属性,联系</p>
+<p>为码的属性要加<strong>下划线</strong></p>
+<p><strong>菱形</strong>表示联系,无向边需要注明联系类型,联系的属性也通过无向边与之相连</p>
+<p><strong>联系类型</strong></p>
+<p><code>1:1</code></p>
+<p>一对一联系,例如:一个班级只有一个班长</p>
+<p><code>1:n</code></p>
+<p>一对多联系,例如:一个班级有多个学生</p>
+<p><code>m:n</code></p>
+<p>多对多联系,例如:一门课有多个学生,多门课由一个学生选修</p>
+<h4 id="2-逻辑模型和物理模型"><a href="#2-逻辑模型和物理模型" class="headerlink" title="2.逻辑模型和物理模型"></a>2.逻辑模型和物理模型</h4><h5 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h5><p>网状模型，层次模型，<strong>关系模型</strong>，面向对象模型</p>
+<p>从计算机系统观点出发</p>
+<h5 id="物理模型"><a href="#物理模型" class="headerlink" title="物理模型"></a>物理模型</h5><p>数据在系统内部的表示和存取</p>
+<h3 id="组成要素"><a href="#组成要素" class="headerlink" title="组成要素"></a>组成要素</h3><h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p>描述组成对象和对象之间的关系</p>
+<h5 id="描述内容"><a href="#描述内容" class="headerlink" title="描述内容"></a>描述内容</h5><p>对象的类型，内容，性质</p>
+<p>数据对象联系有关的对象</p>
+<h4 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h4><p>1.查询,更新(插入,删除,修改)</p>
+<p>2.优先级</p>
+<h4 id="完整性约束条件"><a href="#完整性约束条件" class="headerlink" title="完整性约束条件"></a>完整性约束条件</h4><h6 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h6><p>每个数据表必须有主键</p>
+<p>就是主属性不能取空值</p>
+<h6 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h6><p>是数据的属性,不允许关系中有不存在的实体引用</p>
+<p>数据库的参照完整性是指表与表之间的一种对应关系，通常情况下可以通过设置两表之间的主键、外键关系，或者编写两表的触发器来实现。</p>
+<p>理解为一个表变化,另一个表也随之变化</p>
+<p>F是关系R的外码，F的属性值要么都是空值，要么等于关系S里某个元组的主码值(如果F是关系R的主属性，这个时候F就不能取空值了)</p>
+<p>中学生表和选课表之间用学号建立了关联关系，学生表是主表，选课表是从表，那么在向从表添加新记录时，系统要检查新记录的学号是否在主表中已经存在，如果存在则允许执行输入操作，否则拒绝输入。</p>
+<h6 id="用户定义的完整性"><a href="#用户定义的完整性" class="headerlink" title="用户定义的完整性"></a>用户定义的完整性</h6><p>数据必须满足语义要求</p>
+<p>反映某一具体应用所涉及的数据必须满足的语义要求，比如某个学生的成绩的取值范围可以定义在0～100之间。</p>
+<h3 id="常用数据模型"><a href="#常用数据模型" class="headerlink" title="常用数据模型"></a>常用数据模型</h3><h4 id="非关系模型"><a href="#非关系模型" class="headerlink" title="非关系模型"></a>非关系模型</h4><h5 id="层次模型"><a href="#层次模型" class="headerlink" title="层次模型"></a>层次模型</h5><h5 id="网状模型"><a href="#网状模型" class="headerlink" title="网状模型"></a>网状模型</h5><h4 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h4><p>关系模型作为关系数据库的数据]组织方式</p>
+<h5 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h5><p><strong>关系</strong></p>
+<p>一个关系对应一张表</p>
+<p><strong>元组</strong></p>
+<p>表中一行·即为一组</p>
+<p><strong>属性</strong></p>
+<p>表中的一列即为一个属性，每一个属性一个名称即为属性名</p>
+<p><strong>码</strong></p>
+<p>表中的某个属性组，它可以唯一确定一个元组  </p>
+<p><strong>域</strong></p>
+<p>属性的取值范围  </p>
+<p><strong>分量</strong></p>
+<p>元组中的一个属性值  </p>
+<p><strong>关系模式</strong></p>
+<p>对关系的描述<br>关系名（属性1，属性2， …，属性n）  </p>
+<p><strong>关系必须是规范化的，满足一定的规范条件</strong><br> 最基本的规范条件：关系的每一个分量必须是一个不可<br>分的数据项<br>不允许表中还有表  </p>
+<p>即一个属性下（列）被再分为多个属性</p>
+<p>错误示例：</p>
+<p><img src="D:\Blog\source\_posts\数据库系统\关系数据模型-不可分数据项" alt="image-20210310102539078"></p>
+<h5 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h5><p>数据操作是集合操作， 操作对象和操作结<br>果都是关系， 即若干元组的集合<br>查询、插入、删除、更新  </p>
+<h5 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h5><p>实体完整性<br>参照完整性<br>用户定义的完整性  </p>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p><strong>建立在严格的数学概念的基础上</strong><br><strong>概念单一</strong><br>实体和各类联系都用关系来表示<br>对数据的检索结果也是关系<br><strong>关系模型的存取路径对用户透明</strong><br>具有更高的数据独立性，更好的安全保密性<br>简化了程序员的工作和数据库开发建立的工作  </p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>存取路径对用户透明导致查询效率往往不如非关系数据模型</p>
+<p>为提高性能，必须对用户的查询请求进行优化增加了开发DBMS的难度  </p>
+<h4 id="面向对象模型"><a href="#面向对象模型" class="headerlink" title="面向对象模型"></a>面向对象模型</h4><h4 id="对象关系模型"><a href="#对象关系模型" class="headerlink" title="对象关系模型"></a>对象关系模型</h4><h1 id="1-数据库系统"><a href="#1-数据库系统" class="headerlink" title="1.数据库系统"></a>1.数据库系统</h1><p>用计算机存储记录的系统</p>
+<h2 id="数据库系统结构"><a href="#数据库系统结构" class="headerlink" title="数据库系统结构"></a>数据库系统结构</h2><p>从<strong>数据库管理系统角度</strong>看，数据库系统通常采用<strong>三<br>级模式结构</strong>，是<strong>数据库系统内部的系统结构</strong><br>从数据库最终用户角度看（数据库系统外部的体系<br>结构） ，数据库系统的结构分为:<br>单用户结构<br>主从式结构<br>分布式结构<br>客户／服务器<br>浏览器／应用服务器／数据库服务器多层结构等  </p>
+<h3 id="数据库系统模式的概念"><a href="#数据库系统模式的概念" class="headerlink" title="数据库系统模式的概念"></a><strong>数据库系统模式的概念</strong></h3><h4 id="型-Type"><a href="#型-Type" class="headerlink" title="型(Type)"></a>型(Type)</h4><p>对某一类数据的结构和属性的说明</p>
+<h4 id="值-Value"><a href="#值-Value" class="headerlink" title="值(Value)"></a>值(Value)</h4><p>是型的一个具体赋值  </p>
+<p>学生 型：<br>（学号，姓名，性别，系别，年龄，籍贯）<br>一个 值：<br>（ 1001，李明，男，软工， 22，福建）  </p>
+<h4 id="模式（-Schema）"><a href="#模式（-Schema）" class="headerlink" title="模式（ Schema）"></a>模式（ Schema）</h4><p>数据库<strong>全体数据</strong>的逻辑结构和特征的描述<br>是型的描述<br>反映的是<strong>数据的结构及其联系</strong><br>模式是相对稳定的  </p>
+<h4 id="实例（-Instance）"><a href="#实例（-Instance）" class="headerlink" title="实例（ Instance）"></a>实例（ Instance）</h4><p><strong>模式的一个具体值</strong><br>反映数据库某一时刻的状态<br>同一个模式可以有很多实例<br>实例随数据库中的数据的更新而变动  </p>
+<blockquote>
+<p> 在<strong>学生选课数据库模式</strong>中，包含学生记录、课程记录和学生选课记录<br><strong>2013年的一个学生数据库实例</strong>，包含：<br>    2013年学校中所有学生的记录<br>    学校开设的所有课程的记录<br>    所有学生选课的记录<br>2012年度学生数据库模式对应的实例与2013年度学生数据库模式对应的实例是不同的  </p>
+</blockquote>
+<h2 id="三级模式结构"><a href="#三级模式结构" class="headerlink" title="三级模式结构"></a>三级模式结构</h2><p><img src="D:\Blog\source\_posts\数据库系统\三级模式结构" alt="image-20210310110313172"></p>
+<p><strong>三级模式是对数据的三个抽象级别</strong>  </p>
+<h3 id="模式（-Schema）-1"><a href="#模式（-Schema）-1" class="headerlink" title="模式（ Schema）"></a>模式（ Schema）</h3><p>逻辑模式 Logical Schema  </p>
+<p>数据库中全体数据的逻辑结构和特征的描述<br>所有用户的公共数据视图，综合了所有用户的需求  </p>
+<p><strong>一个数据库只有一个模式</strong><br>模式的地位：是数据库系统模式结构的中间层<br>与数据的物理存储细节和硬件环境无关<br>与具体的应用程序、开发工具及高级程序设计语言无关</p>
+<h4 id="模式的定义"><a href="#模式的定义" class="headerlink" title="模式的定义"></a>模式的定义</h4><p>数据的逻辑结构（数据项的名字、类型、取值范围等）<br>数据之间的联系<br>数据有关的安全性、完整性要求<br>使用模式描述语言(模式DDL)来定义  </p>
+<h3 id="外模式（-External-Schema）"><a href="#外模式（-External-Schema）" class="headerlink" title="外模式（ External Schema）"></a>外模式（ External Schema）</h3><p>也称子模式或用户模式<br>数据库用户（包括应用程序员和最终用户）使用的局部数据的逻辑结构和特征的描述<br>数据库用户的数据视图，是与某一应用有关的数据的逻辑表示<br>外模式的地位：<strong>介于模式与应用之间</strong></p>
+<h5 id="模式与外模式的关系"><a href="#模式与外模式的关系" class="headerlink" title="模式与外模式的关系"></a><strong>模式与外模式的关系</strong></h5><p> 一对多</p>
+<p><strong>外模式通常是模式的子集</strong><br>一个数据库可以有多个外模式。反映了不同的用户的应用需求、<br>看待数据的方式、对数据保密的要求<br>对模式中同一数据，在外模式中的结构、类型、长度、保密级别等都可以不同</p>
+<h5 id="外模式与应用的关系"><a href="#外模式与应用的关系" class="headerlink" title="外模式与应用的关系"></a><strong>外模式与应用的关系</strong></h5><p>一对多<br>同一外模式也可以为某一用户的多个应用系统所使用<br>但一个应用程序只能使用一个外模式    </p>
+<h5 id="外模式的用途"><a href="#外模式的用途" class="headerlink" title="外模式的用途"></a>外模式的用途</h5><p>保证数据库安全性的一个有力措施<br>每个用户只能看见和访问所对应的外模式中的数据<br>数据库中的其余数据对其不可见<br>使用外模式描述语言来定义  </p>
+<h3 id="内模式（-Internal-Schema）"><a href="#内模式（-Internal-Schema）" class="headerlink" title="内模式（ Internal Schema）"></a>内模式（ Internal Schema）</h3><p><strong>是数据物理结构和存储方式的描述</strong><br><strong>是数据在数据库内部的表示方式</strong></p>
+<blockquote>
+<p>​    记录的存储方式<br>​    索引的组织方式<br>​    数据是否压缩存储<br>​    数据是否加密<br>​    数据存储记录结构的规定</p>
+</blockquote>
+<p> <strong>一个数据库只有一个内模式</strong>  </p>
+<h3 id="二级映象"><a href="#二级映象" class="headerlink" title="二级映象"></a>二级映象</h3><p>二级映象在<strong>DBMS</strong>内部实现这三个抽象层<br>次的联系和转换<br>外模式／模式映像<br>模式／内模式映像  </p>
+<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><h3 id="数据结构化"><a href="#数据结构化" class="headerlink" title="数据结构化"></a>数据结构化</h3><p>整体结构化，数据之间具有联系，不同于文件系统</p>
+<h3 id="共享性高，冗余度低，易扩充"><a href="#共享性高，冗余度低，易扩充" class="headerlink" title="共享性高，冗余度低，易扩充"></a>共享性高，冗余度低，易扩充</h3><p>面向整个系统。可以被多个用户，应用共享使用</p>
+<h3 id="数据共享的好处"><a href="#数据共享的好处" class="headerlink" title="数据共享的好处"></a>数据共享的好处</h3><p>1.减少数据冗余</p>
+<p>2.避免数据的不相容性（数据的不同语义有冲突）与不一致性（数据不同副本的值不一样）</p>
+<p>3.系统易于扩充</p>
+<h3 id="数据独立性高"><a href="#数据独立性高" class="headerlink" title="数据独立性高"></a>数据独立性高</h3><h6 id="1-物理独立性"><a href="#1-物理独立性" class="headerlink" title="1.物理独立性"></a>1.物理独立性</h6><p>应用程序和数据库数据物理存储独立</p>
+<h6 id="2-逻辑独立性"><a href="#2-逻辑独立性" class="headerlink" title="2.逻辑独立性"></a>2.逻辑独立性</h6><p>数据库的逻辑结构和应用程序独立</p>
+<h6 id="3-数据独立性"><a href="#3-数据独立性" class="headerlink" title="3.数据独立性"></a>3.数据独立性</h6><p>DBMS的二级映像功能</p>
+<h3 id="数据由DBMS统一管理和控制"><a href="#数据由DBMS统一管理和控制" class="headerlink" title="数据由DBMS统一管理和控制"></a>数据由DBMS统一管理和控制</h3><h6 id="1-安全性保护"><a href="#1-安全性保护" class="headerlink" title="1.安全性保护"></a>1.安全性保护</h6><h6 id="2-完整性保护"><a href="#2-完整性保护" class="headerlink" title="2.完整性保护"></a>2.完整性保护</h6><p>正确性，有效性，相容性</p>
+<h6 id="3-并发控制"><a href="#3-并发控制" class="headerlink" title="3.并发控制"></a>3.并发控制</h6><p>多用户的并发操作</p>
+<h6 id="4-数据库恢复"><a href="#4-数据库恢复" class="headerlink" title="4.数据库恢复"></a>4.数据库恢复</h6><p>恢复错误状态</p>
+<h2 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h2><p>增加文件</p>
+<p>向文件插入数据</p>
+<p>在文件中检索内容</p>
+<p>修改文件内容</p>
+<p>更改文件内容</p>
+<p>删除文件</p>
+<h2 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h2><p>最初来自IBM，成为关系数据库的标准交互语言</p>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>数据，硬件，软件，用户</p>
+<h3 id="数据-1"><a href="#数据-1" class="headerlink" title="数据"></a>数据</h3><p>数据库的数据既是集成，又是共享的</p>
+<p>集成：数据库可以当作不同文件的合并，进而消除冗余</p>
+<p>共享：每项数据可以被不同用户(不同的目的，不同的查询方式)共享</p>
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><p>二级存储设备(多为磁盘，用来存放数据)，I/O设备(磁盘驱动器)，设备控制器，I/O通道</p>
+<p>硬件处理器和主存，用于支持数据库系统软件的运行</p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p>称作数据库服务器/管理器</p>
+<p>也叫数据库管理系统(DBMS,database manage system)</p>
+<h3 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h3><p>应用程序员：编写数据库应用程序</p>
+<p>最终用户：通过应用访问数据库</p>
+<p>数据库管理员</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%901/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%901/" class="post-title-link" itemprop="url">计算机组成1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-25 11:17:53" itemprop="dateCreated datePublished" datetime="2021-02-25T11:17:53+08:00">2021-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-08 15:30:28" itemprop="dateModified" datetime="2021-03-08T15:30:28+08:00">2021-03-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0-计算机体系结构和计算机组成"><a href="#0-计算机体系结构和计算机组成" class="headerlink" title="0.计算机体系结构和计算机组成"></a>0.计算机体系结构和计算机组成</h1><h2 id="1-计算机体系结构"><a href="#1-计算机体系结构" class="headerlink" title="1.计算机体系结构"></a>1.计算机体系结构</h2><p>程序员见到的计算机系统的属性</p>
+<p>概念性的结构与功能特性</p>
+<blockquote>
+<p>指令系统，数据结构，寻址技术，I/O机理</p>
+</blockquote>
+<h2 id="2-计算机组成"><a href="#2-计算机组成" class="headerlink" title="2.计算机组成"></a>2.计算机组成</h2><p>实现计算机体系结构所体现的属性</p>
+<p>计算机是否具有乘法指令功能，是结构问题</p>
+<p>什么方式实现乘法，是组成问题</p>
+<blockquote>
+<p>实现乘法</p>
+<p>1.专门的乘法电路</p>
+<p>2.连续相加的加法电路</p>
+</blockquote>
+<h1 id="1-计算机系统"><a href="#1-计算机系统" class="headerlink" title="1.计算机系统"></a>1.计算机系统</h1><h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><p>主机，外设等</p>
+<p>一般由大量的IC(integrated Circuit)集成电路组成</p>
+<p>每块IC有许多引脚，引脚的用于输入，有的用于输出，内部进行运算。</p>
+<blockquote>
+<p>IC的引脚编号<br>先把表示正方向的标志， 比如半圆形的缺口， 朝向左侧。 逆时针进行计数 </p>
+</blockquote>
+<p>CPU,内存,I/O</p>
+<p>数字ic电压一般为5v或0v进而实现电信号收发</p>
+<h3 id="引脚"><a href="#引脚" class="headerlink" title="引脚"></a>引脚</h3><p>Vcc,GND</p>
+<p>用于供电(电压恒定，其余一般在5v,0v间变化)</p>
+<p>OE(output enable)</p>
+<p>输出使能</p>
+<p>RD(read)</p>
+<p>读取</p>
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><p>程序（指令和数据的集合）</p>
+<h3 id="系统软件"><a href="#系统软件" class="headerlink" title="系统软件"></a>系统软件</h3><p>调度系统资源</p>
+<p>语言处理程序</p>
+<p>操作系统</p>
+<p>服务性程序</p>
+<p>数据库管理系统</p>
+<p>网络软件</p>
+<h3 id="应用软件"><a href="#应用软件" class="headerlink" title="应用软件"></a>应用软件</h3><p>根据任务需要编写</p>
+<h3 id="软件运行"><a href="#软件运行" class="headerlink" title="软件运行"></a>软件运行</h3><p>1.高级语言编写的程序(源程序)+数据</p>
+<p>2.计算机将其翻译成机器语言程序(目标程序)</p>
+<p>3.计算机运行该程序</p>
+<h2 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h2><blockquote>
+<p>软件层次</p>
+<p>1.高级语言(虚拟机器 $M_3$)</p>
+<p>2.汇编语言(虚拟机器 $M_2$)</p>
+<p>3.操作系统(虚拟机器)</p>
+<p>硬件层次</p>
+<p>4.机器语言(实际机器$M_1$)</p>
+<p>5.微指令系统(微程序机器$M_0$)</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/19/3Dmax%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yuz">
+      <meta itemprop="description" content="code for fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇称不得不守恒">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/19/3Dmax%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">3Dmax使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-19 11:48:02 / Modified: 15:16:51" itemprop="dateCreated datePublished" datetime="2021-02-19T11:48:02+08:00">2021-02-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%88%9B/" itemprop="url" rel="index"><span itemprop="name">大创</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-复制模型"><a href="#1-复制模型" class="headerlink" title="1.复制模型"></a>1.复制模型</h1><p>选中模型，按住shift,鼠标拖动模型</p>
+<p>需要点选选择并移动后才能进行上述操作</p>
+<p>同时在进行这些操作不要先选择点，否则就是对点进行移动</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/18/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B8%85%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -217,12 +628,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>1.注册表</h1>
-<p>win系统下的数据库，负责win的启动，硬件驱动的装载，win应用程序的运行。</p>
-<h2 id="打开方法"><a class="header-anchor" href="#打开方法">¶</a>打开方法</h2>
-<p>WINDOWS/regedit</p>
-<h2 id="知识点"><a class="header-anchor" href="#知识点">¶</a>知识点</h2>
-
+          <h1 id="1-注册表"><a href="#1-注册表" class="headerlink" title="1.注册表"></a>1.注册表</h1><p>win系统下的数据库，负责win的启动，硬件驱动的装载，win应用程序的运行。</p>
+<h2 id="打开方法"><a href="#打开方法" class="headerlink" title="打开方法"></a>打开方法</h2><p>WINDOWS/regedit</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2>
       
     </div>
 
@@ -289,9 +697,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>0.来源知乎</h1>
-<h1>1.用户账户控制(UAC)策略</h1>
-<p>现代操作系统为了数据安全性设计的，即非root用户不能使用系统文件等等</p>
+          <h1 id="0-来源知乎"><a href="#0-来源知乎" class="headerlink" title="0.来源知乎"></a>0.来源知乎</h1><h1 id="1-用户账户控制-UAC-策略"><a href="#1-用户账户控制-UAC-策略" class="headerlink" title="1.用户账户控制(UAC)策略"></a>1.用户账户控制(UAC)策略</h1><p>现代操作系统为了数据安全性设计的，即非root用户不能使用系统文件等等</p>
 <p>一般说来C上的软件需要管理员权限</p>
 <p>在<code>appdata</code>下，这是用户可使用的文件夹，可以无需管理员权限</p>
 <p>管理员权限在win下拥有最高的权限</p>
@@ -304,7 +710,7 @@
 <p>某些勒索病毒会调用<code>vssadmin</code>来删除win的备份，此时UAC具有部分作用</p>
 <p>但是<code>WannaCry</code>勒索病毒在内核中，自带最高权限</p>
 <p>软件安装后门，或者木马，UAC并不会干涉</p>
-<p>2.不能制止弹窗，自启，垃圾文件制造等流氓行为</p>
+<p> 2.不能制止弹窗，自启，垃圾文件制造等流氓行为</p>
 <p>系统对于每个用户提供了独立的配置，包括自启，管理员权限下，可以更改全局设置，影响所有用户。</p>
 <p>3.恶意软件拿到管理员权限会静默拿到管理员权限</p>
 
@@ -447,16 +853,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>0.数学基础</h1>
-<h3 id="1-奇异值分解-SVD-singular-value-decomposition"><a class="header-anchor" href="#1-奇异值分解-SVD-singular-value-decomposition">¶</a>1.奇异值分解(SVD: singular value decomposition)</h3>
-<p>机器学习中广泛应用的算法</p>
+          <h1 id="0-数学基础"><a href="#0-数学基础" class="headerlink" title="0.数学基础"></a>0.数学基础</h1><h3 id="1-奇异值分解-SVD-singular-value-decomposition"><a href="#1-奇异值分解-SVD-singular-value-decomposition" class="headerlink" title="1.奇异值分解(SVD: singular value decomposition)"></a>1.奇异值分解(SVD: singular value decomposition)</h3><p>机器学习中广泛应用的算法</p>
 <p>1.特征值和特征向量</p>
-<p>$$Ax=\lambda x$$</p>
-<p>A是一个$n*n$的实对称矩阵，</p>
+<script type="math/tex; mode=display">Ax=\lambda x</script><p>A是一个$n*n$的实对称矩阵，</p>
 <p>$x$是一个$n$维向量，</p>
 <p>则</p>
 <blockquote>
-<p>$\lambda$是矩阵A的特征值</p>
+<p> $\lambda$是矩阵A的特征值</p>
 <p>而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。</p>
 </blockquote>
 <p>特征值和特征向量的作用</p>
@@ -465,10 +868,9 @@
 <p>$W$是这些特征向量所张成的矩阵$n \times n$ 维矩阵，而$\Sigma$为这n个特征值为主对角线的$n \times n$维矩阵</p>
 <p>这样$A$的进行幂运算会有很大好处，当然也会有标准化。这里暂时不谈</p>
 <p>但问题是这个矩阵A必须为方阵</p>
-<h4 id="SVD"><a class="header-anchor" href="#SVD">¶</a>SVD</h4>
-<p>当$A$不是方阵时，我们定义$A$的SVD为</p>
+<h4 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h4><p>当$A$不是方阵时，我们定义$A$的SVD为</p>
 <blockquote>
-<p>$A$=$U\Sigma V^{T}$</p>
+<p> $A$=$U\Sigma V^{T}$</p>
 </blockquote>
 <p>A为$ m \times n$的矩阵</p>
 <p>U为$ m \times m$的矩阵</p>
@@ -480,22 +882,17 @@
 <blockquote>
 <p>$(A^{T}A)$$v_{i}$=$\lambda_{i} v_{i}$</p>
 </blockquote>
-<h1>1.监督学习</h1>
-<p>1.回归问题下，根据完整数据推测一个结果。</p>
+<h1 id="1-监督学习"><a href="#1-监督学习" class="headerlink" title="1.监督学习"></a>1.监督学习</h1><p>1.回归问题下，根据完整数据推测一个结果。</p>
 <p>每个数据都有正确的结果进行验证</p>
 <p>或者分类问题下，预测离散的输出值。</p>
-<h1>2.无监督学习</h1>
-<p>无监督学习的数据标签没有或者都相同</p>
+<h1 id="2-无监督学习"><a href="#2-无监督学习" class="headerlink" title="2.无监督学习"></a>2.无监督学习</h1><p>无监督学习的数据标签没有或者都相同</p>
 <p>聚类算法：将这些数据分成不同簇</p>
 <p>例如Google的新闻主题识别</p>
-<h1>3.算法</h1>
-<h2 id="1-线性回归算法"><a class="header-anchor" href="#1-线性回归算法">¶</a>1.线性回归算法</h2>
-<blockquote>
-<p>training set + algorithm—&gt;hypothesis  本人仍然将其理解为模型</p>
-<p>test set - hypothesis —&gt;estimated result</p>
+<h1 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h1><h2 id="1-线性回归算法"><a href="#1-线性回归算法" class="headerlink" title="1.线性回归算法"></a>1.线性回归算法</h2><blockquote>
+<p>training set + algorithm—-&gt;hypothesis  本人仍然将其理解为模型</p>
+<p>test set - hypothesis —-&gt;estimated result</p>
 </blockquote>
-<h3 id="代价函数"><a class="header-anchor" href="#代价函数">¶</a>代价函数</h3>
-<p>为模型选择合适的参数</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>为模型选择合适的参数</p>
 <p>建模误差：预测值和实际值的差距</p>
 <p>线性回归中一般为平方误差函数</p>
 <p>通过梯度下降求出代价函数最小值</p>
@@ -508,41 +905,33 @@
 <p>但是，如果模型拟合得过好，反而会过度学习历史数据，真正预测的效果往往不好，这种情况就是过拟合</p>
 <p>一般来说，造成这样是因为其函数过于复杂，拟合因此很精准。</p>
 </blockquote>
-<h3 id="多变量线性回归"><a class="header-anchor" href="#多变量线性回归">¶</a>多变量线性回归</h3>
-<p>$h_{\theta}=\theta_{0}x_{0}+\theta_{1}x_{1}+\cdots+\theta_{n}x_{n}$</p>
+<h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><p>$h_{\theta}=\theta_{0}x_{0}+\theta_{1}x_{1}+\cdots+\theta_{n}x_{n}$</p>
 <p>参数为$n+1$维的向量，因此训练实例也为$n+1$维的向量，特征方程的维度为$m*(n+1$)维。</p>
-<p>一个训练实例的特征:{${x_{0},x_{1},\cdots,x_{n}}$}<br>
-$$<br>
-\left{<br>
-\begin{matrix}<br>
-x_{0}\<br>
-x_{1}\<br>
-\cdots\<br>
-x_{n}<br>
-\end{matrix}<br>
-\right}<br>
-$$</p>
-<p>特征方程：m个特征向量($n+1$)，所以为$m*(n+1)$维度</p>
+<p>一个训练实例的特征:{${x_{0},x_{1},\cdots,x_{n}}$}</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{matrix}
+x_{0}\\
+x_{1}\\
+\cdots\\
+x_{n}
+\end{matrix}
+\right\}</script><p>特征方程：m个特征向量($n+1$)，所以为$m*(n+1)$维度</p>
 <p>所以可以简化为：</p>
 <p>$h_{\theta}(x)=\theta^{T}X$</p>
 <p>这样便获得参数矩阵</p>
-<h3 id="多变量线性回归的代价函数"><a class="header-anchor" href="#多变量线性回归的代价函数">¶</a>多变量线性回归的代价函数</h3>
-<p>$$J(\theta_{0},\theta_{1},\cdots,\theta_{n})=\frac{1}{2m}\sum_{i=1}<sup>{m}(h_{\theta}(x</sup>{i}-y<sup>{i})</sup>{2})$$</p>
-<p>代价函数为所有建模误差的平方和</p>
+<h3 id="多变量线性回归的代价函数"><a href="#多变量线性回归的代价函数" class="headerlink" title="多变量线性回归的代价函数"></a>多变量线性回归的代价函数</h3><script type="math/tex; mode=display">J(\theta_{0},\theta_{1},\cdots,\theta_{n})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{i}-y^{i})^{2})</script><p>代价函数为所有建模误差的平方和</p>
 <p>随机选择一系列的参数值，计算所有的预测结果后，在给所有的参数一个新的值，如此循环知道收敛</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computecost</span>(<span class="params">X,y,theta</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#power函数用于求数组的n次方，power(x1,x2);x2既可以是数字也可以是数组，但是x1,x2的列数要相同</span></span><br><span class="line">    innner=np.power(((X*theta.T)-y),<span class="number">2</span>)</span><br><span class="line">    <span class="comment">#数组中给定轴上的元素总和</span></span><br><span class="line">    <span class="keyword">return</span> np.<span class="built_in">sum</span>(inner)/(<span class="number">2</span>*<span class="built_in">len</span>(X))</span><br></pre></td></tr></table></figure>
-<h3 id="梯度下降"><a class="header-anchor" href="#梯度下降">¶</a>梯度下降</h3>
-<h4 id="特征缩放—标准化"><a class="header-anchor" href="#特征缩放—标准化">¶</a>特征缩放—标准化</h4>
-<p>面对多维特征问题时，我们要保证特征具有相近的尺度，梯度下降能够更快收敛。</p>
+<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><h4 id="特征缩放—-标准化"><a href="#特征缩放—-标准化" class="headerlink" title="特征缩放—-标准化"></a>特征缩放—-标准化</h4><p>面对多维特征问题时，我们要保证特征具有相近的尺度，梯度下降能够更快收敛。</p>
 <p>对于不同特征的尺度，如果不一致，会导致在一个维度上变化的幅度不能很大。</p>
 <p>因此我们要尝试把所有尺度缩放到-1和1之间</p>
 <p>$x_{n}=\frac{x_{n}-u_{n}}{s_{n}}$</p>
 <p>$u_{n}$是数据的平均值，$s_{n}$是标准差</p>
-<h4 id="学习率"><a class="header-anchor" href="#学习率">¶</a>学习率</h4>
-<p>是监督学习和深度学习的重要参数，影响目标函数能否收敛到局部最小值和何时收敛到最小值</p>
+<h4 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h4><p>是监督学习和深度学习的重要参数，影响目标函数能否收敛到局部最小值和何时收敛到最小值</p>
 <p>一般的学习率</p>
 <blockquote>
-<p>0.01</p>
+<p>0.01 </p>
 <p>0.03</p>
 <p>0.1</p>
 <p>0.3</p>
@@ -617,41 +1006,31 @@ $$</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>0.前言</h1>
-<h2 id="关于模型和算法"><a class="header-anchor" href="#关于模型和算法">¶</a>关于模型和算法</h2>
-<p>个人理解：算法是对机器学习中数据的处理，模型是算法和数据共同生成的处理程序</p>
+          <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><h2 id="关于模型和算法"><a href="#关于模型和算法" class="headerlink" title="关于模型和算法"></a>关于模型和算法</h2><p>个人理解：算法是对机器学习中数据的处理，模型是算法和数据共同生成的处理程序</p>
 <p>scikit learm并不是模型库，而是算法库，了解算法对模型的理解或许会有极大的提升。</p>
 <p>机器学习四个元素：</p>
 <p>1.数据</p>
 <p>2.任务</p>
 <p>3.性能度量</p>
 <p>4.模型</p>
-<h2 id="数据"><a class="header-anchor" href="#数据">¶</a>数据</h2>
-<h3 id="1-结构化数据和非结构化数据"><a class="header-anchor" href="#1-结构化数据和非结构化数据">¶</a>1.结构化数据和非结构化数据</h3>
-<p>数据具体类型</p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><h3 id="1-结构化数据和非结构化数据"><a href="#1-结构化数据和非结构化数据" class="headerlink" title="1.结构化数据和非结构化数据"></a>1.结构化数据和非结构化数据</h3><p>数据具体类型</p>
 <p>结构数据：二维表结构进行逻辑表达和实现</p>
 <p>非结构化：图片，文字，声音，视频</p>
 <p>CNN可对图像数据做人脸识别和物体分类</p>
 <p>RNN可对语音数据做语音识别和机器对话，文字数据做阅读理解</p>
 <p>增强学习Akphago</p>
-<h3 id="2-原始数据和加工数据"><a class="header-anchor" href="#2-原始数据和加工数据">¶</a>2.原始数据和加工数据</h3>
-<p>数据表达形式</p>
-<h3 id="3-样本内数据和样本外数据"><a class="header-anchor" href="#3-样本内数据和样本外数据">¶</a>3.样本内数据和样本外数据</h3>
-<p>数据统计性质</p>
+<h3 id="2-原始数据和加工数据"><a href="#2-原始数据和加工数据" class="headerlink" title="2.原始数据和加工数据"></a>2.原始数据和加工数据</h3><p>数据表达形式</p>
+<h3 id="3-样本内数据和样本外数据"><a href="#3-样本内数据和样本外数据" class="headerlink" title="3.样本内数据和样本外数据"></a>3.样本内数据和样本外数据</h3><p>数据统计性质</p>
 <p>比如我们在大数据竞赛中的线下评分（样本内数据）</p>
 <p>线上评分(样本外数据)</p>
-<h1>1.分类器(classifier)</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import </span><br></pre></td></tr></table></figure>
+<h1 id="1-分类器-classifier"><a href="#1-分类器-classifier" class="headerlink" title="1.分类器(classifier)"></a>1.分类器(classifier)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import </span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble import</span><br></pre></td></tr></table></figure>
-<h1>2.回归器(regressor)</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import</span><br></pre></td></tr></table></figure>
+<h1 id="2-回归器-regressor"><a href="#2-回归器-regressor" class="headerlink" title="2.回归器(regressor)"></a>2.回归器(regressor)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble</span><br></pre></td></tr></table></figure>
-<h1>3.聚类(cluster)</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.cluster import</span><br></pre></td></tr></table></figure>
-<h1>4.降维(decomposition)</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="3-聚类-cluster"><a href="#3-聚类-cluster" class="headerlink" title="3.聚类(cluster)"></a>3.聚类(cluster)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.cluster import</span><br></pre></td></tr></table></figure>
+<h1 id="4-降维-decomposition"><a href="#4-降维-decomposition" class="headerlink" title="4.降维(decomposition)"></a>4.降维(decomposition)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -719,10 +1098,9 @@ $$</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1-除法实现"><a class="header-anchor" href="#1-除法实现">¶</a>1.除法实现</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static constexpr unsigned width(unit64-t n,unit64_t d&#x3D;10,unsigned w&#x3D;0)</span><br><span class="line">&#123;</span><br><span class="line">	if(n&gt;&#x3D;2&amp;&amp;d!&#x3D;0&amp;&amp;w&lt;19)</span><br><span class="line">	&#123;</span><br><span class="line">		return 1+width(n,d%n*10,w+1);</span><br><span class="line">	&#125;</span><br><span class="line">	reutrn 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="1-除法实现"><a href="#1-除法实现" class="headerlink" title="1.除法实现"></a>1.除法实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static constexpr unsigned width(unit64-t n,unit64_t d&#x3D;10,unsigned w&#x3D;0)</span><br><span class="line">&#123;</span><br><span class="line">	if(n&gt;&#x3D;2&amp;&amp;d!&#x3D;0&amp;&amp;w&lt;19)</span><br><span class="line">	&#123;</span><br><span class="line">		return 1+width(n,d%n*10,w+1);</span><br><span class="line">	&#125;</span><br><span class="line">	reutrn 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这段代码的含义是输出d除以n的结果，w为位数</p>
-<p>w限制结果小于19，width是<code>std:chrono::hh_mm_ss</code>的成员,这个类模板会将用分数表示的duration转换为$1/10<sup>w$的倍数，用于输出，因此w需要小于19以避免$10</sup>w$溢出</p>
+<p>w限制结果小于19，width是<code>std:chrono::hh_mm_ss</code>的成员,这个类模板会将用分数表示的duration转换为$1/10^w$的倍数，用于输出，因此w需要小于19以避免$10^w$溢出</p>
 
       
     </div>
@@ -796,25 +1174,22 @@ $$</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>1.问题</h1>
-<p>在知乎看到的一个有趣的问题</p>
+          <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>在知乎看到的一个有趣的问题</p>
 <blockquote>
 <p>若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少</p>
 </blockquote>
 <p>关于这个问题，由许多很好的方法</p>
-<h2 id="解法一"><a class="header-anchor" href="#解法一">¶</a>解法一</h2>
-<p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
+<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
 <p>考虑a变成b所需步骤</p>
 <p>我们不妨从最后一步开始入手</p>
 <p>对于目标b</p>
 <p>1.如果b是奇数，那么最后一步必然是+1操作</p>
 <p>2.如果b是偶数，要实现最少的步数，我们要尽量选择x2操作，但如果$b/2&lt;a$,那a只能经过+1操作变成b,那么最小步数就是b-a</p>
-<p>​	如果$b/2&gt;=a$</p>
-<p>​	$(a+x)\times 2$和$（a\times 2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
-<p>​	因此我们将$b/2$,再进入递归判断</p>
+<p>​    如果$b/2&gt;=a$</p>
+<p>​    $(a+x)\times 2$和$（a\times 2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
+<p>​    因此我们将$b/2$,再进入递归判断</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> fun(a,b<span class="number">-1</span>)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(b/<span class="number">2</span>&lt;a)</span><br><span class="line">        <span class="keyword">return</span> b-a;</span><br><span class="line">     <span class="keyword">return</span> fun(a,b/<span class="number">2</span>)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解法二"><a class="header-anchor" href="#解法二">¶</a>解法二</h2>
-<p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
+<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
 <blockquote>
 <p>x2相当于在二进制后加0</p>
 <p>+1相当于末尾加1</p>
@@ -852,497 +1227,10 @@ $$</p>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/02/%E6%B7%B1%E5%A4%9C%E4%BF%AEBUG-%E7%BD%91%E7%AB%99%E6%8C%82%E6%8E%89%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/02/%E6%B7%B1%E5%A4%9C%E4%BF%AEBUG-%E7%BD%91%E7%AB%99%E6%8C%82%E6%8E%89%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">深夜修BUG--网站挂掉记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-02 01:05:35 / Modified: 22:37:11" itemprop="dateCreated datePublished" datetime="2021-02-02T01:05:35+08:00">2021-02-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>一个晚上，我熟悉地打开了网站</p>
-<p>发现居然响应时间过长，所以记录这第一次深夜修BUG的过程</p>
-<p>1.确定是不是真的挂了</p>
-<p>先ping一下，<a target="_blank" rel="noopener" href="http://xn--github-245j660j8cnnfq0n6d3sza.io">发现无法访问github.io</a></p>
-<p>2.本地部署一下，修改端口后仍然发现访问被拒，应该是文件配置出了问题</p>
-<p>都说是IIS服务器问题 。需要在控制面板中打开 ，<br>
-具体流程是 （以下是win10的）：打开控制面板 —— 程序和功能 —— 左侧栏的“启用或关闭Windows功能”，把“Internet Information Services”点上。</p>
-<p>这样处理后本地的确可以部署，但是仍然无法访问网址，github上也有显示提交文件</p>
-<p>目前初步判断为</p>
-<p>github page本身服务器访问有问题</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/" class="post-title-link" itemprop="url">计算机组成原理--硬件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-31 23:46:18" itemprop="dateCreated datePublished" datetime="2021-01-31T23:46:18+08:00">2021-01-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-09 16:41:01" itemprop="dateModified" datetime="2021-03-09T16:41:01+08:00">2021-03-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>0.微型计算机</h1>
-<p>Micro Computer</p>
-<p>IC 元件外露的、用于控制的计算机</p>
-<h1>1.CPU</h1>
-<p>central processing unit</p>
-<p>提取，解码，执行</p>
-<p>CPU从RAM提取指令，然后解码该指令内容，最后执行。</p>
-<p>所有的数据处理都在CPU中</p>
-<p>(RAM:主存，随机存取存储器，为临时数据存储介质)</p>
-<p>CPU与其它部件的运行需要时钟信号</p>
-<blockquote>
-<p>就是由内含晶振的、 被称作时钟发生器的元件发出的电信号。</p>
-<p>晶振：一种利用石英晶体（ 又称水晶） 的压电效应产生高精度振荡频率的电子元件</p>
-</blockquote>
-<h5 id="Z80-CPU"><a class="header-anchor" href="#Z80-CPU">¶</a>Z80 CPU</h5>
-<p>一种8比特的CPU,CPU 上数据总线的条数， 或者 CPU 内部参与运算的寄存器的容量， 都可以作为衡量 CPU 性能的比特数。 在Z80 CPU 中， 无论是数据总线的条数还是寄存器的容量都是 8 比特。</p>
-<h2 id="构成"><a class="header-anchor" href="#构成">¶</a>构成</h2>
-<h3 id="控制单元-CU-control-unit-："><a class="header-anchor" href="#控制单元-CU-control-unit-：">¶</a>控制单元(CU,control unit)：</h3>
-<p>从内存提取指令并解码运算，协调参与机器指令执行的步骤序列</p>
-<h4 id="寄存器"><a class="header-anchor" href="#寄存器">¶</a>寄存器</h4>
-<p>暂存指令，数据，地址</p>
-<p>位于 CPU 和 I/O 中的数据存储器</p>
-<h5 id="标志寄存器"><a class="header-anchor" href="#标志寄存器">¶</a>标志寄存器</h5>
-<p>Flags Register</p>
-<p>用于在运算指令执行后，存储运算结果的某些状态</p>
-<p>一旦执行了算术运算、 逻辑运算、 比较运算等指令后， 标志寄存器并不会存放运算结果的值， 而是会把运算后的某些状态存储起来，例如运算结果是否为 0、 是否产生了负数、 是否有溢出（Overflow） ，发生了进位，数字大小的比较等。</p>
-<h5 id="累加器"><a class="header-anchor" href="#累加器">¶</a>累加器</h5>
-<p>累加器一般是运算的核心，连接的导线更多</p>
-<h5 id="PC（-Program-Counter，-程序计数器-）-程序指针"><a class="header-anchor" href="#PC（-Program-Counter，-程序计数器-）-程序指针">¶</a>PC（ Program Counter， 程序计数器 ） 程序指针</h5>
-<p>存储着指向 CPU 接下来要执行的指令的地址  (指令存储都在内存中)</p>
-<p>例如执行完10号地址开始的三字节指令后</p>
-<p>PC寄存器的值就会变成10+3=13（顺序执行）</p>
-<p>会随着时钟信号自动更新，每解释执行完一条指令， PC 寄存器的<br>
-值就会自动被更新为下一条指令的地址</p>
-<p>可以说程序就是依靠不断变化的 PC 寄存器的值运行起来的</p>
-<h6 id="程序的流程"><a class="header-anchor" href="#程序的流程">¶</a>程序的流程</h6>
-<p><strong>顺序执行</strong></p>
-<p>按照指令记录在内存中的先后顺序依次执行的一种流程。</p>
-<p><strong>条件分支</strong></p>
-<p>根据若干个条件的成立与否， 在程序的流程中产生若干个分支的一种流程</p>
-<p><strong>循环</strong></p>
-<p>在程序的特定范围内反复执行若干次的一种流程。</p>
-<p>使用了机器语言或汇编语言所提供的<strong>跳转指令</strong>， 就可以将<strong>PC 寄存器</strong>的值设置为任意的内存地址。 如果将它的值设为之前执行过的步骤所对应的内存地址， 那么就构成了循环  .通过条件分支返回到之前处理过的指令来实现循环的, 跳转到之后尚未处理的步骤就是条件分支</p>
-<p><strong>中断处理</strong></p>
-<p>程序的流程突然跳转到程序中的特定地方，这 样 的 地 方 被 称 为 中 断 处 理 例 程（ Routine） 或 是 中 断 处 理 程 序（ Handler），</p>
-<p>使正常的流程中断， 中断后再返回到之前流程的过程就是中断处理流程</p>
-<p>中断请求信号一般由I/O模块</p>
-<h5 id="SP寄存器"><a class="header-anchor" href="#SP寄存器">¶</a>SP寄存器</h5>
-<p>也叫作“栈顶指针”</p>
-<p>用于在内存中创建出一块称为“栈” 的临时数据存储区域</p>
-<h4 id="控制器"><a class="header-anchor" href="#控制器">¶</a>控制器</h4>
-<p>将内存中指令，数据读入寄存器，并根据指令控制计算机</p>
-<h3 id="算数逻辑单元-ALU-arithmetic-logic-unit"><a class="header-anchor" href="#算数逻辑单元-ALU-arithmetic-logic-unit">¶</a>算数逻辑单元(ALU,arithmetic logic unit)</h3>
-<p>处理算数和逻辑运算(AND OR NOT)</p>
-<h4 id="运算器"><a class="header-anchor" href="#运算器">¶</a>运算器</h4>
-<p>运算从内存读入寄存器的数据</p>
-<h3 id="时钟-clock"><a class="header-anchor" href="#时钟-clock">¶</a>时钟(clock)</h3>
-<p>对CPU内部操作与系统其它组件进行同步</p>
-<p>每隔一定时间就变换一次电压的高低</p>
-<p>输出时钟信号的元件叫作“时钟发生器”</p>
-<p>时钟信号的频率可以衡量 CPU 的运转速度</p>
-<p>从功能来看，可分为由电信号联通的四部分</p>
-<blockquote>
-<p>内存–&gt;寄存器</p>
-</blockquote>
-<h3 id="引脚"><a class="header-anchor" href="#引脚">¶</a>引脚</h3>
-<h4 id="地址总线引脚"><a class="header-anchor" href="#地址总线引脚">¶</a>地址总线引脚</h4>
-<p>引脚位置表示二进制数字中的位置，进而有$2^{n}$个，每个引脚连接一个数据存取单元(内存存储单元或I/O单元)</p>
-<h4 id="数据总线引脚"><a class="header-anchor" href="#数据总线引脚">¶</a>数据总线引脚</h4>
-<p>仍然表示二进制各个数字的位置，每个引脚代表一个bit的数据</p>
-<p>数据总线引脚数表示一次性处理的数据大小(bit)</p>
-<p>如大于这个，需要进行切分(如8位)</p>
-<p>在确定存取数据地址后</p>
-<h4 id="控制引脚"><a class="header-anchor" href="#控制引脚">¶</a>控制引脚</h4>
-<p>这些引脚上输入输出的电信号具有控制 IC 的功能</p>
-<h1>总线</h1>
-<p>传输数据，总线是连接到 CPU 中数据引脚、 地址引脚、 控制引脚上的电路的统称</p>
-<p>计算机部件之间也可以分散连接</p>
-<p>信息传送分类</p>
-<p>并行</p>
-<p>串行</p>
-<h2 id="片内总线"><a class="header-anchor" href="#片内总线">¶</a>片内总线</h2>
-<p>芯片内部的总线</p>
-<p>所以对寄存器的运算速度很快</p>
-<h2 id="系统总线"><a class="header-anchor" href="#系统总线">¶</a>系统总线</h2>
-<p>计算机各部件之间的信息传输线</p>
-<h3 id="地址总线"><a class="header-anchor" href="#地址总线">¶</a>地址总线</h3>
-<p>保存指令和数据的地址</p>
-<p>单向 与存储地址、 I/O地址有关</p>
-<p>由CPU输出数据地址</p>
-<p>取数据时，CPU将数据所在的存储位置送到地址线上</p>
-<p>地址线的位数和存储单元个数有关</p>
-<p>地址线为20根，则存储单元数为$2^{20}$(每个引脚表示一bit)</p>
-<h3 id="控制总线"><a class="header-anchor" href="#控制总线">¶</a>控制总线</h3>
-<p>数据，地址总线为各部件共享，控制总线确定哪一个获得使用权</p>
-<p>控制总线是个总称，有多少根，代表CPU对外部器件由多少种控制</p>
-<p>控制总线的宽度代表CPU对外部器件的控制能力</p>
-<p>二进制信号对所有连接在系统总线的设备行为进行同步</p>
-<p>时钟与 CPU 和系统总线相关的每一个操作都是由一个恒定速率的内部时钟脉冲来进行同步。机器指令的基本时间单位是机器周期 (machine cycle) 或时钟周期 (clock cycle)。</p>
-<p>一个时钟周期的时长是一个完整时钟脉冲所需要的时间</p>
-<p>执行一条机器指令最少需要 1 个时钟周期</p>
-<h4 id="控制信号"><a class="header-anchor" href="#控制信号">¶</a>控制信号</h4>
-<p>中断请求、总线请求</p>
-<p>存储器读、存储器写</p>
-<p>总线允许、中断确认</p>
-<h3 id="数据总线"><a class="header-anchor" href="#数据总线">¶</a>数据总线</h3>
-<p>各功能部件之间的数据信息</p>
-<p>CPU一次取得的大小和数据总线宽度（有多少根）有关</p>
-<p>双向 与机器字长、存储字长有关</p>
-<h3 id="I-O总线"><a class="header-anchor" href="#I-O总线">¶</a>I/O总线</h3>
-<p>CPU和IO设备中传输数据</p>
-<p>以CPU为主时的总线</p>
-<h2 id="通信总线"><a class="header-anchor" href="#通信总线">¶</a>通信总线</h2>
-<p>用于 计算机系统之间 或 计算机系统与其他系统（如控制仪表、移动通信等）之间的通信</p>
-<p><strong>并行通信总线</strong></p>
-<p><strong>串行通信总线</strong></p>
-<h2 id="指标"><a class="header-anchor" href="#指标">¶</a>指标</h2>
-<p><strong>总线宽度</strong></p>
-<p>数据总线 的根数</p>
-<p><strong>标准传输率</strong></p>
-<p>每秒传输的最大字节数（MBps）</p>
-<p><strong>时钟同步/异步</strong></p>
-<p>异步会慢一点，异步：与时钟不同步工作</p>
-<p><strong>总线复用</strong></p>
-<p>8086（数据线：16，地址线：20）后广泛使用，地址线 与 数据线 复用（一物多用，一个管脚既可以表示地址信号也可以表示数据信号，数据和地址信号因为不会同时出现，一般地址信号在前，数据信号在后（按址访问））</p>
-<p><strong>信号线数</strong></p>
-<p>地址线、数据线和控制线的 总和</p>
-<p><strong>总线控制方式</strong></p>
-<p>并发、自动、仲裁、逻辑、计数</p>
-<p><strong>负载能力</strong></p>
-<h2 id="总线标准"><a class="header-anchor" href="#总线标准">¶</a>总线标准</h2>
-<p>有许多</p>
-<p>RS-232</p>
-<p>USB(扩展能力很强)</p>
-<h2 id="总线结构"><a class="header-anchor" href="#总线结构">¶</a>总线结构</h2>
-<h3 id="单总线结构"><a class="header-anchor" href="#单总线结构">¶</a>单总线结构</h3>
-<p>总线被各个部件都使用</p>
-<h3 id="多总线结构"><a class="header-anchor" href="#多总线结构">¶</a>多总线结构</h3>
-<p>I/O设备速度较慢，因此从总线分离出来</p>
-<h4 id="双总线结构"><a class="header-anchor" href="#双总线结构">¶</a>双总线结构</h4>
-<p>I/O通过通道（特殊处理器，由CPU进行控制）连接总线</p>
-<h4 id="三总线结构"><a class="header-anchor" href="#三总线结构">¶</a>三总线结构</h4>
-<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E4%B8%89%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84" alt="image-20210309153440710"></p>
-<p>Cache出现后加装局部总线<img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E4%B8%89%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%841" alt="image-20210309153541312"></p>
-<h4 id="四总线结构"><a class="header-anchor" href="#四总线结构">¶</a>四总线结构</h4>
-<p>增加了高速总线，用于外设</p>
-<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E5%9B%9B%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84" alt="image-20210309153748553"></p>
-<h2 id="总线控制（重点）"><a class="header-anchor" href="#总线控制（重点）">¶</a>总线控制（重点）</h2>
-<p>总线来连接多个部件，需要确定发送信息</p>
-<h3 id="总线判优控制"><a class="header-anchor" href="#总线判优控制">¶</a>总线判优控制</h3>
-<p>主设备：对总线有控制权，总线信息传送由主设备启动</p>
-<p>从设备：响应主设备发来的总线命令</p>
-<p>主设备同时要使用总线，由总线控制器进行判断谁获取总线控制权</p>
-<h4 id="集中式"><a class="header-anchor" href="#集中式">¶</a>集中式</h4>
-<p>控制逻辑集中在一处(如CPU)</p>
-<h5 id="优先权仲裁方式"><a class="header-anchor" href="#优先权仲裁方式">¶</a>优先权仲裁方式</h5>
-<p>BS:总线忙</p>
-<p>BR:总线请求</p>
-<p>BG:总线同意</p>
-<h6 id="链式查询"><a class="header-anchor" href="#链式查询">¶</a>链式查询</h6>
-<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861.assets/%E9%93%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F" alt="image-20210309160623001"></p>
-<p>BG串行经过接口，BG到达的接口若有总线请求，BG信号不再下传</p>
-<p>建立BS信号（占用了总线）</p>
-<p>链式查询中，总线控制部件最近优先级最高</p>
-<p>优点：简易，容易扩充设备，</p>
-<p>缺点</p>
-<p>总线控制部件不能直接确定是哪一台外设发出的请求信号，需要一个个去询问</p>
-<p>电路故障影响大，优先级低的设备很难获得请求</p>
-<p>不是按照事情轻重缓急进行处理</p>
-<h6 id="计数器定时查询"><a class="header-anchor" href="#计数器定时查询">¶</a>计数器定时查询</h6>
-<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E8%AE%A1%E6%97%B6%E5%99%A8%E5%AE%9A%E6%97%B6%E6%9F%A5%E8%AF%A2" alt="image-20210309161227480"></p>
-<p>多了设备地址线，少了BG，多了计数器（总线控制部件中）</p>
-<p>I/O接口从0（设备地址号）开始增加编号</p>
-<p>1.BR线传来总线请求信号</p>
-<p>判断条件：总线未被使用(BS=0)</p>
-<p>2.计数器开始计数，通过设备地址线发出一组地址信号</p>
-<p>3.请求占用总线的设备地址和计数值一致，获得总线使用权</p>
-<p>4.终止计数查询</p>
-<p><strong>特点</strong></p>
-<p>计数从0开始：</p>
-<p>优先级按照0~n降序排列</p>
-<p>计数器可以按照上次计数终止点开始，循环计数：</p>
-<p>优先级相等</p>
-<p>初始值由程序设定：</p>
-<p>优先级可以改变</p>
-<p>设备地址线：$log_{2}(n)$(n为设备数，二进制表示n,每一条代表一位)</p>
-<h6 id="独立请求方式"><a class="header-anchor" href="#独立请求方式">¶</a>独立请求方式</h6>
-<p><img src="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%861/%E7%8B%AC%E7%AB%8B%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F" alt="image-20210309162355814">每台设备都有总线请求BR和总线同意BG</p>
-<p>总线控制部件有排队电路，通过优先次序确定响应哪台设备</p>
-<p>特点：</p>
-<p>响应速度快，可通过程序控制优先级</p>
-<p>但控制线比较多，总线控制更为复杂</p>
-<h4 id="分布式"><a class="header-anchor" href="#分布式">¶</a>分布式</h4>
-<p>逻辑控制分散在与总线连接的各个部件或设备</p>
-<h1>内存存储单元</h1>
-<p>计算机所处理的数据都存储在了被称为内存的 IC（ Integrated<br>
-Circuit， 集成电路） 中。 在一般的个人计算机中， 内存内部被分割成了若干个数据存储单元， <strong>每个单元可以存储 8 比特的数据（ 8 比特 = 1 字节）</strong>。</p>
-<p><strong>每个存储单元从0开始顺序编号</strong></p>
-<p>指令和数据没有区别</p>
-<p>高级语言的变量即是把一块内存空间进行命名</p>
-<p>在程序运行时保存指令与数据</p>
-<p>接受来自CPU的数据请求，将数据从RAM传输到CPU,并从CPU传输到内存</p>
-<p>反汇编：机器语言转化为汇编语言（为什么是汇编语言呢？因为机器语言的指令和汇编语言的指令是一一对应的）</p>
-<p>标识内存或I/O存储单元的数字称作地址</p>
-<h3 id="随机存储器-RAM"><a class="header-anchor" href="#随机存储器-RAM">¶</a>随机存储器(RAM)</h3>
-<p>可读可写，必须带电存储</p>
-<h3 id="只读存储器-ROM"><a class="header-anchor" href="#只读存储器-ROM">¶</a>只读存储器(ROM)</h3>
-<p>只读</p>
-<p>关机内容不丢失</p>
-<h2 id="CPU对存储器的读写"><a class="header-anchor" href="#CPU对存储器的读写">¶</a>CPU对存储器的读写</h2>
-<p>CPU读写需要和外部器件进行交互</p>
-<p>1.存储单元的地址（地址线）</p>
-<p>2.对什么器件进行操作（读还是写）（控制线）</p>
-<p>3.数据信息（数据线）</p>
-<p>eg:</p>
-<blockquote>
-<p>CPU通过地址线将地址信息发出</p>
-<p>CPU通过控制线对内存发出读命令，选中存储器芯片，通知它</p>
-<p>存储器将对应地址的数据通过数据线送到CPU</p>
-</blockquote>
-<h2 id="存储顺序"><a class="header-anchor" href="#存储顺序">¶</a>存储顺序</h2>
-<p>在将一个 2 字节的数据存储到内存时<br>
-存储顺序是低 8 位在前、 高 8 位在后（ 也就是逆序存储）。 这样的存储顺序叫作“小端序”（ Little Endian）， 与此相反， 将数据由高位到低位<br>
-顺序地存储到内存的存储顺序则叫作“大端序”（ Big Endian）。 根据<br>
-CPU 种类的不同， 有的 CPU 使用大端序， 有的 CPU 使用小端序</p>
-<h2 id="引脚-v2"><a class="header-anchor" href="#引脚-v2">¶</a>引脚</h2>
-<p>和CPU一样</p>
-<p>需要和CPU对应的引脚相连</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/%E4%BA%A4%E9%80%9A%E5%8F%8B%E5%A5%BD%E5%BA%A6%E8%AF%84%E4%BC%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="yuz">
-      <meta itemprop="description" content="code for fun">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇称不得不守恒">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/%E4%BA%A4%E9%80%9A%E5%8F%8B%E5%A5%BD%E5%BA%A6%E8%AF%84%E4%BC%B0/" class="post-title-link" itemprop="url">交通友好度评估</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-31 16:10:46 / Modified: 16:29:01" itemprop="dateCreated datePublished" datetime="2021-01-31T16:10:46+08:00">2021-01-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E5%88%9B/" itemprop="url" rel="index"><span itemprop="name">大创</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>1.赛题分析</h1>
-<p><a target="_blank" rel="noopener" href="https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2">https://data.xm.gov.cn/contest-series/digit-china-2021/index.html#/3/contest_explain?projectId=18f9cddb48d911ebaf9c52540060cfc2</a></p>
-<p>数据层面：城市路网，共享单车，路段的道路使用情况</p>
-<p>数据集：</p>
-<p>1.共享单车轨迹数据（2020.12.21-2020.12.25）</p>
-<table>
-<thead>
-<tr>
-<th>数据项</th>
-<th>含义</th>
-<th>举例</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BICYCLE_ID</td>
-<td>车辆编码</td>
-<td>bd10a51275705899a7bd03d7bc99807</td>
-<td>车辆的标志</td>
-</tr>
-<tr>
-<td>LOCATING_TIME</td>
-<td>定位时间</td>
-<td>2020/12/21  8:09:14</td>
-<td>应该是车辆定位的时间</td>
-</tr>
-<tr>
-<td>LATITUDE</td>
-<td>纬度</td>
-<td>24.483863129</td>
-<td>应该是定位的时候</td>
-</tr>
-<tr>
-<td>LONGITUDE</td>
-<td>经度</td>
-<td>118.124379562</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>自开始使用，每15S进行一次定位，然后根据定位判断单车的行进速度</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1408,7 +1296,7 @@ CPU 种类的不同， 有的 CPU 使用大端序， 有的 CPU 使用小端序<
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.问题 在知乎看到的一个有趣的问题  若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少  关于这个问题，由许多很好的方法 ¶解法一 其中最简单易懂而且很高效的做法是pecoo老师（其实是我们系的大佬） 考虑a变成b所需步骤 我们不妨从最后一步开始入手 对于目标b 1.如果b是奇数，那么最后一步必然是+1操作 2.如果b是偶数，要实现最少的步数，我">
+  <meta name="description" content="1.问题在知乎看到的一个有趣的问题  若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少  关于这个问题，由许多很好的方法 解法一其中最简单易懂而且很高效的做法是pecoo老师（其实是我们系的大佬） 考虑a变成b所需步骤 我们不妨从最后一步开始入手 对于目标b 1.如果b是奇数，那么最后一步必然是+1操作 2.如果b是偶数，要实现最少的步数，我们要尽">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有趣的算法">
 <meta property="og:url" content="http://example.com/2021/02/04/%E6%9C%89%E8%B6%A3%E7%9A%84%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="1.问题 在知乎看到的一个有趣的问题  若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少  关于这个问题，由许多很好的方法 ¶解法一 其中最简单易懂而且很高效的做法是pecoo老师（其实是我们系的大佬） 考虑a变成b所需步骤 我们不妨从最后一步开始入手 对于目标b 1.如果b是奇数，那么最后一步必然是+1操作 2.如果b是偶数，要实现最少的步数，我">
+<meta property="og:description" content="1.问题在知乎看到的一个有趣的问题  若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少  关于这个问题，由许多很好的方法 解法一其中最简单易懂而且很高效的做法是pecoo老师（其实是我们系的大佬） 考虑a变成b所需步骤 我们不妨从最后一步开始入手 对于目标b 1.如果b是奇数，那么最后一步必然是+1操作 2.如果b是偶数，要实现最少的步数，我们要尽">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-02-03T21:09:52.000Z">
 <meta property="article:modified_time" content="2021-02-15T02:42:47.897Z">
@@ -227,25 +227,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>1.问题</h1>
-<p>在知乎看到的一个有趣的问题</p>
+        <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>在知乎看到的一个有趣的问题</p>
 <blockquote>
 <p>若非负整数a,b，其中a&lt;b,a经过不限顺序和次数的+1和x2运算变成b，问最少的步数是多少</p>
 </blockquote>
 <p>关于这个问题，由许多很好的方法</p>
-<h2 id="解法一"><a class="header-anchor" href="#解法一">¶</a>解法一</h2>
-<p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
+<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>其中最简单易懂而且很高效的做法是<code>pecoo</code>老师（其实是我们系的大佬）</p>
 <p>考虑a变成b所需步骤</p>
 <p>我们不妨从最后一步开始入手</p>
 <p>对于目标b</p>
 <p>1.如果b是奇数，那么最后一步必然是+1操作</p>
 <p>2.如果b是偶数，要实现最少的步数，我们要尽量选择x2操作，但如果$b/2&lt;a$,那a只能经过+1操作变成b,那么最小步数就是b-a</p>
-<p>​	如果$b/2&gt;=a$</p>
-<p>​	$(a+x)\times 2$和$（a\times 2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
-<p>​	因此我们将$b/2$,再进入递归判断</p>
+<p>​    如果$b/2&gt;=a$</p>
+<p>​    $(a+x)\times 2$和$（a\times 2)+y$相比，明显前面所需的步数少，即在x2的作用下，+1的操作更有效</p>
+<p>​    因此我们将$b/2$,再进入递归判断</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> fun(a,b<span class="number">-1</span>)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(b/<span class="number">2</span>&lt;a)</span><br><span class="line">        <span class="keyword">return</span> b-a;</span><br><span class="line">     <span class="keyword">return</span> fun(a,b/<span class="number">2</span>)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解法二"><a class="header-anchor" href="#解法二">¶</a>解法二</h2>
-<p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
+<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><p>思路奇特，可以看出这位答主<code>Muchan</code>编程基础相当强</p>
 <blockquote>
 <p>x2相当于在二进制后加0</p>
 <p>+1相当于末尾加1</p>
@@ -352,7 +349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text">解法二</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">1.问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text">解法二</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -366,7 +363,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

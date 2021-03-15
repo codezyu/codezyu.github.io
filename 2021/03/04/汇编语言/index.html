@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.补码 二进制加法的逆元，因此无需设计两套运算器用于加法和减法 一个数与其加法逆元相加，结果为0  紧急事件,来不及铺垫基础了 必须直接开始语言的学习了 汇编语言如何进行工作的 需要输入驱动微处理器进行工作的电平信息（机器码） eg:  10100001 00000011 00000000 从三号单元读取数据送入寄存器 MOV AX,[3]  16位汇编语言程序 ¶书写过程 1.先定义一个段 2">
+  <meta name="description" content="1.补码二进制加法的逆元，因此无需设计两套运算器用于加法和减法 一个数与其加法逆元相加，结果为0  紧急事件,来不及铺垫基础了 必须直接开始语言的学习了 汇编语言如何进行工作的需要输入驱动微处理器进行工作的电平信息（机器码） eg:  10100001 00000011 00000000 从三号单元读取数据送入寄存器 MOV AX,[3]  16位汇编语言程序书写过程1.先定义一个段 2.段内写入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="汇编语言">
 <meta property="og:url" content="http://example.com/2021/03/04/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="1.补码 二进制加法的逆元，因此无需设计两套运算器用于加法和减法 一个数与其加法逆元相加，结果为0  紧急事件,来不及铺垫基础了 必须直接开始语言的学习了 汇编语言如何进行工作的 需要输入驱动微处理器进行工作的电平信息（机器码） eg:  10100001 00000011 00000000 从三号单元读取数据送入寄存器 MOV AX,[3]  16位汇编语言程序 ¶书写过程 1.先定义一个段 2">
+<meta property="og:description" content="1.补码二进制加法的逆元，因此无需设计两套运算器用于加法和减法 一个数与其加法逆元相加，结果为0  紧急事件,来不及铺垫基础了 必须直接开始语言的学习了 汇编语言如何进行工作的需要输入驱动微处理器进行工作的电平信息（机器码） eg:  10100001 00000011 00000000 从三号单元读取数据送入寄存器 MOV AX,[3]  16位汇编语言程序书写过程1.先定义一个段 2.段内写入">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/2021/03/04/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80.assets/image-20210307022626966.png">
 <meta property="article:published_time" content="2021-03-04T00:26:05.000Z">
@@ -228,53 +228,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>1.补码</h1>
-<p>二进制加法的逆元，因此无需设计两套运算器用于加法和减法</p>
+        <h1 id="1-补码"><a href="#1-补码" class="headerlink" title="1.补码"></a>1.补码</h1><p>二进制加法的逆元，因此无需设计两套运算器用于加法和减法</p>
 <p>一个数与其加法逆元相加，结果为0</p>
 <hr>
 <p>紧急事件,来不及铺垫基础了</p>
 <p>必须直接开始语言的学习了</p>
-<h1>汇编语言如何进行工作的</h1>
-<p>需要输入驱动微处理器进行工作的电平信息（机器码）</p>
+<h1 id="汇编语言如何进行工作的"><a href="#汇编语言如何进行工作的" class="headerlink" title="汇编语言如何进行工作的"></a>汇编语言如何进行工作的</h1><p>需要输入驱动微处理器进行工作的电平信息（机器码）</p>
 <p>eg:</p>
 <blockquote>
 <p>10100001 00000011 00000000</p>
 <p>从三号单元读取数据送入寄存器</p>
 <p>MOV AX,[3]</p>
 </blockquote>
-<h1>16位汇编语言程序</h1>
-<h2 id="书写过程"><a class="header-anchor" href="#书写过程">¶</a>书写过程</h2>
-<p>1.先定义一个段</p>
+<h1 id="16位汇编语言程序"><a href="#16位汇编语言程序" class="headerlink" title="16位汇编语言程序"></a>16位汇编语言程序</h1><h2 id="书写过程"><a href="#书写过程" class="headerlink" title="书写过程"></a>书写过程</h2><p>1.先定义一个段</p>
 <p>2.段内写入汇编指令</p>
 <p>3.指出程序何处结束</p>
 <p>4.<strong>程序返回</strong></p>
 <p>指CPU控制权交还给调用它的程序,即在程序末尾添加返回的程序段(这是汇编指令)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ax,4c00H</span><br><span class="line">int 21H</span><br></pre></td></tr></table></figure>
 <p>程序末尾使用这两条指令即可返回</p>
-<h2 id="生成过程"><a class="header-anchor" href="#生成过程">¶</a>生成过程</h2>
-<p>编译,连接—&gt;机器码,存储在可执行文件中</p>
-<h2 id="汇编指令"><a class="header-anchor" href="#汇编指令">¶</a>汇编指令</h2>
-<p>有对应机器码的指令,可以编译为机器指令</p>
-<h2 id="伪指令"><a class="header-anchor" href="#伪指令">¶</a>伪指令</h2>
-<p>由编译器执行的指令,编译器根据此进行编译工作</p>
-<h3 id="1-segment-ends"><a class="header-anchor" href="#1-segment-ends">¶</a>(1)segment ends</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">段名 segment</span><br><span class="line">	:</span><br><span class="line">	:</span><br><span class="line">	:</span><br><span class="line">段名 ends</span><br></pre></td></tr></table></figure>
+<h2 id="生成过程"><a href="#生成过程" class="headerlink" title="生成过程"></a>生成过程</h2><p>编译,连接—-&gt;机器码,存储在可执行文件中</p>
+<h2 id="汇编指令"><a href="#汇编指令" class="headerlink" title="汇编指令"></a>汇编指令</h2><p>有对应机器码的指令,可以编译为机器指令</p>
+<h2 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h2><p>由编译器执行的指令,编译器根据此进行编译工作</p>
+<h3 id="1-segment-ends"><a href="#1-segment-ends" class="headerlink" title="(1)segment ends"></a>(1)segment ends</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">段名 segment</span><br><span class="line">	:</span><br><span class="line">	:</span><br><span class="line">	:</span><br><span class="line">段名 ends</span><br></pre></td></tr></table></figure>
 <p>segment ＆ends是成对的伪指令</p>
 <p>必须要用到的伪指令</p>
 <p>segment说明段开始</p>
 <p>ends说明段结束(end segment)</p>
 <p>类似c语言的<code>&#123;&#125;</code></p>
-<h3 id="2-end"><a class="header-anchor" href="#2-end">¶</a>(2)end</h3>
-<p>汇编程序的结束标志</p>
-<h3 id="3-assume"><a class="header-anchor" href="#3-assume">¶</a>(3)assume</h3>
-<p>当段被作为代码段(函数)使用时,可以使用它进行联系</p>
-<h1>汇编指令</h1>
-<p>汇编语言</p>
+<h3 id="2-end"><a href="#2-end" class="headerlink" title="(2)end"></a>(2)end</h3><p>汇编程序的结束标志</p>
+<h3 id="3-assume"><a href="#3-assume" class="headerlink" title="(3)assume"></a>(3)assume</h3><p>当段被作为代码段(函数)使用时,可以使用它进行联系</p>
+<h1 id="汇编指令-1"><a href="#汇编指令-1" class="headerlink" title="汇编指令"></a>汇编指令</h1><p>汇编语言</p>
 <p>解释</p>
 <p>高级语言</p>
-<h2 id="通用寄存器"><a class="header-anchor" href="#通用寄存器">¶</a>通用寄存器</h2>
-<h3 id="数据寄存器"><a class="header-anchor" href="#数据寄存器">¶</a>数据寄存器</h3>
-<p>数据寄存器用来存放计算的结果和操作数，也可以存放地址</p>
+<h2 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h2><h3 id="数据寄存器"><a href="#数据寄存器" class="headerlink" title="数据寄存器"></a>数据寄存器</h3><p>数据寄存器用来存放计算的结果和操作数，也可以存放地址</p>
 <blockquote>
 <p>AX BX CX DX</p>
 </blockquote>
@@ -286,6 +273,7 @@
 <p>16位,存放两个字节</p>
 <p>这四个寄存器可分为两个独立使用的8位寄存器来用(H:high,高八位,L:low 低八位)</p>
 <p>对其中某8位的操作，并不影响另外对应8位的数据</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -312,15 +300,14 @@
 </tr>
 </tbody>
 </table>
-<h3 id="变址寄存器"><a class="header-anchor" href="#变址寄存器">¶</a>变址寄存器</h3>
-<p>•变址寄存器常用于存储器寻址时提供地址</p>
+</div>
+<h3 id="变址寄存器"><a href="#变址寄存器" class="headerlink" title="变址寄存器"></a>变址寄存器</h3><p>•变址寄存器常用于存储器寻址时提供地址</p>
 <blockquote>
 <p>si 源地址寄存器</p>
 <p>di 目的地址寄存器</p>
 </blockquote>
 <p>•SI和DI在串操作指令有特殊用法</p>
-<h3 id="指针寄存器"><a class="header-anchor" href="#指针寄存器">¶</a>指针寄存器</h3>
-<p>•指针寄存器用于寻址内存堆栈内的数据</p>
+<h3 id="指针寄存器"><a href="#指针寄存器" class="headerlink" title="指针寄存器"></a>指针寄存器</h3><p>•指针寄存器用于寻址内存堆栈内的数据</p>
 <blockquote>
 <p>bp 基址指针</p>
 <p>sp 对战指针</p>
@@ -328,20 +315,17 @@
 <p>•SP为堆栈指针寄存器，指示栈顶的偏移地址，不能再用于其他目的，具有专用目的</p>
 <p>•BP为基址指针寄存器，表示数据在堆栈段中的基地址</p>
 <p>•SP和BP寄存器与SS段寄存器联合使用确定堆栈段中的存储单元地址</p>
-<h2 id="标志寄存器"><a class="header-anchor" href="#标志寄存器">¶</a>标志寄存器</h2>
-<p>•标志（Flag）用于反映指令执行结果或控制指令执行形式，形成16位标志寄存器FLAGS（程序状态字PSW寄存器）</p>
+<h2 id="标志寄存器"><a href="#标志寄存器" class="headerlink" title="标志寄存器"></a>标志寄存器</h2><p>•标志（Flag）用于反映指令执行结果或控制指令执行形式，形成16位标志寄存器FLAGS（程序状态字PSW寄存器）</p>
 <p>•状态标志－－用来记录程序运行结果的状态信息，许多指令的执行都将相应地设置它</p>
 <p>CF ZF SF PF OF AF</p>
 <p>•控制标志－－可由程序根据需要用指令设置，用于控制处理器执行指令的方式</p>
 <p>DF  IF  TF</p>
 <p><img src="%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80.assets/image-20210307022626966.png" alt="image-20210307022626966"></p>
-<h2 id="指令指针"><a class="header-anchor" href="#指令指针">¶</a>指令指针</h2>
-<p>•指令指针寄存器IP，指示代码段中指令的偏移地址</p>
+<h2 id="指令指针"><a href="#指令指针" class="headerlink" title="指令指针"></a>指令指针</h2><p>•指令指针寄存器IP，指示代码段中指令的偏移地址</p>
 <p>•它与代码段寄存器CS联用，确定下一条指令的物理地址</p>
 <p>•计算机通过CS : IP寄存器来控制指令序列的执行流程</p>
 <p>•IP寄存器是一个专用寄存器</p>
-<h2 id="段寄存器"><a class="header-anchor" href="#段寄存器">¶</a>段寄存器</h2>
-<blockquote>
+<h2 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h2><blockquote>
 <p>cs 代码段寄存器</p>
 <p>ss 堆栈段寄存器</p>
 <p>ds 数据段寄存器</p>
@@ -357,45 +341,32 @@
 <p>•ES（Extra Segment）</p>
 <p>•指明附加段的起始地址</p>
 <p>举例</p>
-<h2 id="1"><a class="header-anchor" href="#1">¶</a>1.</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,18</span><br></pre></td></tr></table></figure>
+<h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,18</span><br></pre></td></tr></table></figure>
 <p>将18送入寄存器AX</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;18</span><br></pre></td></tr></table></figure>
-<h2 id="2"><a class="header-anchor" href="#2">¶</a>2.</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add ax,8</span><br></pre></td></tr></table></figure>
+<h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add ax,8</span><br></pre></td></tr></table></figure>
 <p>寄存器AX的数值加上8</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;AX+8</span><br></pre></td></tr></table></figure>
-<h2 id="3"><a class="header-anchor" href="#3">¶</a>3.</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,bx</span><br></pre></td></tr></table></figure>
+<h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,bx</span><br></pre></td></tr></table></figure>
 <p>寄存器BX的数值送入AX</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;BX</span><br></pre></td></tr></table></figure>
-<h2 id="4"><a class="header-anchor" href="#4">¶</a>4.</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add ax,bx</span><br></pre></td></tr></table></figure>
+<h2 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add ax,bx</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AX&#x3D;AX+BX</span><br></pre></td></tr></table></figure>
-<h2 id="mov指令"><a class="header-anchor" href="#mov指令">¶</a>mov指令</h2>
-<blockquote>
-<p>数据—&gt;寄存器</p>
+<h2 id="mov指令"><a href="#mov指令" class="headerlink" title="mov指令"></a>mov指令</h2><blockquote>
+<p>数据—-&gt;寄存器</p>
 <p>寄存器,内存单元,段寄存器,三者可互相传输</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mov [0x0699], ax</span><br><span class="line">mov [0x0998], bx</span><br><span class="line">mov [0x1299], cx</span><br><span class="line">mov [0x1499], dx</span><br><span class="line">mov [0x1999], si</span><br></pre></td></tr></table></figure>
-<h2 id="add指令"><a class="header-anchor" href="#add指令">¶</a>add指令</h2>
-<p>加法所用</p>
+<h2 id="add指令"><a href="#add指令" class="headerlink" title="add指令"></a>add指令</h2><p>加法所用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADD 寄存器，数值</span><br><span class="line">ADD 寄存器，寄存器</span><br></pre></td></tr></table></figure>
-<h2 id="sub指令"><a class="header-anchor" href="#sub指令">¶</a>sub指令</h2>
-<p>减法指令</p>
-<h2 id="inc"><a class="header-anchor" href="#inc">¶</a>inc</h2>
-<p>寄存器值加一</p>
+<h2 id="sub指令"><a href="#sub指令" class="headerlink" title="sub指令"></a>sub指令</h2><p>减法指令</p>
+<h2 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h2><p>寄存器值加一</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INC 寄存器</span><br></pre></td></tr></table></figure>
-<h1>dec</h1>
-<p>寄存器值减一</p>
-<h2 id="ret指令"><a class="header-anchor" href="#ret指令">¶</a>ret指令</h2>
-<p>函数调用后返回</p>
-<h2 id="call"><a class="header-anchor" href="#call">¶</a>call</h2>
-<p>调用子程序</p>
-<h2 id="pop"><a class="header-anchor" href="#pop">¶</a>pop</h2>
-<p>出栈</p>
-<h2 id="push"><a class="header-anchor" href="#push">¶</a>push</h2>
-<p>压栈</p>
+<h1 id="dec"><a href="#dec" class="headerlink" title="dec"></a>dec</h1><p>寄存器值减一</p>
+<h2 id="ret指令"><a href="#ret指令" class="headerlink" title="ret指令"></a>ret指令</h2><p>函数调用后返回</p>
+<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>调用子程序</p>
+<h2 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h2><p>出栈</p>
+<h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>压栈</p>
 
     </div>
 
@@ -479,7 +450,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.补码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">汇编语言如何进行工作的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">16位汇编语言程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A6%E5%86%99%E8%BF%87%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">书写过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">生成过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">3.3.</span> <span class="nav-text">汇编指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="nav-number">3.4.</span> <span class="nav-text">伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-segment-ends"><span class="nav-number">3.4.1.</span> <span class="nav-text">(1)segment ends</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-end"><span class="nav-number">3.4.2.</span> <span class="nav-text">(2)end</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-assume"><span class="nav-number">3.4.3.</span> <span class="nav-text">(3)assume</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">汇编指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.</span> <span class="nav-text">通用寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.1.</span> <span class="nav-text">数据寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">变址寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.3.</span> <span class="nav-text">指针寄存器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.2.</span> <span class="nav-text">标志寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%8C%87%E9%92%88"><span class="nav-number">4.3.</span> <span class="nav-text">指令指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.4.</span> <span class="nav-text">段寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">4.5.</span> <span class="nav-text">1.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">4.6.</span> <span class="nav-text">2.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">4.7.</span> <span class="nav-text">3.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">4.8.</span> <span class="nav-text">4.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mov%E6%8C%87%E4%BB%A4"><span class="nav-number">4.9.</span> <span class="nav-text">mov指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add%E6%8C%87%E4%BB%A4"><span class="nav-number">4.10.</span> <span class="nav-text">add指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sub%E6%8C%87%E4%BB%A4"><span class="nav-number">4.11.</span> <span class="nav-text">sub指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inc"><span class="nav-number">4.12.</span> <span class="nav-text">inc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">dec</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ret%E6%8C%87%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">ret指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call"><span class="nav-number">5.2.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop"><span class="nav-number">5.3.</span> <span class="nav-text">pop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push"><span class="nav-number">5.4.</span> <span class="nav-text">push</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%A1%A5%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">1.补码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">汇编语言如何进行工作的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16%E4%BD%8D%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">16位汇编语言程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A6%E5%86%99%E8%BF%87%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">书写过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">生成过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">3.3.</span> <span class="nav-text">汇编指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="nav-number">3.4.</span> <span class="nav-text">伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-segment-ends"><span class="nav-number">3.4.1.</span> <span class="nav-text">(1)segment ends</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-end"><span class="nav-number">3.4.2.</span> <span class="nav-text">(2)end</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-assume"><span class="nav-number">3.4.3.</span> <span class="nav-text">(3)assume</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4-1"><span class="nav-number">4.</span> <span class="nav-text">汇编指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.</span> <span class="nav-text">通用寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.1.</span> <span class="nav-text">数据寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">变址寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.1.3.</span> <span class="nav-text">指针寄存器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.2.</span> <span class="nav-text">标志寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%8C%87%E9%92%88"><span class="nav-number">4.3.</span> <span class="nav-text">指令指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.4.</span> <span class="nav-text">段寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">4.5.</span> <span class="nav-text">1.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">4.6.</span> <span class="nav-text">2.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">4.7.</span> <span class="nav-text">3.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">4.8.</span> <span class="nav-text">4.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mov%E6%8C%87%E4%BB%A4"><span class="nav-number">4.9.</span> <span class="nav-text">mov指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add%E6%8C%87%E4%BB%A4"><span class="nav-number">4.10.</span> <span class="nav-text">add指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sub%E6%8C%87%E4%BB%A4"><span class="nav-number">4.11.</span> <span class="nav-text">sub指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inc"><span class="nav-number">4.12.</span> <span class="nav-text">inc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dec"><span class="nav-number">5.</span> <span class="nav-text">dec</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ret%E6%8C%87%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">ret指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call"><span class="nav-number">5.2.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop"><span class="nav-number">5.3.</span> <span class="nav-text">pop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#push"><span class="nav-number">5.4.</span> <span class="nav-text">push</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -493,7 +464,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

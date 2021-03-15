@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="0.计算机体系结构和计算机组成 ¶1.计算机体系结构 程序员见到的计算机系统的属性 概念性的结构与功能特性  指令系统，数据结构，寻址技术，I&#x2F;O机理  ¶2.计算机组成 实现计算机体系结构所体现的属性 计算机是否具有乘法指令功能，是结构问题 什么方式实现乘法，是组成问题  实现乘法 1.专门的乘法电路 2.连续相加的加法电路  1.计算机系统 ¶硬件 主机，外设等 一般由大量的IC(integr">
+  <meta name="description" content="0.计算机体系结构和计算机组成1.计算机体系结构程序员见到的计算机系统的属性 概念性的结构与功能特性  指令系统，数据结构，寻址技术，I&#x2F;O机理  2.计算机组成实现计算机体系结构所体现的属性 计算机是否具有乘法指令功能，是结构问题 什么方式实现乘法，是组成问题  实现乘法 1.专门的乘法电路 2.连续相加的加法电路  1.计算机系统硬件主机，外设等 一般由大量的IC(integrated Cir">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机组成1">
 <meta property="og:url" content="http://example.com/2021/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%901/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="0.计算机体系结构和计算机组成 ¶1.计算机体系结构 程序员见到的计算机系统的属性 概念性的结构与功能特性  指令系统，数据结构，寻址技术，I&#x2F;O机理  ¶2.计算机组成 实现计算机体系结构所体现的属性 计算机是否具有乘法指令功能，是结构问题 什么方式实现乘法，是组成问题  实现乘法 1.专门的乘法电路 2.连续相加的加法电路  1.计算机系统 ¶硬件 主机，外设等 一般由大量的IC(integr">
+<meta property="og:description" content="0.计算机体系结构和计算机组成1.计算机体系结构程序员见到的计算机系统的属性 概念性的结构与功能特性  指令系统，数据结构，寻址技术，I&#x2F;O机理  2.计算机组成实现计算机体系结构所体现的属性 计算机是否具有乘法指令功能，是结构问题 什么方式实现乘法，是组成问题  实现乘法 1.专门的乘法电路 2.连续相加的加法电路  1.计算机系统硬件主机，外设等 一般由大量的IC(integrated Cir">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-02-25T03:17:53.000Z">
 <meta property="article:modified_time" content="2021-03-08T07:30:28.458Z">
@@ -226,15 +226,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>0.计算机体系结构和计算机组成</h1>
-<h2 id="1-计算机体系结构"><a class="header-anchor" href="#1-计算机体系结构">¶</a>1.计算机体系结构</h2>
-<p>程序员见到的计算机系统的属性</p>
+        <h1 id="0-计算机体系结构和计算机组成"><a href="#0-计算机体系结构和计算机组成" class="headerlink" title="0.计算机体系结构和计算机组成"></a>0.计算机体系结构和计算机组成</h1><h2 id="1-计算机体系结构"><a href="#1-计算机体系结构" class="headerlink" title="1.计算机体系结构"></a>1.计算机体系结构</h2><p>程序员见到的计算机系统的属性</p>
 <p>概念性的结构与功能特性</p>
 <blockquote>
 <p>指令系统，数据结构，寻址技术，I/O机理</p>
 </blockquote>
-<h2 id="2-计算机组成"><a class="header-anchor" href="#2-计算机组成">¶</a>2.计算机组成</h2>
-<p>实现计算机体系结构所体现的属性</p>
+<h2 id="2-计算机组成"><a href="#2-计算机组成" class="headerlink" title="2.计算机组成"></a>2.计算机组成</h2><p>实现计算机体系结构所体现的属性</p>
 <p>计算机是否具有乘法指令功能，是结构问题</p>
 <p>什么方式实现乘法，是组成问题</p>
 <blockquote>
@@ -242,47 +239,36 @@
 <p>1.专门的乘法电路</p>
 <p>2.连续相加的加法电路</p>
 </blockquote>
-<h1>1.计算机系统</h1>
-<h2 id="硬件"><a class="header-anchor" href="#硬件">¶</a>硬件</h2>
-<p>主机，外设等</p>
+<h1 id="1-计算机系统"><a href="#1-计算机系统" class="headerlink" title="1.计算机系统"></a>1.计算机系统</h1><h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><p>主机，外设等</p>
 <p>一般由大量的IC(integrated Circuit)集成电路组成</p>
 <p>每块IC有许多引脚，引脚的用于输入，有的用于输出，内部进行运算。</p>
 <blockquote>
-<p>IC的引脚编号<br>
-先把表示正方向的标志， 比如半圆形的缺口， 朝向左侧。 逆时针进行计数</p>
+<p>IC的引脚编号<br>先把表示正方向的标志， 比如半圆形的缺口， 朝向左侧。 逆时针进行计数 </p>
 </blockquote>
 <p>CPU,内存,I/O</p>
 <p>数字ic电压一般为5v或0v进而实现电信号收发</p>
-<h3 id="引脚"><a class="header-anchor" href="#引脚">¶</a>引脚</h3>
-<p>Vcc,GND</p>
+<h3 id="引脚"><a href="#引脚" class="headerlink" title="引脚"></a>引脚</h3><p>Vcc,GND</p>
 <p>用于供电(电压恒定，其余一般在5v,0v间变化)</p>
 <p>OE(output enable)</p>
 <p>输出使能</p>
 <p>RD(read)</p>
 <p>读取</p>
-<h2 id="软件"><a class="header-anchor" href="#软件">¶</a>软件</h2>
-<p>程序（指令和数据的集合）</p>
-<h3 id="系统软件"><a class="header-anchor" href="#系统软件">¶</a>系统软件</h3>
-<p>调度系统资源</p>
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><p>程序（指令和数据的集合）</p>
+<h3 id="系统软件"><a href="#系统软件" class="headerlink" title="系统软件"></a>系统软件</h3><p>调度系统资源</p>
 <p>语言处理程序</p>
 <p>操作系统</p>
 <p>服务性程序</p>
 <p>数据库管理系统</p>
 <p>网络软件</p>
-<h3 id="应用软件"><a class="header-anchor" href="#应用软件">¶</a>应用软件</h3>
-<p>根据任务需要编写</p>
-<h3 id="软件运行"><a class="header-anchor" href="#软件运行">¶</a>软件运行</h3>
-<p>1.高级语言编写的程序(源程序)+数据</p>
+<h3 id="应用软件"><a href="#应用软件" class="headerlink" title="应用软件"></a>应用软件</h3><p>根据任务需要编写</p>
+<h3 id="软件运行"><a href="#软件运行" class="headerlink" title="软件运行"></a>软件运行</h3><p>1.高级语言编写的程序(源程序)+数据</p>
 <p>2.计算机将其翻译成机器语言程序(目标程序)</p>
 <p>3.计算机运行该程序</p>
-<h2 id="层次结构"><a class="header-anchor" href="#层次结构">¶</a>层次结构</h2>
-<blockquote>
+<h2 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h2><blockquote>
 <p>软件层次</p>
 <p>1.高级语言(虚拟机器 $M_3$)</p>
 <p>2.汇编语言(虚拟机器 $M_2$)</p>
 <p>3.操作系统(虚拟机器)</p>
-</blockquote>
-<blockquote>
 <p>硬件层次</p>
 <p>4.机器语言(实际机器$M_1$)</p>
 <p>5.微指令系统(微程序机器$M_0$)</p>
@@ -370,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0.计算机体系结构和计算机组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">1.计算机体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90"><span class="nav-number">1.2.</span> <span class="nav-text">2.计算机组成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">1.计算机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">硬件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%84%9A"><span class="nav-number">2.1.1.</span> <span class="nav-text">引脚</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.2.1.</span> <span class="nav-text">系统软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">应用软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%90%E8%A1%8C"><span class="nav-number">2.2.3.</span> <span class="nav-text">软件运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">层次结构</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">0.计算机体系结构和计算机组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">1.计算机体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90"><span class="nav-number">1.2.</span> <span class="nav-text">2.计算机组成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">1.计算机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">硬件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%84%9A"><span class="nav-number">2.1.1.</span> <span class="nav-text">引脚</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.2.1.</span> <span class="nav-text">系统软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">应用软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%90%E8%A1%8C"><span class="nav-number">2.2.3.</span> <span class="nav-text">软件运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">层次结构</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -384,7 +370,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

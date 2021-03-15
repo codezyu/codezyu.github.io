@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="0.数学基础 ¶1.奇异值分解(SVD: singular value decomposition) 机器学习中广泛应用的算法 1.特征值和特征向量 $$Ax&#x3D;\lambda x$$ A是一个$n*n$的实对称矩阵， $x$是一个$n$维向量， 则  $\lambda$是矩阵A的特征值 而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。  特征值和特征向量的作用 若$A$的所有特征值">
+  <meta name="description" content="0.数学基础1.奇异值分解(SVD: singular value decomposition)机器学习中广泛应用的算法 1.特征值和特征向量 Ax&#x3D;\lambda xA是一个$n*n$的实对称矩阵， $x$是一个$n$维向量， 则   $\lambda$是矩阵A的特征值 而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。  特征值和特征向量的作用 若$A$的所有特征值对应的n个特征">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scikit-learn2">
 <meta property="og:url" content="http://example.com/2021/02/08/scikit-learn2/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="0.数学基础 ¶1.奇异值分解(SVD: singular value decomposition) 机器学习中广泛应用的算法 1.特征值和特征向量 $$Ax&#x3D;\lambda x$$ A是一个$n*n$的实对称矩阵， $x$是一个$n$维向量， 则  $\lambda$是矩阵A的特征值 而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。  特征值和特征向量的作用 若$A$的所有特征值">
+<meta property="og:description" content="0.数学基础1.奇异值分解(SVD: singular value decomposition)机器学习中广泛应用的算法 1.特征值和特征向量 Ax&#x3D;\lambda xA是一个$n*n$的实对称矩阵， $x$是一个$n$维向量， 则   $\lambda$是矩阵A的特征值 而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。  特征值和特征向量的作用 若$A$的所有特征值对应的n个特征">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/2021/02/08/scikit-learn2/pic1">
 <meta property="article:published_time" content="2021-02-08T12:34:41.000Z">
@@ -228,16 +228,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>0.数学基础</h1>
-<h3 id="1-奇异值分解-SVD-singular-value-decomposition"><a class="header-anchor" href="#1-奇异值分解-SVD-singular-value-decomposition">¶</a>1.奇异值分解(SVD: singular value decomposition)</h3>
-<p>机器学习中广泛应用的算法</p>
+        <h1 id="0-数学基础"><a href="#0-数学基础" class="headerlink" title="0.数学基础"></a>0.数学基础</h1><h3 id="1-奇异值分解-SVD-singular-value-decomposition"><a href="#1-奇异值分解-SVD-singular-value-decomposition" class="headerlink" title="1.奇异值分解(SVD: singular value decomposition)"></a>1.奇异值分解(SVD: singular value decomposition)</h3><p>机器学习中广泛应用的算法</p>
 <p>1.特征值和特征向量</p>
-<p>$$Ax=\lambda x$$</p>
-<p>A是一个$n*n$的实对称矩阵，</p>
+<script type="math/tex; mode=display">Ax=\lambda x</script><p>A是一个$n*n$的实对称矩阵，</p>
 <p>$x$是一个$n$维向量，</p>
 <p>则</p>
 <blockquote>
-<p>$\lambda$是矩阵A的特征值</p>
+<p> $\lambda$是矩阵A的特征值</p>
 <p>而$x$是矩阵$A$的特征值$\lambda$所对应的特征向量。</p>
 </blockquote>
 <p>特征值和特征向量的作用</p>
@@ -246,10 +243,9 @@
 <p>$W$是这些特征向量所张成的矩阵$n \times n$ 维矩阵，而$\Sigma$为这n个特征值为主对角线的$n \times n$维矩阵</p>
 <p>这样$A$的进行幂运算会有很大好处，当然也会有标准化。这里暂时不谈</p>
 <p>但问题是这个矩阵A必须为方阵</p>
-<h4 id="SVD"><a class="header-anchor" href="#SVD">¶</a>SVD</h4>
-<p>当$A$不是方阵时，我们定义$A$的SVD为</p>
+<h4 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h4><p>当$A$不是方阵时，我们定义$A$的SVD为</p>
 <blockquote>
-<p>$A$=$U\Sigma V^{T}$</p>
+<p> $A$=$U\Sigma V^{T}$</p>
 </blockquote>
 <p>A为$ m \times n$的矩阵</p>
 <p>U为$ m \times m$的矩阵</p>
@@ -261,22 +257,17 @@
 <blockquote>
 <p>$(A^{T}A)$$v_{i}$=$\lambda_{i} v_{i}$</p>
 </blockquote>
-<h1>1.监督学习</h1>
-<p>1.回归问题下，根据完整数据推测一个结果。</p>
+<h1 id="1-监督学习"><a href="#1-监督学习" class="headerlink" title="1.监督学习"></a>1.监督学习</h1><p>1.回归问题下，根据完整数据推测一个结果。</p>
 <p>每个数据都有正确的结果进行验证</p>
 <p>或者分类问题下，预测离散的输出值。</p>
-<h1>2.无监督学习</h1>
-<p>无监督学习的数据标签没有或者都相同</p>
+<h1 id="2-无监督学习"><a href="#2-无监督学习" class="headerlink" title="2.无监督学习"></a>2.无监督学习</h1><p>无监督学习的数据标签没有或者都相同</p>
 <p>聚类算法：将这些数据分成不同簇</p>
 <p>例如Google的新闻主题识别</p>
-<h1>3.算法</h1>
-<h2 id="1-线性回归算法"><a class="header-anchor" href="#1-线性回归算法">¶</a>1.线性回归算法</h2>
-<blockquote>
-<p>training set + algorithm—&gt;hypothesis  本人仍然将其理解为模型</p>
-<p>test set - hypothesis —&gt;estimated result</p>
+<h1 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h1><h2 id="1-线性回归算法"><a href="#1-线性回归算法" class="headerlink" title="1.线性回归算法"></a>1.线性回归算法</h2><blockquote>
+<p>training set + algorithm—-&gt;hypothesis  本人仍然将其理解为模型</p>
+<p>test set - hypothesis —-&gt;estimated result</p>
 </blockquote>
-<h3 id="代价函数"><a class="header-anchor" href="#代价函数">¶</a>代价函数</h3>
-<p>为模型选择合适的参数</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>为模型选择合适的参数</p>
 <p>建模误差：预测值和实际值的差距</p>
 <p>线性回归中一般为平方误差函数</p>
 <p>通过梯度下降求出代价函数最小值</p>
@@ -289,41 +280,33 @@
 <p>但是，如果模型拟合得过好，反而会过度学习历史数据，真正预测的效果往往不好，这种情况就是过拟合</p>
 <p>一般来说，造成这样是因为其函数过于复杂，拟合因此很精准。</p>
 </blockquote>
-<h3 id="多变量线性回归"><a class="header-anchor" href="#多变量线性回归">¶</a>多变量线性回归</h3>
-<p>$h_{\theta}=\theta_{0}x_{0}+\theta_{1}x_{1}+\cdots+\theta_{n}x_{n}$</p>
+<h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><p>$h_{\theta}=\theta_{0}x_{0}+\theta_{1}x_{1}+\cdots+\theta_{n}x_{n}$</p>
 <p>参数为$n+1$维的向量，因此训练实例也为$n+1$维的向量，特征方程的维度为$m*(n+1$)维。</p>
-<p>一个训练实例的特征:{${x_{0},x_{1},\cdots,x_{n}}$}<br>
-$$<br>
-\left{<br>
-\begin{matrix}<br>
-x_{0}\<br>
-x_{1}\<br>
-\cdots\<br>
-x_{n}<br>
-\end{matrix}<br>
-\right}<br>
-$$</p>
-<p>特征方程：m个特征向量($n+1$)，所以为$m*(n+1)$维度</p>
+<p>一个训练实例的特征:{${x_{0},x_{1},\cdots,x_{n}}$}</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{matrix}
+x_{0}\\
+x_{1}\\
+\cdots\\
+x_{n}
+\end{matrix}
+\right\}</script><p>特征方程：m个特征向量($n+1$)，所以为$m*(n+1)$维度</p>
 <p>所以可以简化为：</p>
 <p>$h_{\theta}(x)=\theta^{T}X$</p>
 <p>这样便获得参数矩阵</p>
-<h3 id="多变量线性回归的代价函数"><a class="header-anchor" href="#多变量线性回归的代价函数">¶</a>多变量线性回归的代价函数</h3>
-<p>$$J(\theta_{0},\theta_{1},\cdots,\theta_{n})=\frac{1}{2m}\sum_{i=1}<sup>{m}(h_{\theta}(x</sup>{i}-y<sup>{i})</sup>{2})$$</p>
-<p>代价函数为所有建模误差的平方和</p>
+<h3 id="多变量线性回归的代价函数"><a href="#多变量线性回归的代价函数" class="headerlink" title="多变量线性回归的代价函数"></a>多变量线性回归的代价函数</h3><script type="math/tex; mode=display">J(\theta_{0},\theta_{1},\cdots,\theta_{n})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{i}-y^{i})^{2})</script><p>代价函数为所有建模误差的平方和</p>
 <p>随机选择一系列的参数值，计算所有的预测结果后，在给所有的参数一个新的值，如此循环知道收敛</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computecost</span>(<span class="params">X,y,theta</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#power函数用于求数组的n次方，power(x1,x2);x2既可以是数字也可以是数组，但是x1,x2的列数要相同</span></span><br><span class="line">    innner=np.power(((X*theta.T)-y),<span class="number">2</span>)</span><br><span class="line">    <span class="comment">#数组中给定轴上的元素总和</span></span><br><span class="line">    <span class="keyword">return</span> np.<span class="built_in">sum</span>(inner)/(<span class="number">2</span>*<span class="built_in">len</span>(X))</span><br></pre></td></tr></table></figure>
-<h3 id="梯度下降"><a class="header-anchor" href="#梯度下降">¶</a>梯度下降</h3>
-<h4 id="特征缩放—标准化"><a class="header-anchor" href="#特征缩放—标准化">¶</a>特征缩放—标准化</h4>
-<p>面对多维特征问题时，我们要保证特征具有相近的尺度，梯度下降能够更快收敛。</p>
+<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><h4 id="特征缩放—-标准化"><a href="#特征缩放—-标准化" class="headerlink" title="特征缩放—-标准化"></a>特征缩放—-标准化</h4><p>面对多维特征问题时，我们要保证特征具有相近的尺度，梯度下降能够更快收敛。</p>
 <p>对于不同特征的尺度，如果不一致，会导致在一个维度上变化的幅度不能很大。</p>
 <p>因此我们要尝试把所有尺度缩放到-1和1之间</p>
 <p>$x_{n}=\frac{x_{n}-u_{n}}{s_{n}}$</p>
 <p>$u_{n}$是数据的平均值，$s_{n}$是标准差</p>
-<h4 id="学习率"><a class="header-anchor" href="#学习率">¶</a>学习率</h4>
-<p>是监督学习和深度学习的重要参数，影响目标函数能否收敛到局部最小值和何时收敛到最小值</p>
+<h4 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h4><p>是监督学习和深度学习的重要参数，影响目标函数能否收敛到局部最小值和何时收敛到最小值</p>
 <p>一般的学习率</p>
 <blockquote>
-<p>0.01</p>
+<p>0.01 </p>
 <p>0.03</p>
 <p>0.1</p>
 <p>0.3</p>
@@ -414,7 +397,7 @@ $$</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0.数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-SVD-singular-value-decomposition"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.奇异值分解(SVD: singular value decomposition)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SVD"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">SVD</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">1.监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">2.无监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">3.算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">1.线性回归算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.1.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">4.1.2.</span> <span class="nav-text">多变量线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.3.</span> <span class="nav-text">多变量线性回归的代价函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-number">4.1.4.</span> <span class="nav-text">梯度下降</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E7%BC%A9%E6%94%BE%E2%80%94%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">特征缩放—标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">学习率</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">0.数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-SVD-singular-value-decomposition"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.奇异值分解(SVD: singular value decomposition)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SVD"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">SVD</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">1.监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">3.</span> <span class="nav-text">2.无监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">3.算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">1.线性回归算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.1.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">4.1.2.</span> <span class="nav-text">多变量线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.3.</span> <span class="nav-text">多变量线性回归的代价函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-number">4.1.4.</span> <span class="nav-text">梯度下降</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E7%BC%A9%E6%94%BE%E2%80%94-%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">特征缩放—-标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">学习率</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -428,7 +411,7 @@ $$</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

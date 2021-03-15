@@ -22,21 +22,25 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.传输模式 传输模式分为 并行传输：同时发送多个码位 串行传输：一次发送一个码位，分为，异步，同步，等时 ¶异步通信 位是数据通信的基本数据单元 位的取值范围{0,1} 位串：由多个0或1组成的位 发送方和接收方发送数据前无需协调（同步），则为异步通信 发送的电信号中不包含接收方用来确定位串何时开始和结束的信息，则该通信硬件为异步。 异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信 号的">
+  <meta name="description" content="0.信号和信息信号是信息的物理表现形式，信息则是信号的具体内容。   红灯停绿灯行，信号是红和绿，传达的信息是红灯—停，绿灯—行。  模拟信号：时间连续，幅值连续。 数字信号：时间离散，幅值离散。 计算机处理的是数字信号 1.传输模式计算机使用二进制数字（位串）来表示数据 通信系统中使用的电流，无线电波或光来传输信息。传输模式指的是数据通过底层介质传送的方式     传输模式分为 并行传输：同时发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="局域异步通信">
 <meta property="og:url" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="1.传输模式 传输模式分为 并行传输：同时发送多个码位 串行传输：一次发送一个码位，分为，异步，同步，等时 ¶异步通信 位是数据通信的基本数据单元 位的取值范围{0,1} 位串：由多个0或1组成的位 发送方和接收方发送数据前无需协调（同步），则为异步通信 发送的电信号中不包含接收方用来确定位串何时开始和结束的信息，则该通信硬件为异步。 异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信 号的">
+<meta property="og:description" content="0.信号和信息信号是信息的物理表现形式，信息则是信号的具体内容。   红灯停绿灯行，信号是红和绿，传达的信息是红灯—停，绿灯—行。  模拟信号：时间连续，幅值连续。 数字信号：时间离散，幅值离散。 计算机处理的是数字信号 1.传输模式计算机使用二进制数字（位串）来表示数据 通信系统中使用的电流，无线电波或光来传输信息。传输模式指的是数据通过底层介质传送的方式     传输模式分为 并行传输：同时发">
 <meta property="og:locale">
+<meta property="og:image" content="d:/Blog/source/_posts/局域异步通信/字节和位序.png">
 <meta property="og:image" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png">
+<meta property="og:image" content="d:/Blog/source/_posts/局域异步通信/信号脚说明">
+<meta property="og:image" content="d:/Blog/source/_posts/局域异步通信/信号说明">
 <meta property="og:image" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305095519275.png">
+<meta property="og:image" content="d:/Blog/source/_posts/局域异步通信/调制解调器.png">
 <meta property="article:published_time" content="2021-03-05T00:43:28.000Z">
-<meta property="article:modified_time" content="2021-03-07T09:11:04.654Z">
+<meta property="article:modified_time" content="2021-03-14T23:29:52.911Z">
 <meta property="article:author" content="yuz">
 <meta property="article:tag" content="计算机网路">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png">
+<meta name="twitter:image" content="d:/Blog/source/_posts/局域异步通信/字节和位序.png">
 
 <link rel="canonical" href="http://example.com/2021/03/05/%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/">
 
@@ -206,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-07 17:11:04" itemprop="dateModified" datetime="2021-03-07T17:11:04+08:00">2021-03-07</time>
+                <time title="Modified: 2021-03-15 07:29:52" itemprop="dateModified" datetime="2021-03-15T07:29:52+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,29 +233,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>1.传输模式</h1>
+        <h1 id="0-信号和信息"><a href="#0-信号和信息" class="headerlink" title="0.信号和信息"></a>0.信号和信息</h1><p>信号是信息的物理表现形式，信息则是信号的具体内容。</p>
+<blockquote>
+<p> 红灯停绿灯行，信号是红和绿，传达的信息是红灯—停，绿灯—行。</p>
+</blockquote>
+<p>模拟信号：时间连续，幅值连续。</p>
+<p>数字信号：时间离散，幅值离散。</p>
+<p>计算机处理的是数字信号</p>
+<h1 id="1-传输模式"><a href="#1-传输模式" class="headerlink" title="1.传输模式"></a>1.传输模式</h1><p>计算机使用二进制数字（位串）来表示数据</p>
+<p>通信系统中使用的电流，无线电波或光来传输信息。<br>传输模式指的是数据通过底层介质传送的方式    </p>
 <p>传输模式分为</p>
-<p>并行传输：同时发送多个码位</p>
-<p>串行传输：一次发送一个码位，分为，异步，同步，等时</p>
-<h2 id="异步通信"><a class="header-anchor" href="#异步通信">¶</a>异步通信</h2>
-<p>位是数据通信的基本数据单元</p>
+<h3 id="并行传输：同时发送多个码位"><a href="#并行传输：同时发送多个码位" class="headerlink" title="并行传输：同时发送多个码位"></a><strong>并行传输</strong>：同时发送多个码位</h3><blockquote>
+<p>　高吞吐量</p>
+<p>　和底层硬件相匹配</p>
+</blockquote>
+<p>缺点</p>
+<blockquote>
+<p>成本高：导线数量更多，且等长</p>
+<p>高速率下导线间会相互干扰</p>
+</blockquote>
+<h3 id="串行传输：一次发送一个码位，"><a href="#串行传输：一次发送一个码位，" class="headerlink" title="串行传输：一次发送一个码位，"></a><strong>串行传输</strong>：一次发送一个码位，</h3><p>分为，</p>
+<h4 id="异步"><a href="#异步" class="headerlink" title="异步"></a><strong>异步</strong></h4><p>传输可以在任意时间发生  </p>
+<p>两个数据项之间可以有任意的时延  </p>
+<h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a><strong>同步</strong></h4><p>传输可以连续发生  </p>
+<p>需事先约定有效数据的位置，两个数据项之间没有间隔（gap）  </p>
+<h4 id="等时"><a href="#等时" class="headerlink" title="等时"></a><strong>等时</strong></h4><p>传输在常规间隔（intervals）发生<br>两个数据项之间有固定的（fixed）间隔（gap）  </p>
+<h2 id="异步通信"><a href="#异步通信" class="headerlink" title="异步通信"></a>异步通信</h2><p>位是数据通信的基本数据单元</p>
 <p>位的取值范围{0,1}</p>
 <p>位串：由多个0或1组成的位</p>
 <p>发送方和接收方发送数据前无需协调（同步），则为异步通信</p>
 <p>发送的电信号中不包含接收方用来确定位串何时开始和结束的信息，则该通信硬件为异步。</p>
-<p>异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信<br>
-号的能力。</p>
+<p>异步通信中接收硬件必须具备接收并解释发送硬件本身产生的信<br>号的能力。  </p>
 <p>数据接收方对接收的信息能够<strong>直接提取</strong>有效数据</p>
-<h2 id="同步通信"><a class="header-anchor" href="#同步通信">¶</a>同步通信</h2>
-<p>数据发送方生成的数据中包含了<strong>有效数据的位置信息</strong></p>
+<h2 id="同步通信"><a href="#同步通信" class="headerlink" title="同步通信"></a>同步通信</h2><p>数据发送方生成的数据中包含了<strong>有效数据的位置信息</strong></p>
 <p>数据接收方根据有效数据的位置信息提取相应的有效数据</p>
 <p>通信的双方在开始通信之前必须完成协调工作，即必须进行同步处理</p>
 <p><strong>数据基本单元保持顺序传输，对空数据必需填充对应的空单元</strong></p>
-<h1>传输顺序</h1>
+<h1 id="传输顺序"><a href="#传输顺序" class="headerlink" title="传输顺序"></a>传输顺序</h1><p>内存存储低地址为“端”，通信零时刻是“端”  </p>
 <p>先传输高位（MSB,对应正序传输），还是低位（LSB,对应逆序传输）</p>
-<h1>2.异步通信机制</h1>
-<h2 id="1-电流发送位串"><a class="header-anchor" href="#1-电流发送位串">¶</a>1.电流发送位串</h2>
-<p>不同电压表示不同位值</p>
+<p>字节按正序传输，比特按逆序传输</p>
+<p>选用字节大端、位小端的原因是这样比较顺  </p>
+<p><img src="D:\Blog\source\_posts\局域异步通信\字节和位序.png" alt="image-20210314215536474"></p>
+<blockquote>
+<p>比如32位二进制补码整数</p>
+<p>第八位发送符号位</p>
+</blockquote>
+<h1 id="2-异步通信机制"><a href="#2-异步通信机制" class="headerlink" title="2.异步通信机制"></a>2.异步通信机制</h1><h2 id="1-电流发送位串"><a href="#1-电流发送位串" class="headerlink" title="1.电流发送位串"></a>1.电流发送位串</h2><p>不同电压表示不同位值</p>
 <p>负电压用来表示1，正电压用来表示0</p>
 <blockquote>
 <p>放置一个正电压并保持一小段时间，然后返回零伏</p>
@@ -260,12 +287,15 @@
 <p>0:[3v,15v]</p>
 <p>1:[-15v,-3v]</p>
 </blockquote>
-<h2 id="2-通信标准"><a class="header-anchor" href="#2-通信标准">¶</a>2.通信标准</h2>
-<p>两个供应商遵守同一标准，则他们的设备就能协调工作</p>
+<h2 id="2-通信标准"><a href="#2-通信标准" class="headerlink" title="2.通信标准"></a>2.通信标准</h2><p>两个供应商遵守同一标准，则他们的设备就能协调工作</p>
 <p>EIA(电子工业协会)标准<code>RS-232-C</code>，常简称为<code>RS-232</code>（尽管后来的R -422标准在功能上更好一些，但各种设备仍流行使用RS-232，所以专业上仍使用老标准的名字）</p>
-<h3 id="RS-232"><a class="header-anchor" href="#RS-232">¶</a>RS-232</h3>
-<p><img src="%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png" alt="image-20210305091817997"></p>
-<p>RS-2 2是在计算机与调制解调器或ASCII终端之间实现短距离异步串行通信的一个流行标准</p>
+<h3 id="RS-232"><a href="#RS-232" class="headerlink" title="RS-232"></a>RS-232</h3><p><img src="%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305091817997.png" alt="image-20210305091817997"></p>
+<p><img src="D:\Blog\source\_posts\局域异步通信\信号脚说明" alt="image-20210314172253872"></p>
+<p><img src="D:\Blog\source\_posts\局域异步通信\信号说明" alt="image-20210314172321383"></p>
+<p>DTR:向modem发送信号，modem准备发送，向PC发送</p>
+<p>RS-232是在计算机与调制解调器，键盘或ASCII终端之间实现短距离异步串行通信的一个流行标准（传送字符）</p>
+<p>-3v~-15v表示逻辑1</p>
+<p>+3v~15v表示逻辑0</p>
 <p>串行的异步通信(串行:数据的各位在导线上逐位传输)</p>
 <p>并行:使用多根导线，并允许同时在每一根导线上传输一位</p>
 <blockquote>
@@ -290,13 +320,12 @@
 <p>接收方接收到有效数据开始位后，严格按照时间片顺序完成数据接收，直到接收完结束位为止</p>
 <p>允许发送方在任何时刻发送一个字符，并可在发送另一个字符前延迟任意长的时间</p>
 <p>一旦开始传输一个字符，发送硬件一次将所有的位逐个地全部送出，在位与位之间没有延迟。</p>
-<h2 id="3-波特率"><a class="header-anchor" href="#3-波特率">¶</a>3.波特率</h2>
-<p>发送与接收硬件必须在每一位电压持续的时间长度上保持一致</p>
+<h2 id="3-波特率"><a href="#3-波特率" class="headerlink" title="3.波特率"></a>3.波特率</h2><p>发送与接收硬件必须在每一位电压持续的时间长度上保持一致</p>
 <p>使用1秒中所能传输的位的数目来表示传输速率</p>
 <p>RS-232现在每秒19 200位和每秒33 600位的速率更为常见</p>
 <p>波特率（baud rate）表示传输硬件的工作速率，也就是每秒中硬件产生的电信号变化的次数.简单的RS -232模式来说，波特率就等于每秒中传输的位数</p>
 <p><strong>Baud</strong>是波特，是码元传输速率的单位，1波特为每秒传送1个码元</p>
-<p>接口传输（发送/接收）位的速率，码元传输速率也称为调制速率，波形速率或符号速率。单位：bps(bits per second)</p>
+<p> 接口传输（发送/接收）位的速率，码元传输速率也称为调制速率，波形速率或符号速率。单位：bps(bits per second)</p>
 <p>波特与比特是两个不同的概念，比特是信息量的单位。</p>
 <p>若1个码元只携带1bit的信息量，则“比特/秒”和“波特”在数量上是相等的</p>
 <p>如果发送和接收器未能设置成使用同样的波特率，接收器中的计时器就不会对每一位等待正确的时间长度，将会导致错误的发生.</p>
@@ -305,28 +334,110 @@
 <p><strong>传输中断的实现</strong></p>
 <p>发送方在发送完有效数据<strong>开始位</strong>后，发送“0”信息，<strong>超过有效数据结束位</strong></p>
 <p>接收方接收到有效数据开始位后，<strong>严格按照时间接收数据</strong>，当有效数据结束位时间片到，仍然是“0”，接收方认为数据错误，产生中断信号</p>
-<h2 id="全双工异步通信"><a class="header-anchor" href="#全双工异步通信">¶</a>全双工异步通信</h2>
-<p>所有的电路都要求两根导线—电流从一根导线上流出，在另一根导线上返回。第二根导线通常称为接地线（ground)。这样，当RS-232使用双绞线连接时，一根导线用于传输信号，另一根作为接地线提供返回路径。相似地，当信号在同轴电缆上传输时，从中心导线流出，而屏蔽层提供了返回路径。</p>
+<h2 id="全双工异步通信"><a href="#全双工异步通信" class="headerlink" title="全双工异步通信"></a>全双工异步通信</h2><p>所有的电路都要求两根导线—电流从一根导线上流出，在另一根导线上返回。第二根导线通常称为接地线（ground)。这样，当RS-232使用双绞线连接时，一根导线用于传输信号，另一根作为接地线提供返回路径。相似地，当信号在同轴电缆上传输时，从中心导线流出，而屏蔽层提供了返回路径。</p>
 <p>在许多RS-232应用中，数据必须同时双向流动</p>
 <p><img src="%E5%B1%80%E5%9F%9F%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1/image-20210305095519275.png" alt="image-20210305095519275"></p>
 <p>有一根导线用于一个方向上的数据传输，另一根导线用于在相反方向上传输数据。而一根接地线用于在两个方向上提供回路。（两台设备的接地线对接，目的在于使两设备的接地电势相等，确保每位数据的判读。)</p>
-<h3 id="双向同时通信-全双工通信"><a class="header-anchor" href="#双向同时通信-全双工通信">¶</a>双向同时通信/全双工通信</h3>
-<p>在两个方向上的同时传输就是我们所说的全双工传输（full duplex transmission）</p>
-<h3 id="单工通信"><a class="header-anchor" href="#单工通信">¶</a>单工通信</h3>
-<p>只有一个方向的通信而没有反方向的交互</p>
+<h3 id="双向同时通信-全双工通信"><a href="#双向同时通信-全双工通信" class="headerlink" title="双向同时通信/全双工通信"></a>双向同时通信/全双工通信</h3><p>在两个方向上的同时传输就是我们所说的全双工传输（full duplex transmission）</p>
+<p>全双工是指发送和接受同时进行，<strong>与几线没有直接的关系</strong></p>
+<blockquote>
+<p><strong>两线</strong></p>
+<p>在采用频分法、时间压缩法、回波抵消技术时，二r线线路也可实现全双工数据传输。</p>
+<p>两芯电话线实现“全双工”语音通信，是模拟信号，不可以用数字通信的方式来类比。<br>事实上我们听到的对方的语音信号和自己通过麦克风的讲话声音的信号，都在这“两芯线”上。<br>为了避免自己通过麦克风的讲话声音再回到自己的耳机中来，采用了“消音”技术。早期的消音，采用差动音频变压器来实现。现在，都有专用的语音处理芯片来承担了。</p>
+<p><strong>三线</strong></p>
+<p>RS232全双工是三线的（TxD，RxD和SG）</p>
+<p><strong>四线</strong></p>
+<p>RS485的全双工是四线的（TxD+，TxD-，RxD+和RxD-）</p>
+</blockquote>
+<h3 id="单工通信"><a href="#单工通信" class="headerlink" title="单工通信"></a>单工通信</h3><p>只有一个方向的通信而没有反方向的交互</p>
 <p>比如无线电广播,有线电广播,电视广播</p>
-<h3 id="双向交替通信-半双工通信"><a class="header-anchor" href="#双向交替通信-半双工通信">¶</a>双向交替通信/半双工通信</h3>
-<p>通信双方都可以发送,但不能同时发送和接受消息,需要两个信道</p>
+<p>此种方式适用于数据收集系统，如气象数据的收集、电话费的集中计算等。<br>例如计算机和打印机之间的通信是单工模式，因为只有计算机向打印机传输数据，而没有相反方向的数据传输</p>
+<h3 id="双向交替通信-半双工通信"><a href="#双向交替通信-半双工通信" class="headerlink" title="双向交替通信/半双工通信"></a>双向交替通信/半双工通信</h3><p>通信双方都可以发送,但不能同时发送和接受消息,需要两个信道</p>
 <p>一方发送另一方接受,过一段时间再反过来</p>
-<h3 id="DCE与DTE"><a class="header-anchor" href="#DCE与DTE">¶</a>DCE与DTE</h3>
-<p>DCE:数据通信设备,DTE:数据终端设备</p>
+<p>传统的对讲机使用的就是半双工通信方式。由于对讲机传送及接收使用相同的频率，不允许同时进行。因此一方讲完后，需设法告知另一方讲话结束（例如讲完后加上’OVER’），另一方<br>才知道可以开始讲话。</p>
+<h3 id="DCE与DTE"><a href="#DCE与DTE" class="headerlink" title="DCE与DTE"></a>DCE与DTE</h3><p>DCE:数据通信设备,DTE:数据终端设备</p>
 <p>只有在同步通信方式的线路上才会有时钟速率，同步通信时需要线路两端进行信号发送频率的同步，也就是同步的时钟，在实际工程中由协议转换器，modem等线路控制设备来提供</p>
 <p>只有标明DCE一端的才需要设置clock rate</p>
 <p>同步时钟的频率和带宽没有直接的联系，64000指的是以64000比特率时间间隔添加发送同步位</p>
 <p>可以设置其他数值，只要是两端都能达到那个标准即可，对通信没有影响</p>
-<h4 id="区别"><a class="header-anchor" href="#区别">¶</a>区别</h4>
-<p>DTE和DCE的区分实事上只是针对串行端口的，路由器通常通过串行端口连接广域网络。</p>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>DTE和DCE的区分实事上只是针对串行端口的，路由器通常通过串行端口连接广域网络。</p>
 <p>串行V.24端口（25针）通常规定DTE由第2根针脚作为TXD(发送数据线)，第3根针脚为RXD(接收数据线)，（其余针脚为：7是信号地线，4是DTS，5是RTS，6是DTR，8是DCD，以及包括发送时钟、接收时钟等等，都有规定具体的针脚），串行V.35（34针）是路由器通常采用的通信接口标准，但是V.35是采用差分信号进行传输的，发送和接受分别由2根信号线承担。而DCE设备通常是与路由器对接，因此针脚的分配相反，也就是2是接收（但也被称为TXD），3是发送。因此路由器通常是DTE设备，modem、GV转换器等等传输设备通常被规定为DCE。其实对于标准的串行端口，通常从外观就能判断是DTE还是DCE，DTE是针头（俗称公头），DCE是孔头（俗称母头），这样两种接口才能接在一起。</p>
+<hr>
+<hr>
+<h1 id="调制和调制解调器"><a href="#调制和调制解调器" class="headerlink" title="调制和调制解调器"></a>调制和调制解调器</h1><p><strong>载波</strong>：连续振荡的电磁波</p>
+<p>通过对载波进行改变，来进行信息的传送</p>
+<blockquote>
+<p>振幅</p>
+<p>频率</p>
+<p>相位</p>
+</blockquote>
+<h2 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h2><p>系统根据正在发送的信息对载波所做的改变</p>
+<p>对于数字输入，相比模拟信息信号，采用离散值</p>
+<p>调制一般指模拟信号，数字调制一般用键控(sihft keying)</p>
+<blockquote>
+<p>键控使用离散值的集合进行处理</p>
+<p>模拟数据-放大器调制器- 模拟信号</p>
+<p>模拟数据-PCM调制器-数字信号</p>
+<p>数字数据-调制器-模拟信号</p>
+<p>数字数据-数字发送器-数字信号</p>
+</blockquote>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>载波，信息</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>载波</p>
+<p>下面是模拟调制的三种类型</p>
+<h2 id="振幅调制-调幅"><a href="#振幅调制-调幅" class="headerlink" title="振幅调制/调幅"></a>振幅调制/调幅</h2><p>amplitude modulation</p>
+<p>根据信息正比地改变载波地振幅</p>
+<p>调幅该v很小，取决于调制指数</p>
+<blockquote>
+<p> 根据香农定理,波形接近最大值，信噪比最大</p>
+</blockquote>
+<p>AM电台原理</p>
+<h2 id="频率调制-调频"><a href="#频率调制-调频" class="headerlink" title="频率调制/调频"></a>频率调制/调频</h2><p>信号增强—频率提高</p>
+<p>信号减弱-频率下降</p>
+<p>FM电台原理</p>
+<h2 id="相位调制-移相"><a href="#相位调制-移相" class="headerlink" title="相位调制/移相"></a>相位调制/移相</h2><p>甚少用于模拟信号 </p>
+<p>相比前面两种，移相允许一个周期有多位数据</p>
+<p>跳过了完整周期的几分之几可以,表示几位，比如$\frac{1}{8}$,二进制表示001</p>
+<h2 id="调制解调器"><a href="#调制解调器" class="headerlink" title="调制解调器"></a>调制解调器</h2><p>将载波的数据码元序列重新生成</p>
+<p>全双工通信下,每一边都要有调制器和解调器</p>
+<p>合并的设备为调制解调器</p>
+<p>双方需要4根线进行连接（信号线-接地线/控制线（），地线用于判断电位的高低）</p>
+<p>基于25针</p>
+<p><img src="D:\Blog\source\_posts\局域异步通信\调制解调器.png" alt="image-20210314171136135"></p>
+<p>保护地：保护电压太大</p>
+<p>载波检测：信号有无到达</p>
+<p>联络信号：两边进行协调的关键传输</p>
+<hr>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1,调制: 将各种数字基带信号转换成适于信道传输的数字调制信号(已调信号或频带信号)；</span><br><span class="line">2，解调: 在接收端将收到的数字频带信号还原成数字基带信号</span><br><span class="line">时域定义：</span><br><span class="line">调制就是用基带信号去控制载波信号的某个或几个参量的变化，将信息荷载在其上形成已调信号传输，而解调是调制的反过程，通过具体的方法从已调信号的参量变化中将恢复原始的基带信号。</span><br><span class="line">频域定义：</span><br><span class="line">调制就是将基带信号的频谱搬移到信道通带中或者其中的某个频段上的过程，而解调是将信道中来的频带信号恢复为基带信号的反过程.</span><br><span class="line">根据所控制的信号参量的不同，调制可分为：</span><br><span class="line">调幅，使载波的幅度随着调制信号的大小变化而变化的调制方式。</span><br><span class="line">调频，使载波的瞬时频率随着调制信号的大小而变，而幅度保持不变的调制方式。</span><br><span class="line">调相，利用原始信号控制载波信号的相位。</span><br><span class="line">调制的目的是把要传输的模拟信号或数字信号变换成适合信道传输的信号，这就意味着把基带信号（信源）转变为一个相对基带频率而言频率非常高的带通信号。该信号称为已调信号，而基带信号称为调制信号。调制可以通过使高频载波随信号幅度的变化而改变载波的幅度、相位或者频率来实现。调制过程用于通信系统的发端。在接收端需将已调信号还原成要传输的原始信号，也就是将基带信号从载波中提取出来以便预定的接受者（信宿）处理和理解的过程。该过程称为解调。</span><br><span class="line">分类</span><br><span class="line">调制的种类很多，分类方法也不一致。按调制信号的形式可分为模拟调制和数字调制。用模拟信号调制称为模拟调制；用数据或数字信号调制称为数字调制。按被调信号的种类可分为脉冲调制、正弦波调制和强度调制(如对非相干光调制)等。调制的载波分别是脉冲，正弦波和光波等。正弦波调制有幅度调制、频率调制和相位调制三种基本方式，后两者合称为角度调制。此外还有一些变异的调制，如单边带调幅、残留边带调幅等。脉冲调制也可以按类似的方法分类。此外还有复合调制和多重调制等。不同的调制方式有不同的特点和性能。</span><br><span class="line">解调是从携带消息的已调信号中恢复消息的过程。在各种信息传输或处理系统中，发送端用所欲传送的消息对载波进行调制，产生携带这一消息的信号。接收端必须恢复所传送的消息才能加以利用，这就是解调。</span><br><span class="line">解调是调制的逆过程。调制方式不同，解调方法也不一样。与调制的分类相对应，解调可分为正弦波解调（有时也称为连续波解调）和脉冲波解调。正弦波解调还可再分为幅度解调、频率解调和相位解调。同样，脉冲波解调也可分为脉冲幅度解调、脉冲相位解调、脉冲宽度解调和脉冲编码解调等。对于多重调制需要配以多重解调。</span><br><span class="line">解调的方式有正弦波幅度解调、正弦波角度解调和共振解调技术。</span><br><span class="line">按照调制方法可分为两类：线性调制和非线性调制。线性调制包括调幅（AM）、抑制载波双边带调幅（DSB-SC）、单边带调幅（SSB）、残留边带调幅（VSB）等。非线性调幅的抗干扰性能较强，包括调频（FM）、移频键控（FSK）、移相键控（PSK）、差分移相键控（DPSK）等.线性调制特点是不改变信号原始频谱结构，而非线性调制改变了信号原始频谱结构。根据调制的方式，调制可划分为连续调制和脉冲调制。按调制技术分，可分为模拟调制技术与数字调制技术，其主要区别是：模拟调制是对载波信号的某些参量进行连续调制，在接收端对载波信号的调制参量连续估值，而数字调制是用载波信号的某些离散状态来表征所传送信息，在接收端只对载波信号的离散调制参量进行检测。</span><br></pre></td></tr></table></figure></h2><h1 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h1><p>信息流组合在一个共享介质上传输</p>
+<p>基于线路成本而使用复用</p>
+<p><strong>解复用</strong></p>
+<p>从组合信息分离并还原各自的信息流</p>
+<p>比如电视都是一个导线，但是有多个频道</p>
+<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><h3 id="FDM"><a href="#FDM" class="headerlink" title="FDM"></a>FDM</h3><p>频分多路复用</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>使用不同载波频率，则不会相互干扰</p>
+<p>解复用器用过滤器（每个过滤器提取一个小的频率范围，过滤器有很多）</p>
+<p>由此可以分离出一个载波而不影响其它载波</p>
+<p>同时虽然共用一个通信介质，但是好像有不同通道一样（信道）</p>
+<p>载波频率之间仍然有防护带（频率间隔）来防止干扰</p>
+<p>多个信道同时通信，每个信道对应于电磁辐射一个单独频段</p>
+<p>主要用于电话和电缆电视系统</p>
+<h3 id="分布频谱"><a href="#分布频谱" class="headerlink" title="分布频谱"></a>分布频谱</h3><p>单个频率载波会可能被干扰，采用多种载波频率进行发送</p>
+<p>发送器在每个载波上同时发送数据，若某一干扰妨碍了某些载波频率抵达接收器，数据仍能通过剩下的载波到达。  </p>
+<h3 id="WDM"><a href="#WDM" class="headerlink" title="WDM"></a>WDM</h3><p>波分多路复用</p>
+<p>用于光纤介质的频分复用方式</p>
+<p>不同频率的光波被玻璃棱镜分开</p>
+<p>光载波的频率很高，一般用波长表示</p>
+<h3 id="TDM"><a href="#TDM" class="headerlink" title="TDM"></a>TDM</h3><p>时分多路复用</p>
+<p>轮流使用，按传输的时间进行分割，每次发送一个数据项，将不同信号在不同时间内轮流传送，当发送器没有准备好时，会跳过它</p>
+<h3 id="CDM"><a href="#CDM" class="headerlink" title="CDM"></a>CDM</h3><p>码分多路复用，每个用户可在同一时间使用同样的频带进行通信，是一种共享信道的方法。通信各方面之间不会相互干扰，且抗干扰能力强</p>
+<p>采用编码的方法在多个发送端同时发送而不会互相干扰</p>
+<p>CDM具有较低时延的可伸缩性能力</p>
+<p>蜂窝电话机制的数学方法</p>
+<h2 id="宽带技术"><a href="#宽带技术" class="headerlink" title="宽带技术"></a>宽带技术</h2><p>将频率增大—宽带技术</p>
+<p>只使用电磁频率小部分，一次只在介质发送一个信号—基带技术</p>
+<p>基带信号就是将数字信号1或0直接用两种不同的电压来表示，然后送到线路上去传输。</p>
+<p>宽带信号是<strong>将基带信号进行调制后形成的频分复用模拟信号</strong></p>
+<p>基带信号进行调制后，其频谱被移到较高的频率处，每一路基带信号的频谱被移到不同的频段，因此合在一起不会互相干扰。</p>
+<p>因此，一条电缆中可以同时传送多路的数字信号，从而提高了线路的利用率。</p>
 
     </div>
 
@@ -348,7 +459,10 @@
     <a href="/2021/03/04/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="prev" title="汇编语言">
       <i class="fa fa-chevron-left"></i> 汇编语言
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/09/C%E7%9B%98/" rel="next" title="C盘">
+      C盘 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -407,7 +521,41 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.传输模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">1.1.</span> <span class="nav-text">异步通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">1.2.</span> <span class="nav-text">同步通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">传输顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">2.异步通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%94%B5%E6%B5%81%E5%8F%91%E9%80%81%E4%BD%8D%E4%B8%B2"><span class="nav-number">3.1.</span> <span class="nav-text">1.电流发送位串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%80%9A%E4%BF%A1%E6%A0%87%E5%87%86"><span class="nav-number">3.2.</span> <span class="nav-text">2.通信标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RS-232"><span class="nav-number">3.2.1.</span> <span class="nav-text">RS-232</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B3%A2%E7%89%B9%E7%8E%87"><span class="nav-number">3.3.</span> <span class="nav-text">3.波特率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%8F%8C%E5%B7%A5%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.</span> <span class="nav-text">全双工异步通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E5%90%8C%E6%97%B6%E9%80%9A%E4%BF%A1-%E5%85%A8%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.1.</span> <span class="nav-text">双向同时通信&#x2F;全双工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.2.</span> <span class="nav-text">单工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E4%BA%A4%E6%9B%BF%E9%80%9A%E4%BF%A1-%E5%8D%8A%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.3.</span> <span class="nav-text">双向交替通信&#x2F;半双工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DCE%E4%B8%8EDTE"><span class="nav-number">3.4.4.</span> <span class="nav-text">DCE与DTE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">区别</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E4%BF%A1%E5%8F%B7%E5%92%8C%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">0.信号和信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%BC%A0%E8%BE%93%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">1.传输模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E4%BC%A0%E8%BE%93%EF%BC%9A%E5%90%8C%E6%97%B6%E5%8F%91%E9%80%81%E5%A4%9A%E4%B8%AA%E7%A0%81%E4%BD%8D"><span class="nav-number">2.0.1.</span> <span class="nav-text">并行传输：同时发送多个码位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B2%E8%A1%8C%E4%BC%A0%E8%BE%93%EF%BC%9A%E4%B8%80%E6%AC%A1%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E7%A0%81%E4%BD%8D%EF%BC%8C"><span class="nav-number">2.0.2.</span> <span class="nav-text">串行传输：一次发送一个码位，</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AD%89%E6%97%B6"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">等时</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">2.1.</span> <span class="nav-text">异步通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">2.2.</span> <span class="nav-text">同步通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">传输顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">2.异步通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%94%B5%E6%B5%81%E5%8F%91%E9%80%81%E4%BD%8D%E4%B8%B2"><span class="nav-number">4.1.</span> <span class="nav-text">1.电流发送位串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%80%9A%E4%BF%A1%E6%A0%87%E5%87%86"><span class="nav-number">4.2.</span> <span class="nav-text">2.通信标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RS-232"><span class="nav-number">4.2.1.</span> <span class="nav-text">RS-232</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B3%A2%E7%89%B9%E7%8E%87"><span class="nav-number">4.3.</span> <span class="nav-text">3.波特率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%8F%8C%E5%B7%A5%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">4.4.</span> <span class="nav-text">全双工异步通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E5%90%8C%E6%97%B6%E9%80%9A%E4%BF%A1-%E5%85%A8%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">4.4.1.</span> <span class="nav-text">双向同时通信&#x2F;全双工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">4.4.2.</span> <span class="nav-text">单工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E4%BA%A4%E6%9B%BF%E9%80%9A%E4%BF%A1-%E5%8D%8A%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="nav-number">4.4.3.</span> <span class="nav-text">双向交替通信&#x2F;半双工通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DCE%E4%B8%8EDTE"><span class="nav-number">4.4.4.</span> <span class="nav-text">DCE与DTE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">4.4.4.1.</span> <span class="nav-text">区别</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E5%88%B6%E5%92%8C%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">调制和调制解调器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E5%88%B6"><span class="nav-number">5.1.</span> <span class="nav-text">调制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">5.1.1.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">5.1.2.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%AF%E5%B9%85%E8%B0%83%E5%88%B6-%E8%B0%83%E5%B9%85"><span class="nav-number">5.2.</span> <span class="nav-text">振幅调制&#x2F;调幅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6-%E8%B0%83%E9%A2%91"><span class="nav-number">5.3.</span> <span class="nav-text">频率调制&#x2F;调频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6-%E7%A7%BB%E7%9B%B8"><span class="nav-number">5.4.</span> <span class="nav-text">相位调制&#x2F;移相</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E5%99%A8"><span class="nav-number">5.5.</span> <span class="nav-text">调制解调器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.6.</span> <span class="nav-text">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+1,调制: 将各种数字基带信号转换成适于信道传输的数字调制信号(已调信号或频带信号)；
+2，解调: 在接收端将收到的数字频带信号还原成数字基带信号
+时域定义：
+调制就是用基带信号去控制载波信号的某个或几个参量的变化，将信息荷载在其上形成已调信号传输，而解调是调制的反过程，通过具体的方法从已调信号的参量变化中将恢复原始的基带信号。
+频域定义：
+调制就是将基带信号的频谱搬移到信道通带中或者其中的某个频段上的过程，而解调是将信道中来的频带信号恢复为基带信号的反过程.
+根据所控制的信号参量的不同，调制可分为：
+调幅，使载波的幅度随着调制信号的大小变化而变化的调制方式。
+调频，使载波的瞬时频率随着调制信号的大小而变，而幅度保持不变的调制方式。
+调相，利用原始信号控制载波信号的相位。
+调制的目的是把要传输的模拟信号或数字信号变换成适合信道传输的信号，这就意味着把基带信号（信源）转变为一个相对基带频率而言频率非常高的带通信号。该信号称为已调信号，而基带信号称为调制信号。调制可以通过使高频载波随信号幅度的变化而改变载波的幅度、相位或者频率来实现。调制过程用于通信系统的发端。在接收端需将已调信号还原成要传输的原始信号，也就是将基带信号从载波中提取出来以便预定的接受者（信宿）处理和理解的过程。该过程称为解调。
+分类
+调制的种类很多，分类方法也不一致。按调制信号的形式可分为模拟调制和数字调制。用模拟信号调制称为模拟调制；用数据或数字信号调制称为数字调制。按被调信号的种类可分为脉冲调制、正弦波调制和强度调制(如对非相干光调制)等。调制的载波分别是脉冲，正弦波和光波等。正弦波调制有幅度调制、频率调制和相位调制三种基本方式，后两者合称为角度调制。此外还有一些变异的调制，如单边带调幅、残留边带调幅等。脉冲调制也可以按类似的方法分类。此外还有复合调制和多重调制等。不同的调制方式有不同的特点和性能。
+解调是从携带消息的已调信号中恢复消息的过程。在各种信息传输或处理系统中，发送端用所欲传送的消息对载波进行调制，产生携带这一消息的信号。接收端必须恢复所传送的消息才能加以利用，这就是解调。
+解调是调制的逆过程。调制方式不同，解调方法也不一样。与调制的分类相对应，解调可分为正弦波解调（有时也称为连续波解调）和脉冲波解调。正弦波解调还可再分为幅度解调、频率解调和相位解调。同样，脉冲波解调也可分为脉冲幅度解调、脉冲相位解调、脉冲宽度解调和脉冲编码解调等。对于多重调制需要配以多重解调。
+解调的方式有正弦波幅度解调、正弦波角度解调和共振解调技术。
+按照调制方法可分为两类：线性调制和非线性调制。线性调制包括调幅（AM）、抑制载波双边带调幅（DSB-SC）、单边带调幅（SSB）、残留边带调幅（VSB）等。非线性调幅的抗干扰性能较强，包括调频（FM）、移频键控（FSK）、移相键控（PSK）、差分移相键控（DPSK）等.线性调制特点是不改变信号原始频谱结构，而非线性调制改变了信号原始频谱结构。根据调制的方式，调制可划分为连续调制和脉冲调制。按调制技术分，可分为模拟调制技术与数字调制技术，其主要区别是：模拟调制是对载波信号的某些参量进行连续调制，在接收端对载波信号的调制参量连续估值，而数字调制是用载波信号的某些离散状态来表征所传送信息，在接收端只对载波信号的离散调制参量进行检测。
+</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">多路复用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.1.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FDM"><span class="nav-number">6.1.1.</span> <span class="nav-text">FDM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E9%A2%91%E8%B0%B1"><span class="nav-number">6.1.2.</span> <span class="nav-text">分布频谱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WDM"><span class="nav-number">6.1.3.</span> <span class="nav-text">WDM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TDM"><span class="nav-number">6.1.4.</span> <span class="nav-text">TDM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDM"><span class="nav-number">6.1.5.</span> <span class="nav-text">CDM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%BD%E5%B8%A6%E6%8A%80%E6%9C%AF"><span class="nav-number">6.2.</span> <span class="nav-text">宽带技术</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -421,7 +569,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

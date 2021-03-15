@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.传输介质 主机要通信，需要先建立通信的通道（传输介质） 编码：把信息转换为某种形式的能量（光，电，无线电） 能量再通过传输介质传输出去 最底层是能量的流动 物理层（最底层）需要解决协议 ¶铜缆（copper)： 1.便宜易安装 2.低电阻 为了减少干扰： 1.两条交叉线：平行线会产生磁场，垂直会相互抵消 即双绞线 双绞线既能传输模拟信号又能传输数字信号 （数字信号是离散的，模拟信号是连续的）">
+  <meta name="description" content="1.传输介质主机要通信，需要先建立通信的通道（传输介质） 编码：把信息转换为某种形式的能量（光，电，无线电） 能量再通过传输介质传输出去 最底层是能量的流动 物理层（最底层）需要解决协议 铜缆（copper)：1.便宜易安装 2.低电阻 为了减少干扰： 1.两条交叉线：平行线会产生磁场，垂直会相互抵消 即双绞线 双绞线既能传输模拟信号又能传输数字信号 （数字信号是离散的，模拟信号是连续的） 通信距">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络1">
 <meta property="og:url" content="http://example.com/2021/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/index.html">
 <meta property="og:site_name" content="宇称不得不守恒">
-<meta property="og:description" content="1.传输介质 主机要通信，需要先建立通信的通道（传输介质） 编码：把信息转换为某种形式的能量（光，电，无线电） 能量再通过传输介质传输出去 最底层是能量的流动 物理层（最底层）需要解决协议 ¶铜缆（copper)： 1.便宜易安装 2.低电阻 为了减少干扰： 1.两条交叉线：平行线会产生磁场，垂直会相互抵消 即双绞线 双绞线既能传输模拟信号又能传输数字信号 （数字信号是离散的，模拟信号是连续的）">
+<meta property="og:description" content="1.传输介质主机要通信，需要先建立通信的通道（传输介质） 编码：把信息转换为某种形式的能量（光，电，无线电） 能量再通过传输介质传输出去 最底层是能量的流动 物理层（最底层）需要解决协议 铜缆（copper)：1.便宜易安装 2.低电阻 为了减少干扰： 1.两条交叉线：平行线会产生磁场，垂直会相互抵消 即双绞线 双绞线既能传输模拟信号又能传输数字信号 （数字信号是离散的，模拟信号是连续的） 通信距">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-03-03T00:14:39.000Z">
-<meta property="article:modified_time" content="2021-03-03T01:01:24.297Z">
+<meta property="article:modified_time" content="2021-03-14T13:51:08.017Z">
 <meta property="article:author" content="yuz">
 <meta name="twitter:card" content="summary">
 
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-03 08:14:39 / Modified: 09:01:24" itemprop="dateCreated datePublished" datetime="2021-03-03T08:14:39+08:00">2021-03-03</time>
+              <time title="Created: 2021-03-03 08:14:39" itemprop="dateCreated datePublished" datetime="2021-03-03T08:14:39+08:00">2021-03-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-14 21:51:08" itemprop="dateModified" datetime="2021-03-14T21:51:08+08:00">2021-03-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -219,14 +225,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>1.传输介质</h1>
-<p>主机要通信，需要先建立通信的通道（传输介质）</p>
+        <h1 id="1-传输介质"><a href="#1-传输介质" class="headerlink" title="1.传输介质"></a>1.传输介质</h1><p>主机要通信，需要先建立通信的通道（传输介质）</p>
 <p>编码：把信息转换为某种形式的能量（光，电，无线电）</p>
 <p>能量再通过传输介质传输出去</p>
 <p>最底层是能量的流动</p>
 <p>物理层（最底层）需要解决协议</p>
-<h4 id="铜缆（copper-："><a class="header-anchor" href="#铜缆（copper-：">¶</a>铜缆（copper)：</h4>
-<p>1.便宜易安装</p>
+<h4 id="铜缆（copper-："><a href="#铜缆（copper-：" class="headerlink" title="铜缆（copper)："></a>铜缆（copper)：</h4><p>1.便宜易安装</p>
 <p>2.低电阻</p>
 <p>为了减少干扰：</p>
 <p>1.两条交叉线：平行线会产生磁场，垂直会相互抵消</p>
@@ -234,14 +238,12 @@
 <p>双绞线既能传输模拟信号又能传输数字信号</p>
 <p>（数字信号是离散的，模拟信号是连续的）</p>
 <p>通信距离为几十公里，过远信号衰减，需要中继器</p>
+<p>减少干扰：</p>
 <p>双绞线：</p>
-<p>1.屏蔽：绝缘层外有层金属网，可以抵抗外界磁场的干扰</p>
-<p>2.非屏蔽：UTP</p>
-<p>​</p>
-<p>2.同轴电缆：电视信号线会有，现在基本被淘汰了</p>
-<h4 id="玻璃纤维-glass-fibers-："><a class="header-anchor" href="#玻璃纤维-glass-fibers-：">¶</a>玻璃纤维(glass fibers)：</h4>
-<p>光纤</p>
-<p>首先把电转换为光：发光二极管(light emitting diode)或者激光器(laser)把电转换为光</p>
+<p>1.<strong>屏蔽</strong>：绝缘层外有层金属网，可以抵抗外界磁场的干扰</p>
+<p>2.<strong>非屏蔽</strong>：UTP，柔韧性很好</p>
+<p>3.<strong>同轴电缆</strong>：电视信号线会有，现在基本被淘汰了</p>
+<h4 id="玻璃纤维-glass-fibers-："><a href="#玻璃纤维-glass-fibers-：" class="headerlink" title="玻璃纤维(glass fibers)："></a>玻璃纤维(glass fibers)：</h4><h5 id="光纤"><a href="#光纤" class="headerlink" title="光纤"></a>光纤</h5><p>首先把电转换为光：发光二极管(light emitting diode)或者激光器(laser)把电转换为光</p>
 <p>传输完毕后：光敏晶体管(light sensitive transistor)把光变成电</p>
 <p>光线在纤芯中不断全反射传播</p>
 <p>光纤：</p>
@@ -253,6 +255,8 @@
 <p>3.不易窃听</p>
 <p>4.易损坏，损坏而且不易定位</p>
 <p>5.单向传输（双绞线可双向）</p>
+<h1 id="通信模型"><a href="#通信模型" class="headerlink" title="通信模型"></a>通信模型</h1><p>信源-编码-信道-解码-信宿</p>
+<p>数据必须编码成传输介质传输的格式</p>
 
     </div>
 
@@ -333,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%9C%E7%BC%86%EF%BC%88copper-%EF%BC%9A"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">铜缆（copper)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%BB%E7%92%83%E7%BA%A4%E7%BB%B4-glass-fibers-%EF%BC%9A"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">玻璃纤维(glass fibers)：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8"><span class="nav-number">1.</span> <span class="nav-text">1.传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%9C%E7%BC%86%EF%BC%88copper-%EF%BC%9A"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">铜缆（copper)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%BB%E7%92%83%E7%BA%A4%E7%BB%B4-glass-fibers-%EF%BC%9A"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">玻璃纤维(glass fibers)：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%89%E7%BA%A4"><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">光纤</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">通信模型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -347,7 +351,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
