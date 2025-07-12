@@ -1143,7 +1143,23 @@ article .content .video-container embed {
   width: 100%;
   height: 100%;
 }
-article .content blockquote {
+article .content .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 0;
+}
+article .content .img-container img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+article .content .img-container img:hover {
+  transform: scale(1.02);
+}
+article .content .img-container img blockquote {
   margin: 1rem 10px;
   padding: 0.5em 10px;
   background: inherit;
@@ -1151,10 +1167,10 @@ article .content blockquote {
   quotes: "\201C" "\201D" "\2018" "\2019";
   font-weight: bold;
 }
-article .content blockquote p {
+article .content .img-container img blockquote p {
   margin: 0;
 }
-article .content blockquote:before {
+article .content .img-container img blockquote:before {
   margin-right: 0.25em;
   color: #ab2251;
   content: "\201C";
@@ -1162,37 +1178,37 @@ article .content blockquote:before {
   font-size: 2em;
   line-height: 0.1em;
 }
-article .content blockquote footer {
+article .content .img-container img blockquote footer {
   margin: line-height 0;
   color: #666;
   font-size: 12px;
 }
-article .content blockquote footer a {
+article .content .img-container img blockquote footer a {
   background-image: linear-gradient(transparent, transparent 5px, #666 5px, #666);
   color: #666;
 }
-article .content blockquote footer a:hover {
+article .content .img-container img blockquote footer a:hover {
   background-image: linear-gradient(transparent, transparent 4px, #858585 4px, #858585);
   color: #858585;
 }
-article .content blockquote footer cite:before {
+article .content .img-container img blockquote footer cite:before {
   padding: 0 0.5em;
   content: "—";
 }
-article .content .pullquote {
+article .content .img-container img .pullquote {
   margin: 0;
   width: 45%;
   text-align: left;
 }
-article .content .pullquote.left {
+article .content .img-container img .pullquote.left {
   margin-right: 1em;
   margin-left: 0.5em;
 }
-article .content .pullquote.right {
+article .content .img-container img .pullquote.right {
   margin-right: 0.5em;
   margin-left: 1em;
 }
-article .content .caption {
+article .content .img-container img .caption {
   position: relative;
   display: block;
   margin-top: 0.5em;
