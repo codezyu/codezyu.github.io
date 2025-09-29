@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="SIMDfolly的核心是利用SIMD的能力  向量寄存器 (Vector Registers): 现代 CPU 包含特殊的、比普通寄存器更宽的向量寄存器（例如 128 位、256 位或 512 位）。这些寄存器可以同时容纳多个数据元素（例如，一个 256 位寄存器可以容纳 8 个 32 位整数）。 SSE&#x2F;NEON: 128位 AVX2: 256位寄存器   向量指令 (Vector">
+<meta property="og:type" content="article">
+<meta property="og:title" content="folly(1) F14的高效比较">
+<meta property="og:url" content="https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/index.html">
+<meta property="og:site_name" content="zyu&#39;s blog">
+<meta property="og:description" content="SIMDfolly的核心是利用SIMD的能力  向量寄存器 (Vector Registers): 现代 CPU 包含特殊的、比普通寄存器更宽的向量寄存器（例如 128 位、256 位或 512 位）。这些寄存器可以同时容纳多个数据元素（例如，一个 256 位寄存器可以容纳 8 个 32 位整数）。 SSE&#x2F;NEON: 128位 AVX2: 256位寄存器   向量指令 (Vector">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-29T13:02:27.847Z">
+<meta property="article:author" content="zyu">
+<meta property="article:tag" content="folly">
+<meta property="article:tag" content="CPP">
+<meta property="article:tag" content="Tech">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>folly(1) F14的高效比较</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/codezyu">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&text=folly(1) F14的高效比较"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&is_video=false&description=folly(1) F14的高效比较"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=folly(1) F14的高效比较&body=Check out this article: https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&name=folly(1) F14的高效比较&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&t=folly(1) F14的高效比较"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SIMD"><span class="toc-number">1.</span> <span class="toc-text">SIMD</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E5%AD%98"><span class="toc-number">1.1.</span> <span class="toc-text">访存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#F14"><span class="toc-number">2.</span> <span class="toc-text">F14</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#F14-%E5%A6%82%E4%BD%95%E5%81%9A%E5%93%88%E5%B8%8C%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">F14 如何做哈希的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F14%E7%9A%84%E6%8A%BD%E8%B1%A1"><span class="toc-number">2.2.</span> <span class="toc-text">F14的抽象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F14Chunk"><span class="toc-number">2.3.</span> <span class="toc-text">F14Chunk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.1.</span> <span class="toc-text">头文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.2.</span> <span class="toc-text">数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%B9%E9%BD%90"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">如何实现对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8C%B9%E9%85%8D%E7%9A%84"><span class="toc-number">2.3.3.</span> <span class="toc-text">如何实现匹配的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ARM-NEON-AArch64"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">ARM NEON (AArch64)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SSE2-Intel-AMD"><span class="toc-number">2.3.3.2.</span> <span class="toc-text">SSE2(Intel &#x2F; AMD)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#INT128-T"><span class="toc-number">2.3.3.3.</span> <span class="toc-text">INT128_T</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F14%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E6%9B%B4%E9%AB%98"><span class="toc-number">2.4.</span> <span class="toc-text">F14为什么负载因子更高</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">应用</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        folly(1) F14的高效比较
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">zyu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-09-29T00:00:00.000Z" class="dt-published" itemprop="datePublished">2025-09-29</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/CPP/" rel="tag">CPP</a>, <a class="p-category" href="/tags/Tech/" rel="tag">Tech</a>, <a class="p-category" href="/tags/folly/" rel="tag">folly</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="SIMD"><a href="#SIMD" class="headerlink" title="SIMD"></a>SIMD</h1><p>folly的核心是利用SIMD的能力</p>
+<ul>
+<li><strong>向量寄存器 (Vector Registers)</strong>: 现代 CPU 包含特殊的、比普通寄存器更宽的<strong>向量寄存器</strong>（例如 128 位、256 位或 512 位）。这些寄存器可以同时容纳多个数据元素（例如，一个 256 位寄存器可以容纳 8 个 32 位整数）。<ul>
+<li>SSE&#x2F;NEON: 128位</li>
+<li>AVX2: 256位寄存器</li>
+</ul>
+</li>
+<li><strong>向量指令 (Vector Instructions)</strong>: SIMD 指令集（如 Intel 的 <strong>SSE&#x2F;AVX</strong> 或 ARM 的 <strong>NEON</strong>）允许 CPU 对加载到向量寄存器中的所有数据元素<strong>同时执行相同的操作</strong>。</li>
+</ul>
+<h2 id="访存"><a href="#访存" class="headerlink" title="访存"></a>访存</h2><ol>
+<li>SIMD支持连续访存，这种性能肯定是最高的</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VMOVAPS</span><br><span class="line">_mm256_load_ps</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>分散加载即gather</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// AVX2</span><br><span class="line">VPGATHERDD</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>分散存储 一条指令可以将向量寄存器中的多个数据元素，同时存储到内存中分散的多个地址</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VPSCATTERDD (AVX-512)</span><br></pre></td></tr></table></figure>
+<p><strong>分散&#x2F;收集（Gather&#x2F;Scatter）指令通常比连续加载指令慢得多</strong>。这是因为 CPU 需要进行多次独立的内存访问，这会引入更高的延迟并可能导致缓存缺失，因此<strong>通常比 N 个标量加载的循环要快 2-4 倍</strong>（具体取决于 CPU 架构和延迟）。</p>
+<blockquote>
+<p>缓存缺失指的是 需要未命中覆盖缓存</p>
+</blockquote>
+<h1 id="F14"><a href="#F14" class="headerlink" title="F14"></a>F14</h1><h2 id="F14-如何做哈希的"><a href="#F14-如何做哈希的" class="headerlink" title="F14 如何做哈希的"></a>F14 如何做哈希的</h2><ul>
+<li>key 映射为64位的哈希值H<ul>
+<li>比如cityhash或者murmurhash</li>
+</ul>
+</li>
+<li>哈希值H被切分为：<ul>
+<li>低位（chunk index）: 对应的chunk的索引</li>
+<li>高位 （8位tag）: 区块的并行查找</li>
+</ul>
+</li>
+<li>其中F14的 chunk中包含14 slot 分别存储tag <ul>
+<li>slot已占用，则其存储的tag最高位为1 ， 实际上比较是后面的7位</li>
+</ul>
+</li>
+</ul>
+<h2 id="F14的抽象"><a href="#F14的抽象" class="headerlink" title="F14的抽象"></a>F14的抽象</h2><p>同样，F14Map.h使用了基于策略的抽象</p>
+<ul>
+<li>抽象出组件</li>
+<li>组件之间的交互即是策略</li>
+<li>采用模板的方式</li>
+<li>具体的实现放在detail中<br><strong>folly 如何解决模板引入带来编译时间变长的问题</strong><br>问题：<code>F14Map.h</code> 文件包含所有实现、私有成员、内联函数和大量模板代码，其内容可能非常庞大，并且依赖于许多其他 Folly 头文件和系统头文件 </li>
+<li>当你头文件引入时，<strong>整个 F14Map.h 的内容（包括其所有依赖）复制到你的编译单元中</strong>。非常影响编译时间<br>folly解决方案前向声明 <code>F14Map-fwd.h</code>:文件只包含对 <code>folly::F14</code> 容器及其相关策略的<strong>最小声明</strong> 不包含实现， 用于给<strong>头文件</strong>引入 比如</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fwd文件 不要引入 F14Map.h 否则就无用了</span></span><br><span class="line"><span class="keyword">template</span> &lt;</span><br><span class="line">    <span class="keyword">typename</span> Key,</span><br><span class="line">    <span class="keyword">typename</span> Mapped,</span><br><span class="line">    <span class="keyword">typename</span> Hasher = f14::DefaultHasher&lt;Key&gt;,</span><br><span class="line">    <span class="keyword">typename</span> KeyEqual = f14::DefaultKeyEqual&lt;Key&gt;,</span><br><span class="line">    <span class="keyword">typename</span> Alloc = f14::DefaultAlloc&lt;std::pair&lt;Key <span class="type">const</span>, Mapped&gt;&gt;&gt;</span><br><span class="line"><span class="keyword">class</span> F14NodeMap;</span><br></pre></td></tr></table></figure>
+<p>实现文件cpp则引入<code>F14Map.h</code></p>
+<h2 id="F14Chunk"><a href="#F14Chunk" class="headerlink" title="F14Chunk"></a>F14Chunk</h2><blockquote>
+<p>F14Table内</p>
+</blockquote>
+<p>chunk核心算法设计——<strong>它能一次性对 14 个存储槽（slot）进行筛选（Filter）</strong>。将每个key映射到更小的slot，因此一次可以快速比较多个key<br><strong>为什么是14个槽</strong></p>
+<p>但整体结构仍然可以描述为</p>
+<ul>
+<li>哈希桶数组：每个桶用来盛装对应的key<ul>
+<li>tags: 即slot，用于快速比较这个桶是否存在我们要查找的key</li>
+<li>rowItem: 实际KV对<br>这里使用array来控制我们想要的字节</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ItemType&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">alignas</span>(kRequiredVectorAlignment) F14Chunk &#123;</span><br><span class="line">  <span class="comment">// Non-empty tags have their top bit set.  tags_ array might be bigger</span></span><br><span class="line">  <span class="comment">// than kCapacity to keep alignment of first item.</span></span><br><span class="line">  std::array&lt;<span class="type">uint8_t</span>, 14&gt; tags_;</span><br><span class="line">  <span class="type">uint8_t</span> control_;</span><br><span class="line">  <span class="type">uint8_t</span> outboundOverflowCount_; <span class="comment">// 这里刚好构成了16个字节</span></span><br><span class="line">  std::array&lt;<span class="type">aligned_storage_for_t</span>&lt;Item&gt;, kAllocatedCapacity&gt; rawItems_; <span class="comment">// items</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
+<li>利用CPU 硬件加速的CRC指令</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查 CPU 是否支持硬件加速的 循环冗余校验 (CRC) 指令，这些指令通常用于哈希计算和数据完整性检查。</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_F14_CRC_INTRINSIC_AVAILABLE</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_NEON</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_acle.h&gt;</span> <span class="comment">// __crc32cd指令： ARM 架构并启用了 NEON SIMD 扩展。</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;nmmintrin.h&gt;</span> <span class="comment">// _mm_crc32_u64：intel的指令</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;intrin.h&gt;</span> <span class="comment">// _mul128 in fallback bit mixer</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>CRC把要校验的二进制数据看作是一个多项式，然后用一个预先确定的生成多项式（Generator Polynomial）进行模 2 运算的除法。CRC 的模 2 多项式除法，在硬件上可以高效地实现为一系列移位（Shift）和异或（XOR）操作。现代 CPU 通过添加专门的指令集，将这一系列操作硬件化，从而实现加速。</p>
+<p><strong>hash计算</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_NEON</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_neon.h&gt;</span> <span class="comment">// uint8x16t intrinsics</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_ARM_FEATURE_NEON_SVE_BRIDGE</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_neon_sve_bridge.h&gt;</span> <span class="comment">// @manual</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_sve.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_SSE &gt;= 2 <span class="comment">// SSE2</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;emmintrin.h&gt;</span> <span class="comment">// _mm_set1_epi8</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;immintrin.h&gt;</span> <span class="comment">// __m128i intrinsics</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;xmmintrin.h&gt;</span> <span class="comment">// _mm_prefetch</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>对于tagvector即多个slot 根据不同架构定义的类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_NEON</span></span><br><span class="line"><span class="keyword">using</span> TagVector = <span class="type">uint8x16_t</span>; <span class="comment">// ARM NEON Intrinsics（内联函数）库中定义的向量数据类型</span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_SSE &gt;= 2</span></span><br><span class="line"><span class="keyword">using</span> TagVector = __m128i;</span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_HAVE_INT128_T</span></span><br><span class="line"><span class="keyword">using</span> TagVector = <span class="type">__uint128_t</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="如何实现对齐"><a href="#如何实现对齐" class="headerlink" title="如何实现对齐"></a>如何实现对齐</h4><p>我们注意到chunk的那里设置对齐粒度，那么具体是如何设置对齐修饰符的呢<br><strong><code>alignof</code></strong> 是 C++11 引入的一个<strong>一元运算符（Unary Operator）</strong>，它用于获取某种类型在内存中所需的最小对齐字节数。<br><strong><code>max_align_t</code></strong> 是 C++ 标准库（在 <code>&lt;cstddef&gt;</code> 或 <code>&lt;stddef.h&gt;</code> 中定义）中的一个类型别名，它代表了标准 C++ 实现中所有标量类型（Scalar Types）都必须能够对齐的类型。</p>
+<ul>
+<li>constexpr_max 编译期函数，获取最大值</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> std::<span class="type">size_t</span> kRequiredVectorAlignment =</span><br><span class="line">    <span class="built_in">constexpr_max</span>(std::<span class="type">size_t</span>&#123;<span class="number">16</span>&#125;, <span class="built_in">alignof</span>(<span class="type">max_align_t</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// alignas对齐修饰符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ItemType&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">alignas</span>(kRequiredVectorAlignment) F14Chunk &#123;</span><br></pre></td></tr></table></figure>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::memset(&amp;tags_[0], &#x27;\0&#x27;, 16);</span><br></pre></td></tr></table></figure>
+<h3 id="如何实现匹配的"><a href="#如何实现匹配的" class="headerlink" title="如何实现匹配的"></a>如何实现匹配的</h3><p>在chunk内，需要一个个跟slot内的tag进行比较</p>
+<ol>
+<li>如果14个slot存在相同的tag（毕竟只有7位，即发生了冲突），这时候就需要具体去识别</li>
+<li>SIMD就用来加速这个比较过程 同时和14个slot的tag进行比较</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//和14个slot比较tag</span></span><br><span class="line"><span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(<span class="type">uint8x16_t</span> needleV, <span class="type">svbool_t</span> pred)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"><span class="comment">//检查slot是否被占用 返回mask</span></span></span><br><span class="line"><span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ARM-NEON-AArch64"><a href="#ARM-NEON-AArch64" class="headerlink" title="ARM NEON (AArch64)"></a>ARM NEON (AArch64)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_ARM_FEATURE_NEON_SVE_BRIDGE</span></span><br><span class="line">  <span class="comment">// 目前的标签needleV和所有的slot    返回64位大小的mask</span></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(<span class="type">uint8x16_t</span> needleV, <span class="type">svbool_t</span> pred)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">  <span class="comment">//加载到向量寄存器tagV中 pred bool向量用于指示加载哪些数据 tagV代表一个向量寄存器</span></span><br><span class="line">  <span class="comment">// int a = 10 这里a代表通用寄存器</span></span><br><span class="line">    <span class="type">svuint8_t</span> tagV = <span class="built_in">svld1_u8</span>(pred, &amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">auto</span> eqV =</span><br><span class="line">        <span class="built_in">svset_neonq_u8</span>(<span class="built_in">svundef_u8</span>(), </span><br><span class="line">        <span class="built_in">vceqq_u8</span>(<span class="built_in">svget_neonq</span>(tagV), needleV));<span class="comment">// 核心：使用NEON指令把传入的tag和tagv进行比较</span></span><br><span class="line">    <span class="comment">// preserve only bits 0 and 4 of each byte</span></span><br><span class="line">    eqV = <span class="built_in">svand_n_u8_x</span>(pred, eqV, <span class="number">17</span>);</span><br><span class="line">    <span class="comment">// get info from every byte into the bottom half of every uint16_t</span></span><br><span class="line">    <span class="comment">// by shifting right 4, then round to get it into a 64-bit vector</span></span><br><span class="line">    <span class="type">uint8x8_t</span> maskV = <span class="built_in">vshrn_n_u16</span>(<span class="built_in">vreinterpretq_u16_u8</span>(<span class="built_in">svget_neonq</span>(eqV)), <span class="number">4</span>);</span><br><span class="line">    <span class="type">uint64_t</span> mask = <span class="built_in">vreinterpret_u64_u8</span>(maskV)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">SparseMaskIter</span>(mask);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(<span class="type">uint8x16_t</span> needleV)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="type">uint8x16_t</span> tagV = <span class="built_in">vld1q_u8</span>(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">auto</span> eqV = <span class="built_in">vceqq_u8</span>(tagV, needleV);</span><br><span class="line">    <span class="comment">// get info from every byte into the bottom half of every uint16_t</span></span><br><span class="line">    <span class="comment">// by shifting right 4, then round to get it into a 64-bit vector</span></span><br><span class="line">    <span class="type">uint8x8_t</span> maskV = <span class="built_in">vshrn_n_u16</span>(<span class="built_in">vreinterpretq_u16_u8</span>(eqV), <span class="number">4</span>);</span><br><span class="line">    <span class="type">uint64_t</span> mask = <span class="built_in">vget_lane_u64</span>(<span class="built_in">vreinterpret_u64_u8</span>(maskV), <span class="number">0</span>) &amp; kFullMask;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">SparseMaskIter</span>(mask);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">  <span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="type">uint8x16_t</span> tagV = <span class="built_in">vld1q_u8</span>(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// signed shift extends top bit to all bits</span></span><br><span class="line">    <span class="keyword">auto</span> occupiedV =</span><br><span class="line">        <span class="built_in">vreinterpretq_u8_s8</span>(<span class="built_in">vshrq_n_s8</span>(<span class="built_in">vreinterpretq_s8_u8</span>(tagV), <span class="number">7</span>));</span><br><span class="line">    <span class="type">uint8x8_t</span> maskV = <span class="built_in">vshrn_n_u16</span>(<span class="built_in">vreinterpretq_u16_u8</span>(occupiedV), <span class="number">4</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">vget_lane_u64</span>(<span class="built_in">vreinterpret_u64_u8</span>(maskV), <span class="number">0</span>) &amp; kFullMask;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="SSE2-Intel-AMD"><a href="#SSE2-Intel-AMD" class="headerlink" title="SSE2(Intel &#x2F; AMD)"></a>SSE2(Intel &#x2F; AMD)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_SSE &gt;= 2</span></span><br><span class="line">  <span class="comment">////////</span></span><br><span class="line">  <span class="comment">// Tag filtering using SSE2 intrinsics</span></span><br><span class="line"></span><br><span class="line">  <span class="function">TagVector <span class="type">const</span>* <span class="title">tagVector</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">static_cast</span>&lt;TagVector <span class="type">const</span>*&gt;(<span class="built_in">static_cast</span>&lt;<span class="type">void</span> <span class="type">const</span>*&gt;(&amp;tags_[<span class="number">0</span>]));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(__m128i needleV)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> tagV = _mm_load_si128(<span class="built_in">tagVector</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> eqV = _mm_cmpeq_epi8(tagV, needleV);<span class="comment">// 抽取最高位</span></span><br><span class="line">    <span class="keyword">auto</span> mask = _mm_movemask_epi8(eqV) &amp; kFullMask;<span class="comment">//进行按位与</span></span><br><span class="line">    <span class="keyword">return</span> SparseMaskIter&#123;mask&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> tagV = _mm_load_si128(<span class="built_in">tagVector</span>());</span><br><span class="line">    <span class="keyword">return</span> _mm_movemask_epi8(tagV) &amp; kFullMask;<span class="comment">// 将 16 个标签的最高位抽取出来，生成一个占用掩码</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="INT128-T"><a href="#INT128-T" class="headerlink" title="INT128_T"></a>INT128_T</h4><p>通用版本，这时候只能用循环进行比较</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_HAVE_INT128_T</span></span><br><span class="line">  <span class="comment">////////</span></span><br><span class="line">  <span class="comment">// Tag filtering using plain C/C++</span></span><br><span class="line"></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(std::<span class="type">size_t</span> needle)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 80 最高位必须为1</span></span><br><span class="line">    <span class="built_in">FOLLY_SAFE_DCHECK</span>(needle &gt;= <span class="number">0x80</span> &amp;&amp; needle &lt; <span class="number">0x100</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">auto</span> tagV = <span class="built_in">static_cast</span>&lt;<span class="type">uint8_t</span> <span class="type">const</span>*&gt;(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    MaskType mask = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">FOLLY_PRAGMA_UNROLL_N</span>(<span class="number">16</span>) <span class="comment">// 后面的循环要求进行循环展开，减少分支预测失败--恐怖</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0u</span>; i &lt; kCapacity; i++) &#123;</span><br><span class="line">	  <span class="comment">// 对mask进行赋值</span></span><br><span class="line">      mask |= ((tagV[i] == <span class="built_in">static_cast</span>&lt;<span class="type">uint8_t</span>&gt;(needle)) ? <span class="number">1</span> : <span class="number">0</span>) &lt;&lt; i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> SparseMaskIter&#123;mask &amp; kFullMask&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> tagV = <span class="built_in">static_cast</span>&lt;<span class="type">uint8_t</span> <span class="type">const</span>*&gt;(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    MaskType mask = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">FOLLY_PRAGMA_UNROLL_N</span>(<span class="number">16</span>)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0u</span>; i &lt; kCapacity; i++) &#123;</span><br><span class="line">      mask |= ((tagV[i] &amp; <span class="number">0x80</span>) ? <span class="number">1</span> : <span class="number">0</span>) &lt;&lt; i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mask &amp; kFullMask;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="F14为什么负载因子更高"><a href="#F14为什么负载因子更高" class="headerlink" title="F14为什么负载因子更高"></a>F14为什么负载因子更高</h2><ul>
+<li>查找快，通过SIMD加速，所以冲突了没关系</li>
+<li>将冲突的键放在<strong>相邻的 Chunk</strong> 中。追踪每个 Chunk 的 <strong>溢出计数器</strong>（<code>outboundOverflowCount_</code>），F14 可以快速判断当前 Chunk 溢出的键是否位于下一个 Chunk 中</li>
+</ul>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ol>
+<li>F14ValueMap： 值直接存储在 Chunk 内（类似 Google 的 dense_hash_map），适用于小对象，提供最高性能。</li>
+<li>F14VectorMap： 键值存储在一个单独的连续数组中，Chunk 只存储索引，适用于中大对象，能提供极快的遍历速度。</li>
+<li>F14NodeMap： 键值在堆上独立分配节点（类似 std::unordered_map），但在查找时仍利用 Chunk 和 Tag 筛选，从而保留了 引用稳定性（Reference Stability）这一 C++ 标准库的特性。<blockquote>
+<p>即除非被删除，引用不会失效</p>
+</blockquote>
+</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/codezyu">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SIMD"><span class="toc-number">1.</span> <span class="toc-text">SIMD</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E5%AD%98"><span class="toc-number">1.1.</span> <span class="toc-text">访存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#F14"><span class="toc-number">2.</span> <span class="toc-text">F14</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#F14-%E5%A6%82%E4%BD%95%E5%81%9A%E5%93%88%E5%B8%8C%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">F14 如何做哈希的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F14%E7%9A%84%E6%8A%BD%E8%B1%A1"><span class="toc-number">2.2.</span> <span class="toc-text">F14的抽象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F14Chunk"><span class="toc-number">2.3.</span> <span class="toc-text">F14Chunk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.1.</span> <span class="toc-text">头文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.2.</span> <span class="toc-text">数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%B9%E9%BD%90"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">如何实现对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8C%B9%E9%85%8D%E7%9A%84"><span class="toc-number">2.3.3.</span> <span class="toc-text">如何实现匹配的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ARM-NEON-AArch64"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">ARM NEON (AArch64)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SSE2-Intel-AMD"><span class="toc-number">2.3.3.2.</span> <span class="toc-text">SSE2(Intel &#x2F; AMD)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#INT128-T"><span class="toc-number">2.3.3.3.</span> <span class="toc-text">INT128_T</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F14%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E6%9B%B4%E9%AB%98"><span class="toc-number">2.4.</span> <span class="toc-text">F14为什么负载因子更高</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">应用</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&text=folly(1) F14的高效比较"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&is_video=false&description=folly(1) F14的高效比较"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=folly(1) F14的高效比较&body=Check out this article: https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&title=folly(1) F14的高效比较"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&name=folly(1) F14的高效比较&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://codezyu.github.io/2025/09/29/Programming/folly_1%20%20F14/&t=folly(1) F14的高效比较"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    zyu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/codezyu">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
