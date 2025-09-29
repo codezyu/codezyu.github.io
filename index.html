@@ -123,7 +123,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/life/我最喜欢的书店.html"/>
+    <link rel="canonical" href="http://example.com/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -133,16 +133,13 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="我最喜欢的书店">
-<meta property="og:url" content="http://example.com/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-07-06T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-29T15:35:32.488Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="我想">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
     
@@ -156,7 +153,7 @@
     
     <title>
         
-            我最喜欢的书店 | zyu&#39;s blog
+            zyu&#39;s blog - thanks
         
     </title>
 
@@ -236,17 +233,74 @@
 <main class="page-container" id="swup">
 
 	
+	
+    <style>
+        .home-banner-container {
+            background: none !important;
+        }
+        .home-article-item,
+        .sidebar-links,
+        .sidebar-content,
+        a.page-number,
+        a.extend,
+        .sidebar-links .links:hover,
+        .right-bottom-tools,
+        footer.footer {
+            background-color: var(--background-color-transparent-80) !important;
+        }
+        .right-bottom-tools:hover,
+        a.page-number:hover,
+        a.extend:hover {
+            background-color: var(--primary-color) !important;
+        }
+        .site-info,
+        .home-article-sticky-label {
+            background-color: var(--background-color-transparent-15) !important;
+        }
+        .home-article-sticky-label {
+            backdrop-filter: none !important;
+        }
+    </style>
+    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+        <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+        <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+    </div>
+
+
+<div class="home-banner-container flex justify-center items-center transition-fade relative">
+    
+    <div class="content mt-8 flex flex-col justify-center items-center transition-fade-down">
+        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
+        
+        >
+            Theme Redefine
+            
+            
+                <p><i id="subtitle"></i></p>
+            
+        </div>
+        
+    </div>
+    <script>
+        const scrollToMain = ()=> {
+            console.log('scroll');
+            const target = document.querySelector('.main-content-container');
+            target.scrollIntoView({ behavior: 'smooth'});
+        }
+    </script>
+</div>
+	
 
 	<div class="main-content-container flex flex-col justify-between min-h-dvh">
 		<div class="main-content-header">
 			<header class="navbar-container px-6 md:px-12">
-    <div class="navbar-content transition-navbar ">
+    <div class="navbar-content transition-navbar has-home-banner">
         <div class="left">
             
             <a class="logo-title" href="/">
-                
+                <h1>
                 zyu&#39;s blog
-                
+                </h1>
             </a>
         </div>
 
@@ -260,7 +314,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class=""
+                                <a class="active"
                                    href="/"
                                         >
                                     <i class="fa-regular fa-house fa-fw"></i>
@@ -318,7 +372,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
                            href="/"
                         >
                             <span>
@@ -360,7 +414,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -368,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -383,80 +437,288 @@
 
 		<div class="main-content-body transition-fade-up">
 			
+			<div class="home-sidebar-container">
+    <div class="sticky-container sticky">
+        
+        
+            
+            <div class="sidebar-content" >
+                <div class="avatar flex justify-center">
+    <img src="/images/racket.png">
+</div>
+                <div class="author flex flex-col justify-center my-2.5 mx-0">
+    <div class="name">zyu</div>
+    
+        <div class="label">Lv1</div>
+    
+</div>
+                <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+            </div>
+        
+
+    </div>
+</div>
+
+			
 
 			<div class="main-content">
-				<div class="page-template-container">
-	
+				<div class="home-content-container">
+    <ul class="home-article-list">
+        
+            <li class="home-article-item">
 
-	
+                
 
-	<div class="page-template-content markdown-body">
-		
-		<h1>我最喜欢的书店</h1>
-		
+                
 
-		<p>如果抽象地来看，市场下的交易都可以理解为推荐系统+交易系统。需要推荐系统，是因想尽可能地促成交易，这样来看，甚至可以凝结为任何具有选择性的场景都可以拆分为引导+决策。同样商铺也是如此，特别是书店。我去每个城市，都会尽量去一次书店，因为我觉得书店是能和博物馆，艺术馆等具有近似丰富程度的地方，而一个城市的图书馆往往是有门槛的，需要办卡或者刷身份证或者是闭馆时间等等，因此书店成了最好的选择。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbqwGODbku3ksbCaGLBEs1zmzEDXjxc-joA&s"
-                      style="width: 37.2%; display: block; margin: auto;"
-                >
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/09/29/Programming/folly_1%20%20F14/">
+                            folly(1) F14的高效比较
+                        </a>
+                    </h3>
 
-<p>我对书店来说，也无非是一个顾客。他呈现给我的东西，是上万顾客都能看到的东西，这个时候，书店摆放出来的书，反而受了市场的约束，无论是同品牌，还是跨品牌，对热门的选择基本趋于一致，比如说我们的老熟人东野圭吾，余华。最出名的应该是西西弗书店，我几乎每个城市都能看到这家书店，但是和大多数书店一样，排列在店铺最前面的是一些热销书籍，就像短视频点进去首页是热门一样。刷短视频的可能会喜欢这种模式，然而不一样的是，街道变得陌生可能得以十年为单位，书店换新书的周期可能得以季，快的也需要月为单位，而短视频刷新可能只需要十秒，刷热门视频的用户不会有任何反感。而现在人的流动，信息的流动远超以前的前提下，很难说一个季度只会去一次书店，一个季度内不会接触到其它新书信息。因此在书店对热门的判断趋于近似，换新周期长的背景下，对于读者而言，书店这个推荐系统产生了大量推送同质信息，降低了顾客兴趣的问题。</p>
-<p>但是也都能理解，这是没办法解决的，书店是实体，书作为货品的流转速度永远比不上电子信息。那作为书籍信息的互联网集散地，豆瓣呢？我仍然要予以批评，如果这个世界的产品经理，算法工程师被审判罪行，第一个被现场枪毙的就是发明跳转广告的，第二个就是豆瓣。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752286792490_image.png"
-                      alt="image.png" style="width: 20%; display: block; margin: auto;"
-                >
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            SIMDfolly的核心是利用SIMD的能力
 
-<p>首先不谈豆瓣乌烟瘴气的社区环境和近乎失真的评价系统，就他的推荐系统，我很难想象一个互联网产品，推荐的内容是一周可能不带变样，推荐模式也是根据你的过去读书记录而得来，但我怀疑他们的算法是不是直接给书籍打标签比如“中国历史”，然后推一大推同样“中国历史”而缺乏精细地筛选。豆瓣会推荐合集，类似相同主题书籍的集合，但是合集的质量也是一言难尽，本身合集相比一本书更容易对位用户的爱好，因为能更全面的展示用户的特征，那自然精准匹配能力就更低。但是豆瓣显然对自己的精准匹配能力很有信心，特别爱推合集。在推荐系统中，为了提升兴趣还会搞些茧房之外的东西，豆瓣演都不演了，全是用户的历史行为塑造的推荐，每次找新书，特别是新主题的，基本只能看其它平台博主的推荐了。最坏的就是社区风向的把控了，这个点是一个平衡点，做的比较好我认为是抖音，至少不是“勿谈国事”，已经远远超越其它巨无霸公共信息平台了。而豆瓣是风向则完全偏向了女权，书籍上面除了TOP250基本要在女性视角下过一遍才能进入推荐系统。我唯一可惜的是，中文下书影音社区居然演变成这样，这还是一群读书人的社区，非常令人失望。</p>
-<p>在我基本上认为书店无论是线上还是线下，基本对不上我的口味的时候，在青岛，我终于遇到了我们书店，更何况还是一家二手书店，二手书店书便宜，是读书人的天堂。然而现在绝大部分二手是真二手，纸张质量很差，有的还有臭味，书页不全很常见，此外类型也多为无趣的教科书或者题材垃圾的书籍。我们书店，在我心目中是第一等的书店，首先大部分书是新书，未拆封的书籍，原因是老板是。二来价格大部分是五折，还能低到三折。为什么线下能做到又好又便宜呢，首先是老板深耕出版行业多年，认识人多（然后开书店倒闭的朋友也多，因此低价转卖🤪），进货渠道多，再次是老板书店开在基本都是古旧的地方，房租便宜，更何况他还开在三楼的角落，房租那更是省上加省，你看下面这张图，跟西西弗开的大商场差异是不是就上来了，当然与之相对应的就是稀少的人流。不要小看价格便宜，pdd能击败淘宝的奥义就在这里，就像pdd的黄峥说“我妈也是上海妇女，但是仍然会去菜市场买便宜的菜，因为人总是会倾向于便宜的商品”，更何况我们书店的书籍真值得上一句物美价廉。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752287193556_IMG_20250706_125157.jpg"
-                      alt="IMG_20250706_125157.jpg" style="width: 37.2%; display: block; margin: auto;"
-                >
+向量寄存器 (Vector Registers): 现代 CPU 包含特殊的、比普通寄存器更宽的向量寄存器（例如 128 位、256 位或 512 位）。这些寄存器可以同时容纳多个数据元素（例如，一个 256 位寄存器可以容纳 8 个 32 位整数）。
+SSE&#x2F;NEON: 128位
+AVX2: 256位寄存器
 
 
-<p>我去我们书店的时候，是10点多，书店没有顾客，只有老板在给书寄包裹。最开始有点失望，是否意味着他也做网店？网店意味要迎合数据，那岂不是趋于同质化了。问了之后知道，老板只是给昨天到店的顾客寄快递。环游周围，这样的书店，一下子就勾起了我的兴趣。</p>
-<p>“书店推荐系统”对我来说，书店不需要有热门的大众的书籍，这些玩意我都听过或者想办法看过，我想要的书是杂的，不一定是经典，但要能关涉到领域的方方面，因为我来书店就是为了追求多样的文化视角。在我们书店，从岳家军话本到漫威漫画，从中医药膳到饲养书籍，从中世纪历史到近代阴谋论，甚至还有原神画册（没错，我买了两册）其他书自不用说，军事，心理，书法，摄影，五花八门。这些书坦白来说我也知道销量不好，但自私来说，我不想书店成为购物网站首页一样的算法精选，我希望这些不受欢迎的书还能出现在书店。</p>
-<p>书店并不大，一楼只留了狭窄的过道，二楼是仓库，并不允许客人上去（但我上去歇了个凉）。书籍密密麻麻地扎堆在一起，他们是从供货商淘汰下来，或者其他店主倒闭被折旧到这里来的。我贪婪地看着每本书，绝大部分书我都没听过或看过，但是通过它们，我能知道一些我未知的东西存在着，这是对我的世界何大地丰富！</p>
-<p>挑了一个小时，我挑了几本奇书，一本是名侦探柯南的原画集。很多人可能觉得不会奇，但是真的，当我看到这本书，我才想起，我也曾疯狂追过名侦探柯南电视剧，对我来说，它是被遗忘的偏好。有两本是原神插画，但其实我不是原神玩家，也对原神不怎么感兴趣，但是因为我觉得插画画得很好看。还有一本是克苏鲁的呼唤的插画，克苏鲁也是我喜欢的题材，还有三张壁画。到这里其实你也察觉到了，怎么我买的都是画册呀。因为现在对我来说，看书已经是消耗奢侈精力和时间的活动了，在当前处境，我原谅了自己死气沉沉的状态，选择了轻松的画册。最后一本，留给了胡适的四十不立，原因可能是还是想严肃一点吧。</p>
-<p>这样的书店，我只可惜居然在青岛，没有在重庆，厦门，这些我呆了很久的地方。这便催生起我对老板的好奇，老板看起来很年轻至少头发还是黑的，而我有些头发已经白了，颇有些讽刺。然而跟他交谈动不动就是二三十年前，不过脸上的痕迹印证了这点。在过去的时代中，一切还没有那么累，信息也没有那么多。店主说，在北京，他还在出版社工作，一个下午就干完了十天的工作，剩下的时间是去书店采题，他还能打羽毛球，那时候的书店还能有几万本书，店员记下的书比北大的教授还多，教授到了书店都感觉到不适应，因为书籍太多了。在几年前，我们书店最多还有二十一位好朋友加一位客人同时到店（这对那么小的书店简直是个奇迹）。到了现在，一切都太快了，人开始逐渐被抛弃了，房价涨得飞快，疫情下大家的存款余额少得飞快，书店的人流也少得飞快，非典记忆也被新冠给取代了（老板是少有拒绝疫苗的，这个态度我喜欢），线下店铺一条街全垮了，顾客没钱不爱来了，开书店的老朋友也纷纷撑不住了。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752253983034_IMG_20250706_130558.jpg"
-                      alt="IMG_20250706_130558.jpg" style="width: 37.2%; display: block; margin: auto;"
-                >
-但他很快乐，快乐在于经历了这些个风风雨雨，终究挺过来了。他是个保守又有点精明的老先生，他主动拥抱网络，有公众号，举办各种活动，小红书给自己打广告（不然我怎么知道这地方，在几近废弃的商业街的三楼的角落里）快乐的事，他有着那个时代人的固执，而非现代我们这种轻易被驯化的软弱，这也是那些本应该被垃圾回收的书籍还能再见天日的原因吧。
-（当你第一眼看到书店，你先看到的是隔壁培训的广告🤣）
+向量指令 (Vect...
+                        
+                    </div>
 
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752287201528_IMG_20250706_131200.jpg"
-                      alt="IMG_20250706_131200.jpg" style="width: 37.2%; display: block; margin: auto;"
-                >
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Sep 29 2025 00:00:00 GMT+0000">
+                
+                    2025-09-29
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/folly/">folly</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/CPP/">CPP</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Tech/">Tech</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
 
-<p>一直在思考书店会是什么样子，但是最后还是放弃了，管理书店或许就应该跟马一一样，当作玩具小摊子对待，是自己个性的展现，全靠志趣相投的读者支持，而不是创业。积极拥抱市场，还是应该交给西西弗或者是网店。爱好各异的读者本身应该就和缺少变通的书店推荐系统天生不对付。</p>
-<p>ps: 刷小红书刷到了重庆有个米渝开的书店，有机会再去看看</p>
-
-	</div>
-
-	<div class="page-template-comments">
-		
-	</div>
+    <a href="/2025/09/29/Programming/folly_1%20%20F14/">Read more<span class="seo-reader-text">folly(1) F14的高效比较</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="paginator">
-	
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">
+                            我最喜欢的书店
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            如果抽象地来看，市场下的交易都可以理解为推荐系统+交易系统。需要推荐系统，是因想尽可能地促成交易，这样来看，甚至可以凝结为任何具有选择性的场景都可以拆分为引导+决策。同样商铺也是如此，特别是书店。我去每个城市，都会尽量去一次书店，因为我觉得书店是能和博物馆，艺术馆等具有近似丰富程度的地方，而一个城市的图书馆往往是有门槛的，需要办卡或者刷身份证或者是闭馆时间等等，因此书店成了最好的选择。
+
+
+...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jul 06 2025 00:00:00 GMT+0000">
+                
+                    2025-07-06
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%88%91%E6%83%B3/">我想</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">Read more<span class="seo-reader-text">我最喜欢的书店</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">
+                            从第一周开始
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            第一次从校园象牙塔到企业，最大的感觉是彷佛失去了自由，虽然我司已经算是相当灵活的上下班时间，但是出于各种考虑，还是选择了10点上班，9点下班。这样下来，留给自己的空闲时间其实也没多少。但其实无论如何，在互联网，刨去因前期的热情支持下的运动时间，休闲时间也无非1-2h。这都不够看一部电影，一集电视剧。留给的选择只剩下短视频和游戏了。
+
+
+我的情况会更糟一些，我需要考虑论文，考虑秋招，这些远大的...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 21 2025 00:00:00 GMT+0000">
+                
+                    2025-06-21
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%88%91%E6%83%B3/">我想</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">Read more<span class="seo-reader-text">从第一周开始</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/">
+                            北京的夏风
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                             无意批判所有人，我只想表达我的感受。北京有一点比厦门好，到北京这么久，我居然没有看到蟑螂，这玩意在厦门就像恒定数量，随机刷新的NPC。但在北京，这一角色被像我这样的血包给取代了。当我拖着笨重的行李来到周子涵的住宿。狭小的房间里，凌乱地放着生活用品，折窗在六楼的风中来回转动，周期地撞击着窗沿，送来凉爽的风，驱走赶路途中的酷热。杂乱放置还有一个北漂青年的欲望，飞机杯被随意放在桌上，用矿泉水桶做...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jun 15 2025 00:00:00 GMT+0000">
+                
+                    2025-06-15
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/private/">private</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/">Read more<span class="seo-reader-text">北京的夏风</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+    </ul>
+
+    <div class="home-paginator px-7 py-5">
+        <div class="paginator">
+	<span class="page-number current">1</span>
 </div>
   
+    </div>
+</div>
+
 			</div>
 
 			
@@ -477,7 +739,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        0 posts in total
+                        4 posts in total
                     </span>
                     
                 </p>
@@ -637,6 +899,7 @@
         containers: ["#swup"],
     });
 </script>
+
 
 
 
