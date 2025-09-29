@@ -1,476 +1,924 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="zyu">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set data attribute for CSS variables
+                root.setAttribute("data-theme", theme);
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes once DOM is ready
+            if (document.readyState !== "loading") {
+                document.body.classList.add(theme + "-mode");
+            } else {
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.body.classList.add(theme + "-mode");
+                    document.body.classList.remove((theme === DARK ? LIGHT : DARK) + "-mode");
+                });
+            }
+        })();
+    </script>
+    
+    <!-- Critical CSS to prevent flash -->
+    <style>
+        :root[data-theme="dark"] {
+            --background-color: #202124;
+            --background-color-transparent: rgba(32, 33, 36, 0.6);
+            --second-background-color: #2d2e32;
+            --third-background-color: #34353a;
+            --third-background-color-transparent: rgba(32, 33, 36, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #ffffff;
+            --second-text-color: #eeeeee;
+            --third-text-color: #bebec6;
+            --fourth-text-color: #999999;
+            --default-text-color: #bebec6;
+            --invert-text-color: #373D3F;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(255, 255, 255, 0.08);
+            --shadow-color-2: rgba(255, 255, 255, 0.05);
+        }
+        
+        :root[data-theme="light"] {
+            --background-color: #fff;
+            --background-color-transparent: rgba(255, 255, 255, 0.6);
+            --second-background-color: #f8f8f8;
+            --third-background-color: #f2f2f2;
+            --third-background-color-transparent: rgba(241, 241, 241, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #16171a;
+            --second-text-color: #2f3037;
+            --third-text-color: #5e5e5e;
+            --fourth-text-color: #eeeeee;
+            --default-text-color: #373D3F;
+            --invert-text-color: #bebec6;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(0, 0, 0, 0.08);
+            --shadow-color-2: rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+        
+        /* Apply body classes as soon as DOM is ready */
+        :root[data-theme="dark"] body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+    </style>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            zyu&#39;s blog - .
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
 <link rel="stylesheet" href="/css/style.css">
 
-  
+
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+    
 
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+	
+    <style>
+        .home-banner-container {
+            background: none !important;
+        }
+        .home-article-item,
+        .sidebar-links,
+        .sidebar-content,
+        a.page-number,
+        a.extend,
+        .sidebar-links .links:hover,
+        .right-bottom-tools,
+        footer.footer {
+            background-color: var(--background-color-transparent-80) !important;
+        }
+        .right-bottom-tools:hover,
+        a.page-number:hover,
+        a.extend:hover {
+            background-color: var(--primary-color) !important;
+        }
+        .site-info,
+        .home-article-sticky-label {
+            background-color: var(--background-color-transparent-15) !important;
+        }
+        .home-article-sticky-label {
+            backdrop-filter: none !important;
+        }
+    </style>
+    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+        <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+        <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+
+
+<div class="home-banner-container flex justify-center items-center transition-fade relative">
+    
+    <div class="content mt-8 flex flex-col justify-center items-center transition-fade-down">
+        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
         
-          <a class="main-nav-link" href="/">Home</a>
+        >
+            Theme Redefine
+            
+            
+                <p><i id="subtitle"></i></p>
+            
+        </div>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
     </div>
-  </div>
+    <script>
+        const scrollToMain = ()=> {
+            console.log('scroll');
+            const target = document.querySelector('.main-content-container');
+            target.scrollIntoView({ behavior: 'smooth'});
+        }
+    </script>
+</div>
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar has-home-banner">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                <h1>
+                zyu&#39;s blog
+                </h1>
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="active"
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
 </header>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Programming/folly_1  F14" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/29/Programming/folly_1%20%20F14/" class="article-date">
-  <time class="dt-published" datetime="2025-09-29T00:00:00.000Z" itemprop="datePublished">2025-09-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+			<div class="home-sidebar-container">
+    <div class="sticky-container sticky">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/29/Programming/folly_1%20%20F14/">folly(1) F14的高效比较</a>
-    </h1>
-  
-
-      </header>
+        
+            
+            <div class="sidebar-content" >
+                <div class="avatar flex justify-center">
+    <img src="/images/redefine-avatar.svg">
+</div>
+                <div class="author flex flex-col justify-center my-2.5 mx-0">
+    <div class="name">zyu</div>
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="SIMD"><a href="#SIMD" class="headerlink" title="SIMD"></a>SIMD</h1><p>folly的核心是利用SIMD的能力</p>
-<ul>
-<li><strong>向量寄存器 (Vector Registers)</strong>: 现代 CPU 包含特殊的、比普通寄存器更宽的<strong>向量寄存器</strong>（例如 128 位、256 位或 512 位）。这些寄存器可以同时容纳多个数据元素（例如，一个 256 位寄存器可以容纳 8 个 32 位整数）。<ul>
-<li>SSE&#x2F;NEON: 128位</li>
-<li>AVX2: 256位寄存器</li>
-</ul>
-</li>
-<li><strong>向量指令 (Vector Instructions)</strong>: SIMD 指令集（如 Intel 的 <strong>SSE&#x2F;AVX</strong> 或 ARM 的 <strong>NEON</strong>）允许 CPU 对加载到向量寄存器中的所有数据元素<strong>同时执行相同的操作</strong>。</li>
-</ul>
-<h2 id="访存"><a href="#访存" class="headerlink" title="访存"></a>访存</h2><ol>
-<li>SIMD支持连续访存，这种性能肯定是最高的</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VMOVAPS</span><br><span class="line">_mm256_load_ps</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>分散加载即gather</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// AVX2</span><br><span class="line">VPGATHERDD</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>分散存储 一条指令可以将向量寄存器中的多个数据元素，同时存储到内存中分散的多个地址</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VPSCATTERDD (AVX-512)</span><br></pre></td></tr></table></figure>
-<p><strong>分散&#x2F;收集（Gather&#x2F;Scatter）指令通常比连续加载指令慢得多</strong>。这是因为 CPU 需要进行多次独立的内存访问，这会引入更高的延迟并可能导致缓存缺失，因此<strong>通常比 N 个标量加载的循环要快 2-4 倍</strong>（具体取决于 CPU 架构和延迟）。</p>
-<blockquote>
-<p>缓存缺失指的是 需要未命中覆盖缓存</p>
-</blockquote>
-<h1 id="F14"><a href="#F14" class="headerlink" title="F14"></a>F14</h1><h2 id="F14-如何做哈希的"><a href="#F14-如何做哈希的" class="headerlink" title="F14 如何做哈希的"></a>F14 如何做哈希的</h2><ul>
-<li>key 映射为64位的哈希值H<ul>
-<li>比如cityhash或者murmurhash</li>
-</ul>
-</li>
-<li>哈希值H被切分为：<ul>
-<li>低位（chunk index）: 对应的chunk的索引</li>
-<li>高位 （8位tag）: 区块的并行查找</li>
-</ul>
-</li>
-<li>其中F14的 chunk中包含14 slot 分别存储tag <ul>
-<li>slot已占用，则其存储的tag最高位为1 ， 实际上比较是后面的7位</li>
-</ul>
-</li>
-</ul>
-<h2 id="F14的抽象"><a href="#F14的抽象" class="headerlink" title="F14的抽象"></a>F14的抽象</h2><p>同样，F14Map.h使用了基于策略的抽象</p>
-<ul>
-<li>抽象出组件</li>
-<li>组件之间的交互即是策略</li>
-<li>采用模板的方式</li>
-<li>具体的实现放在detail中<br><strong>folly 如何解决模板引入带来编译时间变长的问题</strong><br>问题：<code>F14Map.h</code> 文件包含所有实现、私有成员、内联函数和大量模板代码，其内容可能非常庞大，并且依赖于许多其他 Folly 头文件和系统头文件 </li>
-<li>当你头文件引入时，<strong>整个 F14Map.h 的内容（包括其所有依赖）复制到你的编译单元中</strong>。非常影响编译时间<br>folly解决方案前向声明 <code>F14Map-fwd.h</code>:文件只包含对 <code>folly::F14</code> 容器及其相关策略的<strong>最小声明</strong> 不包含实现， 用于给<strong>头文件</strong>引入 比如</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fwd文件 不要引入 F14Map.h 否则就无用了</span></span><br><span class="line"><span class="keyword">template</span> &lt;</span><br><span class="line">    <span class="keyword">typename</span> Key,</span><br><span class="line">    <span class="keyword">typename</span> Mapped,</span><br><span class="line">    <span class="keyword">typename</span> Hasher = f14::DefaultHasher&lt;Key&gt;,</span><br><span class="line">    <span class="keyword">typename</span> KeyEqual = f14::DefaultKeyEqual&lt;Key&gt;,</span><br><span class="line">    <span class="keyword">typename</span> Alloc = f14::DefaultAlloc&lt;std::pair&lt;Key <span class="type">const</span>, Mapped&gt;&gt;&gt;</span><br><span class="line"><span class="keyword">class</span> F14NodeMap;</span><br></pre></td></tr></table></figure>
-<p>实现文件cpp则引入<code>F14Map.h</code></p>
-<h2 id="F14Chunk"><a href="#F14Chunk" class="headerlink" title="F14Chunk"></a>F14Chunk</h2><blockquote>
-<p>F14Table内</p>
-</blockquote>
-<p>chunk核心算法设计——<strong>它能一次性对 14 个存储槽（slot）进行筛选（Filter）</strong>。将每个key映射到更小的slot，因此一次可以快速比较多个key<br><strong>为什么是14个槽</strong></p>
-<p>但整体结构仍然可以描述为</p>
-<ul>
-<li>哈希桶数组：每个桶用来盛装对应的key<ul>
-<li>tags: 即slot，用于快速比较这个桶是否存在我们要查找的key</li>
-<li>rowItem: 实际KV对<br>这里使用array来控制我们想要的字节</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ItemType&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">alignas</span>(kRequiredVectorAlignment) F14Chunk &#123;</span><br><span class="line">  <span class="comment">// Non-empty tags have their top bit set.  tags_ array might be bigger</span></span><br><span class="line">  <span class="comment">// than kCapacity to keep alignment of first item.</span></span><br><span class="line">  std::array&lt;<span class="type">uint8_t</span>, 14&gt; tags_;</span><br><span class="line">  <span class="type">uint8_t</span> control_;</span><br><span class="line">  <span class="type">uint8_t</span> outboundOverflowCount_; <span class="comment">// 这里刚好构成了16个字节</span></span><br><span class="line">  std::array&lt;<span class="type">aligned_storage_for_t</span>&lt;Item&gt;, kAllocatedCapacity&gt; rawItems_; <span class="comment">// items</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
-<li>利用CPU 硬件加速的CRC指令</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查 CPU 是否支持硬件加速的 循环冗余校验 (CRC) 指令，这些指令通常用于哈希计算和数据完整性检查。</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_F14_CRC_INTRINSIC_AVAILABLE</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_NEON</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_acle.h&gt;</span> <span class="comment">// __crc32cd指令： ARM 架构并启用了 NEON SIMD 扩展。</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;nmmintrin.h&gt;</span> <span class="comment">// _mm_crc32_u64：intel的指令</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN32</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;intrin.h&gt;</span> <span class="comment">// _mul128 in fallback bit mixer</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<p>CRC把要校验的二进制数据看作是一个多项式，然后用一个预先确定的生成多项式（Generator Polynomial）进行模 2 运算的除法。CRC 的模 2 多项式除法，在硬件上可以高效地实现为一系列移位（Shift）和异或（XOR）操作。现代 CPU 通过添加专门的指令集，将这一系列操作硬件化，从而实现加速。</p>
-<p><strong>hash计算</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_NEON</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_neon.h&gt;</span> <span class="comment">// uint8x16t intrinsics</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_ARM_FEATURE_NEON_SVE_BRIDGE</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_neon_sve_bridge.h&gt;</span> <span class="comment">// @manual</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arm_sve.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_SSE &gt;= 2 <span class="comment">// SSE2</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;emmintrin.h&gt;</span> <span class="comment">// _mm_set1_epi8</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;immintrin.h&gt;</span> <span class="comment">// __m128i intrinsics</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;xmmintrin.h&gt;</span> <span class="comment">// _mm_prefetch</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>对于tagvector即多个slot 根据不同架构定义的类型</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_NEON</span></span><br><span class="line"><span class="keyword">using</span> TagVector = <span class="type">uint8x16_t</span>; <span class="comment">// ARM NEON Intrinsics（内联函数）库中定义的向量数据类型</span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_SSE &gt;= 2</span></span><br><span class="line"><span class="keyword">using</span> TagVector = __m128i;</span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_HAVE_INT128_T</span></span><br><span class="line"><span class="keyword">using</span> TagVector = <span class="type">__uint128_t</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+        <div class="label">Lv1</div>
+    
+</div>
+                <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+            </div>
+        
 
-<h4 id="如何实现对齐"><a href="#如何实现对齐" class="headerlink" title="如何实现对齐"></a>如何实现对齐</h4><p>我们注意到chunk的那里设置对齐粒度，那么具体是如何设置对齐修饰符的呢<br><strong><code>alignof</code></strong> 是 C++11 引入的一个<strong>一元运算符（Unary Operator）</strong>，它用于获取某种类型在内存中所需的最小对齐字节数。<br><strong><code>max_align_t</code></strong> 是 C++ 标准库（在 <code>&lt;cstddef&gt;</code> 或 <code>&lt;stddef.h&gt;</code> 中定义）中的一个类型别名，它代表了标准 C++ 实现中所有标量类型（Scalar Types）都必须能够对齐的类型。</p>
-<ul>
-<li>constexpr_max 编译期函数，获取最大值</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> std::<span class="type">size_t</span> kRequiredVectorAlignment =</span><br><span class="line">    <span class="built_in">constexpr_max</span>(std::<span class="type">size_t</span>&#123;<span class="number">16</span>&#125;, <span class="built_in">alignof</span>(<span class="type">max_align_t</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// alignas对齐修饰符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ItemType&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">alignas</span>(kRequiredVectorAlignment) F14Chunk &#123;</span><br></pre></td></tr></table></figure>
-<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::memset(&amp;tags_[0], &#x27;\0&#x27;, 16);</span><br></pre></td></tr></table></figure>
-<h3 id="如何实现匹配的"><a href="#如何实现匹配的" class="headerlink" title="如何实现匹配的"></a>如何实现匹配的</h3><p>在chunk内，需要一个个跟slot内的tag进行比较</p>
-<ol>
-<li>如果14个slot存在相同的tag（毕竟只有7位，即发生了冲突），这时候就需要具体去识别</li>
-<li>SIMD就用来加速这个比较过程 同时和14个slot的tag进行比较</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//和14个slot比较tag</span></span><br><span class="line"><span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(<span class="type">uint8x16_t</span> needleV, <span class="type">svbool_t</span> pred)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"><span class="comment">//检查slot是否被占用 返回mask</span></span></span><br><span class="line"><span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br></pre></td></tr></table></figure>
-
-<h4 id="ARM-NEON-AArch64"><a href="#ARM-NEON-AArch64" class="headerlink" title="ARM NEON (AArch64)"></a>ARM NEON (AArch64)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> FOLLY_ARM_FEATURE_NEON_SVE_BRIDGE</span></span><br><span class="line">  <span class="comment">// 目前的标签needleV和所有的slot    返回64位大小的mask</span></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(<span class="type">uint8x16_t</span> needleV, <span class="type">svbool_t</span> pred)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">  <span class="comment">//加载到向量寄存器tagV中 pred bool向量用于指示加载哪些数据 tagV代表一个向量寄存器</span></span><br><span class="line">  <span class="comment">// int a = 10 这里a代表通用寄存器</span></span><br><span class="line">    <span class="type">svuint8_t</span> tagV = <span class="built_in">svld1_u8</span>(pred, &amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">auto</span> eqV =</span><br><span class="line">        <span class="built_in">svset_neonq_u8</span>(<span class="built_in">svundef_u8</span>(), </span><br><span class="line">        <span class="built_in">vceqq_u8</span>(<span class="built_in">svget_neonq</span>(tagV), needleV));<span class="comment">// 核心：使用NEON指令把传入的tag和tagv进行比较</span></span><br><span class="line">    <span class="comment">// preserve only bits 0 and 4 of each byte</span></span><br><span class="line">    eqV = <span class="built_in">svand_n_u8_x</span>(pred, eqV, <span class="number">17</span>);</span><br><span class="line">    <span class="comment">// get info from every byte into the bottom half of every uint16_t</span></span><br><span class="line">    <span class="comment">// by shifting right 4, then round to get it into a 64-bit vector</span></span><br><span class="line">    <span class="type">uint8x8_t</span> maskV = <span class="built_in">vshrn_n_u16</span>(<span class="built_in">vreinterpretq_u16_u8</span>(<span class="built_in">svget_neonq</span>(eqV)), <span class="number">4</span>);</span><br><span class="line">    <span class="type">uint64_t</span> mask = <span class="built_in">vreinterpret_u64_u8</span>(maskV)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">SparseMaskIter</span>(mask);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(<span class="type">uint8x16_t</span> needleV)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="type">uint8x16_t</span> tagV = <span class="built_in">vld1q_u8</span>(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">auto</span> eqV = <span class="built_in">vceqq_u8</span>(tagV, needleV);</span><br><span class="line">    <span class="comment">// get info from every byte into the bottom half of every uint16_t</span></span><br><span class="line">    <span class="comment">// by shifting right 4, then round to get it into a 64-bit vector</span></span><br><span class="line">    <span class="type">uint8x8_t</span> maskV = <span class="built_in">vshrn_n_u16</span>(<span class="built_in">vreinterpretq_u16_u8</span>(eqV), <span class="number">4</span>);</span><br><span class="line">    <span class="type">uint64_t</span> mask = <span class="built_in">vget_lane_u64</span>(<span class="built_in">vreinterpret_u64_u8</span>(maskV), <span class="number">0</span>) &amp; kFullMask;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">SparseMaskIter</span>(mask);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">  <span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="type">uint8x16_t</span> tagV = <span class="built_in">vld1q_u8</span>(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// signed shift extends top bit to all bits</span></span><br><span class="line">    <span class="keyword">auto</span> occupiedV =</span><br><span class="line">        <span class="built_in">vreinterpretq_u8_s8</span>(<span class="built_in">vshrq_n_s8</span>(<span class="built_in">vreinterpretq_s8_u8</span>(tagV), <span class="number">7</span>));</span><br><span class="line">    <span class="type">uint8x8_t</span> maskV = <span class="built_in">vshrn_n_u16</span>(<span class="built_in">vreinterpretq_u16_u8</span>(occupiedV), <span class="number">4</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">vget_lane_u64</span>(<span class="built_in">vreinterpret_u64_u8</span>(maskV), <span class="number">0</span>) &amp; kFullMask;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="SSE2-Intel-AMD"><a href="#SSE2-Intel-AMD" class="headerlink" title="SSE2(Intel &#x2F; AMD)"></a>SSE2(Intel &#x2F; AMD)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_SSE &gt;= 2</span></span><br><span class="line">  <span class="comment">////////</span></span><br><span class="line">  <span class="comment">// Tag filtering using SSE2 intrinsics</span></span><br><span class="line"></span><br><span class="line">  <span class="function">TagVector <span class="type">const</span>* <span class="title">tagVector</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">static_cast</span>&lt;TagVector <span class="type">const</span>*&gt;(<span class="built_in">static_cast</span>&lt;<span class="type">void</span> <span class="type">const</span>*&gt;(&amp;tags_[<span class="number">0</span>]));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(__m128i needleV)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> tagV = _mm_load_si128(<span class="built_in">tagVector</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> eqV = _mm_cmpeq_epi8(tagV, needleV);<span class="comment">// 抽取最高位</span></span><br><span class="line">    <span class="keyword">auto</span> mask = _mm_movemask_epi8(eqV) &amp; kFullMask;<span class="comment">//进行按位与</span></span><br><span class="line">    <span class="keyword">return</span> SparseMaskIter&#123;mask&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> tagV = _mm_load_si128(<span class="built_in">tagVector</span>());</span><br><span class="line">    <span class="keyword">return</span> _mm_movemask_epi8(tagV) &amp; kFullMask;<span class="comment">// 将 16 个标签的最高位抽取出来，生成一个占用掩码</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="INT128-T"><a href="#INT128-T" class="headerlink" title="INT128_T"></a>INT128_T</h4><p>通用版本，这时候只能用循环进行比较</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">elif</span> FOLLY_HAVE_INT128_T</span></span><br><span class="line">  <span class="comment">////////</span></span><br><span class="line">  <span class="comment">// Tag filtering using plain C/C++</span></span><br><span class="line"></span><br><span class="line">  <span class="function">SparseMaskIter <span class="title">tagMatchIter</span><span class="params">(std::<span class="type">size_t</span> needle)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 80 最高位必须为1</span></span><br><span class="line">    <span class="built_in">FOLLY_SAFE_DCHECK</span>(needle &gt;= <span class="number">0x80</span> &amp;&amp; needle &lt; <span class="number">0x100</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">auto</span> tagV = <span class="built_in">static_cast</span>&lt;<span class="type">uint8_t</span> <span class="type">const</span>*&gt;(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    MaskType mask = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">FOLLY_PRAGMA_UNROLL_N</span>(<span class="number">16</span>) <span class="comment">// 后面的循环要求进行循环展开，减少分支预测失败--恐怖</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0u</span>; i &lt; kCapacity; i++) &#123;</span><br><span class="line">	  <span class="comment">// 对mask进行赋值</span></span><br><span class="line">      mask |= ((tagV[i] == <span class="built_in">static_cast</span>&lt;<span class="type">uint8_t</span>&gt;(needle)) ? <span class="number">1</span> : <span class="number">0</span>) &lt;&lt; i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> SparseMaskIter&#123;mask &amp; kFullMask&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">MaskType <span class="title">occupiedMask</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> tagV = <span class="built_in">static_cast</span>&lt;<span class="type">uint8_t</span> <span class="type">const</span>*&gt;(&amp;tags_[<span class="number">0</span>]);</span><br><span class="line">    MaskType mask = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">FOLLY_PRAGMA_UNROLL_N</span>(<span class="number">16</span>)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0u</span>; i &lt; kCapacity; i++) &#123;</span><br><span class="line">      mask |= ((tagV[i] &amp; <span class="number">0x80</span>) ? <span class="number">1</span> : <span class="number">0</span>) &lt;&lt; i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mask &amp; kFullMask;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="F14为什么负载因子更高"><a href="#F14为什么负载因子更高" class="headerlink" title="F14为什么负载因子更高"></a>F14为什么负载因子更高</h2><ul>
-<li>查找快，通过SIMD加速，所以冲突了没关系</li>
-<li>将冲突的键放在<strong>相邻的 Chunk</strong> 中。追踪每个 Chunk 的 <strong>溢出计数器</strong>（<code>outboundOverflowCount_</code>），F14 可以快速判断当前 Chunk 溢出的键是否位于下一个 Chunk 中</li>
-</ul>
-<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ol>
-<li>F14ValueMap： 值直接存储在 Chunk 内（类似 Google 的 dense_hash_map），适用于小对象，提供最高性能。</li>
-<li>F14VectorMap： 键值存储在一个单独的连续数组中，Chunk 只存储索引，适用于中大对象，能提供极快的遍历速度。</li>
-<li>F14NodeMap： 键值在堆上独立分配节点（类似 std::unordered_map），但在查找时仍利用 Chunk 和 Tag 筛选，从而保留了 引用稳定性（Reference Stability）这一 C++ 标准库的特性。<blockquote>
-<p>即除非被删除，引用不会失效</p>
-</blockquote>
-</li>
-</ol>
-
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/29/Programming/folly_1%20%20F14/" data-id="cmg59hkmg0001qq3ic1i2auoi" data-title="folly(1) F14的高效比较" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/folly/" rel="tag">folly</a></li></ul>
+</div>
 
-    </footer>
-  </div>
-  
-</article>
+			
 
-
-
-  
-    <article id="post-life/我最喜欢的书店" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/" class="article-date">
-  <time class="dt-published" datetime="2025-07-06T00:00:00.000Z" itemprop="datePublished">2025-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+			<div class="main-content">
+				<div class="home-content-container">
+    <ul class="home-article-list">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">我最喜欢的书店</a>
-    </h1>
-  
+            <li class="home-article-item">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>如果抽象地来看，市场下的交易都可以理解为推荐系统+交易系统。需要推荐系统，是因想尽可能地促成交易，这样来看，甚至可以凝结为任何具有选择性的场景都可以拆分为引导+决策。同样商铺也是如此，特别是书店。我去每个城市，都会尽量去一次书店，因为我觉得书店是能和博物馆，艺术馆等具有近似丰富程度的地方，而一个城市的图书馆往往是有门槛的，需要办卡或者刷身份证或者是闭馆时间等等，因此书店成了最好的选择。</p>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbqwGODbku3ksbCaGLBEs1zmzEDXjxc-joA&s" style="width: 37.2%; display: block; margin: auto;">
+                
 
-<p>我对书店来说，也无非是一个顾客。他呈现给我的东西，是上万顾客都能看到的东西，这个时候，书店摆放出来的书，反而受了市场的约束，无论是同品牌，还是跨品牌，对热门的选择基本趋于一致，比如说我们的老熟人东野圭吾，余华。最出名的应该是西西弗书店，我几乎每个城市都能看到这家书店，但是和大多数书店一样，排列在店铺最前面的是一些热销书籍，就像短视频点进去首页是热门一样。刷短视频的可能会喜欢这种模式，然而不一样的是，街道变得陌生可能得以十年为单位，书店换新书的周期可能得以季，快的也需要月为单位，而短视频刷新可能只需要十秒，刷热门视频的用户不会有任何反感。而现在人的流动，信息的流动远超以前的前提下，很难说一个季度只会去一次书店，一个季度内不会接触到其它新书信息。因此在书店对热门的判断趋于近似，换新周期长的背景下，对于读者而言，书店这个推荐系统产生了大量推送同质信息，降低了顾客兴趣的问题。</p>
-<p>但是也都能理解，这是没办法解决的，书店是实体，书作为货品的流转速度永远比不上电子信息。那作为书籍信息的互联网集散地，豆瓣呢？我仍然要予以批评，如果这个世界的产品经理，算法工程师被审判罪行，第一个被现场枪毙的就是发明跳转广告的，第二个就是豆瓣。</p>
-<img src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752286792490_image.png" alt="image.png" style="width: 20%; display: block; margin: auto;"/>
+                
 
-<p>首先不谈豆瓣乌烟瘴气的社区环境和近乎失真的评价系统，就他的推荐系统，我很难想象一个互联网产品，推荐的内容是一周可能不带变样，推荐模式也是根据你的过去读书记录而得来，但我怀疑他们的算法是不是直接给书籍打标签比如“中国历史”，然后推一大推同样“中国历史”而缺乏精细地筛选。豆瓣会推荐合集，类似相同主题书籍的集合，但是合集的质量也是一言难尽，本身合集相比一本书更容易对位用户的爱好，因为能更全面的展示用户的特征，那自然精准匹配能力就更低。但是豆瓣显然对自己的精准匹配能力很有信心，特别爱推合集。在推荐系统中，为了提升兴趣还会搞些茧房之外的东西，豆瓣演都不演了，全是用户的历史行为塑造的推荐，每次找新书，特别是新主题的，基本只能看其它平台博主的推荐了。最坏的就是社区风向的把控了，这个点是一个平衡点，做的比较好我认为是抖音，至少不是“勿谈国事”，已经远远超越其它巨无霸公共信息平台了。而豆瓣是风向则完全偏向了女权，书籍上面除了TOP250基本要在女性视角下过一遍才能进入推荐系统。我唯一可惜的是，中文下书影音社区居然演变成这样，这还是一群读书人的社区，非常令人失望。</p>
-<p>在我基本上认为书店无论是线上还是线下，基本对不上我的口味的时候，在青岛，我终于遇到了我们书店，更何况还是一家二手书店，二手书店书便宜，是读书人的天堂。然而现在绝大部分二手是真二手，纸张质量很差，有的还有臭味，书页不全很常见，此外类型也多为无趣的教科书或者题材垃圾的书籍。我们书店，在我心目中是第一等的书店，首先大部分书是新书，未拆封的书籍，原因是老板是。二来价格大部分是五折，还能低到三折。为什么线下能做到又好又便宜呢，首先是老板深耕出版行业多年，认识人多（然后开书店倒闭的朋友也多，因此低价转卖🤪），进货渠道多，再次是老板书店开在基本都是古旧的地方，房租便宜，更何况他还开在三楼的角落，房租那更是省上加省，你看下面这张图，跟西西弗开的大商场差异是不是就上来了，当然与之相对应的就是稀少的人流。不要小看价格便宜，pdd能击败淘宝的奥义就在这里，就像pdd的黄峥说“我妈也是上海妇女，但是仍然会去菜市场买便宜的菜，因为人总是会倾向于便宜的商品”，更何况我们书店的书籍真值得上一句物美价廉。</p>
-<img src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752287193556_IMG_20250706_125157.jpg" alt="IMG_20250706_125157.jpg" style="width: 37.2%; display: block; margin: auto;">
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/09/29/Programming/folly_1%20%20F14/">
+                            folly(1) F14的高效比较
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            SIMDfolly的核心是利用SIMD的能力
+
+向量寄存器 (Vector Registers): 现代 CPU 包含特殊的、比普通寄存器更宽的向量寄存器（例如 128 位、256 位或 512 位）。这些寄存器可以同时容纳多个数据元素（例如，一个 256 位寄存器可以容纳 8 个 32 位整数）。
+SSE&#x2F;NEON: 128位
+AVX2: 256位寄存器
 
 
-<p>我去我们书店的时候，是10点多，书店没有顾客，只有老板在给书寄包裹。最开始有点失望，是否意味着他也做网店？网店意味要迎合数据，那岂不是趋于同质化了。问了之后知道，老板只是给昨天到店的顾客寄快递。环游周围，这样的书店，一下子就勾起了我的兴趣。</p>
-<p>“书店推荐系统”对我来说，书店不需要有热门的大众的书籍，这些玩意我都听过或者想办法看过，我想要的书是杂的，不一定是经典，但要能关涉到领域的方方面，因为我来书店就是为了追求多样的文化视角。在我们书店，从岳家军话本到漫威漫画，从中医药膳到饲养书籍，从中世纪历史到近代阴谋论，甚至还有原神画册（没错，我买了两册）其他书自不用说，军事，心理，书法，摄影，五花八门。这些书坦白来说我也知道销量不好，但自私来说，我不想书店成为购物网站首页一样的算法精选，我希望这些不受欢迎的书还能出现在书店。</p>
-<p>书店并不大，一楼只留了狭窄的过道，二楼是仓库，并不允许客人上去（但我上去歇了个凉）。书籍密密麻麻地扎堆在一起，他们是从供货商淘汰下来，或者其他店主倒闭被折旧到这里来的。我贪婪地看着每本书，绝大部分书我都没听过或看过，但是通过它们，我能知道一些我未知的东西存在着，这是对我的世界何大地丰富！</p>
-<p>挑了一个小时，我挑了几本奇书，一本是名侦探柯南的原画集。很多人可能觉得不会奇，但是真的，当我看到这本书，我才想起，我也曾疯狂追过名侦探柯南电视剧，对我来说，它是被遗忘的偏好。有两本是原神插画，但其实我不是原神玩家，也对原神不怎么感兴趣，但是因为我觉得插画画得很好看。还有一本是克苏鲁的呼唤的插画，克苏鲁也是我喜欢的题材，还有三张壁画。到这里其实你也察觉到了，怎么我买的都是画册呀。因为现在对我来说，看书已经是消耗奢侈精力和时间的活动了，在当前处境，我原谅了自己死气沉沉的状态，选择了轻松的画册。最后一本，留给了胡适的四十不立，原因可能是还是想严肃一点吧。</p>
-<p>这样的书店，我只可惜居然在青岛，没有在重庆，厦门，这些我呆了很久的地方。这便催生起我对老板的好奇，老板看起来很年轻至少头发还是黑的，而我有些头发已经白了，颇有些讽刺。然而跟他交谈动不动就是二三十年前，不过脸上的痕迹印证了这点。在过去的时代中，一切还没有那么累，信息也没有那么多。店主说，在北京，他还在出版社工作，一个下午就干完了十天的工作，剩下的时间是去书店采题，他还能打羽毛球，那时候的书店还能有几万本书，店员记下的书比北大的教授还多，教授到了书店都感觉到不适应，因为书籍太多了。在几年前，我们书店最多还有二十一位好朋友加一位客人同时到店（这对那么小的书店简直是个奇迹）。到了现在，一切都太快了，人开始逐渐被抛弃了，房价涨得飞快，疫情下大家的存款余额少得飞快，书店的人流也少得飞快，非典记忆也被新冠给取代了（老板是少有拒绝疫苗的，这个态度我喜欢），线下店铺一条街全垮了，顾客没钱不爱来了，开书店的老朋友也纷纷撑不住了。</p>
-<img src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752253983034_IMG_20250706_130558.jpg" alt="IMG_20250706_130558.jpg" style="width: 37.2%; display: block; margin: auto;">
-但他很快乐，快乐在于经历了这些个风风雨雨，终究挺过来了。他是个保守又有点精明的老先生，他主动拥抱网络，有公众号，举办各种活动，小红书给自己打广告（不然我怎么知道这地方，在几近废弃的商业街的三楼的角落里）快乐的事，他有着那个时代人的固执，而非现代我们这种轻易被驯化的软弱，这也是那些本应该被垃圾回收的书籍还能再见天日的原因吧。
-（当你第一眼看到书店，你先看到的是隔壁培训的广告🤣）
+向量指令 (Vect...
+                        
+                    </div>
 
-<img src="https://cloudflare-imgbed-4ea.pages.dev/file/pic/1752287201528_IMG_20250706_131200.jpg" alt="IMG_20250706_131200.jpg" style="width: 37.2%; display: block; margin: auto;">
-
-<p>一直在思考书店会是什么样子，但是最后还是放弃了，管理书店或许就应该跟马一一样，当作玩具小摊子对待，是自己个性的展现，全靠志趣相投的读者支持，而不是创业。积极拥抱市场，还是应该交给西西弗或者是网店。爱好各异的读者本身应该就和缺少变通的书店推荐系统天生不对付。</p>
-<p>ps: 刷小红书刷到了重庆有个米渝开的书店，有机会再去看看</p>
-
-      
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Sep 29 2025 00:00:00 GMT+0000">
+                
+                    2025-09-29
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/folly/">folly</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/CPP/">CPP</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Tech/">Tech</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/" data-id="cmg59hkmo0008qq3i8d7g41gg" data-title="我最喜欢的书店" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%91%E6%83%B3/" rel="tag">我想</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
+    <a href="/2025/09/29/Programming/folly_1%20%20F14/">Read more<span class="seo-reader-text">folly(1) F14的高效比较</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
 
-
-
-  
-    <article id="post-life/从第一周开始" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/" class="article-date">
-  <time class="dt-published" datetime="2025-06-21T00:00:00.000Z" itemprop="datePublished">2025-06-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                </div>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">从第一周开始</a>
-    </h1>
-  
+            <li class="home-article-item">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>第一次从校园象牙塔到企业，最大的感觉是彷佛失去了自由，虽然我司已经算是相当灵活的上下班时间，但是出于各种考虑，还是选择了10点上班，9点下班。这样下来，留给自己的空闲时间其实也没多少。但其实无论如何，在互联网，刨去因前期的热情支持下的运动时间，休闲时间也无非1-2h。这都不够看一部电影，一集电视剧。留给的选择只剩下短视频和游戏了。</p>
-<img src="https://cloudflare-imgbed-4ea.pages.dev/file/1752253947230_IMG_20250707_215349.jpg" alt="IMG_20250707_215349.jpg" style="width: 37.2%; display: block; margin: auto;">
+                
 
-<p>我的情况会更糟一些，我需要考虑论文，考虑秋招，这些远大的目标，在现在精力耗尽的我，似乎看起来已经不太可能了，最后的结局可想而知。其实很佩服那些真正的工作狂，但是在迷茫的现在，我缺少和他们一样强大的内心能量，去支撑。<br>第一周的周末，没有想象中的精力充沛，只有疲惫。每天只剩下躺在床上刷短视频了，对一切都提不起兴趣，想来应该是休息不太够吧。</p>
-<p>当然留给我的新鲜感也很足，第一次接触到MAC，用的就是最新的M4 pro，也是相当的满足。很可惜用windows用习惯了，最大的问题就是切换输入法，两种系统的逻辑总是容易搞混，还有就是MAC没办法在文件系统随时开启一个命令行，不过MAC天然的UNIX还是很舒适的，还有就是极其粘指纹的键盘。其它就是MAC的优势了，更好的动画效果，更精细的屏幕，虽然好像有的人批评并没有那么好，但是相比我平时用的“塑料屏”，带给我的观感提升已经是难以想象了。<br>最后就是昂贵的食堂，吃惯了国家补贴，一顿不轻易控制份额容易冲上20-30的一餐还是容易让我肉疼的。<br>总之，北京带给我的，是我于困居6年的翔安无法体会到的。每次想到自己在翔安待了那么久，就会感觉人生彷佛被抽走了一部分。但说起来，大部分人的生活其实最后都落在了几公里的生活圈里，谁又能天天去捕捉这个世界的每一面呢。</p>
+                
 
-      
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">
+                            我最喜欢的书店
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            如果抽象地来看，市场下的交易都可以理解为推荐系统+交易系统。需要推荐系统，是因想尽可能地促成交易，这样来看，甚至可以凝结为任何具有选择性的场景都可以拆分为引导+决策。同样商铺也是如此，特别是书店。我去每个城市，都会尽量去一次书店，因为我觉得书店是能和博物馆，艺术馆等具有近似丰富程度的地方，而一个城市的图书馆往往是有门槛的，需要办卡或者刷身份证或者是闭馆时间等等，因此书店成了最好的选择。
+
+
+...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jul 06 2025 00:00:00 GMT+0000">
+                
+                    2025-07-06
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%88%91%E6%83%B3/">我想</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/" data-id="cmg59hkmk0003qq3i7tzh7tco" data-title="从第一周开始" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%91%E6%83%B3/" rel="tag">我想</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
+    <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">Read more<span class="seo-reader-text">我最喜欢的书店</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
 
-
-
-  
-    <article id="post-life/北京的夏风" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/" class="article-date">
-  <time class="dt-published" datetime="2025-06-15T00:00:00.000Z" itemprop="datePublished">2025-06-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                </div>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/">北京的夏风</a>
-    </h1>
-  
+            <li class="home-article-item">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p> 无意批判所有人，我只想表达我的感受。北京有一点比厦门好，到北京这么久，我居然没有看到蟑螂，这玩意在厦门就像恒定数量，随机刷新的NPC。但在北京，这一角色被像我这样的血包给取代了。当我拖着笨重的行李来到周子涵的住宿。狭小的房间里，凌乱地放着生活用品，折窗在六楼的风中来回转动，周期地撞击着窗沿，送来凉爽的风，驱走赶路途中的酷热。杂乱放置还有一个北漂青年的欲望，飞机杯被随意放在桌上，用矿泉水桶做成的垃圾桶里丢着激情释放后的避孕套，嗅觉不甚灵敏的我，失去了感受充沛在房间的欲望的机会。<br> 房间很小，靠墙贴着的桌子和床仅留半个人宽的过道，床尾放置一个衣柜，这就是全部房间。坐在这个阴暗的房间，所有的热血最后都将随着北京干燥的气候而变成一抹血迹，最后被日月雨雪抹去，成功被一个叫做“时代”的词给概括。<br>周子涵是一个很像孩童的成年人，孩童不会掩饰他的欲望，这就是周子涵相似的点。他加了很多女生的微信，他活跃在各种交友软件，他所工作的地方在中关村，靠近中国最优秀的一批女生所在地—清华大学。当我和他一起逛清华大学时，我感觉到自己和他就像下水道可鄙的生物。好在自己还能被清华恢弘的楼群所吸引，同时带着对这批卓越之人的向往，但他已经迫不及待地询问水木清华，情人坡在哪。他带着求而不得的嫉妒，并转化为致力于带给这些不相识情侣尴尬的恶意。这是第一次来清华，不过我并不想对这次参观上什么价值，相反，我应该感激他让他的清华同学帮我预约以得到进校参观的机会。<br>周子涵热衷于在交友软件上添加各个长相姣好的女生，并且以暖男的身份嘘寒问暖，他热切的求偶激情，让他真的加了不少的美女，最近在疯狂追求一个正在美国求学的女生。毕竟女生可以不喜欢追求者，但是没有人会拒绝追求者存在，这是魅力的一种证明。虽然多线联系，但是他有着直接的价值判断—是否好看。一名中戏的女生不知为何对他很是依赖，但是周子涵并不喜欢她，因为她颜值远不如在美国的那位，和她的电话中仅是敷衍。这位可怜的女生或许能感受到前后态度的差异，但是她或许需要周子涵的财富和经验。当然也没有必要可怜故事的每个主角包括我，这位中戏女生也或许只是玩乐罢了，她能够将爆粗口习以为常，和室友大声谈论八卦出轨之事，这或许都已经是这类的生活常态了。严肃正在向高等院校的学生离去，爱情正在被肉体物质化，精神已经被冗杂的信息掩埋于深处。然而周子涵并不理，他大声地播放音乐，甚至直率地说想要打飞机，电话对面的中戏女生终于还是有所羞涩，沉默不语，这是他们电话的常态，一切源于他们线下见面后，周子涵对她颜值的彻底失望。在美国的那位，情况就好了很多，周子涵小心翼翼地哄，对于女生自谦的自我批评，周子涵则温暖地安慰，虽然他们聊天也就仅仅几句，周子涵仍然热衷于展现于他的光和热，一切源于他的信念，这个女生更漂亮。他深刻地践行这一条，他的抖音是美女账号的收集器。在直接的性刺激中，性欲高涨，直到用飞机杯发泄，脑子就像被接入一个叫做性的电线，在周期的电流刺激中，度过每个下班后在北京的生活。<br>至于我，我只是借宿到他那里的人，在简单的思考中，我仅剩对他有用无用的价值，就像欧立翰可以跟他畅聊美女，而我，他得不到什么。虽然他善意地答应了借宿，但是他很显然后悔了，每天他都会迫不及待地问我什么时候搬走，会抠门地拿走一切吃喝的东西，会让我帮他倒垃圾，帮他买早饭，当然花的是我的钱。我有些介意这样的攻击，不过我能够理解，因为小孩就是这么直接表达他的情绪。其实真正说起来，我倒觉得他很像没有穿上文明社会的西装。不过既然好心收留，我还是很感激他的。<br>其实我跟这位中戏的女生很像，我和她都是在某种价值观下的劣等品，比如我连住宿，好工作，论文都没有，那自然是失败者。可笑的是，这位中戏女生居然攻击起我来，当她听说周子涵居然让我住在他那里，睡一张床。酸溜溜地说，上次她这样遇到就是一对同性恋，其它人都不相信，最后果然如她预言。到这里，我不由得生起一段愤怒，然后又变成了对她结局的冷笑，如果因为周子涵而产生的嫉妒，那么这个嫉妒是没有尽头的。<br>非常感谢吴仪坤，他是一个很温暖和正向的人，听说我前往北京后，他畅想了在北京的快乐生活，并且感染和鼓励了我。物质的人很聪明，也是一种生活方式，但我更向往仪坤精神的富足。</p>
+                
 
-      
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">
+                            从第一周开始
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            第一次从校园象牙塔到企业，最大的感觉是彷佛失去了自由，虽然我司已经算是相当灵活的上下班时间，但是出于各种考虑，还是选择了10点上班，9点下班。这样下来，留给自己的空闲时间其实也没多少。但其实无论如何，在互联网，刨去因前期的热情支持下的运动时间，休闲时间也无非1-2h。这都不够看一部电影，一集电视剧。留给的选择只剩下短视频和游戏了。
+
+
+我的情况会更糟一些，我需要考虑论文，考虑秋招，这些远大的...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 21 2025 00:00:00 GMT+0000">
+                
+                    2025-06-21
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%88%91%E6%83%B3/">我想</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/" data-id="cmg59hkmn0006qq3i3p4979xq" data-title="北京的夏风" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
+    <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">Read more<span class="seo-reader-text">从第一周开始</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
 
-
-
-  
-
-
-</section>
+                </div>
+            </li>
         
-          <aside id="sidebar">
-  
-    
+            <li class="home-article-item">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/folly/" rel="tag">folly</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E6%83%B3/" rel="tag">我想</a></li></ul>
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/">
+                            北京的夏风
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                             无意批判所有人，我只想表达我的感受。北京有一点比厦门好，到北京这么久，我居然没有看到蟑螂，这玩意在厦门就像恒定数量，随机刷新的NPC。但在北京，这一角色被像我这样的血包给取代了。当我拖着笨重的行李来到周子涵的住宿。狭小的房间里，凌乱地放着生活用品，折窗在六楼的风中来回转动，周期地撞击着窗沿，送来凉爽的风，驱走赶路途中的酷热。杂乱放置还有一个北漂青年的欲望，飞机杯被随意放在桌上，用矿泉水桶做...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jun 15 2025 00:00:00 GMT+0000">
+                
+                    2025-06-15
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/private/">private</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
-  </div>
 
+    <a href="/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/">Read more<span class="seo-reader-text">北京的夏风</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
 
+                </div>
+            </li>
+        
+    </ul>
+
+    <div class="home-paginator px-7 py-5">
+        <div class="paginator">
+	<span class="page-number current">1</span>
+</div>
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CPP/" style="font-size: 10px;">CPP</a> <a href="/tags/Tech/" style="font-size: 10px;">Tech</a> <a href="/tags/folly/" style="font-size: 10px;">folly</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/%E6%88%91%E6%83%B3/" style="font-size: 20px;">我想</a>
     </div>
-  </div>
+</div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li></ul>
-    </div>
-  </div>
+			</div>
 
+			
+		</div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
         
-          <li>
-            <a href="/2025/09/29/Programming/folly_1%20%20F14/">folly(1) F14的高效比较</a>
-          </li>
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">zyu</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        4 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
         
-          <li>
-            <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">我最喜欢的书店</a>
-          </li>
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
         
-          <li>
-            <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">从第一周开始</a>
-          </li>
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.5</a></span>
+        </div>
         
-          <li>
-            <a href="/2025/06/15/life/%E5%8C%97%E4%BA%AC%E7%9A%84%E5%A4%8F%E9%A3%8E/">北京的夏风</a>
-          </li>
         
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
         
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
 </footer>
+		</div>
+	</div>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
     
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
 
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
 
 
 
 
-<script src="/js/script.js"></script>
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
 
 
 
 
 
-  </div>
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
 </body>
+
 </html>
