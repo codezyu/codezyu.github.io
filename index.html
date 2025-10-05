@@ -361,7 +361,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -369,7 +369,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -401,7 +401,7 @@
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -409,7 +409,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -571,27 +571,27 @@ AVX2: 256位寄存器
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">
-                            我最喜欢的书店
+                        <a href="/2025/08/30/Project/bRPC/%E5%AF%B9bRPC%E7%9A%84IOBuf%E7%90%86%E8%A7%A3/">
+                            对bRPC的IOBuf理解
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            如果抽象地来看，市场下的交易都可以理解为推荐系统+交易系统。需要推荐系统，是因想尽可能地促成交易，这样来看，甚至可以凝结为任何具有选择性的场景都可以拆分为引导+决策。同样商铺也是如此，特别是书店。我去每个城市，都会尽量去一次书店，因为我觉得书店是能和博物馆，艺术馆等具有近似丰富程度的地方，而一个城市的图书馆往往是有门槛的，需要办卡或者刷身份证或者是闭馆时间等等，因此书店成了最好的选择。
-
-
-...
+                            bRPC的高性能，来源于一些其独到的设计，其文档已经相当全面，这里主要是根据其实现学习一下，谈谈自己的理解。
+协议通信双方，重要的是协议，才能互通，其中开头的字节说明了其协议类型
+12345enum ProtocolType &#123;    PROTOCOL_UNKNOWN = 0;    PROTOCOL_BAIDU_STD = 1;    ...&#125;
+相比HTTP2协议，百度...
                         
                     </div>
 
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Jul 06 2025 00:00:00 GMT+0000">
+            <span class="home-article-date" data-date="Sat Aug 30 2025 00:00:00 GMT+0000">
                 
-                    2025-07-06
+                    2025-08-30
                 
             </span>
         </span>
@@ -603,62 +603,17 @@ AVX2: 256位寄存器
                     
                         <li>
                             
-                            <a href="/tags/%E6%88%91%E6%83%B3/">我想</a>&nbsp;
+                            <a href="/tags/Tech/">Tech</a>&nbsp;
                         </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">Read more<span class="seo-reader-text">我最喜欢的书店</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">
-                            从第一周开始
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            第一次从校园象牙塔到企业，最大的感觉是彷佛失去了自由，虽然我司已经算是相当灵活的上下班时间，但是出于各种考虑，还是选择了10点上班，9点下班。这样下来，留给自己的空闲时间其实也没多少。但其实无论如何，在互联网，刨去因前期的热情支持下的运动时间，休闲时间也无非1-2h。这都不够看一部电影，一集电视剧。留给的选择只剩下短视频和游戏了。
-
-
-我的情况会更糟一些，我需要考虑论文，考虑秋招，这些远大的...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jun 21 2025 00:00:00 GMT+0000">
-                
-                    2025-06-21
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
                     
                         <li>
-                            
-                            <a href="/tags/%E6%88%91%E6%83%B3/">我想</a>&nbsp;
+                            | 
+                            <a href="/tags/Code/">Code</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/RPC/">RPC</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -666,7 +621,7 @@ AVX2: 256位寄存器
         
     </div>
 
-    <a href="/2025/06/21/life/%E4%BB%8E%E7%AC%AC%E4%B8%80%E5%91%A8%E5%BC%80%E5%A7%8B/">Read more<span class="seo-reader-text">从第一周开始</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2025/08/30/Project/bRPC/%E5%AF%B9bRPC%E7%9A%84IOBuf%E7%90%86%E8%A7%A3/">Read more<span class="seo-reader-text">对bRPC的IOBuf理解</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -702,7 +657,7 @@ AVX2: 256位寄存器
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        4 posts in total
+                        3 posts in total
                     </span>
                     
                 </p>
