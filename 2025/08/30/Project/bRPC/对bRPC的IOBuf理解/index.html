@@ -140,7 +140,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-08-30T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-05T22:39:20.212Z">
+<meta property="article:modified_time" content="2025-10-12T15:29:45.494Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Tech">
 <meta property="article:tag" content="Code">
@@ -366,7 +366,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -374,7 +374,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -425,8 +425,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-10-05 22:39:20</span>
-            <span class="mobile">2025-10-05 22:39:20</span>
+            <span class="desktop">2025-10-12 15:29:45</span>
+            <span class="mobile">2025-10-12 15:29:45</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -495,16 +495,13 @@
 <td>控制信息，其中包含attatchment_size</td>
 <td>body + attachment</td>
 </tr>
-<tr>
-<td>协议的优势在于分离做得很好，</td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
+<p>协议的优势在于分离做得很好，</p>
 <ul>
 <li>RPC 的元信息（<code>Controller</code> 中的设置，如 trace id, 超时时间等）和业务数据（用户定义的 <code>Request/Response</code> 消息）在逻辑上和物理上分离。元信息序列化后存储在 Meta 部分，业务数据序列化后存储在 Body 部分</li>
 <li>序列化信息和非序列化信息也做了分离，这使得可以只解析body，由于attachment支持零拷贝，因此可以把它当作一个对象即可，方便转发</li>
 </ul>
+<p><strong>关于Attachment</strong><br>Attachment不会自动填充到 Protobuf <code>response</code> 对象里，在回调中调用 <code>cntl.response_attachment()</code>，返回一个 <code>butil::IOBuf</code>。自己来解析这个 <code>IOBuf</code>，或者将它传递给后续逻辑。</p>
 <h1 id="IOBuf"><a href="#IOBuf" class="headerlink" title="IOBuf"></a>IOBuf</h1><blockquote>
 <p>参考：<a class="link"   target="_blank" rel="noopener" href="https://brpc.apache.org/zh/docs/blogs/sourcecodes/iobuf/" >https://brpc.apache.org/zh/docs/blogs/sourcecodes/iobuf/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 </blockquote>
@@ -535,6 +532,7 @@
 </ul>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">TaskMeta</span>&#123;</span><br><span class="line">	butil::atomic&lt;TLSData*&gt; tls_data</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TLSData</span> &#123;</span><br><span class="line">    <span class="comment">// Head of the TLS block chain.</span></span><br><span class="line">    IOBuf::Block* block_head;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Number of TLS blocks</span></span><br><span class="line">    <span class="type">int</span> num_blocks;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// True if the remote_tls_block_chain is registered to the thread.</span></span><br><span class="line">    <span class="type">bool</span> registered;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><p><strong>和string_view的冲突</strong><br>在string等大对象的放进pb 对象的时候，是需要一次拷贝的（业务逻辑），因此有优化是用string_view来减少拷贝，但是baidu_std下 client 端好像拿不到解析好的 pb response，因此得用HTTP2协议</p>
 
 		</div>
 
@@ -549,7 +547,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-10-05 22:39:20
+                    :</strong> 2025-10-12 15:29:45
             </li>
         
         <li>
@@ -607,6 +605,18 @@
 			</div>
 			
 			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/07/06/life/%E6%88%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B9%A6%E5%BA%97/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">我最喜欢的书店</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
 		</div>
 		
 
@@ -661,7 +671,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">对bRPC的IOBuf理解</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE"><span class="nav-text">协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOBuf"><span class="nav-text">IOBuf</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Block"><span class="nav-text">Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BlockRef"><span class="nav-text">BlockRef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOBuf-1"><span class="nav-text">IOBuf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="nav-text">零拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Block%E7%AB%9E%E4%BA%89%E9%97%AE%E9%A2%98"><span class="nav-text">Block竞争问题</span></a></li></ol></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE"><span class="nav-text">协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOBuf"><span class="nav-text">IOBuf</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Block"><span class="nav-text">Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BlockRef"><span class="nav-text">BlockRef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOBuf-1"><span class="nav-text">IOBuf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="nav-text">零拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Block%E7%AB%9E%E4%BA%89%E9%97%AE%E9%A2%98"><span class="nav-text">Block竞争问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%B3%E6%B3%95"><span class="nav-text">想法</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -688,7 +698,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        3 posts in total
+                        6 posts in total
                     </span>
                     
                 </p>

@@ -123,7 +123,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/404.html"/>
+    <link rel="canonical" href="http://example.com/2025/09/30/operating_system/data block组装page/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -132,14 +132,19 @@
     
         
         <meta name="description" content="Journey.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Page Not Found">
-<meta property="og:url" content="http://example.com/404.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mmap与数据库">
+<meta property="og:url" content="http://example.com/2025/09/30/operating_system/data%20block%E7%BB%84%E8%A3%85page/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-09-30T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-12T15:29:45.494Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="operating system">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
     
@@ -153,7 +158,7 @@
     
     <title>
         
-            Page Not Found | zyu&#39;s blog
+            mmap与数据库 | zyu&#39;s blog
         
     </title>
 
@@ -386,15 +391,255 @@
 			
 
 			<div class="main-content">
-				<div class="nf-container">
-    <div class="nf-text">
-        <h1>404<br>Page Not Found</h1>
-    </div>
-    <div class="nf-button">
-        <a href="/" class="button large center"><i class="fa-regular fa-house"></i> Go Back Home</a>
-    </div>
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">mmap与数据库</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/website/racket.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">zyu</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-09-30</span>
+        <span class="mobile">2025-09-30</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-10-12 15:29:45</span>
+            <span class="mobile">2025-10-12 15:29:45</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Tech/">Tech</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/operating-system/">operating system</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/algorithm/">algorithm</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
 </div>
 
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>假设这样的场景，如果给你大小不一的data block，由于SSD的写入是4KB，那么应该如何组装数据块？<br>对于Linux而言，做了页的抽象，意味着，内存中的页其实跟SSD中的页是一致的，因此它不需要考虑如何组block的问题，因为你的写入操作是对某个页上面进行操作。对于操作系统而言，跨页是由应用维护的问题<br>对于数据库而言，采用的则很简单，当前页装不下了，则换一个页，避免数据跨页（大数据块除外）</p>
+<ul>
+<li>对于索引页则会不一样，原因在于会触发分裂，保证两个页的数据尽量相等<br>所以正常场景下，一般直接无脑append即可</li>
+</ul>
+<h1 id="KV场景"><a href="#KV场景" class="headerlink" title="KV场景"></a>KV场景</h1><h2 id="RocksDB"><a href="#RocksDB" class="headerlink" title="RocksDB"></a>RocksDB</h2><p>RocksDB采用不跨页的方式，在组KV时，通过BlockBuilder实现，如果当前Block不能容纳新的KV，同样换一个新页，在空白部分填充padding</p>
+<h1 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h1><p>Block的组织可以分为两种，一是数据块紧密排布，这样最节省空间，但是数据块容易出现跨页的问题这里称作tight模式，二是如果page装不下当前数据块，则分配新页，保证数据块不会跨页（超过page的大数据块则不会额外增加一次跨页）这里称为strict模式<br>当我们想要修改数据块的组织方式时，两种模式的优化目标有所不同，tight模式则会尽可能减少跨页，而strict模式则是尽可能减少空洞的出现。</p>
+<h2 id="优化两种组织"><a href="#优化两种组织" class="headerlink" title="优化两种组织"></a>优化两种组织</h2><p>毫无疑问，对block的重新组织，至少要遍历一次，我们分别称为TightSort和StrictSort。</p>
+<h3 id="strict优化"><a href="#strict优化" class="headerlink" title="strict优化"></a>strict优化</h3><p>对于StrictSort可以抽象为装箱问题，因为我们主要关注的是不足page的部分</p>
+<blockquote>
+<p>解法参考：<a class="link"   target="_blank" rel="noopener" href="https://drwxyh.github.io/2018/08/15/Bin-Packing/" >https://drwxyh.github.io/2018/08/15/Bin-Packing/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<p>可以用First-Fit-Decreasing Algorithm，时间复杂度在$O(n\log{n})$ 比最优的比例大概在$\frac{11}{9}$ 也就是会多用0.22的空间</p>
+<ul>
+<li>先从大到小排序（根据%page_size）需要$n\log{n}$</li>
+<li>然后找一个当前能装下的page，找不到就新分配一个 page可以 用一个平衡二叉树实现 $\log{n}$</li>
+</ul>
+<h3 id="tight优化"><a href="#tight优化" class="headerlink" title="tight优化"></a>tight优化</h3><p>对于一个blcok序列，我们期望在任意的序列中$\sum_{i&#x3D;1}^{k}b_i%page_size$等于0的个数近可能多<br>考虑用贪心的方式，在每次组装序列中，选择和能够使当前和尽量逼近0</p>
+<ul>
+<li>先对block进行排序数组 $n\log{n}$</li>
+<li>当sum%page_size不等于0时，则查找page_size-sum对应的block，否则拿一个最小值 O(1) 用哈希表实现;</li>
+<li>贪心之处在于小block先装进去，使得block减少跨页。</li>
+</ul>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>存储一般是便宜的，计算和时延是昂贵的，优化虽然简单节省了空间和跨页，但是会对写入造成较高延时，采用Strict的方式应该是最佳实践。<br>也就是最多只能支持$O(n)$的时间复杂度，甚至还需要考虑常数单位</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> mmap与数据库</li>
+        <li><strong>Author:</strong> zyu</li>
+        <li><strong>Created at
+                :</strong> 2025-09-30 00:00:00</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-10-12 15:29:45
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://codezyu.github.io/2025/09/30/operating_system/data block组装page/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Tech/">#Tech</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/operating-system/">#operating system</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/algorithm/">#algorithm</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/10/12/Project/RocksDB/Untitled/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48"></span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/09/30/operating_system/mmap%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">mmap与数据库</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+                    lang: 'zh-CN',
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">mmap与数据库</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KV%E5%9C%BA%E6%99%AF"><span class="nav-text">KV场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RocksDB"><span class="nav-text">RocksDB</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%83%B3%E6%B3%95"><span class="nav-text">想法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%A4%E7%A7%8D%E7%BB%84%E7%BB%87"><span class="nav-text">优化两种组织</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#strict%E4%BC%98%E5%8C%96"><span class="nav-text">strict优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tight%E4%BC%98%E5%8C%96"><span class="nav-text">tight优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%80%83"><span class="nav-text">思考</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
 			</div>
 
 			
@@ -472,6 +717,26 @@
 		</div>
 	</div>
 
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
 	
 
 	<div class="right-side-tools-container">
@@ -575,6 +840,7 @@
         containers: ["#swup"],
     });
 </script>
+
 
 
 
