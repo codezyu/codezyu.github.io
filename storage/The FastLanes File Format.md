@@ -116,4 +116,17 @@ FSST 操作符用于字符串数据的压缩，它使用一个静态符号表（
 算子的组合有多种，需要通过搜索来找到相对较优的表达式
 
 ## 文件存储格式
-FastLanes 文件格式是一种新型列式存储格式，专门用于存储表达式编码的数
+FastLanes 文件格式是一种新型列式存储格式，专门用于存储表达式编码的数据结构
+## 数据划分
+数据被按行划分成row group
+- row group： 固定数量的record，总是1024的倍数，和ORC类似
+每个row group 按列进行划分
+- column chunk： 同一列上的数据连续存储
+- row group的footer包含column chunk的位置信息，来跳过访问不相关的列
+
+压缩后，按照segment划分
+- entry points: segment的位置
+- segment: 
+
+# 缺陷
+## 编码时间很长
